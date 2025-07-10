@@ -1,0 +1,333 @@
+baseURL = 'https://christianguzman.uk/'
+
+# Change the default theme to be use when building the site with Hugo
+theme = "LoveIt-0.3.0"
+
+# website title
+title = "Christian Guzman"
+
+# language code
+languageCode = "en"
+
+# whether to use robots.txt
+enableRobotsTXT = true
+# whether to use git commit log
+enableGitInfo = false
+# whether to use emoji code
+enableEmoji = true
+
+# language name
+languageName = "English"
+
+# Set the default theme
+[params]
+# site default theme ["auto", "light", "dark"]
+defaultTheme = "light"
+# LoveIt NEW | 0.2.0 date format
+dateFormat = "2006-01-02"
+# website images for Open Graph and Twitter Cards
+images = ["/logo.png"]
+
+# Author config
+[params.author]
+name = "Christian Guzman"
+email = ""
+link = ""
+
+# Header config
+[params.header]
+# desktop header mode ["fixed", "normal", "auto"]
+desktopMode = "fixed"
+# mobile header mode ["fixed", "normal", "auto"]
+mobileMode = "auto"
+# LoveIt NEW | 0.2.0 Header title config
+[params.header.title]
+# URL of the LOGO
+logo = ""
+# title name
+name = ""
+# you can add extra information before the name (HTML format is supported), such as icons
+pre = ""
+# you can add extra information after the name (HTML format is supported), such as icons
+post = ""
+# LoveIt NEW | 0.2.5 whether to use typeit animation for title name
+typeit = false
+
+# Footer config
+[params.footer]
+enable = true
+# LoveIt NEW | 0.2.0 Custom content (HTML format is supported)
+custom = ''
+# LoveIt NEW | 0.2.0 whether to show Hugo and theme info
+hugo = false
+# LoveIt NEW | 0.2.0 whether to show copyright info
+copyright = true
+# LoveIt NEW | 0.2.0 whether to show the author
+author = true
+# Site creation time
+since = 2025
+# ICP info only in China (HTML format is supported)
+icp = ""
+# license info (HTML format is supported)
+license = ''
+
+# LoveIt NEW | 0.2.0 App icon config
+[params.app]
+# optional site title override for the app when added to an iOS home screen or Android launcher
+title = "My cool site"
+# whether to omit favicon resource links
+noFavicon = false
+# modern SVG favicon to use in place of older style .png and .ico files
+svgFavicon = ""
+# Android browser theme color
+themeColor = "#ffffff"
+# Safari mask icon color
+iconColor = "#5bbad5"
+# Windows v8-10 tile color
+tileColor = "#da532c"
+
+# LoveIt NEW | 0.2.0 Search config
+[params.search]
+enable = true
+# type of search engine ["lunr", "algolia"]
+type = "lunr"
+# max index length of the chunked content
+contentLength = 4000
+# placeholder of the search bar
+placeholder = ""
+# LoveIt NEW | 0.2.1 max number of results length
+maxResultLength = 10
+# LoveIt NEW | 0.2.3 snippet length of the result
+snippetLength = 30
+# LoveIt NEW | 0.2.1 HTML tag name of the highlight part in results
+highlightTag = "em"
+# LoveIt NEW | 0.2.4 whether to use the absolute URL based on the baseURL in search index
+absoluteURL = false
+[params.search.algolia]
+index = ""
+appID = ""
+searchKey = ""
+
+# Home page config
+[params.home]
+# LoveIt NEW | 0.2.0 amount of RSS pages
+rss = 10
+# Home page profile
+[params.home.profile]
+enable = true
+# Gravatar Email for preferred avatar in home page
+gravatarEmail = ""
+# URL of avatar shown in home page
+avatarURL = "/images/avatar.jpg"
+# LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
+title = ""
+# subtitle shown in home page (HTML format is supported)
+subtitle = "Christian Guzman"
+# whether to use typeit animation for subtitle
+typeit = false
+# whether to show social links
+social = true
+# LoveIt NEW | 0.2.0 disclaimer (HTML format is supported)
+disclaimer = ""
+# Home page posts
+[params.home.posts]
+enable = true
+# special amount of posts in each home posts page
+paginate = 6
+# LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
+# default behavior when you don't set "hiddenFromHomePage" in front matter
+defaultHiddenFromHomePage = false
+
+# Social config about the author
+[params.social]
+GitHub = "h-4vok"
+Linkedin = "guzmanchristian"
+X = ""                       # LoveIt NEW | 0.3.1
+Twitter = ""                 # LoveIt DEPRECATED | 0.3.1
+Instagram = ""
+Facebook = ""
+Telegram = ""
+Medium = ""
+Gitlab = ""
+Youtubelegacy = ""
+Youtubecustom = ""
+Youtubechannel = ""
+Tumblr = ""
+Quora = ""
+Keybase = ""
+Pinterest = ""
+Reddit = ""
+Codepen = ""
+FreeCodeCamp = ""
+Bitbucket = ""
+Stackoverflow = ""
+Weibo = ""
+Odnoklassniki = ""
+VK = ""
+Flickr = ""
+Xing = ""
+Snapchat = ""
+Soundcloud = ""
+Spotify = ""
+Bandcamp = ""
+Paypal = ""
+Fivehundredpx = ""
+Mix = ""
+Goodreads = ""
+Lastfm = ""
+Foursquare = ""
+Hackernews = ""
+Kickstarter = ""
+Patreon = ""
+Steam = ""
+Twitch = ""
+Strava = ""
+Skype = ""
+Whatsapp = ""
+Zhihu = ""
+Douban = ""
+Angellist = ""
+Slidershare = ""
+Jsfiddle = ""
+Deviantart = ""
+Behance = ""
+Dribbble = ""
+Wordpress = ""
+Vine = ""
+Googlescholar = ""
+Researchgate = ""
+Mastodon = ""
+Thingiverse = ""
+Devto = ""
+Gitea = ""
+XMPP = ""
+Matrix = ""
+Bilibili = ""
+Discord = ""
+DiscordInvite = ""
+Lichess = ""
+ORCID = ""
+Pleroma = ""
+Kaggle = ""
+MediaWiki = ""
+Plume = ""
+HackTheBox = ""
+RootMe = ""
+Malt = ""                    # LoveIt NEW | 0.3.0
+TikTok = ""                  # LoveIt NEW | 0.3.0
+TryHackMe = ""               # LoveIt NEW | 0.3.0
+Codeberg = ""                # LoveIt NEW | 0.3.0
+HuggingFace = ""             # LoveIt NEW | 0.3.1
+Threads = ""                 # LoveIt NEW | 0.3.1
+Phone = ""
+Email = ""
+RSS = true                   # LoveIt NEW | 0.2.0
+
+# LoveIt NEW | 0.2.10 Site SEO config
+[params.seo]
+# image URL
+image = ""
+# thumbnail URL
+thumbnailUrl = ""
+
+# LoveIt NEW | 0.2.0 Analytics config
+[params.analytics]
+# LoveIt DELETED | 0.3.1
+enable = false
+# Google Analytics
+[params.analytics.google]
+id = ""
+# LoveIt DELETED | 0.3.1 whether to anonymize IP
+anonymizeIP = true
+# LoveIt NEW | 0.3.1 whether to respect the browser’s “do not track” setting
+respectDoNotTrack = false
+# Fathom Analytics
+[params.analytics.fathom]
+id = ""
+# server url for your tracker if you're self hosting
+server = ""
+# Plausible Analytics
+[params.analytics.plausible]
+dataDomain = ""
+# Yandex Metrica
+[params.analytics.yandexMetrica]
+id = ""
+
+
+# Menu config
+[menu]
+[[menu.main]]
+weight = 1
+identifier = "posts"
+# you can add extra information before the name (HTML format is supported), such as icons
+pre = ""
+# you can add extra information after the name (HTML format is supported), such as icons
+post = ""
+name = "Posts"
+url = "/posts/"
+# title will be shown when you hover on this menu link
+title = ""
+[[menu.main]]
+weight = 2
+identifier = "tags"
+pre = ""
+post = ""
+name = "Tags"
+url = "/tags/"
+title = ""
+[[menu.main]]
+weight = 3
+identifier = "categories"
+pre = ""
+post = ""
+name = "Categories"
+url = "/categories/"
+title = ""
+
+# Markup related configuration in Hugo
+[markup]
+# Syntax Highlighting (https://gohugo.io/content-management/syntax-highlighting)
+[markup.highlight]
+codeFences = true
+guessSyntax = true
+lineNos = true
+lineNumbersInTable = true
+# false is a necessary configuration
+# (https://github.com/dillonzq/LoveIt/issues/158)
+noClasses = false
+# Goldmark is from Hugo 0.60 the default library used for Markdown
+[markup.goldmark]
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+linkify = true
+strikethrough = true
+table = true
+taskList = true
+typographer = true
+[markup.goldmark.renderer]
+# whether to use HTML tags directly in the document
+unsafe = true
+# Table Of Contents settings
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 6
+
+# Pagination config
+[pagination]
+disableAliases = false
+pagerSize = 5
+path = "page"
+
+# Privacy config
+[privacy]
+# LoveIt CHANGED | 0.3.1 privacy of the Google Analytics (can also be configured in params.analytics.google)
+[privacy.googleAnalytics]
+# ...
+[privacy.twitter]
+# ...
+[privacy.youtube]
+# ...
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]

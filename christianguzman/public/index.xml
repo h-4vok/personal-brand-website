@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Christian Guzman</title>
+        <link>http://localhost:1313/</link>
+        <description>This is my cool site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 07 Jul 2025 15:13:33 &#43;0100</lastBuildDate>
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Hello</title>
+    <link>http://localhost:1313/posts/hello/</link>
+    <pubDate>Mon, 07 Jul 2025 15:13:33 &#43;0100</pubDate>
+    <author>Christian Guzman</author>
+    <guid>http://localhost:1313/posts/hello/</guid>
+    <description><![CDATA[<p>Test post</p>]]></description>
+</item>
+</channel>
+</rss>
