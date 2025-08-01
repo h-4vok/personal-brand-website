@@ -1,5 +1,5 @@
 ################################# Default configuration ###################
-baseURL = "https://demo.gethugothemes.com/meghna/examplesite/"
+# baseURL = "https://demo.gethugothemes.com/meghna/examplesite/"
 title = "Christian Guzman"
 theme = "meghna-hugo"
 # Default time zone for time stamps; use any valid tz database name: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
@@ -116,7 +116,7 @@ expire_days = 2
 # google map
 [params.map]
 enable = false
-gmap_api = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"
+gmap_api = "https://maps.googleapis.com/maps/api/js?key=xxx"
 map_latitude = "51.5223477"
 map_longitude = "-0.1622023"
 map_marker = "images/marker.png"
