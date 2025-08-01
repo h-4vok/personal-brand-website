@@ -33,3 +33,4 @@ Christian Guzman
 [Home] | [Philosophy] | [Connect] | [Insights]
 
 © 2025 Christian Guzman. All Rights Reserved.
+x
