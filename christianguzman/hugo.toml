@@ -1,7 +1,7 @@
 baseURL = 'https://christianguzman.uk/'
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt-0.3.0"
+theme = "meghna-hugo"
 
 # website title
 title = "Christian Guzman"
@@ -33,6 +33,7 @@ images = ["/logo.png"]
 name = "Christian Guzman"
 email = ""
 link = ""
+
 
 # Header config
 [params.header]
