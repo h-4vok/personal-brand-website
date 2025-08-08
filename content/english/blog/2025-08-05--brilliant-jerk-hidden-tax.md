@@ -1,6 +1,6 @@
 ---
 title: "The Hidden Tax of the Brilliant Jerk: Why tolerating low integrity is your biggest performance killer"
-date: "2025-08-05T13:47:33+01:00"
+date: "2025-08-08T21:00:00+01:00"
 author: Christian Guzman
 image: images/blog/article/brilliant-jerk-hidden-tax.png
 description: "Every leader faces the Brilliant Jerk problem. This article explores why tolerating a high-performer with low integrity is a hidden tax on your entire organization and a critical failure of leadership."
