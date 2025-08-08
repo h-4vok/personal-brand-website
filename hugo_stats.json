@@ -74,6 +74,7 @@
       "fadeInUp",
       "font-weight-bold",
       "hero-area",
+      "hero-block",
       "icon-box",
       "img",
       "img-fluid",
@@ -82,12 +83,9 @@
       "list-inline-item",
       "logo-disqus",
       "lozad",
-      "mask",
       "mb-4",
       "mb-50",
       "media-wrapper",
-      "member-meta",
-      "member-photo",
       "ml-auto",
       "mt-5",
       "mx-auto",
@@ -131,7 +129,6 @@
       "social-icon",
       "social-share",
       "sticky-top",
-      "team-member",
       "text-center",
       "ti-briefcase",
       "ti-crown",
@@ -151,8 +148,7 @@
       "counter",
       "disqus_thread",
       "footer",
-      "navigation",
-      "team"
+      "navigation"
     ]
   }
 }
