@@ -4,7 +4,8 @@ date: 2018-09-12T14:51:12+06:00
 author: Mark Dinn
 image_webp: images/blog/meghna.webp
 image: images/blog/meghna.jpg
-description : "This is meta description"
+description: "This is meta description"
+draft: true
 ---
 
 ## Install this template by following those simple steps:
@@ -23,12 +24,16 @@ hugo new site <new_project>
 ```
 
 ### STEP-3 : Install the theme
+
 Run this command
+
 ```
 hugo new site meghna-hugo
 ```
-and then go to the themes folder inside of meghna-hugo folder. You can also use this command ```cd meghna-hugo/themes``` for going to this folder.
-Then run the command 
+
+and then go to the themes folder inside of meghna-hugo folder. You can also use this command `cd meghna-hugo/themes` for going to this folder.
+Then run the command
+
 ```
 git clone git@github.com:themefisher/meghna-hugo.git
 ```
