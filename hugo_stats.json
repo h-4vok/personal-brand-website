@@ -30,17 +30,13 @@
       "p",
       "path",
       "picture",
-      "pre",
       "script",
       "section",
       "source",
       "span",
       "strong",
       "svg",
-      "table",
-      "td",
       "title",
-      "tr",
       "ul"
     ],
     "classes": [
@@ -57,7 +53,6 @@
       "btn",
       "btn-main",
       "btn-transparent",
-      "chroma",
       "clearfix",
       "col-12",
       "col-lg-10",
@@ -81,7 +76,6 @@
       "font-weight-bold",
       "hero-area",
       "hero-block",
-      "highlight",
       "icon-box",
       "img",
       "img-blog",
@@ -89,8 +83,6 @@
       "justify-content-center",
       "list-inline",
       "list-inline-item",
-      "lntable",
-      "lntd",
       "lozad",
       "mb-4",
       "mb-50",
@@ -176,6 +168,8 @@
       "its-not-a-mess-its-a-mortgage",
       "model-the-impossible-role",
       "navigation",
+      "phrases-of-deference",
+      "phrases-of-risky-internal-monologue",
       "phrases-of-self-doubt",
       "the-golden-thread",
       "the-hidden-costs-of-a-hero-culture",
@@ -183,9 +177,7 @@
       "the-leaders-toolkit-from-political-problem-to-shared-accountability",
       "the-political-reality",
       "the-resolution-the-innovation-tax",
-      "the-three-themes",
-      "three",
-      "three-groups-of"
+      "the-three-themes"
     ]
   }
 }
