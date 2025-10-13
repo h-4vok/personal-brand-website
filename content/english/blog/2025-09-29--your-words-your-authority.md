@@ -3,7 +3,7 @@ title: "Your Words, Your Authority: Why Your Team Hears What You Don't Say"
 date: "2025-09-29T00:00:00+01:00"
 author: "Christian Guzman"
 image: "images/blog/article/your-words-your-authority.png"
-description: "Dr. Grace Lee's video brilliantly exposes phrases that hinder executive readiness. This article expands on those insights, showing how these habits erode influence with your team, and offering actionable alternatives for more impactful leadership communication."
+description: " Learn how common phrases undermine authority with your own team and master powerful, actionable alternatives for impactful leadership communication."
 categories:
   - "Leadership"
 tags:
@@ -13,6 +13,7 @@ tags:
   - "Team Management"
   - "Influence"
   - "Leadership Skills"
+  - "Mindset"
 slug: "your-words-your-authority"
 ---
 
@@ -33,76 +34,145 @@ Dr. Lee's video focuses on how these phrases are perceived in high-stakes conver
 
 ## The golden thread
 
-Your words are your leadership blueprint. What you say is as important as what you do. Your language must have intentional design upon which your team's culture, trust and even psychological safety are built on. Want to build resilient teams? We must start with how we speak to them.
+Your words are your leadership blueprint. What you say is as important as what you do. But a blueprint is useless unless it is intentional. As leaders, our language requires intentional design; it is the foundation upon which your team's culture, trust, and psychological safety are built. If you want to build resilient teams, you must start by being intentional with how you speak to them.
 
-More often than not, if we are not purposeful and aware of how we construct our words (and our ideas) we are letting others down. It is not uncommon for reports to become disappointed or even completely lose faith about a certain situation or new direction merely because of the way we presented it.
+When that blueprint is unclear or flawed —when our language is unintentional— we let our teams down. It is not uncommon for a direct report to lose faith in a new direction, not because the strategy was wrong, but because of the unintentional signals we sent in how we presented it. This is how we diminish our own leverage. We can measure the quality of our leadership by how much we multiply our impact through others. If our language does the opposite of inspiring and empowering them, then we are not just losing leverage; we are at risk of losing our team.
 
-We will be expanding on top of Dr. Grace Lee's work and see how this impacts our surroundings, and diminishes our own leverage as leaders. We can measure how good our leadership is by how much we multiply through others. If we do the opposite of inspiring others, then we are losing our own leverage and we will be losing our team.
+## Three Patterns of Self-Sabotage
 
-## The three themes
+While not originally grouped this way by Dr. Grace Lee, the phrases she identifies fall into three distinct patterns. Understanding these patterns is the first step to rewriting our leadership blueprint.
 
-While not originally grouped this way by Dr. Grace Lee, we can identify three different patterns:
-
-- Phrases that introduce **self-doubt**
-  - These are phrases that undermine our conviction and makes us look undecisive. Thinsk like "I think I could", "I am not sure if this helps but" and "Does that make sense?" immediately hinders our impact when we speak.
-- Phrases of **deference**
-  - These are the ones that diminish our status and can even transmit we are wasting people's time. "Sorry, just one quick point" and "We can't" fall into this category.
-- Phrases of **risky internal monologue**
-  - These shape our actions, and potentially hurt us a great deal without us even knowing. "That's above my pay grade" and "I'll just do it myself" can be quite destructive for leaders looking to increment their leverage game.
+- Phrases of **Self-Doubt**: These are the words that undermine our own conviction, making us appear indecisive. Things like "I think I could..." or "I'm not sure if this helps, but..." immediately hinder our impact and project uncertainty to our teams.
+- Phrases of **Deference**: These are the apologies and absolute negatives that diminish our status. When we say, "Sorry, just one quick point," we signal that our contribution is an interruption. When we say, "We can't," we position ourselves as roadblocks, not creative problem-solvers.
+- Phrases of **Risky Internal Monologue**: These are the silent beliefs that shape our actions. Thoughts like "That's above my pay grade" or "I'll just do it myself" are particularly destructive for leaders looking to increase their leverage, as they lead to abdicated ownership and missed opportunities to empower others.
 
 ## Phrases of self-doubt
 
-- I think ... I could ...
-- I am not sure this helps but ...
-- Does that make sense?
+These non-committal phrases express self-doubt, guesswork, and a perceived lack of capability. But let's be clear: these phrases can be valid in the right context. The key is to be strategic and intentional.
 
-All of these noncommittal phrases express self doubt, express guess work, express lack of capability. But let's also be clear, these are valid in the right context. It's just that we must be strategic when we use them.
+**1. "I think... I could..."**
 
-If you are using this with your colleagues, as in, people around the same rank, perhaps other departments, etc. You are probably thinking "Let me propose an alternative, without me dismissing what you have proposed". This has good will and you are probably trying to be polite. "I think we could do better next time if instead of measuring page views we instead measure how users are executing the report and look at the number of times they export it, or perhaps how long they stay active on the page before moving on". Alternatively, perhaps you want to emphasise how your team can achieve something. "I think we could achieve this if we are able to define the scope within the next week".
+With peers and colleagues, we often use this phrase with good intentions—to propose an alternative without dismissing someone else's idea. You might say, "I think we could do better if we measure X instead of Y." While polite, this can still dilute your authority.
 
-Personally, it is always possible that within colleagues you will usually have more of a friendly round table, where everyone gets to express their ideas. Everytime I setup one of these sessions or groups, I start by telling everyone that _"here we accept criticism and we should be open to disagreement, here is where we need to be honest"_. So under those very clear rules it is possible you can let your guard down a bit and just use the quoted phrases. Sure, some tables are more political than others, but we should always aim to speak without filter in these types of groups. That still does not mean that using a more assertive and leader-worthy language is not going to improve the outcome of our conversations.
+In collaborative settings where you have established rules of engagement—what I call a "friendly round table"—this language may be perfectly acceptable. However, for a more assertive and leader-worthy alternative that still invites collaboration, consider these:
 
-When we are speaking to colleagues, we could trade "I think I could" or "Have we...?" for direct, assertive yet open language. We actually had a similar version at the very beginning:
+- **"I propose we..."**
+- **"An alternative approach could be to..."**
+- **"Building on that idea, what if we..."**
 
-- I propose we ...
-- Based on everything said, we can ...
-- It would seem we have no impediment to ...
+**2. "I'm not sure this helps, but..."**
 
-These are fine, and provide a more direct language while still expressing confidence in what you are saying. However, we must ensure we are keeping an open conversation and that others participate, give us their feedback and their honest opinion. To be honest, I too use "Does that make sense?" quite often, but especially as a sort of finishing phrase when we have all agreed to something already, not in this situation where I want to continue the chat. We could, instead, use some form of the following:
+As a leader, your team looks to you for confidence. Starting a sentence this way immediately signals that you lack faith in your own contribution. You are essentially telling your team to discount the idea before you've even shared it.
 
-- While I firmly believe in the idea, I am wondering what you think.
-- That is the way I see it so far, but I would very much appreciate your own thoughts on this.
+A far more powerful technique is to explicitly **"think out loud"**. This allows you to explore a nascent idea without committing to it, while still projecting confidence and control over the process.
 
-And I would definitely scratch a phrase like "I am not sure this helps but" or anything similar. People look at you, as a leader, for some security and confidence. If you have an idea you are not sure it would work, then what I often do is just "think out loud". For example, someone brings me an issue of resource capacity and I have no clue about the solution yet, but I might have _something_ then I would say _"I am just thinking out loud, but possibly if we are able to finish the next iteration of project A, then John and Joseph can jump and review the technical approach of project B next Monday. We'd need to discuss with their manager of course, but this is something we can potentially do without impacting anyone's timeline"_. In this case, I am not really sure about it, but I would be ready to commit to _trying_. You will see from the video that "I will try" is noncommital as well, a language that seems to lessen or eliminate the accountability of our own words and ideas. Here, we are having a conversation, but eventually before we finish that conversation, I would summarise things in an assertive manner and ensure we have owners for everything. Something like _"Then, as we discussed, I will line up resources from project B to help project A on Monday. You will support the team on these conversations and onboard John and Joseph on this topic before that conversation."_ and I might end saying something like _"Makes sense?"_. Personally, it's not a sin to use that phrase _in this context_.
+For example, when facing a resource issue, instead of saying "I'm not sure this helps," try this:
 
-# Phrases of deference
+> _"I'm just thinking out loud here, but what if we finish the next iteration of Project A by Wednesday? That could free up John and Joseph to tackle the technical approach for Project B. I'll need to confirm with their manager, but it's a potential path forward."_
 
-- "Sorry, just one quick point"
-- "We can't"
+You are still expressing uncertainty, but you are framing it as a strategic exploration of options, not as a lack of confidence in your own thinking.
 
-The first one is very similar to "I am not sure if this helps but" but there is a slight difference. Here, we are saying sorry and potentially adding something that is too small and inconsequential. So why are we even adding a comment and wasting people's time? Where the other one is more about self doubt.
+**3. "Does that make sense?"**
 
-These two phrases are very distinct to each other. The first one, the one that says "Sorry" is introducing the idea that your idea is not worth the time. The second phrase removes you from the kind of people that can get things done. Psychologically, you are not only saying that you cannot do something right now, but you are signaling to everyone that you do not have the capability of seeing a solution here. Now, there might be some scenarios where this is the right call. _"We cannot break the trust of our customers"_ or _"We cannot do that, it would be a breach of contract"_. We do sometimes have to speak clearly and state when something cannot be done. I would still argue that perhaps what is the goal of said conversations is not to break the trust of customers or breach a contract, but to achieve something and you are simply discarding a proposed solution. You could, still, instead ask differently. _"I need a bit more help on this. Could you explain to me how you see this idea being implemented without breaching our contract? Perhaps I misunderstood you"_. This would be a more Simon Sinek-esque way of approaching said conversation.
+This is perhaps the most common phrase of the three, and I use it myself. The key is **when** you use it. As Dr. Lee points out, using it to seek validation after presenting an idea makes you sound insecure. However, using it as a confirmation check after a decision has been made is different.
 
-Now, if you were discussing ideas with colleagues or your team, and the natural response is _"cant"_ then I propose you turn this into a trigger. If you are about to say something cannot be done, stop you there for a second. Think about it and ask if you are leveraging your colleagues or team well enough. Is it really that it cannot be done? Or that you do not know if it can be done? Turn this into an opportunity to make an insightful question to the rest of the group _"We all know this seems to be extremely challenging, so we should welcome ideas from anyone. Would someone like to share any thoughts? They dont need to be complete, but perhaps we use it to get us started in the conversation"_. Now, let's say that you have already said "cant" but realised you said it later. You can always correct yourself quickly. _"Let me rephrase this, it would seem right now that we cant do this. However, I think we can further explore a solution here."_ and then follow up with an action, whether it is asking for options, feedback, or directing everyone to a specific part of the problem. People will not think less of you for correcting yourself immediately. They might even see you as a very self aware leader.
+Once a plan is set and you have summarized the action items—\_"I will line up the resources, and you will onboard John and Joseph"—\_ending with a quick "Makes sense?" is an effective way to check for alignment.
 
-On the topic of "Sorry, one more thing", then you can be a bit more expressive. If its only point you wish to make, you could use _"Before we go"_ or _"Before we move to the next topic"_ and then spell it out _"It is important that X"_ or _"We must also ensure that"_. It will really depend on what you wish to say and then use a positive structure that does not start by undermining what you are going to say, or undermine yourself. Let's say we are wrapping up around the budget for next year, I might end saying something like _"Before we move on top another topic, I would like to also establish clearly that, while the budget is covering our current plans, we could still be tight for capacity as there is little buffer. Be it that we get pressure from a customer or we find an issue that is GP sensititive, we could run out of options soon. I propose we review our budget every 3 months. Would you mind if we agree on this idea now and we establish an owner for said review?"_. Maybe the idea does not fly at all, but you have presenting it in an insightful way without pointing fingers, but establishing that what you said is important and we should act on it. If we had started with "Sorry, one more point" it might have been easily dismissed like _"We can discuss that later"_. You dismissed yourself.
+But when you are in the middle of a discussion and want to invite feedback, there are much stronger alternatives that foster psychological safety and collaboration:
 
-Finally, if you wanted to make several points, you could then completely dismiss the "Sorry" part and do a small introduction to what you are going to say: _"Before we move on, I have two points to make. First, potential risks that could impact these timelines, and second, I think we should take the opportunity to review the budget in 3 months time. On the first topic..."_. In this case, we are mixing a few tactics. One is establishing a quick agenda, you will be talking about two points, so you have asked everyone to listen to you during those two points, you have reclaimed the space temporarily so they let you talk. It would be easy for someone to interrupt you during or at the end of the first point so they could reply to you. This would set you back on your own narration.
+- **"I'd be interested to hear your thoughts on this."**
+- **"What challenges do you see with this approach?"**
+- **"That's my perspective. What am I missing?"**
 
-# Phrases of risky internal monologue
+## Phrases of deference
 
-- That's above my pay grade / That's not my job
-- I'll just do it myself
+These are the phrases that diminish our status and signal to others that we believe our own contribution is not valuable. We inadvertently defer to others, weakening our position as leaders.
 
-As Dr. Lee mentions, these are usually said internally, although sometimes we can hear them externally as well. Be it because of social media, TV series or movies, we could tend to think that saying something is above our pay grade is somehow a type of "power move" where we are establishing clear boundaries to someone, or we are subtly complaining about the state of things and how things are done. What you will be doing in this case is undermining yourself as _"I am neither interested nor ready to take on this"_. One thing we should be very clear about is that there is a part of the job where we are accountable by default; its just our job description, and the team we lead and their deliverable or objectives. However, once you started leading people, you have joined a new board and the question is what you will do next. When we move into leadership positions, we will be thrown opportunity after opportunity of increasing our accountability. It is often, though, that a lot of professionals take on more responsibilities but are unable to follow that with career growth. That is a separate topic, but I can already give you a spoiler: "You have the leverage".
+**1. "Sorry, just one quick point..."**
 
-When you say something is not your job, then there are at least two proposals I can make you. First, if you truly believe this is out of bounds for you then the question is _"Do you know who should be doing this?"_. Instead of rejecting the idea, you could redirect your energy and say something like _"I believe we should have UX involved in this, they need to own this decision, not me. I am happy to follow up with them if that's fine with you."_. Take ownership, but also honour people's jobs and opportunities. Become the facilitator, not a contract oriented silo. If you do not enjoy your job or have a particularly bad experience with your managers, I would still propose you do this. No one can take away the experience you build doing this, and you can bring that into your next leadership role if your days at your current company are counted.
+This phrase is an apology for taking up space. It immediately signals that what you are about to say is a minor, perhaps inconsequential, interruption. You are essentially asking to be dismissed before you've even made your point. If you want your ideas to be treated with importance, you must present them that way.
 
-Another thing that happens often is that we become bitter because we are actually doing something out of bounds, but we expect someone else to be taking charge. In these cases maybe its worth clarifying with your own manager where your time needs to be spent, and instead of dismissing accountability or responsibility for the thing you are doing, present it as _"I have the impression my time would be best spent in X activities. Can you help me delegate this over to Y team?"_. This is a positive framing, you are not coming with an ultimatum, and you are not showing lack of ownership. Quite the contrary, you are now working outside of your own cone of authority, and now working on how you influence the rest of the org. This is the actual power move.
+**What to Do Instead:**
 
-On the last one, if you are thinking _I can do this quickly_ then 99% of the time I would tell you you are losing an opportunity to delegate. Sure, you might be the uttermost expert in the topic and perhaps can get something done blindfolded, but you are missing out on investing your time in others. Instead of working in **production**, work in **reproduction** as said by Ken Coleman. But I will admit sometimes it is also worth leading by example in the trenches themselves. You just have to be very cautious on what you choose to take on your own. If you take a task that can be done better by your team, then keep it delegated. You might be thinking that this is a way for you to learn as well, but this might send the wrong signals to your team. Again, it might not, it might actually generate a deeper connection. You will need to know your team very well before taking on something they can do better. They could feel you are the one diminishing them. If you are taking something that surpasses the team's capabilities, then your job should be to invest and grow your people so they can surpass the task. If the challenge is just a bit outside of their boundary of expertise, then it's a fantastic growth opportunity as it is right now. Give it to them and they will grow that extra bit they need. And if you are the expert here, even better, coach them through, but empower them to resolve it. In rare instances, you investing in explaining this to the team could signify a complete disaster if one of your variables just gets out of control (like time, or scope). There is that 1% of times where its better you do it, but as we have seen, most of the time its better you investt in the people. It is always the best move here.
+Seize the moment with confidence. Instead of apologizing, use a clear and assertive transition. If you have a single point to make, try:
 
-# Conclusion
+- **"Before we move to the next topic..."**
+- **"One last thing on this before we conclude..."**
 
-Dr. Lee is a fantastic coach for executives, and although sometimes uses very complicated terms in her videos, what she speaks about is very valuable and insightful, and remains relevant in the executive world of today. I think its not only for senior leaders to listen to her, but also anyone in the growing stages of leadership (which we always are). While I felt her video could use more of what we did today, it was inspiring for me and made me realise how much I love the topic of how we use our language. Because its not about the words, its about the impact we make in others. Inspiring others might be the hardest yet most important thing we do as leaders, so every bit of knowlege and wisdom we can grasp on this topic might make us multiple times better. Its not about cheap politics and saving face, its about sending the right signals to do better business and be better humans.
+For example, when wrapping up a budget discussion, instead of a timid "Sorry...", you could say:
+
+> _"Before we move on, I'd like to establish that while the budget covers our current plans, we have little buffer for unforeseen risks. I propose we review our capacity every three months. Can we agree on this and assign an owner for that review?"_
+
+Notice how this frames the idea as an important, forward-looking proposal. Had you started with "Sorry...", it could have been easily dismissed. You dismissed yourself.
+
+If you have several points, introduce them with a clear agenda:
+
+> _"Before we move on, I have two points to make. First, on the potential risks to these timelines, and second, on the budget review cadence. Regarding the risks..."_
+
+This technique asks everyone to listen, reclaiming the space you need to be heard.
+
+**2. "We can't."**
+
+This phrase positions you as a blocker, not a creative problem-solver. Psychologically, you are not only saying that something cannot be done right now, but you are signaling to everyone that you do not have the capability of seeing a solution.
+
+Now, there are rare scenarios where this is the right call—specifically, when defending a firm ethical or contractual line. For example, _"We can't break the trust of our customers"_ or _"We can't do that; it would be a breach of contract."_. These are examples where we categorically cannot do something.
+
+However, even here, you can choose a more collaborative approach. Instead of a hard stop, you could ask differently, in a more Simon Sinek-esque way:
+
+> _"I need a bit more help on this. Could you explain to me how you see this idea being implemented without breaching our contract? Perhaps I misunderstood you."_
+
+This maintains the boundary while inviting a solution-oriented conversation.
+
+**What to Do Instead:**
+
+For all other situations, treat the word "can't" as a personal **trigger**. The moment you are about to say it, stop yourself and ask: "Is it truly impossible, or is it that I don't yet see the solution?" Turn this into an opportunity to leverage your team's collective intelligence.
+
+- Instead of "We can't do that with our current resources." try **"We all know this seems to be extremely challenging, so we should welcome ideas from anyone. Would someone like to share any thoughts? They don't need to be complete, but perhaps we can use them to get us started in the conversation."**
+
+If you do say "can't" by accident, correct yourself immediately. This shows self-awareness.
+
+> _"Let me rephrase that. It seems like we can't do this right now. However, I believe we can explore a solution here. Let's start by..."_
+
+People will not think less of you for correcting yourself. They will see you as a self-aware and resilient leader.
+
+## Phrases of risky internal monologue
+
+As Dr. Lee mentions, these are usually said internally, although sometimes we can hear them externally as well. Whether because of social media, TV series, or movies, we might tend to think that saying something is "above our pay grade" is some kind of "power move" where we are establishing clear boundaries. What we are actually doing in this case is undermining ourselves, signaling, _"I am neither interested nor ready to take on this"._
+
+One thing we should be very clear about is that there is a part of the job where we are accountable by default; it's our job description and the team we lead. However, once you start leading people, you have joined a new board, and the question is what you will do next. When we move into leadership positions, we will be thrown opportunity after opportunity to increase our accountability.
+
+**1. "That's Not My Job / Above My Pay Grade"**
+
+When you feel the urge to say something is not your job, there are at least two powerful, leader-led proposals I can make.
+
+First, if you truly believe this is out of bounds for you, the question is not how to reject it, but _"Do you know who should be doing this?"_. Instead of rejecting the idea, you can redirect your energy and say something like:
+
+> _"I believe we should have UX involved in this, as they need to own this decision, not me. I am happy to follow up with them if that's fine with you."_
+
+In this scenario, you take ownership of the solution, but you also honour people's jobs and opportunities. You become the facilitator, not a contract-oriented silo. Even if you do not enjoy your job or have a particularly bad experience with your managers, I would still propose you do this. No one can take away the experience you build, and you can bring that into your next leadership role if your days at your current company are numbered.
+
+Another thing that happens often is that we become bitter because we are actually doing something out of bounds, but we expect someone else to be taking charge. In these cases, it's worth clarifying with your own manager where your time needs to be spent. Instead of dismissing accountability, present it as a strategic choice:
+
+> _"I have the impression my time would be best spent on X and Y activities to maximize our impact. Can you help me delegate this over to the Z team?"_
+
+This is a positive framing. You are not coming with an ultimatum, and you are not showing a lack of ownership. Quite the contrary, you are now working outside of your own cone of authority and influencing the rest of the organisation. This is the actual power move.
+
+**2. "I'll Just Do It Myself"**
+
+If you find yourself thinking, _"I can do this quickly"_, then 99% of the time, you are losing an opportunity to delegate. Sure, you might be the utmost expert on the topic and can get something done blindfolded, but you are missing out on investing your time in others. As Ken Coleman says, instead of working in **production**, work in **reproduction**.
+
+I will admit, sometimes it is also worth leading by example in the trenches. You just have to be very cautious about what you choose to take on yourself.
+
+If you take a task that can be done better by your team, then keep it delegated. You might think this is a way for you to learn, but it might send the wrong signals to your team; they could feel you are diminishing them. If you are taking on something that surpasses the team's capabilities, then your job should be to invest and grow your people so they can surpass the task in the future. If the challenge is just a bit outside of their boundary of expertise, then it's a fantastic growth opportunity as it is right now. Give it to them, and they will grow that extra bit they need. And if you are the expert here, even better: coach them through it, but empower them to resolve it.
+
+There is that 1% of the time where it is better you do it yourself, especially if a critical variable like time or scope gets out of control. But as we have seen, most of the time it is better you invest in your people. It is always the best long-term move.
+
+## Conclusion
+
+This topic is a personal passion of mine because I believe the language we use is not about cheap politics or saving face; it is about sending the right signals to do better business and be better humans. Inspiring others is perhaps the hardest, yet most important, thing we do as leaders, and every piece of knowledge we can grasp on this topic makes us more effective.
+
+This is the work of being an intentional leader. It's about recognizing that our words are the Leadership Blueprint for our culture. Every phrase is a decision that lays a foundation for either trust or doubt, clarity or confusion.
+
+The point, then, is not whether you occasionally use a weak phrase—we all do. The point is to recognize the powerful feedback loop we discussed earlier. By consciously choosing more powerful language, you are not just changing how you are perceived.
+
+It's not only about words; it's about shaping our minds. Become externally what you want to become internally. In doing so, you are not just acting like a better leader —**you are actively rewiring yourself to become one**.

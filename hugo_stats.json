@@ -3,6 +3,7 @@
     "tags": [
       "a",
       "article",
+      "blockquote",
       "body",
       "br",
       "button",
@@ -158,13 +159,11 @@
       "content",
       "counter",
       "define-your-non-negotiables",
-      "draft-agenda",
       "explore-external-options-simultaneously",
       "footer",
       "from-heroes-to-resilience-a-new-operating-system",
       "from-personal-pain-to-systemic-failure",
       "gather-the-facts",
-      "i-think-could",
       "its-not-a-mess-its-a-mortgage",
       "model-the-impossible-role",
       "navigation",
@@ -177,7 +176,7 @@
       "the-leaders-toolkit-from-political-problem-to-shared-accountability",
       "the-political-reality",
       "the-resolution-the-innovation-tax",
-      "the-three-themes"
+      "three-patterns-of-self-sabotage"
     ]
   }
 }
