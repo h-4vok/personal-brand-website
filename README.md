@@ -21,6 +21,22 @@ If you have problems like "go" not being found in PATH, restart your IDE. It mig
 
 Once the setup is finished, use npm run dev to see your website up.
 
+## Running the site locally
+
+Simply use npm
+```
+npm run dev
+```
+
+## Build the site
+
+Use npm
+```
+npm run build
+```
+
+And then take the public directory and publish its contents as a static website.
+
 ## Hugo - Command reminders
 
 ```

@@ -3,6 +3,7 @@
     "tags": [
       "a",
       "article",
+      "blockquote",
       "body",
       "br",
       "button",
@@ -20,6 +21,7 @@
       "hr",
       "html",
       "i",
+      "iframe",
       "img",
       "li",
       "link",
@@ -165,11 +167,16 @@
       "its-not-a-mess-its-a-mortgage",
       "model-the-impossible-role",
       "navigation",
+      "phrases-of-deference",
+      "phrases-of-risky-internal-monologue",
+      "phrases-of-self-doubt",
+      "the-golden-thread",
       "the-hidden-costs-of-a-hero-culture",
       "the-interest-payments-are-paid-in-paper-cuts",
       "the-leaders-toolkit-from-political-problem-to-shared-accountability",
       "the-political-reality",
-      "the-resolution-the-innovation-tax"
+      "the-resolution-the-innovation-tax",
+      "three-patterns-of-self-sabotage"
     ]
   }
 }
