@@ -143,6 +143,8 @@
       "ti-panel",
       "ti-unlink",
       "title",
+      "video-figure",
+      "video-wrapper",
       "wow"
     ],
     "ids": [

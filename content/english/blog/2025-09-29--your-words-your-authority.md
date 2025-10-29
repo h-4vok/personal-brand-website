@@ -21,7 +21,12 @@ Have you ever felt that you had something important to say, but the way you said
 
 I highly recommend watching the full video. For any leader fascinated by the nuances of high-stakes communication, Dr. Lee's work is a valuable resource. Dr. Grace Lee is a seasoned professional whose youtube channel is always focused on executive level conversations with strategic focus. She is both insightful and articulate, consistently providing actionable guidance grounded in perceptive analysis. I am embedding the video below, and I encourage you to explore her channel for more content on executive communication.
 
-{{< youtube DACk621pQqU >}}
+<figure class="video-figure">
+    {{< youtube DACk621pQqU >}}
+    <figcaption>
+        Dr. Grace Lee's original video on the 7 phrases that expose you as "Not Executive-Ready".
+    </figcaption>
+</figure>
 
 Dr. Lee’s advice is an excellent foundation for high-stakes communication. However, her focus is primarily on the boardroom. To truly master our leadership, we must also explore how we serve others not only through our actions but through our attitudes. Language is the primary tool through which our attitude is perceived and our own thinking is shaped. This is where we must introduce a core idea: Your Language is Your Leadership Blueprint. The words you choose don't just convey ideas; they are the architectural plans that your team uses to build your culture. Every phrase lays a foundation for either trust or doubt, clarity or confusion.
 
