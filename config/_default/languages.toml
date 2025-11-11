@@ -6,7 +6,7 @@ contentDir = "content/english"
 weight = 1
 [en.params]
 home = "Home"
-copyright = "Copyright &copy; 2020 Designed by [Themefisher](https://themefisher.com) & Developed by [Gethugothemes](https://gethugothemes.com) </br> Edited by Christian Guzman 2025."
+copyright = "© 2025 Christian Guzman. All rights reserved."
 
 # ################################### French language #####################################
 # [fr]

@@ -139,7 +139,16 @@ paginate = 6
 # default behavior when you don't set "hiddenFromHomePage" in front matter
 defaultHiddenFromHomePage = false
 
-# Social config about the author
+# New social config
+[[params.footer.socialLinks]]
+name = "LinkedIn"
+link = "https://www.linkedin.com/in/guzmanchristian"
+
+[[params.footer.socialLinks]]
+name = "GitHub"
+link = "https://github.com/h-4vok"
+
+# We keep the legacy configuration until its stripped out
 [params.social]
 GitHub = "h-4vok"
 Linkedin = "guzmanchristian"
