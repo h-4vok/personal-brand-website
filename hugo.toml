@@ -340,3 +340,18 @@ path = "page"
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+
+
+# --- Related Content Configuration ---
+[related]
+threshold = 80
+includeNewer = true
+toLower = false
+
+[[related.indices]]
+name = "tags"
+weight = 100  # Give tags the highest priority
+
+[[related.indices]]
+name = "categories"
+weight = 80         # Give categories the second highest priority
