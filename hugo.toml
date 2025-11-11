@@ -29,11 +29,10 @@ dateFormat = "2006-01-02"
 images = ["/logo.png"]
 
 # Author config
-[params.author]
+[params.authorbox]
 name = "Christian Guzman"
-email = ""
-link = ""
-
+bio = "I am a seasoned technology leader with over 20 years of experience, passionate about building resilient teams and human-centric systems."
+image = "/images/avatar3.jpg"
 
 # Header config
 [params.header]
