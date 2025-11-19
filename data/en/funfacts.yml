@@ -7,7 +7,7 @@ funfacts:
     # counter item loop
     - title: "Years in Leadership"
       icon: "ti-crown" # themify icon pack : https://themify.me
-      count: "11"
+      count: "12"
 
     # counter item loop
     - title: "Years in Business"
