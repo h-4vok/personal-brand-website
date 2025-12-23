@@ -30,11 +30,10 @@ name = "Latest Articles"
 url = "#blog"
 weight = 6
 
-# [[main]]
-# name = "contact"
-# url = "#contact"
-# weight = 7
-
+[[main]]
+name = "Book Coaching"
+url = "https://cal.com/christian-guzman/60min-one-off"
+weight = 7
 
 # [[main]]
 # name = "Dropdown"
