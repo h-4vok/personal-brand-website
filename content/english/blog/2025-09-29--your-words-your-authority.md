@@ -3,7 +3,7 @@ title: "Your Words, Your Authority: Why Your Team Hears What You Don't Say"
 date: "2025-10-12T00:00:00+01:00"
 author: "Christian Guzman"
 image: "images/blog/article/your-words-your-authority.png"
-description: " Learn how common phrases undermine authority with your own team and master powerful, actionable alternatives for impactful leadership communication."
+description: "Learn how common phrases undermine authority with your own team and master powerful, actionable alternatives for impactful leadership communication."
 categories:
   - "Leadership"
 tags:

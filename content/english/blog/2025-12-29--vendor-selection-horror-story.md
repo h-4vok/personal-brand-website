@@ -17,9 +17,9 @@ Wisdom often comes from scars. In late 2024 and throughout 2025, I lived through
 
 When I analyzed why these outcomes were so drastically different, the answer wasn't in the code they wrote. The success or failure was determined months earlier, in the moment we *selected them*.
 
-Most organizations rely on a rigid "Procurement Playbook"—RFPs, rate cards, and legal checkboxes. But experience has taught me to be **"Method Agnostic."** I don't trust a generic process to solve a specific problem.
+Most organizations rely on a rigid "Procurement Playbook"—RFPs, rate cards, and legal checkboxes. But experience has taught me to be **"Method Agnostic"**. I don't trust a generic process to solve a specific problem.
 
-Most people execute Scrum, RFP processes, or design sprints with a nagging sense that "something is wrong." While they might pinpoint the pain, most people (even leaders) rarely act on it. This inaction is odd, but unfortunately common.
+Most people execute Scrum, RFP processes, or design sprints with a nagging sense that "something is wrong". While they might pinpoint the pain, most people (even leaders) rarely act on it. This inaction is odd, but unfortunately common.
 
 # The Vendor Horror Story
 
@@ -33,14 +33,11 @@ On paper, the logic was sound. In reality, it was a train wreck.
 
 The problems started immediately, but because we were following a "standard" selection process (or rather, a lack of one), we missed them.
 
-**1. The "Solution" Push**
-Instead of listening to our constraints, the vendor tried to force their preferred architecture. We needed a modern stack (Flutter/NodeJS); they insisted on a custom .NET backend hosted on *their* servers. They wanted to lock us into a "black box" ecosystem with a monthly support contract.
+**1. The "Solution" Push**: Instead of listening to our constraints, the vendor tried to force their preferred architecture. We needed a modern stack (Flutter/NodeJS); they insisted on a custom .NET backend hosted on *their* servers. They wanted to lock us into a "black box" ecosystem with a monthly support contract.
 
-**2. The Contractual Drift**
-When we finally aligned on the tech stack, their "promises" evaporated when the Master Services Agreement (MSA) arrived. The draft was generic, riddled with errors, and still contained clauses for the hosting solution we had explicitly rejected. We essentially had to rewrite the contract ourselves.
+**2. The Contractual Drift**: When we finally aligned on the tech stack, their "promises" evaporated when the Master Services Agreement (MSA) arrived. The draft was generic, riddled with errors, and still contained clauses for the hosting solution we had explicitly rejected. We essentially had to rewrite the contract ourselves.
 
-**3. The "Drip-Feed" Delivery**
-We signed the revised contract. We paid the first deposit. And then... silence. The first developer appeared a month later. Because trust was already low, we insisted on interviewing them. The candidate failed spectacularly.
+**3. The "Drip-Feed" Delivery**: We signed the revised contract. We paid the first deposit. And then... silence. The first developer appeared a month later. Because trust was already low, we insisted on interviewing them. The candidate failed spectacularly.
 
 Over the next few weeks, candidates were **drip-fed** to us one by one. Each interview was a reminder that this vendor had no internal quality control. They were simply throwing CVs at the wall to see what stuck.
 
@@ -63,7 +60,7 @@ Looking back, the operational incompetence was visible everywhere:
 
 The real motive of this article isn't to share a horror story, but to explain *why* it happened.
 
-When we looked back, there was an absolute absence of a selection process. The vendor was selected because they were the first option presented, and leadership fell for the "Business Fit" pitch before validating the "Technical Fit."
+When we looked back, there was an absolute absence of a selection process. The vendor was selected because they were the first option presented, and leadership fell for the "Business Fit" pitch before validating the "Technical Fit"—and more importantly—their principles, values, and operational resiliency.
 
 Even if we *had* followed the "Typical Corporate Process", it would have looked like this:
 1.  **RFP:** Send a generic doc, and some requirements and expectations.
@@ -96,7 +93,7 @@ Once I had that clarity, I decided to be **Method Agnostic**. Instead of a stand
 
 ## Phase 1: The "AI" Wide Net
 
-In the past, I would have asked my network or Googled "top flutter agencies." But in an AI world, you are leaving money on the table if you don't leverage it.
+In the past, I would have asked my network or Googled "top flutter agencies". But in an AI world, you are leaving money on the table if you don't leverage it.
 
 I used "Deep Research" AI tools to generate a shortlist of 40 potential vendors. My prompt wasn't generic; I asked the AI to specifically look for agencies that had shipped consumer-facing mobile apps in the last 12 months. I asked for websites, client examples, and tech stacks.
 
