@@ -1,6 +1,6 @@
 ---
 title: "'Hero Culture' Is a Bug, Not a Feature"
-date: "2025-08-27T00:00:00+01:00"
+date: "2025-08-24T00:00:00+01:00"
 author: Christian Guzman
 image: images/blog/article/hero-culture-is-a-bug.png
 description: "Learn why celebrating last-minute 'heroes' is a dangerous bug in your company's culture. Lets explore how to shift from rewarding firefighting to building resilient systems."
