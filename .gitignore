@@ -3,3 +3,6 @@ themes/
 
 # Ignore the build folder
 public/
+
+# Ignore the resources folder
+resources/_gen/
