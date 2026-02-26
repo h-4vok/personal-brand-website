@@ -2,7 +2,7 @@
 title: "Method Agnostic: How I Vetted 40 Vendors to Find the Perfect Partner."
 date: "2025-12-28T00:00:00+01:00"
 author: "Christian Guzman"
-image: "images/blog/article/vendor-selection-horror-story.png"
+image: "images/blog/article/vendor-selection-horror-story.jpg"
 description: "A tale of two vendors: One nearly derailed a project, the other accelerated it. The difference wasn't price—it was the selection process."
 categories:
   - "Leadership"

@@ -2,7 +2,7 @@
 title: "Why 'Bring Me a Solution' is a System Bug"
 date: "2026-02-17T21:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/bring-me-a-solution-fallacy.png"
+image: "images/blog/article/bring-me-solutions.jpg"
 description: "Demanding solutions to our team alongside every problem sounds efficient, but it often leads to concealment and forest fires. Here is how to debug your team's initiative levels."
 categories:
   - "Leadership"
