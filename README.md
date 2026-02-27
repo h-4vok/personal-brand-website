@@ -118,6 +118,23 @@ Tasks executed:
   - publish: `public`
   - Hugo version: `0.150.0`
 
+## Caching strategy (Cache Busting)
+
+This project uses a two-layer cache strategy to avoid stale CSS/JS after deploys:
+
+- Fingerprinted Hugo pipeline assets:
+  - `themes/meghna-hugo/layouts/partials/head.html` fingerprints main/custom CSS bundles.
+  - `themes/meghna-hugo/layouts/partials/site-scripts.html` fingerprints main `script.js`.
+- Versioned static plugin assets:
+  - Local plugin CSS/JS URLs get a deploy-time `?v=<timestamp>` query param.
+
+Netlify headers are configured so:
+
+- HTML is always revalidated (`max-age=0, must-revalidate`).
+- Static assets under `/css`, `/js`, `/images`, and `/plugins` are cached long-term (`max-age=31536000, immutable`).
+
+Expected behavior: after a new deploy, users should receive updated styles/scripts without needing `Ctrl+F5`.
+
 ## Theme submodule notes
 
 Initialize if missing:
