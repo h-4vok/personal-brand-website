@@ -38,6 +38,22 @@ git submodule update --init --recursive
 npm install
 ```
 
+Alternative (single-step clone with submodules):
+
+```bash
+git clone --recurse-submodules <repo-url>
+cd personal-brand-website
+npm install
+```
+
+Quick environment checks:
+
+```bash
+hugo version
+node -v
+npm -v
+```
+
 Note: `npm install` runs `prepare`, which installs Husky hooks.
 
 ## Repository commands
@@ -117,3 +133,24 @@ git submodule update --remote --merge themes/meghna-hugo
 ```
 
 Then commit the updated submodule pointer in this repository.
+
+If you edit files inside `themes/meghna-hugo`, use this flow:
+
+```bash
+cd themes/meghna-hugo
+git add .
+git commit -m "Your theme change"
+git push
+
+cd ../..
+git add themes/meghna-hugo
+git commit -m "Update theme submodule pointer"
+git push
+```
+
+After pulling new changes in the main repository, sync submodules:
+
+```bash
+git pull
+git submodule update --init --recursive
+```
