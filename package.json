@@ -3,10 +3,28 @@
   "version": "2.2.0",
   "license": "MIT",
   "author": "gethugothemes",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^12.5.0",
+    "prettier": "^3.6.2",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "lint-staged": {
+    "{assets,static}/**/*.{css,scss,sass}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
   "scripts": {
     "dev": "hugo server --buildDrafts",
     "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic",
     "test": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildDrafts --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
+    "lint:css": "stylelint \"**/*.{css,scss,sass}\" --allow-empty-input",
+    "lint:css:fix": "stylelint \"**/*.{css,scss,sass}\" --fix --allow-empty-input",
+    "format": "prettier --write \"**/*.{css,scss,sass}\"",
+    "format:check": "prettier --check \"**/*.{css,scss,sass}\"",
+    "prepare": "husky install",
     "dev:example": "cd exampleSite; hugo server --themesDir ../..",
     "build:example": "cd exampleSite; hugo --themesDir ../.. --gc --minify --templateMetrics --templateMetricsHints --buildDrafts --buildExpired --buildFuture --forceSyncStatic",
     "test:example": "cd exampleSite; hugo server --themesDir ../.. --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildDrafts --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
