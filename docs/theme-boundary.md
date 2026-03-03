@@ -1,6 +1,6 @@
 # Theme Boundary
 
-This repo includes the theme directly at `themes/meghna-hugo`. That is convenient, but it also makes it easy to edit the wrong layer.
+This repo includes the theme at `themes/meghna-hugo` as a git submodule. That is convenient, but it also makes it easy to edit the wrong layer or forget that the theme has its own Git history.
 
 Use this rule first:
 
@@ -61,7 +61,7 @@ Some changes naturally cross the boundary:
 
 ## Updating the theme safely
 
-Because the theme is checked into the repo, treat it as a customized local dependency, not a disposable third-party package.
+Because the theme is attached as a submodule, treat it as a customized dependency with its own lifecycle, not a disposable folder.
 
 Before changing it:
 

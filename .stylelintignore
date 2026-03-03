@@ -1,0 +1,5 @@
+node_modules/
+public/
+resources/
+themes/
+**/*.min.css

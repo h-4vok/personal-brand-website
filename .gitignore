@@ -1,5 +1,8 @@
-# Ignore themes because it is too heavy. Check readme for instructions on how to install themes.
-themes/
+# Node dependencies
+node_modules/
+
+# # Ignore themes because it is too heavy. Check readme for instructions on how to install themes.
+# themes/
 
 # Ignore the build folder
 public/
