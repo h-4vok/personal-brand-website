@@ -1,0 +1,69 @@
+<head>
+	<meta charset="utf-8">
+	<title>{{ .Title }}</title>
+
+	{{ "<!-- mobile responsive meta -->" | safeHTML }}
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
+	{{ with site.Params.author }}
+	<meta name="author" content="{{ . }}">{{ end }}
+
+	<!-- theme meta -->
+	<meta name="theme-name" content="Christian Guzman Hugo Theme" />
+	{{ hugo.Generator }}
+	{{ $assetVersion := now.Unix }}
+
+	{{ "<!-- plugins -->" | safeHTML }}
+	{{ range site.Params.plugins.css }}
+	{{ if or (hasPrefix .link "http://") (hasPrefix .link "https://") }}
+	<link rel="stylesheet" href="{{ .link | absURL }}">
+	{{ else }}
+	<link rel="stylesheet" href="{{ printf "%s?v=%d" (.link | absURL) $assetVersion }}">
+	{{ end }}
+	{{ end }}
+
+	{{"<!-- Main Stylesheet -->"|safeHTML}}
+	{{ $styles := resources.Get "css/style.css" | minify | fingerprint "sha384" }}
+	<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+
+	{{"<!-- Custom stylesheet bundle -->" |safeHTML}}
+	{{ $customParts := slice
+		(resources.Get "css/custom/00-fonts.css")
+		(resources.Get "css/custom/01-tokens.css")
+		(resources.Get "css/custom/02-base-navigation.css")
+		(resources.Get "css/custom/10-home.css")
+		(resources.Get "css/custom/20-article-core.css")
+		(resources.Get "css/custom/21-article-hero-meta.css")
+		(resources.Get "css/custom/22-article-author-related.css")
+		(resources.Get "css/custom/23-article-effects.css")
+		(resources.Get "css/custom/30-funfacts.css")
+		(resources.Get "css/custom/40-footer.css")
+	}}
+	{{ $custom := $customParts | resources.Concat "css/custom.bundle.css" | minify | fingerprint "sha384" }}
+	<link rel="stylesheet" href="{{ $custom.Permalink }}" integrity="{{ $custom.Data.Integrity }}" media="screen">
+
+	{{ "<!--Favicon-->" | safeHTML }}
+	<!-- <link rel="shortcut icon" href="{{ `images/favicon.ico` | absURL }}" type="image/x-icon"> -->
+	<link rel="icon" href="{{ printf "%s?v=%d" (`images/icons/favicon.ico` | absURL) $assetVersion }}" type="image/x-icon">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ printf "%s?v=%d" (`images/icons/favicon.ico` | absURL) $assetVersion }}" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ printf "%s?v=%d" (`images/icons/favicon-32x32.png` | absURL) $assetVersion }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ printf "%s?v=%d" (`images/icons/favicon-16x16.png` | absURL) $assetVersion }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ printf "%s?v=%d" (`images/icons/apple-touch-icon.png` | absURL) $assetVersion }}">
+  <link rel="manifest" href="{{ printf "/site.webmanifest?v=%d" $assetVersion }}">
+
+	{{ partial "analytics.html" . }}
+
+	{{ with site.Params.google_analytics_id }}
+	{{ "<!-- Global Site Tag (gtag.js) - Google Analytics -->" | safeHTML }}
+	<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', '{{ . }}');
+	</script>
+	{{ end }}
+
+</head>

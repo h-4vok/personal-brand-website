@@ -5,6 +5,7 @@
 
 {{ if and $umamiEnabled $umamiWebsiteID $umamiScriptURL }}
 <script
+  async
   defer
   src="{{ $umamiScriptURL | safeURL }}"
   data-website-id="{{ $umamiWebsiteID }}"
