@@ -258,6 +258,12 @@ server = ""
 # Plausible Analytics
 [params.analytics.plausible]
 dataDomain = ""
+# Umami Analytics
+[params.analytics.umami]
+enable = true
+websiteId = ""
+scriptURL = "https://cloud.umami.is/script.js"
+domains = "christianguzman.uk"
 # Yandex Metrica
 [params.analytics.yandexMetrica]
 id = ""
