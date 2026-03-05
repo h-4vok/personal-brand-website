@@ -261,9 +261,9 @@ dataDomain = ""
 # Umami Analytics
 [params.analytics.umami]
 enable = true
-websiteId = "54ba9f61-ea93-41db-a5e1-3e74b41605da"
+websiteId = ""
 scriptURL = "https://cloud.umami.is/script.js"
-domains = "christianguzman.uk,www.christianguzman.uk"
+domains = "christianguzman.uk"
 # Yandex Metrica
 [params.analytics.yandexMetrica]
 id = ""
