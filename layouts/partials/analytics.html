@@ -1,0 +1,13 @@
+{{ $umamiEnabled := default false site.Params.analytics.umami.enable }}
+{{ $umamiWebsiteID := default (getenv "HUGO_UMAMI_WEBSITE_ID") site.Params.analytics.umami.websiteId }}
+{{ $umamiScriptURL := default (getenv "HUGO_UMAMI_SCRIPT_URL") site.Params.analytics.umami.scriptURL }}
+{{ $umamiDomains := default (getenv "HUGO_UMAMI_DOMAINS") site.Params.analytics.umami.domains }}
+
+{{ if and $umamiEnabled $umamiWebsiteID $umamiScriptURL }}
+<script
+  defer
+  src="{{ $umamiScriptURL | safeURL }}"
+  data-website-id="{{ $umamiWebsiteID }}"
+  {{ with $umamiDomains }}data-domains="{{ . }}"{{ end }}
+></script>
+{{ end }}
