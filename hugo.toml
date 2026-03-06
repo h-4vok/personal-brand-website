@@ -143,10 +143,6 @@ defaultHiddenFromHomePage = false
 name = "LinkedIn"
 link = "https://www.linkedin.com/in/guzmanchristian"
 
-[[params.footer.socialLinks]]
-name = "GitHub"
-link = "https://github.com/h-4vok"
-
 # We keep the legacy configuration until its stripped out
 [params.social]
 GitHub = "h-4vok"

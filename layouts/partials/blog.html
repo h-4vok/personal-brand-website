@@ -14,7 +14,7 @@
 			{{"<!-- /section title -->" | safeHTML}}
 
 			<div class="all-post text-center col-lg-12 mt-0 mb-5">
-				<a class="btn btn-main" href="{{ `blog/` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
+				<a class="btn btn-main" href="{{ `articles/` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
 			</div>
 
 			{{ range first 6 (where site.RegularPages "Section" "==" "blog")}}
@@ -22,7 +22,7 @@
 			{{ end }}
 
 			<div class="all-post text-center col-lg-12">
-				<a class="btn btn-main" href="{{ `blog/` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
+				<a class="btn btn-main" href="{{ `articles/` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
 			</div>
 		</div>
 	</div>

@@ -37,6 +37,11 @@ target = '$1'
 [outputs]
 home = ["HTML", "RSS"]
 
+############################# Permalinks ##############################
+[permalinks]
+blog = "/articles/:slug/"
+"english/blog" = "/articles/:slug/"
+
 ############################# Imaging ##############################
 [imaging]
 # See https://github.com/disintegration/imaging

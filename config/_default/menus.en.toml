@@ -21,14 +21,19 @@
 # weight = 5
 
 [[main]]
-name = "Latest Articles"
-url = "#blog"
-weight = 6
+name = "Manifesto"
+url = "/manifesto/"
+weight = 1
 
 [[main]]
-name = "Book Coaching"
+name = "Articles"
+url = "/articles/"
+weight = 2
+
+[[main]]
+name = "Strategy Session"
 url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
-weight = 7
+weight = 3
 
 # [[main]]
 # name = "Dropdown"
