@@ -43,12 +43,10 @@
 	<link rel="stylesheet" href="{{ $custom.Permalink }}" integrity="{{ $custom.Data.Integrity }}" media="screen">
 
 	{{ "<!--Favicon-->" | safeHTML }}
-	<!-- <link rel="shortcut icon" href="{{ `images/favicon.ico` | absURL }}" type="image/x-icon"> -->
-	<link rel="icon" href="{{ printf "%s?v=%d" (`images/icons/favicon.ico` | absURL) $assetVersion }}" type="image/x-icon">
-  <link rel="shortcut icon" type="image/x-icon" href="{{ printf "%s?v=%d" (`images/icons/favicon.ico` | absURL) $assetVersion }}" />
-
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ printf "%s?v=%d" (`images/icons/favicon-32x32.png` | absURL) $assetVersion }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ printf "%s?v=%d" (`images/icons/favicon-32x32.png` | absURL) $assetVersion }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ printf "%s?v=%d" (`images/icons/favicon-16x16.png` | absURL) $assetVersion }}">
+  <link rel="shortcut icon" type="image/png" href="{{ printf "%s?v=%d" (`images/icons/favicon-32x32.png` | absURL) $assetVersion }}" />
+
   <link rel="apple-touch-icon" sizes="180x180" href="{{ printf "%s?v=%d" (`images/icons/apple-touch-icon.png` | absURL) $assetVersion }}">
   <link rel="manifest" href="{{ printf "/site.webmanifest?v=%d" $assetVersion }}">
 
