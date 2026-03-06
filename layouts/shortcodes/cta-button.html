@@ -1,0 +1,12 @@
+{{- $text := .Get "text" | default "Book a free 30-min intro call" -}}
+{{- $url := .Get "url" | default "https://cal.com/christian-guzman/30-min-one-off-coaching" -}}
+{{- $external := strings.HasPrefix $url "http" -}}
+<p class="manifesto-cta">
+  <a
+    href="{{ $url | safeURL }}"
+    class="power-thesis__btn power-thesis__btn--primary"
+    {{- if $external }} target="_blank" rel="noopener"{{ end -}}
+  >
+    {{ $text }}
+  </a>
+</p>
