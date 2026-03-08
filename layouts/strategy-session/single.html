@@ -69,7 +69,7 @@
 
       <section class="strategy-session-format">
         <h3>{{ .Params.format_title }}</h3>
-        <p>{{ .Params.format_text }}</p>
+        <p>{{ .Params.format_text | safeHTML }}</p>
       </section>
     </div>
   </div>

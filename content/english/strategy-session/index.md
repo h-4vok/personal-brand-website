@@ -10,7 +10,7 @@ hero_image_alt = "Christian Guzman portrait"
 not_for_title = "This is not for everyone."
 not_for_text = "I am not looking for volume; I am looking for impact. Do not book if you are seeking generic advice or shortcuts. Come prepared to challenge your own systems."
 format_title = "The Format"
-format_text = "Sessions are currently free of charge. No slides. No sales pitch. Just 30 minutes of high-intensity conversation and difficult questions."
+format_text = "Sessions are currently <strong>free of charge</strong>. No slides. No sales pitch. Just 30 minutes of high-intensity conversation and difficult questions."
 
 [[sections]]
 eyebrow = "Individual"
