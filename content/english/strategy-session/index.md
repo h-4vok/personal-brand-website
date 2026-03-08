@@ -3,19 +3,19 @@ title = "Strategy & Diagnostic Sessions"
 layout = "single"
 type = "strategy-session"
 url = "/strategy-session/"
-description = "Strategy & Diagnostic Sessions for leadership acceleration and organizational health."
-subtitle = "Practical systems engineering applied to leadership and organizational growth. Backed by 20 years of building resilient engineering cultures at scale."
+description = "Strategy & Diagnostic Sessions for leadership acceleration and organisational health."
+subtitle = "Practical systems thinking applied to leadership and organisational growth. Backed by 20 years of building resilient organisational cultures at scale."
 hero_image = "images/avatar3.jpg"
 hero_image_alt = "Christian Guzman portrait"
 not_for_title = "This is not for everyone."
 not_for_text = "I am not looking for volume; I am looking for impact. Do not book if you are seeking generic advice or shortcuts. Come prepared to challenge your own systems."
 format_title = "The Format"
-format_text = "Introductory sessions are currently free of charge. No slides. No sales pitch. Just 30 minutes of high-intensity diagnostic conversation."
+format_text = "Sessions are currently free of charge. No slides. No sales pitch. Just 30 minutes of high-intensity conversation and difficult questions."
 
 [[sections]]
 eyebrow = "Individual"
 title = "I. Leadership Acceleration"
-context = "Designed for Dev Leads, Managers, and Directors navigating the transition from 'Doing' to 'Leading'."
+context = "Designed for Dev Leads and Managers navigating the transition from 'Doing' to 'Leading'."
 cta_text = "Schedule a Career Strategy Call"
 cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 
@@ -29,19 +29,19 @@ text = "Transition from Manager to Director with a system of trust, not microman
 
 [[sections.items]]
 label = "The Mindset"
-text = "Solve 'Hero Culture' issues in your squad before they burn you out."
+text = "Learn to build systems with Leverage and Intentionality."
 
 [[sections]]
 eyebrow = "Business"
-title = "II. Human Systems Architecture"
-context = "Designed for Founders, VPs, and HR Leaders facing systemic friction in scaling organizations."
+title = "II. Organisational Growth"
+context = "Designed for Founders, VPs, and Leaders facing systemic friction in scaling organizations."
 variant = "business"
-cta_text = "Book an Org Health Diagnostic"
+cta_text = "Book an Org Design Call"
 cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 
 [[sections.items]]
 label = "The Throughput Audit"
-text = "Diagnose why shipping code is taking longer than last year."
+text = "Diagnose why things are getting worse than last year."
 
 [[sections.items]]
 label = "The Scaling Blueprint"
@@ -49,5 +49,5 @@ text = "Design an organization that remains lean and intentional as it grows."
 
 [[sections.items]]
 label = "The Intent Gap"
-text = "Aligning executive vision with what the engineering team is actually building."
+text = "Aligning executive vision with what the product teams are actually building."
 +++
