@@ -28,22 +28,24 @@
         <div class="strategy-session-content" aria-label="The two pillars">
           {{ range . }}
             <section class="strategy-session-block{{ if eq .variant `business` }} strategy-session-block--business{{ end }}">
-              {{ with .eyebrow }}
-                <p class="strategy-session-eyebrow">{{ . }}</p>
-              {{ end }}
-              <h2>{{ .title }}</h2>
-              <p class="strategy-session-context">{{ .context }}</p>
+              <div class="strategy-session-block__body">
+                {{ with .eyebrow }}
+                  <p class="strategy-session-eyebrow">{{ . }}</p>
+                {{ end }}
+                <h2>{{ .title }}</h2>
+                <p class="strategy-session-context">{{ .context }}</p>
 
-              {{ with .items }}
-                <ul class="strategy-session-list">
-                  {{ range . }}
-                    <li>
-                      <span class="strategy-session-list__label">{{ .label }}:</span>
-                      <span>{{ .text }}</span>
-                    </li>
-                  {{ end }}
-                </ul>
-              {{ end }}
+                {{ with .items }}
+                  <ul class="strategy-session-list">
+                    {{ range . }}
+                      <li>
+                        <span class="strategy-session-list__label">{{ .label }}:</span>
+                        <span>{{ .text }}</span>
+                      </li>
+                    {{ end }}
+                  </ul>
+                {{ end }}
+              </div>
 
               <p class="manifesto-cta">
                 <a
@@ -68,7 +70,6 @@
       <section class="strategy-session-format">
         <h3>{{ .Params.format_title }}</h3>
         <p>{{ .Params.format_text }}</p>
-        <p class="strategy-session-format__note">{{ .Params.format_note }}</p>
       </section>
     </div>
   </div>

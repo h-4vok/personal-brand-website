@@ -8,10 +8,9 @@ subtitle = "Practical systems engineering applied to leadership and organization
 hero_image = "images/avatar3.jpg"
 hero_image_alt = "Christian Guzman portrait"
 not_for_title = "This is not for everyone."
-not_for_text = "No busco volumen, busco impacto. No agendes si buscas consejos genéricos o atajos. Ven preparado para cuestionar tus propios sistemas."
+not_for_text = "I am not looking for volume; I am looking for impact. Do not book if you are seeking generic advice or shortcuts. Come prepared to challenge your own systems."
 format_title = "The Format"
-format_text = "No slides. No sales pitch. Just 30 minutes of high-intensity diagnostic conversation. Come with your context; I'll provide the systemic perspective."
-format_note = "Free of charge while I complete my UK ILR transition."
+format_text = "Introductory sessions are currently free of charge. No slides. No sales pitch. Just 30 minutes of high-intensity diagnostic conversation."
 
 [[sections]]
 eyebrow = "Individual"
