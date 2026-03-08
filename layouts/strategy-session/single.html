@@ -7,14 +7,48 @@
     <div class="strategy-session-shell">
       <header class="strategy-session-hero">
         <h1>{{ .Title }}</h1>
-        {{ with .Params.intro }}
-          <p class="strategy-session-intro">{{ . | safeHTML }}</p>
+        {{ with .Params.subtitle }}
+          <p class="strategy-session-subtitle">{{ . }}</p>
         {{ end }}
       </header>
 
-      <div class="strategy-session-content">
-        {{ .Content }}
-      </div>
+      {{ with .Params.sections }}
+        <div class="strategy-session-content">
+          {{ range . }}
+            <section class="strategy-session-block{{ if eq .variant `business` }} strategy-session-block--business{{ end }}">
+              <h2>{{ .title }}</h2>
+              <p class="strategy-session-context">{{ .context }}</p>
+
+              {{ with .items }}
+                <ul class="strategy-session-list">
+                  {{ range . }}
+                    <li>
+                      <span class="strategy-session-list__label">{{ .label }}:</span>
+                      <span>{{ .text }}</span>
+                    </li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+
+              <p class="manifesto-cta">
+                <a
+                  href="{{ .cta_url | safeURL }}"
+                  class="power-thesis__btn power-thesis__btn--primary"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {{ .cta_text }}
+                </a>
+              </p>
+            </section>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <section class="strategy-session-format">
+        <h3>{{ .Params.format_title }}</h3>
+        <p>{{ .Params.format_text }}</p>
+      </section>
     </div>
   </div>
 </section>

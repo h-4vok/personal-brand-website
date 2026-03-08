@@ -4,17 +4,44 @@ layout = "single"
 type = "strategy-session"
 url = "/strategy-session/"
 description = "Strategy & Diagnostic Sessions for leadership acceleration and organizational health."
-intro = "Human systems are the only engine that drives sustainable growth. Whether you are leading an organization or your own career, the bottlenecks are rarely technical&mdash;they are systemic."
+subtitle = "Practical systems engineering applied to leadership and organizational growth. Backed by 20 years of building resilient engineering cultures at scale."
+format_title = "The Format"
+format_text = "No slides. No sales pitch. Just 30 minutes of high-intensity diagnostic conversation. Come with your context; I'll provide the systemic perspective. Free of charge while I complete my UK ILR transition."
+
+[[sections]]
+title = "I. Leadership Acceleration"
+context = "Designed for Dev Leads, Managers, and Directors navigating the transition from 'Doing' to 'Leading'."
+cta_text = "Schedule a Career Strategy Call"
+cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
+
+[[sections.items]]
+label = "The Audit"
+text = "Identify the specific bottlenecks holding back your next promotion."
+
+[[sections.items]]
+label = "The Roadmap"
+text = "Transition from Manager to Director with a system of trust, not micromanagement."
+
+[[sections.items]]
+label = "The Mindset"
+text = "Solve 'Hero Culture' issues in your squad before they burn you out."
+
+[[sections]]
+title = "II. Human Systems Architecture"
+context = "Designed for Founders, VPs, and HR Leaders facing systemic friction in scaling organizations."
+variant = "business"
+cta_text = "Book an Org Health Diagnostic"
+cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
+
+[[sections.items]]
+label = "The Throughput Audit"
+text = "Diagnose why shipping code is taking longer than last year."
+
+[[sections.items]]
+label = "The Scaling Blueprint"
+text = "Design an organization that remains lean and intentional as it grows."
+
+[[sections.items]]
+label = "The Intent Gap"
+text = "Aligning executive vision with what the engineering team is actually building."
 +++
-
-## Leadership Acceleration
-
-Designed for Dev Leads, Managers, and Directors. If you are navigating a stalled career or struggling to scale trust and clarity within your team, this is for you.
-
-{{< cta-button text="Schedule a Career Strategy Call" url="https://cal.com/christian-guzman/30-min-one-off-coaching" >}}
-
-## Human Systems Architecture
-
-Designed for Founders, VPs, and HR Leaders. If your organization is suffering from systemic friction, 'Feature Factory' symptoms, or Hero Culture, we need to talk.
-
-{{< cta-button text="Book an Org Health Diagnostic" url="https://cal.com/christian-guzman/30-min-one-off-coaching" >}}
