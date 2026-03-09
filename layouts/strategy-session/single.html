@@ -1,0 +1,78 @@
+{{ define "main" }}
+
+{{ partial "navigation.html" . }}
+
+<section class="section strategy-session-page">
+  <div class="container">
+    <div class="strategy-session-shell">
+      <header class="strategy-session-hero">
+        <div class="strategy-session-hero__copy">
+          <h1>{{ .Title }}</h1>
+          {{ with .Params.subtitle }}
+            <p class="strategy-session-subtitle">{{ . }}</p>
+          {{ end }}
+        </div>
+
+        <div class="strategy-session-hero__media">
+          <img
+            src="{{ .Params.hero_image | relURL }}"
+            alt="{{ .Params.hero_image_alt }}"
+            class="strategy-session-portrait"
+            width="300"
+            height="300"
+          >
+        </div>
+      </header>
+
+      {{ with .Params.sections }}
+        <div class="strategy-session-content" aria-label="The two pillars">
+          {{ range . }}
+            <section class="strategy-session-block{{ if eq .variant `business` }} strategy-session-block--business{{ end }}">
+              <div class="strategy-session-block__body">
+                {{ with .eyebrow }}
+                  <p class="strategy-session-eyebrow">{{ . }}</p>
+                {{ end }}
+                <h2>{{ .title }}</h2>
+                <p class="strategy-session-context">{{ .context }}</p>
+
+                {{ with .items }}
+                  <ul class="strategy-session-list">
+                    {{ range . }}
+                      <li>
+                        <span class="strategy-session-list__label">{{ .label }}:</span>
+                        <span>{{ .text }}</span>
+                      </li>
+                    {{ end }}
+                  </ul>
+                {{ end }}
+              </div>
+
+              <p class="manifesto-cta">
+                <a
+                  href="{{ .cta_url | safeURL }}"
+                  class="power-thesis__btn power-thesis__btn--primary"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {{ .cta_text }}
+                </a>
+              </p>
+            </section>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <section class="strategy-session-not-for">
+        <h3>{{ .Params.not_for_title }}</h3>
+        <p>{{ .Params.not_for_text }}</p>
+      </section>
+
+      <section class="strategy-session-format">
+        <h3>{{ .Params.format_title }}</h3>
+        <p>{{ .Params.format_text | safeHTML }}</p>
+      </section>
+    </div>
+  </div>
+</section>
+
+{{ end }}

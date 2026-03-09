@@ -32,7 +32,7 @@ weight = 2
 
 [[main]]
 name = "Strategy Session"
-url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
+url = "/strategy-session/"
 weight = 3
 
 # [[main]]
