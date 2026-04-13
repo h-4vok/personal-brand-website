@@ -80,6 +80,10 @@ describe('SEO build assertions', () => {
   for (const page of htmlFiles) {
     it(`validates ${page.relativePath}`, () => {
       const html = fs.readFileSync(page.absolutePath, 'utf8');
+      assert(
+        !/\?v=\d{10,}/.test(html),
+        `[${page.relativePath}] must not contain timestamp-based cache busting (?v=now.Unix style).`,
+      );
       const $ = load(html);
       const pageType = classifyPage(page.relativePath);
       const h1Count = $('h1').length;

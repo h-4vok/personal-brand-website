@@ -3,7 +3,7 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.150.0"
+  HUGO_VERSION = "0.155.1"
   HUGO_UMAMI_WEBSITE_ID = "54ba9f61-ea93-41db-a5e1-3e74b41605da"
   HUGO_UMAMI_SCRIPT_URL = "/stats/script.js"
   HUGO_UMAMI_DOMAINS = "christianguzman.uk"

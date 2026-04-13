@@ -83,14 +83,13 @@
 	<!-- theme meta -->
 	<meta name="theme-name" content="Christian Guzman Hugo Theme" />
 	{{ hugo.Generator }}
-	{{ $assetVersion := now.Unix }}
 
 	{{ "<!-- plugins -->" | safeHTML }}
 	{{ range site.Params.plugins.css }}
 	{{ if or (hasPrefix .link "http://") (hasPrefix .link "https://") }}
 	<link rel="stylesheet" href="{{ .link | absURL }}">
 	{{ else }}
-	<link rel="stylesheet" href="{{ printf "%s?v=%d" (.link | absURL) $assetVersion }}">
+	<link rel="stylesheet" href="{{ .link | absURL }}">
 	{{ end }}
 	{{ end }}
 
@@ -124,12 +123,12 @@
 	{{ end }}
 
 	{{ "<!--Favicon-->" | safeHTML }}
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ printf "%s?v=%d" (`images/icons/favicon-32x32.png` | absURL) $assetVersion }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ printf "%s?v=%d" (`images/icons/favicon-16x16.png` | absURL) $assetVersion }}">
-  <link rel="shortcut icon" type="image/png" href="{{ printf "%s?v=%d" (`images/icons/favicon-32x32.png` | absURL) $assetVersion }}" />
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ `images/icons/favicon-32x32.png` | absURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ `images/icons/favicon-16x16.png` | absURL }}">
+  <link rel="shortcut icon" type="image/png" href="{{ `images/icons/favicon-32x32.png` | absURL }}" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ printf "%s?v=%d" (`images/icons/apple-touch-icon.png` | absURL) $assetVersion }}">
-  <link rel="manifest" href="{{ printf "/site.webmanifest?v=%d" $assetVersion }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ `images/icons/apple-touch-icon.png` | absURL }}">
+  <link rel="manifest" href="/site.webmanifest">
 
 	{{ partial "analytics.html" . }}
 	<script src="https://analytics.ahrefs.com/analytics.js" data-key="A5YQA1IobngQ0vKl+SpY8g" async></script>
