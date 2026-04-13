@@ -20,6 +20,24 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/english/*"
+  to = "/404.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/en/*"
+  to = "/404.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/fr/*"
+  to = "/404.html"
+  status = 410
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

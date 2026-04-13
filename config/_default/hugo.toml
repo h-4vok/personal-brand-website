@@ -13,8 +13,7 @@ googleAnalytics = "UA-123456-78" # example: UA-123456-78, for more info, read th
 # disqus short name
 # disqusShortname = "themefisher-template" # we use disqus to show comments in blog posts . To install disqus please follow this tutorial https://portfolio.peter-baumgartner.net/2017/09/10/how-to-install-disqus-on-hugo/
 # disable language
-disableLanguages = [
-] # example: ["fr"] for disable french language. see https://gohugo.io/content-management/multilingual/
+disableLanguages = ["fr"] # example: ["fr"] for disable french language. see https://gohugo.io/content-management/multilingual/
 hasCJKLanguage = false #  If hasCJKLanguage true, auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
 
 ############################# Build ##############################
@@ -40,7 +39,6 @@ home = ["HTML", "RSS"]
 ############################# Permalinks ##############################
 [permalinks]
 blog = "/articles/:slug/"
-"english/blog" = "/articles/:slug/"
 
 ############################# Imaging ##############################
 [imaging]
@@ -95,10 +93,6 @@ link = "plugins/lazy-load/lozad.min.js"
 [[params.plugins.js]]
 link = "plugins/google-map/map.js"
 
-
-
-
-
 ############################# Default Parameters ##########################
 [params]
 # logo = "images/logo.png"
@@ -145,7 +139,6 @@ map_marker = "images/marker.png"
 icon = "ti-linkedin" # themify icon pack : https://themify.me/themify-icons
 link = "https://www.linkedin.com/in/guzmanchristian/"
 
-
 [[params.social]]
 icon = "ti-github" # themify icon pack : https://themify.me/themify-icons
 link = "https://github.com/h-4vok"
@@ -157,26 +150,3 @@ link = "https://github.com/h-4vok"
 # [[params.social]]
 # icon = "ti-pinterest" # themify icon pack : https://themify.me/themify-icons
 # link = "#"
-
-
-################################ English Language ########################
-[Languages.en]
-languageName = "En"
-languageCode = "en-us"
-contentDir = "content/english"
-
-[Languages.en.params]
-weight = 1
-home = "Home"
-copyright = "© 2025 Christian Guzman. All rights reserved."
-
-# ################################ France Language ########################
-# [Languages.fr]
-# languageName = "Fr"
-# languageCode = "fr-fr"
-# contentDir = "content/french"
-# weight = 2
-
-# [Languages.fr.params]
-# home = "Accueil"
-# copyright = "Copyright &copy; 2020 Designed by [Themefisher](https://themefisher.com) & Developed by [Gethugothemes](https://gethugothemes.com)"

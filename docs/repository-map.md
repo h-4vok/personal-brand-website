@@ -19,8 +19,8 @@ Use this file when the question is "what file should I edit for this change?"
 | Concern | Primary location | Notes |
 | --- | --- | --- |
 | Branding, title, footer, search, menus, social links | `hugo.toml` | Treat this as the main site-level override file |
+| English-only content root and canonical route behavior | `hugo.toml` | Owns `defaultContentLanguage`, `contentDir`, and the public route contract |
 | Theme defaults, cache, plugins, base multilingual defaults | `config/_default/hugo.toml` | Keep aligned with theme behavior unless deliberately overridden |
-| Language definitions and `contentDir` | `config/_default/languages.toml` | Current site content points to `content/english` |
 | Hugo module settings | `config/_default/module.toml` | Rarely needed during normal content maintenance |
 
 ## Styling and layout

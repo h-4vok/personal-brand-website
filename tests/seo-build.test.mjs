@@ -7,10 +7,13 @@ import { describe, it } from 'vitest';
 const REPO_ROOT = process.cwd();
 const PUBLIC_DIR = path.join(REPO_ROOT, 'public');
 const HUGO_CONFIG_PATH = path.join(REPO_ROOT, 'hugo.toml');
+const NETLIFY_CONFIG_PATH = path.join(REPO_ROOT, 'netlify.toml');
 const ARTICLE_SCHEMA_TYPES = new Set(['Article', 'BlogPosting', 'NewsArticle']);
 const LANGUAGE_HOME_SEGMENTS = new Set(['en', 'english', 'fr']);
+const LEGACY_PUBLIC_SEGMENTS = ['/english/', '/en/', '/fr/'];
 
 const { baseUrl, siteTitle } = readHugoConfig(HUGO_CONFIG_PATH);
+const netlifyConfig = fs.readFileSync(NETLIFY_CONFIG_PATH, 'utf8');
 const htmlFiles = fs.existsSync(PUBLIC_DIR)
   ? walkHtmlFiles(PUBLIC_DIR)
       .map((absolutePath) => ({
@@ -34,6 +37,30 @@ describe('SEO build assertions', () => {
     assert(
       htmlFiles.length > 0,
       `No HTML pages were found under ${PUBLIC_DIR}. Run "npm run build" before the SEO assertions.`,
+    );
+  });
+
+  it('does not generate legacy language content trees', () => {
+    for (const segment of ['english', 'en', 'fr']) {
+      assert(
+        !fs.existsSync(path.join(PUBLIC_DIR, segment)),
+        `Unexpected language content tree found at ${path.join(PUBLIC_DIR, segment)}.`,
+      );
+    }
+  });
+
+  it('returns 410 Gone for legacy language routes on Netlify', () => {
+    assert(
+      hasNetlifyGoneRule(netlifyConfig, '/english/*'),
+      'netlify.toml must declare a 410 Gone rule for /english/*.',
+    );
+    assert(
+      hasNetlifyGoneRule(netlifyConfig, '/en/*'),
+      'netlify.toml must declare a 410 Gone rule for /en/*.',
+    );
+    assert(
+      hasNetlifyGoneRule(netlifyConfig, '/fr/*'),
+      'netlify.toml must declare a 410 Gone rule for /fr/*.',
     );
   });
 
@@ -61,6 +88,10 @@ describe('SEO build assertions', () => {
         baseUrl,
         `[${page.relativePath}] canonical href must use the canonical domain ${baseUrl.origin}. Actual value: "${canonicalHref}".`,
       );
+      assertNoLegacySegments(
+        canonicalUrl.pathname,
+        `[${page.relativePath}] canonical href must not point to a retired language URL. Actual value: "${canonicalHref}".`,
+      );
 
       const ogTitle = readRequiredMeta($, 'og:title', page.relativePath);
       const ogDescription = readRequiredMeta($, 'og:description', page.relativePath);
@@ -74,6 +105,10 @@ describe('SEO build assertions', () => {
         ogUrl,
         baseUrl,
         `[${page.relativePath}] og:url must use the canonical domain ${baseUrl.origin}. Actual value: "${ogUrlContent}".`,
+      );
+      assertNoLegacySegments(
+        ogUrl.pathname,
+        `[${page.relativePath}] og:url must not point to a retired language URL. Actual value: "${ogUrlContent}".`,
       );
       assert(
         normalizeUrl(ogUrl) === normalizeUrl(canonicalUrl),
@@ -114,6 +149,21 @@ describe('SEO build assertions', () => {
         twitterDescription === ogDescription,
         `[${page.relativePath}] twitter:description should match og:description.`,
       );
+
+      const internalHrefs = readInternalHrefs($, baseUrl);
+      for (const href of internalHrefs) {
+        assertNoLegacySegments(
+          href.pathname,
+          `[${page.relativePath}] found internal link to a retired language URL: "${href.href}".`,
+        );
+      }
+
+      if (pageType === 'home' || pageType === 'list') {
+        assertNoDuplicateArticleCards(
+          $,
+          `[${page.relativePath}] renders the same article more than once in a list context.`,
+        );
+      }
 
       const schemas = readStructuredData($, page.relativePath);
       const schemaTypes = collectSchemaTypes(schemas);
@@ -305,6 +355,16 @@ function collectSchemaTypes(nodes) {
   return Array.from(collected).sort();
 }
 
+function hasNetlifyGoneRule(config, fromPath) {
+  const escapedPath = escapeRegExp(fromPath);
+  const pattern = new RegExp(
+    String.raw`\[\[redirects\]\][\s\S]*?from\s*=\s*"${escapedPath}"[\s\S]*?to\s*=\s*"/404\.html"[\s\S]*?status\s*=\s*410[\s\S]*?force\s*=\s*true`,
+    'm',
+  );
+
+  return pattern.test(config);
+}
+
 function visitNode(node, callback) {
   if (Array.isArray(node)) {
     for (const item of node) {
@@ -322,6 +382,81 @@ function visitNode(node, callback) {
   for (const value of Object.values(node)) {
     visitNode(value, callback);
   }
+}
+
+function readInternalHrefs($, baseUrl) {
+  return $('a[href]')
+    .toArray()
+    .map((anchor) => $(anchor).attr('href')?.trim() ?? '')
+    .filter(Boolean)
+    .map((href) => parseInternalHref(href, baseUrl))
+    .filter(Boolean);
+}
+
+function parseInternalHref(href, baseUrl) {
+  if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+    return null;
+  }
+
+  if (href.startsWith('/')) {
+    return new URL(href, baseUrl);
+  }
+
+  try {
+    const absoluteUrl = new URL(href);
+    return absoluteUrl.origin === baseUrl.origin ? absoluteUrl : null;
+  } catch {
+    return null;
+  }
+}
+
+function assertNoLegacySegments(pathname, message) {
+  assert(!LEGACY_PUBLIC_SEGMENTS.some((segment) => pathname.includes(segment)), message);
+}
+
+function assertNoDuplicateArticleCards($, message) {
+  const seen = new Set();
+
+  for (const article of $('article').toArray()) {
+    const hrefs = $(article)
+      .find('a[href]')
+      .toArray()
+      .map((anchor) => $(anchor).attr('href')?.trim() ?? '')
+      .filter(Boolean);
+
+    const articlePaths = Array.from(
+      new Set(
+        hrefs
+          .map((href) => {
+            try {
+              return readArticlePath(new URL(href, 'https://example.com').pathname);
+            } catch {
+              return null;
+            }
+          })
+          .filter(Boolean),
+      ),
+    );
+
+    if (articlePaths.length === 0) {
+      continue;
+    }
+
+    assert(
+      articlePaths.length === 1,
+      `${message} Article card should only target one canonical article path. Found: ${articlePaths.join(', ')}.`,
+    );
+
+    const [articlePath] = articlePaths;
+    assert(!seen.has(articlePath), `${message} Duplicate article path: "${articlePath}".`);
+    seen.add(articlePath);
+  }
+}
+
+function readArticlePath(pathname) {
+  const normalized = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  const match = normalized.match(/^\/articles\/([^/]+)\/$/);
+  return match ? `/articles/${match[1]}/` : null;
 }
 
 function assertResolvableAssetUrl(value, baseUrl, message) {
@@ -360,6 +495,10 @@ function toPosixPath(filePath) {
 
 function formatList(values) {
   return values.length ? values.join(', ') : '(none)';
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function assert(condition, message) {

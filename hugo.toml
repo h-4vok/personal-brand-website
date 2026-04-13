@@ -8,6 +8,9 @@ title = "Christian Guzman"
 
 # language code
 languageCode = "en"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+contentDir = "content/english"
 
 # whether to use robots.txt
 enableRobotsTXT = true

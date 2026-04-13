@@ -22,7 +22,7 @@ The goal of this documentation is operational: make it easy to update content, h
   - `i18n/`
 - Main config:
   - site-level overrides in `hugo.toml`
-  - theme defaults and multilingual defaults in `config/_default/*.toml`
+  - theme defaults in `config/_default/*.toml`
 - Build output: `public/`
 - Deploy target: Netlify via `netlify.toml`
 
@@ -129,7 +129,6 @@ These are the main locations you will touch during normal maintenance:
 
 - `hugo.toml`: site-level branding, metadata, navigation, footer, search, and output overrides
 - `config/_default/hugo.toml`: theme-oriented defaults and lower-level Hugo settings
-- `config/_default/languages.toml`: multilingual defaults, including `contentDir`
 - `content/english/blog`: blog posts
 - `content/english/author`: author profile content
 - `data/en`: homepage sections and structured content blocks
@@ -193,6 +192,7 @@ Use `docs/theme-boundary.md` before editing layout or CSS.
 - Local build command: `npm run build`
 - Publish directory: `public/`
 - Netlify configuration lives in `netlify.toml`
+- Legacy `/english/*`, `/en/*`, and `/fr/*` routes return `410 Gone` on Netlify
 
 Netlify currently uses:
 
