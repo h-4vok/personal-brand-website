@@ -4,17 +4,23 @@
 {{ end }}
 
 {{ "<!-- JS Plugins -->" | safeHTML }}
+{{ $vendorJsParts := slice }}
 {{ range site.Params.plugins.js}}
-{{ if or (hasPrefix .link "http://") (hasPrefix .link "https://") }}
-<script src="{{ .link | absURL }}"></script>
-{{ else }}
-<script src="{{ .link | absURL }}"></script>
+	{{ if or (hasPrefix .link "http://") (hasPrefix .link "https://") }}
+		<script src="{{ .link | absURL }}" defer></script>
+	{{ else }}
+		{{ $diskPath := printf "themes/meghna-hugo/static/%s" .link }}
+		{{ $vendorJsParts = $vendorJsParts | append (resources.FromString (printf "js/vendor/%s" (path.Base .link)) (readFile $diskPath)) }}
+	{{ end }}
 {{ end }}
+{{ if gt (len $vendorJsParts) 0 }}
+	{{ $vendorJs := $vendorJsParts | resources.Concat "js/vendor.js" | minify | fingerprint "sha384" }}
+	<script src="{{ $vendorJs.Permalink }}" integrity="{{ $vendorJs.Data.Integrity }}" defer></script>
 {{ end }}
 
 {{ "<!-- Main Script -->" | safeHTML }}
 {{ $script := resources.Get "js/script.js" | minify | fingerprint "sha384"}}
-<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>
 
 <!-- cookie -->
 {{ if site.Params.cookies.enable }}
