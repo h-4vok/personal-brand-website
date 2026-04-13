@@ -1,11 +1,12 @@
 +++
-title = "Strategy & Diagnostic Sessions"
+title = "Engineering Leadership Coaching for Dev Leads and Managers"
 layout = "single"
 type = "strategy-session"
 url = "/engineering-leadership-coaching/"
 aliases = ["/strategy-session/"]
-description = "Strategy & Diagnostic Sessions for leadership acceleration and organisational health."
-subtitle = "Practical systems thinking applied to leadership and organisational growth. Backed by 20 years of building resilient organisational cultures at scale."
+description = "Engineering Leadership Coaching to help Dev Leads and Managers scale from individual contribution to trusted leadership systems, with practical guidance from Christian Guzman."
+keywords = ["Engineering Leadership Coaching", "Engineering Mentor", "Fractional CTO", "Technical Debt Consulting", "Human Systems Architecture"]
+subtitle = "Engineering Leadership Coaching for leaders who need practical systems to scale trust, decision quality, and organisational resilience."
 hero_image = "images/avatar3.jpg"
 hero_image_alt = "Christian Guzman portrait"
 not_for_title = "This is not for everyone."
@@ -15,40 +16,40 @@ format_text = "Sessions are currently <strong>free of charge</strong>. No slides
 
 [[sections]]
 eyebrow = "Individual"
-title = "I. Leadership Acceleration"
-context = "Designed for Dev Leads and Managers navigating the transition from 'Doing' to 'Leading'."
-cta_text = "Schedule a Career Strategy Call"
+title = "Leadership Coaching For Career Acceleration"
+context = "For Dev Leads and Managers navigating the shift from doing the work to leading through systems."
+cta_text = "Book a Leadership Coaching Call"
 cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 
 [[sections.items]]
 label = "The Audit"
-text = "Identify the specific bottlenecks holding back your next promotion."
+text = "Identify the leadership bottlenecks slowing your impact and progression."
 
 [[sections.items]]
 label = "The Roadmap"
-text = "Transition from Manager to Director with a system of trust, not micromanagement."
+text = "Build a practical roadmap to move from manager execution to director-level leadership."
 
 [[sections.items]]
 label = "The Mindset"
-text = "Learn to build systems with Leverage and Intentionality."
+text = "Strengthen judgment, leverage, and intentionality across your leadership decisions."
 
 [[sections]]
 eyebrow = "Business"
-title = "II. Organisational Growth"
-context = "Designed for Founders, VPs, and Leaders facing systemic friction in scaling organizations."
+title = "Leadership Coaching For Organisational Scale"
+context = "For founders, VPs, and senior leaders facing systemic friction while scaling teams and delivery."
 variant = "business"
-cta_text = "Book an Org Design Call"
+cta_text = "Book a Coaching Session for Your Team"
 cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 
 [[sections.items]]
 label = "The Throughput Audit"
-text = "Diagnose why things are getting worse than last year."
+text = "Diagnose where leadership systems are reducing delivery throughput and team trust."
 
 [[sections.items]]
 label = "The Scaling Blueprint"
-text = "Design an organization that remains lean and intentional as it grows."
+text = "Design an operating model that stays lean, intentional, and resilient as you grow."
 
 [[sections.items]]
 label = "The Intent Gap"
-text = "Aligning executive vision with what the product teams are actually building."
+text = "Close the gap between executive intent and what product and engineering teams actually ship."
 +++
