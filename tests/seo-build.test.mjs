@@ -6,6 +6,7 @@ import { describe, it } from 'vitest';
 
 const REPO_ROOT = process.cwd();
 const PUBLIC_DIR = path.join(REPO_ROOT, 'public');
+const ROBOTS_TXT_PATH = path.join(PUBLIC_DIR, 'robots.txt');
 const HUGO_CONFIG_PATH = path.join(REPO_ROOT, 'hugo.toml');
 const NETLIFY_CONFIG_PATH = path.join(REPO_ROOT, 'netlify.toml');
 const ARTICLE_SCHEMA_TYPES = new Set(['Article', 'BlogPosting', 'NewsArticle']);
@@ -62,6 +63,17 @@ describe('SEO build assertions', () => {
     assert(
       hasNetlifyGoneRule(netlifyConfig, '/fr/*'),
       'netlify.toml must declare a 410 Gone rule for /fr/*.',
+    );
+  });
+
+  it('emits robots.txt with canonical sitemap URL', () => {
+    assert(fs.existsSync(ROBOTS_TXT_PATH), `Missing generated robots.txt at ${ROBOTS_TXT_PATH}.`);
+
+    const robots = fs.readFileSync(ROBOTS_TXT_PATH, 'utf8');
+    const expected = `Sitemap: ${baseUrl.origin}/sitemap.xml`;
+    assert(
+      robots.includes(expected),
+      `robots.txt must include the canonical sitemap URL. Expected to find "${expected}".`,
     );
   });
 
@@ -127,6 +139,12 @@ describe('SEO build assertions', () => {
           baseUrl,
           `[${page.relativePath}] og:image must be absolute or root-relative. Actual value: "${ogImage}".`,
         );
+        assertPublicAssetExists(
+          ogImage,
+          baseUrl,
+          page.relativePath,
+          'og:image',
+        );
       }
 
       const twitterImage = readOptionalMeta($, 'twitter:image');
@@ -135,6 +153,12 @@ describe('SEO build assertions', () => {
           twitterImage,
           baseUrl,
           `[${page.relativePath}] twitter:image must be absolute or root-relative. Actual value: "${twitterImage}".`,
+        );
+        assertPublicAssetExists(
+          twitterImage,
+          baseUrl,
+          page.relativePath,
+          'twitter:image',
         );
       }
 
@@ -492,6 +516,26 @@ function assertResolvableAssetUrl(value, baseUrl, message) {
   }
 
   parseAbsoluteUrl(value, message);
+}
+
+function assertPublicAssetExists(value, baseUrl, relativePath, key) {
+  let url;
+  try {
+    url = value.startsWith('/') ? new URL(value, baseUrl) : new URL(value);
+  } catch {
+    throw new Error(`[${relativePath}] ${key} must be a valid URL. Actual value: "${value}".`);
+  }
+
+  if (url.origin !== baseUrl.origin) {
+    return;
+  }
+
+  const pathname = url.pathname.replace(/^\/+/, '');
+  const diskPath = path.join(PUBLIC_DIR, ...pathname.split('/'));
+  assert(
+    fs.existsSync(diskPath),
+    `[${relativePath}] ${key} points to a missing asset under public/. url="${url.href}" expected="${diskPath}".`,
+  );
 }
 
 function parseAbsoluteUrl(value, message) {
