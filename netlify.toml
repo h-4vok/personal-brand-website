@@ -38,6 +38,24 @@
   status = 410
   force = true
 
+[[redirects]]
+  from = "/strategy-session/"
+  to = "/engineering-leadership-coaching/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/strategy-session"
+  to = "/engineering-leadership-coaching/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posts/*"
+  to = "/articles/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

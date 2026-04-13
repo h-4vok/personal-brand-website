@@ -2,7 +2,8 @@
 title = "Strategy & Diagnostic Sessions"
 layout = "single"
 type = "strategy-session"
-url = "/strategy-session/"
+url = "/engineering-leadership-coaching/"
+aliases = ["/strategy-session/"]
 description = "Strategy & Diagnostic Sessions for leadership acceleration and organisational health."
 subtitle = "Practical systems thinking applied to leadership and organisational growth. Backed by 20 years of building resilient organisational cultures at scale."
 hero_image = "images/avatar3.jpg"

@@ -26,8 +26,8 @@ url = "/articles/"
 weight = 1
 
 [[main]]
-name = "Strategy Session"
-url = "/strategy-session/"
+name = "Leadership Coaching"
+url = "/engineering-leadership-coaching/"
 weight = 2
 
 # [[main]]
