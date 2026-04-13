@@ -4,6 +4,12 @@ date: "2025-10-05T00:00:00+01:00"
 author: "Christian Guzman"
 image: "images/blog/article/your-words-your-authority.jpg"
 description: "Learn how common phrases undermine authority with your own team and master powerful, actionable alternatives for impactful leadership communication."
+keywords:
+  - "Leadership Communication"
+  - "Executive Presence"
+  - "Leadership Coaching"
+  - "Influence Skills"
+  - "Engineering Leadership"
 categories:
   - "Leadership"
 tags:

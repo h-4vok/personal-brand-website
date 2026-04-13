@@ -4,6 +4,12 @@ date: "2025-08-03T21:00:00+01:00"
 author: Christian Guzman
 image: images/blog/article/brilliant-jerk-hidden-tax.jpg
 description: "Every leader faces the Brilliant Jerk problem. This article explores why tolerating a high-performer with low integrity is a hidden tax on your entire organisation and a critical failure of leadership."
+keywords:
+  - "Leadership Accountability"
+  - "Team Culture"
+  - "High Performer Risk"
+  - "Engineering Leadership"
+  - "Christian Guzman"
 categories:
   - "Leadership"
 tags:

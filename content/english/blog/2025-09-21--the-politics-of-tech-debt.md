@@ -4,6 +4,12 @@ date: "2025-09-21T12:00:00+01:00"
 author: "Christian Guzman"
 image: "images/blog/article/politics-of-technical-debt.png"
 description: "When delivery slows to a crawl, the explanation is always 'technical debt'. But the real problem isn't the code—it's the failure to master the politics of influence and negotiation."
+keywords:
+  - "Technical Debt Consulting"
+  - "Technical Debt Strategy"
+  - "Engineering Leadership"
+  - "DORA Metrics"
+  - "Product Engineering Alignment"
 categories:
   - "Leadership"
 tags:

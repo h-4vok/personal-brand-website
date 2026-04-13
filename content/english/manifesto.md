@@ -7,6 +7,12 @@ description: "In an era of AI, why focus on humans? The answer is arriving short
 slug: "manifesto"
 type: "manifesto"
 layout: "single"
+keywords:
+  - "Human Systems Architecture"
+  - "Engineering Leadership"
+  - "Leadership Philosophy"
+  - "Coaching"
+  - "Christian Guzman"
 _build:
   list: never
   render: always
