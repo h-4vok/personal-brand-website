@@ -4,8 +4,10 @@
   "license": "MIT",
   "author": "gethugothemes",
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "cheerio": "^1.2.0",
     "husky": "^8.0.3",
+    "lighthouse": "^13.1.0",
     "lint-staged": "^12.5.0",
     "prettier": "^3.6.2",
     "stylelint": "^15.11.0",
@@ -21,6 +23,9 @@
   "scripts": {
     "dev": "hugo server --buildDrafts --disableFastRender --forceSyncStatic --baseURL http://localhost:1313/ --bind 127.0.0.1 --port 1313",
     "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic",
+    "hugo:build": "hugo --gc --minify",
+    "audit": "node ./tools/run-audit.js",
+    "audit:report": "node ./tools/lighthouse-report.js",
     "test": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
     "test:seo": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic --cleanDestinationDir && npm run test:seo:assert",
     "test:seo:assert": "vitest run tests/seo-build.test.mjs",

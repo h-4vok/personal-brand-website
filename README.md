@@ -88,6 +88,39 @@ npm run test
 - `build`: production-style build into `public/`
 - `test`: production-oriented server with watch mode and extra diagnostics
 
+### Automated Quality Audits
+
+Lighthouse audits are integrated in the repo so you can validate SEO and performance without manual copy/paste from browser tooling.
+
+```bash
+npm run hugo:build
+npm run audit
+npm run audit:report
+```
+
+- `hugo:build`: generates `public/` with Hugo for local auditing.
+- `audit`: runs the local audit loop against `public/` (Windows-safe runner) and keeps LHCI as the backend path in non-Windows environments/CI.
+- `audit:report`: runs Lighthouse directly against production (`https://christianguzman.uk`) and writes `seo-report.json` in the repo root (with browser auto-detection).
+
+Browser requirement:
+
+- Install Google Chrome for the most stable local LHCI behavior.
+- Microsoft Edge may work, but local runs can be less stable depending on Windows process permissions.
+
+Quality gates:
+
+- SEO below `1.0` fails the run.
+- Performance below `0.9` is reported as warning.
+
+CI automation:
+
+- `.github/workflows/lighthouse.yml` runs on every `push` and `pull_request` to `main`.
+- Lighthouse artifacts are uploaded from `.lighthouseci/` (and `seo-report.json` when present) for PR diagnostics.
+
+Windows note:
+
+- If you saw `EPERM` with direct `lhci autorun`, use `npm run audit` from this repo (it already applies a Windows-safe flow).
+
 ### Theme / example commands
 
 ```bash

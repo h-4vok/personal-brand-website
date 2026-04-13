@@ -9,3 +9,7 @@ public/
 
 # Ignore the resources folder
 resources/_gen/
+
+# Lighthouse outputs
+.lighthouseci/
+seo-report.json
