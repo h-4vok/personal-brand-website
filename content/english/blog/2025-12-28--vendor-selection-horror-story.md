@@ -97,7 +97,7 @@ But first, we had to clear the fog.
 
 Once I had that clarity, I decided to be **Method Agnostic**. Instead of a standard procurement process, I built a bespoke funnel designed to filter for *adaptability* and *autonomy*.
 
-## Phase 1: The "AI" Wide Net
+### Phase 1: The "AI" Wide Net
 
 In the past, I would have asked my network or Googled "top flutter agencies". But in an AI world, you are leaving money on the table if you don't leverage it.
 
@@ -105,7 +105,7 @@ I used "Deep Research" AI tools to generate a shortlist of 40 potential vendors.
 
 **The result:** A list of 40 vendors generated in minutes. No "asking around", just raw data.
 
-## Phase 2: The "Remote Due Diligence" (The Hygiene Check)
+### Phase 2: The "Remote Due Diligence" (The Hygiene Check)
 
 Before I spoke to a single human, I ran every vendor through an 8-point checklist. This filtered the list from 40 down to 7.
 
@@ -118,7 +118,7 @@ Before I spoke to a single human, I ran every vendor through an 8-point checklis
 7.  **App Store Management:** We were new to mobile. We needed a vendor who could handle the Google Play/Apple Store bureaucracy. Interestingly, this filtered out 70% of the candidates.
 8.  **App Store Optimization (ASO):** Most failed this, but asking the question revealed who understood the *business* of apps vs. just the *code*.
 
-## Phase 3: The "Semblance" Test (The First Call)
+### Phase 3: The "Semblance" Test (The First Call)
 
 I shortlisted 7 vendors and booked 30-minute calls. But this wasn't a sales call; it was a "Semblance Test". I wasn't just listening to their pitch; I was watching for authenticity.
 
@@ -138,7 +138,7 @@ I wasn't looking for "Tomorrow". I was looking for honesty. The vendors who said
 **The Values Check**
 Finally, I checked their history in a more detailed manner. If a vendor had scandals in the media or "sweatshop" reviews, I cut them. When you hire a vendor, their supply chain becomes *your* supply chain. You cannot outsource ethics.
 
-## Phase 4: The "Shadow" Test (Onboarding)
+### Phase 4: The "Shadow" Test (Onboarding)
 
 Here is the secret weapon: **The Onboarding Process itself is a test**.
 

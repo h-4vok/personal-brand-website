@@ -1,5 +1,5 @@
 ---
-title: "Why 'Bring Me a Solution' is a System Bug"
+title: "Why 'Bring Me a Solution' is an Anti-Pattern"
 date: "2026-02-17T21:00:00Z"
 author: "Christian Guzman"
 image: "images/blog/article/bring-me-solutions.jpg"
