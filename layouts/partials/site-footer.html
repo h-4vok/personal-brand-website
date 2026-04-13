@@ -1,0 +1,66 @@
+<footer class="new-footer">
+  <div class="footer-container">
+
+    <div class="footer-main">
+
+      <div class="footer-col brand">
+        <a href="{{ site.Home.Permalink }}" class="footer-brand-link" aria-label="Christian Guzman Home">
+          {{ $configuredAvatar := site.Params.authorbox.image | default "images/avatar3.jpg" }}
+          {{ $normalizedAvatar := strings.TrimPrefix "/" (string $configuredAvatar) }}
+          {{ if eq $normalizedAvatar "images/avatar3.jpg" }}
+            <img
+              class="footer-avatar"
+              src="{{ `images/avatar3-60.jpg` | relURL }}"
+              srcset="{{ `images/avatar3-60.jpg` | relURL }} 1x, {{ `images/avatar3-120.jpg` | relURL }} 2x"
+              alt="Christian Guzman"
+              width="60"
+              height="60"
+              loading="lazy"
+              decoding="async"
+            >
+          {{ else }}
+            <img
+              class="footer-avatar"
+              src="{{ $configuredAvatar | relURL }}"
+              alt="Christian Guzman"
+              width="60"
+              height="60"
+              loading="lazy"
+              decoding="async"
+            >
+          {{ end }}
+          <span class="footer-brand-headline">Christian Guzman</span>
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="{{ site.Home.Permalink }}" class="js-smooth-scroll">Home</a></li>
+          <li><a href="/articles/" class="js-smooth-scroll">Articles</a></li>
+          <li><a href="/engineering-leadership-coaching/">Leadership Coaching</a></li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Connect</h4>
+        <ul class="footer-list social-links">
+
+          {{ range site.Params.footer.socialLinks }}
+            {{ if eq (lower .name) "linkedin" }}
+            <li><a href="{{ .link | safeURL }}" target="_blank" rel="noopener">{{ .name }}</a></li>
+            {{ end }}
+          {{ end }}
+
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-sub">
+      <p>&copy; 2026 Christian Guzman. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp mb-4" data-wow-duration="500ms">
+  <div class="post-block">
+    <div class="media-wrapper">
+      <a href="{{ .Permalink }}">
+      {{ partial "image.html" (dict
+        "Src" .Params.Image
+        "Alt" "Image"
+        "Class" "img-fluid lozad img-blog"
+        "DisplayXL" "800x"
+        "DisplayLG" "640x"
+        "DisplayMD" "480x"
+        "DisplaySM" "360x"
+      ) }}
+      </a>
+    </div>
+
+    <div class="content">
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Description }}</p>
+      <!-- <a class="btn btn-transparent" href="{{ .Permalink }}">{{ i18n "readMore" }}</a> -->
+    </div>
+  </div>
+</article>
