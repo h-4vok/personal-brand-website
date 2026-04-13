@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Expert"
+  short_description: "Optimize Hugo pages for branded SEO"
+  default_prompt: "Use $seo-expert to audit and improve SEO across this Hugo personal brand site."
