@@ -9,7 +9,10 @@
 	{{ if or (hasPrefix .link "http://") (hasPrefix .link "https://") }}
 		<script src="{{ .link | absURL }}" defer></script>
 	{{ else }}
-		{{ $diskPath := printf "themes/meghna-hugo/static/%s" .link }}
+		{{ $diskPath := printf "static/%s" .link }}
+		{{ if not (fileExists $diskPath) }}
+			{{ $diskPath = printf "themes/meghna-hugo/static/%s" .link }}
+		{{ end }}
 		{{ $vendorJsParts = $vendorJsParts | append (resources.FromString (printf "js/vendor/%s" (path.Base .link)) (readFile $diskPath)) }}
 	{{ end }}
 {{ end }}

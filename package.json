@@ -6,9 +6,12 @@
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
     "cheerio": "^1.2.0",
+    "cssnano": "^7.1.0",
     "husky": "^8.0.3",
     "lighthouse": "^13.1.0",
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "lint-staged": "^12.5.0",
+    "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
@@ -16,7 +19,7 @@
   },
   "lint-staged": {
     "{assets,static}/**/*.{css,scss,sass}": [
-      "stylelint --fix",
+      "stylelint --fix --allow-empty-input",
       "prettier --write"
     ]
   },
@@ -26,6 +29,7 @@
     "hugo:build": "hugo --gc --minify",
     "audit": "node ./tools/run-audit.js",
     "audit:report": "node ./tools/lighthouse-report.js",
+    "bootstrap:purge": "node ./tools/purge-bootstrap.mjs",
     "test": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
     "test:seo": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic --cleanDestinationDir && npm run test:seo:assert",
     "test:seo:assert": "vitest run tests/seo-build.test.mjs",
