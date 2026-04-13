@@ -31,7 +31,7 @@ author = "Christian Guzman"
 # LoveIt NEW | 0.2.0 date format
 dateFormat = "2006-01-02"
 # website images for Open Graph and Twitter Cards
-images = ["/logo.png"]
+images = ["/images/social/og-default.jpg"]
 
 # Author config
 [params.authorbox]
@@ -238,9 +238,9 @@ RSS = true                   # LoveIt NEW | 0.2.0
 # default site description used for metadata and WebSite JSON-LD
 siteDescription = "Christian Guzman helps engineering leaders build resilient organisations through coaching, systems thinking, and human-centred technical leadership."
 # image URL
-image = "/logo.png"
+image = "/images/social/og-default.jpg"
 # thumbnail URL
-thumbnailUrl = "/logo.png"
+thumbnailUrl = "/images/social/og-default.jpg"
 
 [params.seo.person]
 name = "Christian Guzman"

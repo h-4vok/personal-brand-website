@@ -30,7 +30,17 @@
 
 	{{ $socialImage := "" }}
 	{{ if .Params.image }}
-		{{ $socialImage = .Params.image | absURL }}
+		{{ $rawImage := .Params.image | plainify | htmlUnescape | strings.TrimSpace }}
+		{{ if or (hasPrefix $rawImage "http://") (hasPrefix $rawImage "https://") }}
+			{{ $socialImage = $rawImage }}
+		{{ else }}
+			{{ $resourcePath := strings.TrimPrefix "/" $rawImage }}
+			{{ with resources.Get $resourcePath }}
+				{{ $socialImage = .Permalink }}
+			{{ else }}
+				{{ $socialImage = $rawImage | absURL }}
+			{{ end }}
+		{{ end }}
 	{{ else if and site.Params.images (gt (len site.Params.images) 0) }}
 		{{ $socialImage = (index site.Params.images 0) | absURL }}
 	{{ else if site.Params.seo.image }}
