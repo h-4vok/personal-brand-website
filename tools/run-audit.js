@@ -7,17 +7,42 @@ const { detectBrowserPath } = require("./lighthouse-browser");
 
 const rootDir = path.resolve(__dirname, "..");
 const outputDir = path.join(rootDir, ".lighthouseci", "local");
+const profilesDir = path.join(rootDir, ".lighthouseci", "profiles");
 const lighthouseCli = require.resolve("lighthouse/cli/index.js");
 const chromePath = detectBrowserPath();
 const isWindowsEdge = process.platform === "win32" && /msedge\.exe$/i.test(chromePath);
 
 const routes = ["/", "/articles/", "/engineering-leadership-coaching/"];
 const thresholds = { seo: 1.0, performance: 0.9 };
+const isCi = Boolean(process.env.CI);
+const isVerbose = process.env.AUDIT_VERBOSE
+  ? process.env.AUDIT_VERBOSE !== "0" && process.env.AUDIT_VERBOSE !== "false"
+  : !isCi;
 
-if (process.platform !== "win32") {
-  const lhciCli = require.resolve("@lhci/cli/src/cli.js");
-  const result = spawnSync(process.execPath, [lhciCli, "autorun"], { stdio: "inherit" });
-  process.exit(result.status ?? 1);
+function log(message) {
+  if (!isVerbose) return;
+  process.stderr.write(`${message}\n`);
+}
+
+function summarizeFailure(stderr) {
+  if (!stderr) return "";
+  const lines = String(stderr).split(/\r?\n/).map((line) => line.trim());
+  const interesting = lines.filter((line) => {
+    if (!line) return false;
+    return (
+      line.startsWith("Runtime error encountered:") ||
+      line.startsWith("Error:") ||
+      line.includes("EPERM") ||
+      line.includes("EACCES") ||
+      line.includes("ChromeNotInstalledError") ||
+      line.includes("No Chrome installations found") ||
+      line.includes("Timed out") ||
+      line.includes("Protocol error")
+    );
+  });
+
+  if (interesting.length === 0) return "";
+  return interesting.slice(-8).join("\n");
 }
 
 if (!fs.existsSync(path.join(rootDir, "public"))) {
@@ -31,28 +56,84 @@ if (!chromePath) {
 }
 
 fs.mkdirSync(outputDir, { recursive: true });
+fs.mkdirSync(profilesDir, { recursive: true });
+
+function toSafeBaseDir(filePath) {
+  const resolved = path.resolve(filePath);
+  return resolved.endsWith(path.sep) ? resolved : `${resolved}${path.sep}`;
+}
+
+function readContentType(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  switch (ext) {
+    case ".html":
+      return "text/html; charset=utf-8";
+    case ".css":
+      return "text/css; charset=utf-8";
+    case ".js":
+    case ".mjs":
+      return "application/javascript; charset=utf-8";
+    case ".json":
+    case ".map":
+      return "application/json; charset=utf-8";
+    case ".xml":
+      return "application/xml; charset=utf-8";
+    case ".txt":
+      return "text/plain; charset=utf-8";
+    case ".svg":
+      return "image/svg+xml";
+    case ".png":
+      return "image/png";
+    case ".jpg":
+    case ".jpeg":
+      return "image/jpeg";
+    case ".webp":
+      return "image/webp";
+    case ".ico":
+      return "image/x-icon";
+    case ".woff":
+      return "font/woff";
+    case ".woff2":
+      return "font/woff2";
+    case ".ttf":
+      return "font/ttf";
+    case ".otf":
+      return "font/otf";
+    case ".webmanifest":
+      return "application/manifest+json; charset=utf-8";
+    default:
+      return "application/octet-stream";
+  }
+}
 
 function createStaticServer(baseDir) {
+  const safeBaseDir = toSafeBaseDir(baseDir);
+
   const server = http.createServer((req, res) => {
     const reqPath = decodeURIComponent((req.url || "/").split("?")[0]);
-    let filePath = path.join(baseDir, reqPath);
+    const requested = reqPath.startsWith("/") ? reqPath.slice(1) : reqPath;
+    let filePath = path.join(baseDir, requested);
+
     if (reqPath.endsWith("/")) filePath = path.join(filePath, "index.html");
     if (!path.extname(filePath)) filePath = `${filePath}.html`;
 
-    if (!filePath.startsWith(baseDir)) {
+    const resolvedPath = path.resolve(filePath);
+    if (!resolvedPath.startsWith(safeBaseDir)) {
       res.writeHead(403);
       res.end("Forbidden");
       return;
     }
 
-    fs.readFile(filePath, (err, data) => {
-      if (err) {
+    fs.stat(resolvedPath, (statError, stat) => {
+      if (statError || !stat.isFile()) {
         res.writeHead(404);
         res.end("Not found");
         return;
       }
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-      res.end(data);
+
+      const contentType = readContentType(resolvedPath);
+      res.writeHead(200, { "Content-Type": contentType, "Content-Length": stat.size });
+      fs.createReadStream(resolvedPath).pipe(res);
     });
   });
 
@@ -70,7 +151,36 @@ function slugForRoute(route) {
   return route.replace(/^\/|\/$/g, "").replace(/\//g, "-");
 }
 
+function createProfileDir(slug) {
+  const profileDir = path.join(
+    profilesDir,
+    `${slug}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+  );
+  fs.mkdirSync(profileDir, { recursive: true });
+  return profileDir;
+}
+
+function cleanupProfileDir(profileDir) {
+  try {
+    fs.rmSync(profileDir, { recursive: true, force: true, maxRetries: 3, retryDelay: 50 });
+  } catch {
+    // Best-effort cleanup only.
+  }
+}
+
 function runLighthouse(url, outputPath) {
+  const profileDir = createProfileDir(path.basename(outputPath, ".json"));
+  const chromeFlags = [
+    "--headless=new",
+    "--disable-gpu",
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    `--user-data-dir=${profileDir}`,
+    "--no-first-run",
+    "--no-default-browser-check",
+  ];
+
+  log(`[audit] Running Lighthouse for ${url}`);
   const result = spawnSync(
     process.execPath,
     [
@@ -81,7 +191,7 @@ function runLighthouse(url, outputPath) {
       "json",
       "--output-path",
       outputPath,
-      "--chrome-flags=--headless=new --disable-gpu --no-sandbox --disable-dev-shm-usage",
+      `--chrome-flags=${chromeFlags.join(" ")}`,
     ],
     {
       stdio: "pipe",
@@ -89,6 +199,8 @@ function runLighthouse(url, outputPath) {
       env: { ...process.env, CHROME_PATH: chromePath },
     },
   );
+
+  cleanupProfileDir(profileDir);
   return {
     status: result.status ?? 1,
     stdout: result.stdout || "",
@@ -111,6 +223,11 @@ function runLighthouse(url, outputPath) {
       baseUrl = `http://127.0.0.1:${served.port}`;
     }
 
+    log(`[audit] Browser: ${chromePath}`);
+    log(`[audit] Base URL: ${baseUrl}`);
+    log(`[audit] Routes: ${routes.join(", ")}`);
+    log(`[audit] Output dir: ${outputDir}`);
+
     let hasSeoFailure = false;
     let hasPerfWarning = false;
 
@@ -132,12 +249,17 @@ function runLighthouse(url, outputPath) {
         console.warn(
           `[audit] Lighthouse returned non-zero for ${route}, but report was produced (known Windows EPERM cleanup issue).`,
         );
+        const summary = summarizeFailure(result.stderr);
+        if (summary) {
+          log(`[audit] Non-fatal Lighthouse stderr summary:\n${summary}`);
+        }
       }
 
       const report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
       const seo = report.categories?.seo?.score ?? 0;
       const perf = report.categories?.performance?.score ?? 0;
 
+      log(`[audit] Scores for ${route}: seo=${seo} perf=${perf}`);
       if (seo < thresholds.seo) {
         hasSeoFailure = true;
         console.error(`[audit] SEO score for ${route} is ${seo}. Required: ${thresholds.seo}.`);

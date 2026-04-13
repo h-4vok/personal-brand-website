@@ -19,8 +19,15 @@ module.exports = {
       url: ["/", "/articles/", "/engineering-leadership-coaching/"],
       chromePath: detectedChromePath,
       settings: {
-        chromeFlags:
-          "--headless=new --disable-gpu --no-sandbox --disable-dev-shm-usage --user-data-dir=./.lighthouseci/chrome-profile",
+        chromeFlags: [
+          "--headless=new",
+          "--disable-gpu",
+          "--no-sandbox",
+          "--disable-dev-shm-usage",
+          "--user-data-dir=./.lighthouseci/chrome-profile",
+          "--no-first-run",
+          "--no-default-browser-check",
+        ],
       },
     },
     assert: {
