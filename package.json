@@ -4,11 +4,13 @@
   "license": "MIT",
   "author": "gethugothemes",
   "devDependencies": {
+    "cheerio": "^1.2.0",
     "husky": "^8.0.3",
     "lint-staged": "^12.5.0",
     "prettier": "^3.6.2",
     "stylelint": "^15.11.0",
-    "stylelint-config-standard": "^34.0.0"
+    "stylelint-config-standard": "^34.0.0",
+    "vitest": "^4.1.4"
   },
   "lint-staged": {
     "{assets,static}/**/*.{css,scss,sass}": [
@@ -20,6 +22,8 @@
     "dev": "hugo server --buildDrafts --disableFastRender --forceSyncStatic --baseURL http://localhost:1313/ --bind 127.0.0.1 --port 1313",
     "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic",
     "test": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
+    "test:seo": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic --cleanDestinationDir && npm run test:seo:assert",
+    "test:seo:assert": "vitest run tests/seo-build.test.mjs",
     "lint:css": "stylelint \"**/*.{css,scss,sass}\" --allow-empty-input",
     "lint:css:fix": "stylelint \"**/*.{css,scss,sass}\" --fix --allow-empty-input",
     "format": "prettier --write \"**/*.{css,scss,sass}\"",

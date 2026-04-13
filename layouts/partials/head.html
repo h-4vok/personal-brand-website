@@ -1,12 +1,72 @@
 <head>
 	<meta charset="utf-8">
-	<title>{{ .Title }}</title>
+	{{ $siteTitle := site.Title }}
+	{{ $siteDescription := site.Params.seo.siteDescription | default site.Params.description | default $siteTitle }}
+	{{ $pageTitle := .Title | default $siteTitle }}
+	{{ $title := $siteTitle }}
+	{{ if and $pageTitle (ne $pageTitle $siteTitle) }}
+		{{ $title = printf "%s | %s" $pageTitle $siteTitle }}
+	{{ end }}
+
+	{{ $plainContent := .Content | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
+	{{ $contentDescription := "" }}
+	{{ if $plainContent }}
+		{{ $contentDescription = truncate 150 $plainContent }}
+	{{ end }}
+	{{ $description := $siteDescription }}
+	{{ if .Params.description }}
+		{{ $description = .Params.description | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
+	{{ else if $contentDescription }}
+		{{ $description = $contentDescription }}
+	{{ end }}
+
+	{{ $author := site.Params.author | default site.Title }}
+	{{ with site.Params.authorbox.name }}
+		{{ $author = . }}
+	{{ end }}
+	{{ with .Params.author }}
+		{{ $author = . }}
+	{{ end }}
+
+	{{ $socialImage := "" }}
+	{{ if .Params.image }}
+		{{ $socialImage = .Params.image | absURL }}
+	{{ else if and site.Params.images (gt (len site.Params.images) 0) }}
+		{{ $socialImage = (index site.Params.images 0) | absURL }}
+	{{ else if site.Params.seo.image }}
+		{{ $socialImage = site.Params.seo.image | absURL }}
+	{{ else if site.Params.seo.thumbnailUrl }}
+		{{ $socialImage = site.Params.seo.thumbnailUrl | absURL }}
+	{{ end }}
+
+	{{ $isBlogPost := and (eq .Kind "page") (or (in .RelPermalink "/articles/") (in .RelPermalink "/blog/")) }}
+	{{ $ogType := "website" }}
+	{{ if $isBlogPost }}
+		{{ $ogType = "article" }}
+	{{ end }}
+
+	<title>{{ $title }}</title>
 
 	{{ "<!-- mobile responsive meta -->" | safeHTML }}
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
-	{{ with site.Params.author }}
-	<meta name="author" content="{{ . }}">{{ end }}
+	<meta name="description" content="{{ $description }}">
+	<meta name="author" content="{{ $author }}">
+	<link rel="canonical" href="{{ .Permalink }}">
+
+	<meta property="og:title" content="{{ $title }}">
+	<meta property="og:description" content="{{ $description }}">
+	<meta property="og:type" content="{{ $ogType }}">
+	<meta property="og:url" content="{{ .Permalink }}">
+	{{ with $socialImage }}
+	<meta property="og:image" content="{{ . }}">
+	{{ end }}
+
+	<meta name="twitter:card" content="{{ if $socialImage }}summary_large_image{{ else }}summary{{ end }}">
+	<meta name="twitter:title" content="{{ $title }}">
+	<meta name="twitter:description" content="{{ $description }}">
+	{{ with $socialImage }}
+	<meta name="twitter:image" content="{{ . }}">
+	{{ end }}
 
 	<!-- theme meta -->
 	<meta name="theme-name" content="Christian Guzman Hugo Theme" />
@@ -60,6 +120,40 @@
   <link rel="manifest" href="{{ printf "/site.webmanifest?v=%d" $assetVersion }}">
 
 	{{ partial "analytics.html" . }}
+
+	{{ $websiteSchema := dict
+		"@context" "https://schema.org"
+		"@type" "WebSite"
+		"name" $siteTitle
+		"url" site.Home.Permalink
+		"description" $siteDescription
+	}}
+	<script type="application/ld+json">{{ $websiteSchema | jsonify | safeJS }}</script>
+
+	{{ if $isBlogPost }}
+		{{ $articleSchema := dict
+			"@context" "https://schema.org"
+			"@type" "BlogPosting"
+			"headline" $pageTitle
+			"description" $description
+			"url" .Permalink
+			"mainEntityOfPage" .Permalink
+			"datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+			"dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+			"author" (dict
+				"@type" "Person"
+				"name" $author
+			)
+			"publisher" (dict
+				"@type" "Person"
+				"name" $siteTitle
+			)
+		}}
+		{{ with $socialImage }}
+			{{ $articleSchema = merge $articleSchema (dict "image" (slice .)) }}
+		{{ end }}
+	<script type="application/ld+json">{{ $articleSchema | jsonify | safeJS }}</script>
+	{{ end }}
 
 	{{ with site.Params.google_analytics_id }}
 	{{ "<!-- Global Site Tag (gtag.js) - Google Analytics -->" | safeHTML }}
