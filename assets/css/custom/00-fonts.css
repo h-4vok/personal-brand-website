@@ -1,0 +1,41 @@
+/** Section: Typography (self-hosted fonts) **/
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-wght-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/eb-garamond-latin-wght-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Anaheim;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/anaheim-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Quattrocento Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/quattrocento-sans-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Quattrocento Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/quattrocento-sans-latin-700-normal.woff2") format("woff2");
+}
