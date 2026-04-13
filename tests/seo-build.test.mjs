@@ -82,12 +82,20 @@ describe('SEO build assertions', () => {
       const html = fs.readFileSync(page.absolutePath, 'utf8');
       const $ = load(html);
       const pageType = classifyPage(page.relativePath);
+      const h1Count = $('h1').length;
 
       const title = readRequiredText($, 'title', page.relativePath);
       assert(
         title.includes(siteTitle),
         `[${page.relativePath}] <title> must include the site brand "${siteTitle}". Actual value: "${title}".`,
       );
+
+      if (pageType === 'list' || pageType === 'blog-post') {
+        assert(
+          h1Count === 1,
+          `[${page.relativePath}] must render exactly one <h1> for ${pageType} pages. Found ${h1Count}.`,
+        );
+      }
 
       readRequiredMeta($, 'description', page.relativePath);
 

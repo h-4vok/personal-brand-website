@@ -13,3 +13,7 @@ resources/_gen/
 # Lighthouse outputs
 .lighthouseci/
 seo-report.json
+
+# Local temp artifacts
+.tmp/
+seo-report-20260413.md
