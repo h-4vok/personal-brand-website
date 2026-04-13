@@ -20,10 +20,39 @@ Read `references/schema-org-patterns.md` when adding or auditing structured data
 1. Inspect `layouts/partials/head.html` first.
 2. Confirm how titles, descriptions, canonical links, OpenGraph tags, and Twitter cards are generated.
 3. Review `hugo.toml` for SEO-critical site settings.
-4. Audit Markdown files under `content/` for frontmatter quality.
-5. Review slugs from filenames and any `url` params.
-6. Apply the smallest set of edits that improves consistency site-wide.
-7. Summarize SEO gains, unresolved gaps, and suggested follow-up opportunities.
+4. Run the Lighthouse loop and collect evidence before proposing changes.
+5. Audit Markdown files under `content/` for frontmatter quality.
+6. Review slugs from filenames and any `url` params.
+7. Apply the smallest set of edits that improves consistency site-wide.
+8. Re-run assertions and Lighthouse after edits.
+9. Summarize SEO gains, unresolved gaps, and suggested follow-up opportunities.
+
+## Lighthouse Workflow (Repo-native)
+
+Use Lighthouse as an input to prioritize and validate SEO/performance fixes.
+
+Primary commands:
+
+- `npm run hugo:build`
+- `npm run audit`
+- `npm run audit:report`
+
+Report locations:
+
+- Local multi-page audit JSONs: `.lighthouseci/local/home.json`, `.lighthouseci/local/articles.json`, `.lighthouseci/local/engineering-leadership-coaching.json`
+- Production report JSON: `seo-report.json`
+
+How to use reports:
+
+- Prioritize high-impact SEO/performance audits that map directly to editable templates/content.
+- Cross-check Lighthouse findings with `head.html`, frontmatter, and rendered output before changing code.
+- Treat Lighthouse as a guide, not a source of truth when a recommendation conflicts with business intent or accurate content representation.
+- Always verify improvements by re-running `npm run audit` (and `npm run audit:report` when production-facing).
+
+Windows runtime note:
+
+- The repo includes safeguards for known Windows cleanup errors (`EPERM`) from Lighthouse/Chrome launcher.
+- If report JSON is generated, treat the run as valid input even when Lighthouse exits non-zero due to cleanup.
 
 ## Metadata Rules
 
@@ -100,5 +129,9 @@ Read `references/schema-org-patterns.md` when adding or auditing structured data
   - content/frontmatter fixes
   - URL or canonical risks
   - structured data opportunities or gaps
+- Include Lighthouse-backed findings as a separate block:
+  - failing or warning categories
+  - impacted URLs
+  - concrete fix path in repo
 - When making edits, explain which pages were changed and which keyword intent each page now supports.
 - Offer a short list of next SEO improvements after completing the requested work. Good examples include schema markup, sitemap refinement, image alt-text audits, internal linking, and redirect planning for slug changes.
