@@ -1,6 +1,7 @@
 ---
 title: "The Human Systems Manifesto"
 date: "2026-03-06T01:30:00Z"
+draft: true
 author: "Christian Guzman"
 description: "In an era of AI, why focus on humans? The answer is arriving shortly."
 slug: "manifesto"

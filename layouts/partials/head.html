@@ -27,21 +27,29 @@
 	<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
 
 	{{"<!-- Custom stylesheet bundle -->" |safeHTML}}
-	{{ $customParts := slice
-		(resources.Get "css/custom/00-fonts.css")
-		(resources.Get "css/custom/01-tokens.css")
-		(resources.Get "css/custom/02-base-navigation.css")
-		(resources.Get "css/custom/10-home.css")
-		(resources.Get "css/custom/20-article-core.css")
-		(resources.Get "css/custom/21-article-hero-meta.css")
-		(resources.Get "css/custom/22-article-author-related.css")
-		(resources.Get "css/custom/23-article-effects.css")
-		(resources.Get "css/custom/24-strategy-session.css")
-		(resources.Get "css/custom/30-funfacts.css")
-		(resources.Get "css/custom/40-footer.css")
+	{{ $customPaths := slice
+		"css/custom/00-fonts.css"
+		"css/custom/01-tokens.css"
+		"css/custom/02-base-navigation.css"
+		"css/custom/10-home.css"
+		"css/custom/20-article-core.css"
+		"css/custom/21-article-hero-meta.css"
+		"css/custom/22-article-author-related.css"
+		"css/custom/23-article-effects.css"
+		"css/custom/24-strategy-session.css"
+		"css/custom/30-funfacts.css"
+		"css/custom/40-footer.css"
 	}}
-	{{ $custom := $customParts | resources.Concat "css/custom.bundle.css" | minify | fingerprint "sha384" }}
-	<link rel="stylesheet" href="{{ $custom.Permalink }}" integrity="{{ $custom.Data.Integrity }}" media="screen">
+	{{ $customParts := slice }}
+	{{ range $customPaths }}
+		{{ with resources.Get . }}
+			{{ $customParts = $customParts | append . }}
+		{{ end }}
+	{{ end }}
+	{{ if gt (len $customParts) 0 }}
+		{{ $custom := $customParts | resources.Concat "css/custom.bundle.css" | minify | fingerprint "sha384" }}
+		<link rel="stylesheet" href="{{ $custom.Permalink }}" integrity="{{ $custom.Data.Integrity }}" media="screen">
+	{{ end }}
 
 	{{ "<!--Favicon-->" | safeHTML }}
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ printf "%s?v=%d" (`images/icons/favicon-32x32.png` | absURL) $assetVersion }}">

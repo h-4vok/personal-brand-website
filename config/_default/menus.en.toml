@@ -21,19 +21,14 @@
 # weight = 5
 
 [[main]]
-name = "Manifesto"
-url = "/manifesto/"
-weight = 1
-
-[[main]]
 name = "Articles"
 url = "/articles/"
-weight = 2
+weight = 1
 
 [[main]]
 name = "Strategy Session"
 url = "/strategy-session/"
-weight = 3
+weight = 2
 
 # [[main]]
 # name = "Dropdown"
