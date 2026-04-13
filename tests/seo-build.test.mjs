@@ -9,6 +9,7 @@ const PUBLIC_DIR = path.join(REPO_ROOT, 'public');
 const HUGO_CONFIG_PATH = path.join(REPO_ROOT, 'hugo.toml');
 const NETLIFY_CONFIG_PATH = path.join(REPO_ROOT, 'netlify.toml');
 const ARTICLE_SCHEMA_TYPES = new Set(['Article', 'BlogPosting', 'NewsArticle']);
+const SERVICE_SCHEMA_TYPES = new Set(['Service']);
 const LANGUAGE_HOME_SEGMENTS = new Set(['en', 'english', 'fr']);
 const LEGACY_PUBLIC_SEGMENTS = ['/english/', '/en/', '/fr/'];
 
@@ -168,6 +169,8 @@ describe('SEO build assertions', () => {
       const schemas = readStructuredData($, page.relativePath);
       const schemaTypes = collectSchemaTypes(schemas);
       const hasArticleSchema = schemaTypes.some((type) => ARTICLE_SCHEMA_TYPES.has(type));
+      const hasServiceSchema = schemaTypes.some((type) => SERVICE_SCHEMA_TYPES.has(type));
+      const isServiceLanding = page.relativePath === 'engineering-leadership-coaching/index.html';
 
       if (pageType === 'blog-post') {
         assert(
@@ -182,6 +185,29 @@ describe('SEO build assertions', () => {
         assert(
           !hasArticleSchema,
           `[${page.relativePath}] non-post pages must not emit article schema types. Found schema types: ${formatList(schemaTypes)}.`,
+        );
+      }
+
+      if (page.relativePath === 'index.html') {
+        assert(
+          schemaTypes.includes('Person'),
+          `[${page.relativePath}] home page must emit Person JSON-LD. Found schema types: ${formatList(schemaTypes)}.`,
+        );
+      }
+
+      if (isServiceLanding) {
+        assert(
+          schemaTypes.includes('Person'),
+          `[${page.relativePath}] service landing must emit Person JSON-LD. Found schema types: ${formatList(schemaTypes)}.`,
+        );
+        assert(
+          schemaTypes.includes('Service'),
+          `[${page.relativePath}] service landing must emit Service JSON-LD. Found schema types: ${formatList(schemaTypes)}.`,
+        );
+      } else {
+        assert(
+          !hasServiceSchema,
+          `[${page.relativePath}] non-service pages must not emit Service schema types. Found schema types: ${formatList(schemaTypes)}.`,
         );
       }
     });

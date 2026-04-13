@@ -40,6 +40,8 @@
 	{{ end }}
 
 	{{ $isBlogPost := and (eq .Kind "page") (or (in .RelPermalink "/articles/") (in .RelPermalink "/blog/")) }}
+	{{ $isServicePage := eq .Type "strategy-session" }}
+	{{ $isBrandDefiningPage := or .IsHome (eq .Type "author") (eq .Type "manifesto") $isServicePage }}
 	{{ $ogType := "website" }}
 	{{ if $isBlogPost }}
 		{{ $ogType = "article" }}
@@ -131,6 +133,35 @@
 	}}
 	<script type="application/ld+json">{{ $websiteSchema | jsonify | safeJS }}</script>
 
+	{{ $personName := site.Params.seo.person.name | default site.Params.authorbox.name | default $siteTitle }}
+	{{ $personDescription := site.Params.seo.person.description | default $siteDescription }}
+	{{ $personJobTitle := site.Params.seo.person.jobTitle | default "Engineering Leadership Coach" }}
+	{{ $personImage := site.Params.seo.person.image | default site.Params.authorbox.image | default site.Params.seo.image | default "/logo.png" | absURL }}
+	{{ $personSameAs := slice }}
+	{{ with site.Params.seo.person.sameAs }}
+		{{ range . }}
+			{{ if . }}
+				{{ $personSameAs = $personSameAs | append . }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
+	{{ if $isBrandDefiningPage }}
+		{{ $personSchema := dict
+			"@context" "https://schema.org"
+			"@type" "Person"
+			"name" $personName
+			"url" site.Home.Permalink
+			"description" $personDescription
+			"jobTitle" $personJobTitle
+			"image" $personImage
+		}}
+		{{ if gt (len $personSameAs) 0 }}
+			{{ $personSchema = merge $personSchema (dict "sameAs" $personSameAs) }}
+		{{ end }}
+		<script type="application/ld+json">{{ $personSchema | jsonify | safeJS }}</script>
+	{{ end }}
+
 	{{ if $isBlogPost }}
 		{{ $articleSchema := dict
 			"@context" "https://schema.org"
@@ -154,6 +185,23 @@
 			{{ $articleSchema = merge $articleSchema (dict "image" (slice .)) }}
 		{{ end }}
 	<script type="application/ld+json">{{ $articleSchema | jsonify | safeJS }}</script>
+	{{ end }}
+
+	{{ if $isServicePage }}
+		{{ $serviceSchema := dict
+			"@context" "https://schema.org"
+			"@type" "Service"
+			"name" $pageTitle
+			"description" $description
+			"url" .Permalink
+			"serviceType" "Engineering Leadership Coaching"
+			"provider" (dict
+				"@type" "Person"
+				"name" $personName
+				"url" site.Home.Permalink
+			)
+		}}
+		<script type="application/ld+json">{{ $serviceSchema | jsonify | safeJS }}</script>
 	{{ end }}
 
 	{{ with site.Params.google_analytics_id }}

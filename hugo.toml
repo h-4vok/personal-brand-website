@@ -242,6 +242,16 @@ image = "/logo.png"
 # thumbnail URL
 thumbnailUrl = "/logo.png"
 
+[params.seo.person]
+name = "Christian Guzman"
+description = "Engineering leadership coach helping dev leads, managers, and senior leaders build resilient teams and delivery systems."
+image = "/images/avatar3.jpg"
+jobTitle = "Engineering Leadership Coach"
+sameAs = [
+  "https://www.linkedin.com/in/guzmanchristian",
+  "https://github.com/h-4vok"
+]
+
 # LoveIt NEW | 0.2.0 Analytics config
 [params.analytics]
 # LoveIt DELETED | 0.3.1
