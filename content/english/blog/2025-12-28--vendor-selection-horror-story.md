@@ -27,7 +27,7 @@ Most organizations rely on a rigid "Procurement Playbook"—RFPs, rate cards, an
 
 Most people execute Scrum, RFP processes, or design sprints with a nagging sense that "something is wrong". While they might pinpoint the pain, most people (even leaders) rarely act on it. This inaction is odd, but unfortunately common.
 
-# The Vendor Horror Story
+## The Vendor Horror Story
 
 If you want the tactical guide on selecting vendors, feel free to skip to the next section. But if you want to understand *why* traditional selection fails, you need to hear this.
 
@@ -79,7 +79,7 @@ But remember what I said at the beginning: **The typical process would not have 
 To find a true partner, I had to ignore the standard operating procedure and build something bespoke.
 
 
-# How to Select a Vendor (The Right Way)
+## How to Select a Vendor (The Right Way)
 
 The first step isn't looking for companies; it's defining the problem. Be unclear on this step, and you will get fuzzy results.
 
@@ -151,7 +151,7 @@ Why? because how they handle bureaucracy tells you how they handle operations.
 
 Unsurprisingly, the vendor who crushed the onboarding process became our partner. In just a few weeks, we went from "Who are you?" to a fully staffed team shipping code.
 
-# Conclusion: The Courage to be Agnostic
+## Conclusion: The Courage to be Agnostic
 
 When I say "Method Agnostic", I don't mean ignoring process. I mean refusing to follow a process blindly.
 

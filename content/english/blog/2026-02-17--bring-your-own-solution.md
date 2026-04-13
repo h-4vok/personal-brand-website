@@ -30,7 +30,7 @@ Years passed, and naturally, when I moved into leadership, I brought this mental
 > **"62% of critical project delays are not caused by technical failures, but by 'known issues' that were never communicated until they became crises."**
 > — _2025 State of Engineering Management Report_
 
-# We Trapped Ourselves
+## We Trapped Ourselves
 
 Those were the "good ol' days" of being a Dev Lead. But eventually, I became an Engineering Manager, and I brought those same principles with me.
 
@@ -50,7 +50,7 @@ This optimization for apparent independence was created at the expense of the te
 
 To be fair, we were all suffering from Imposter Syndrome. Leads weren't bringing me their concerns in a timely manner to avoid appearing like they couldn't handle them, and I believed that those "boots on the ground" were better prepared to manage immediate issues. Not only had I created a problematic target, but I had also stopped leveraging my own experience effectively.
 
-# Debunking the Famous Motto
+## Debunking the Famous Motto
 
 > _"If you bring me a problem, bring me a solution."_
 
@@ -78,7 +78,7 @@ But the employee often hears something else: **"I am being tested. I need to sou
 
 Suddenly, the simple act of sharing—the lifeblood of a learning culture—feels like a high-stakes exam. When every interaction is perceived as a judgment of competence, people stop sharing, they stop questioning, and the system becomes opaque.
 
-# Let's Make it Safe to Fail
+## Let's Make it Safe to Fail
 
 Recent data from Deloitte (2025) shows that **48% of senior leaders** are suffering from burnout, citing "the anxiety of managing complex problems without a clear support system" as their primary stressor.
 
@@ -124,7 +124,7 @@ If they are at Level 1, give them the solution and use it as a teaching moment. 
 
 Success isn't measured by the absence of problems, but by the **transparency and speed of their detection**. When you stop demanding premature solutions, you tear down the invisible walls. You stop the forest fires before they start because you’ve made it safe for the smoke to be visible.
 
-# Conclusion
+## Conclusion
 
 Our job as leaders is to design a system where people can grow without burning out. 
 

@@ -13,14 +13,14 @@ keywords:
   - "Leadership Philosophy"
   - "Coaching"
   - "Christian Guzman"
-_build:
+build:
   list: never
   render: always
 ---
 
 Thank you for your interest in my work designing human systems. My manifesto will be live very soon.
 
-The software industry is obsessed with **output**, yet it’s starving for **intent**. 
+The software industry is obsessed with **output**, yet it's starving for **intent**. 
 
 In an era where AI is commoditising code at an unprecedented pace, the real competitive advantage has shifted. The true machine that matters now is no longer the software itself, but the **human organisation** behind it.
 
