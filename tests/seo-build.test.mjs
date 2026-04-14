@@ -14,7 +14,7 @@ const SERVICE_SCHEMA_TYPES = new Set(['Service']);
 const LANGUAGE_HOME_SEGMENTS = new Set(['en', 'english', 'fr']);
 const LEGACY_PUBLIC_SEGMENTS = ['/english/', '/en/', '/fr/'];
 
-const { baseUrl, siteTitle } = readHugoConfig(HUGO_CONFIG_PATH);
+const { baseUrl, siteTitle, twitterSite, twitterCreator } = readHugoConfig(HUGO_CONFIG_PATH);
 const netlifyConfig = fs.readFileSync(NETLIFY_CONFIG_PATH, 'utf8');
 const htmlFiles = fs.existsSync(PUBLIC_DIR)
   ? walkHtmlFiles(PUBLIC_DIR)
@@ -144,6 +144,35 @@ describe('SEO build assertions', () => {
       const twitterDescription = readRequiredMeta($, 'twitter:description', page.relativePath);
       readRequiredMeta($, 'twitter:card', page.relativePath);
 
+      if (twitterSite) {
+        assert(
+          readRequiredMeta($, 'twitter:site', page.relativePath) === twitterSite,
+          `[${page.relativePath}] twitter:site must match hugo.toml params.seo.twitterSite. Expected "${twitterSite}".`,
+        );
+      } else {
+        assert(
+          readOptionalMeta($, 'twitter:site') === null,
+          `[${page.relativePath}] twitter:site must not be emitted when params.seo.twitterSite is empty.`,
+        );
+      }
+
+      if (twitterCreator) {
+        assert(
+          readRequiredMeta($, 'twitter:creator', page.relativePath) === twitterCreator,
+          `[${page.relativePath}] twitter:creator must match hugo.toml params.seo.twitterCreator. Expected "${twitterCreator}".`,
+        );
+      } else if (twitterSite) {
+        assert(
+          readRequiredMeta($, 'twitter:creator', page.relativePath) === twitterSite,
+          `[${page.relativePath}] twitter:creator must fall back to params.seo.twitterSite. Expected "${twitterSite}".`,
+        );
+      } else {
+        assert(
+          readOptionalMeta($, 'twitter:creator') === null,
+          `[${page.relativePath}] twitter:creator must not be emitted when params.seo.twitterCreator and twitterSite are empty.`,
+        );
+      }
+
       const ogImage = readOptionalMeta($, 'og:image');
       if (ogImage !== null) {
         assertResolvableAssetUrl(
@@ -254,6 +283,8 @@ function readHugoConfig(configPath) {
   const config = fs.readFileSync(configPath, 'utf8');
   const baseUrlRaw = readTopLevelTomlString(config, 'baseURL');
   const siteTitle = readTopLevelTomlString(config, 'title');
+  const twitterSite = readTomlSectionString(config, 'params.seo', 'twitterSite');
+  const twitterCreator = readTomlSectionString(config, 'params.seo', 'twitterCreator');
 
   assert(baseUrlRaw, `Could not read baseURL from ${configPath}.`);
   assert(siteTitle, `Could not read title from ${configPath}.`);
@@ -261,12 +292,41 @@ function readHugoConfig(configPath) {
   return {
     baseUrl: new URL(baseUrlRaw),
     siteTitle,
+    twitterSite,
+    twitterCreator,
   };
 }
 
 function readTopLevelTomlString(config, key) {
   const match = config.match(new RegExp(`^${key}\\s*=\\s*["']([^"']+)["']`, 'm'));
   return match ? match[1].trim() : '';
+}
+
+function readTomlSectionString(config, section, key) {
+  let currentSection = '';
+  for (const rawLine of config.split(/\r?\n/)) {
+    const line = rawLine.trim();
+
+    if (!line || line.startsWith('#')) {
+      continue;
+    }
+
+    if (line.startsWith('[') && line.endsWith(']')) {
+      currentSection = line.slice(1, -1).trim();
+      continue;
+    }
+
+    if (currentSection !== section) {
+      continue;
+    }
+
+    const match = rawLine.match(new RegExp(`^\\s*${key}\\s*=\\s*["']([^"']*)["']`));
+    if (match) {
+      return match[1].trim();
+    }
+  }
+
+  return '';
 }
 
 function walkHtmlFiles(directory) {
