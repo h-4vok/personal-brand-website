@@ -237,6 +237,42 @@ describe('SEO build assertions', () => {
       const hasServiceSchema = schemaTypes.some((type) => SERVICE_SCHEMA_TYPES.has(type));
       const isServiceLanding = page.relativePath === 'engineering-leadership-coaching/index.html';
 
+      if (isServiceLanding) {
+        const portrait = $('img.strategy-session-portrait');
+        assert(
+          portrait.length === 1,
+          `[${page.relativePath}] must render exactly one strategy-session portrait image.`,
+        );
+
+        const loading = portrait.attr('loading')?.trim() ?? '';
+        assert(
+          loading === 'eager',
+          `[${page.relativePath}] strategy-session portrait must use loading=\"eager\". Actual value: \"${loading}\".`,
+        );
+
+        const portraitSrc = portrait.attr('src')?.trim() ?? '';
+        assert(
+          portraitSrc && !portraitSrc.includes('images/avatar3.jpg'),
+          `[${page.relativePath}] strategy-session portrait must not use the oversized static avatar3.jpg. Actual src: \"${portraitSrc}\".`,
+        );
+        assert(
+          portraitSrc.includes('_hu_') || portraitSrc.endsWith('.webp'),
+          `[${page.relativePath}] strategy-session portrait should be served from Hugo image processing output. Actual src: \"${portraitSrc}\".`,
+        );
+
+        const pictureSources = portrait
+          .closest('picture')
+          .find('source')
+          .map((_, el) => $(el).attr('srcset')?.trim() ?? '')
+          .get()
+          .join(' ');
+
+        assert(
+          !pictureSources.includes('images/avatar3.jpg'),
+          `[${page.relativePath}] strategy-session portrait sources must not reference the oversized static avatar3.jpg.`,
+        );
+      }
+
       if (pageType === 'blog-post') {
         assert(
           ogType === 'article',

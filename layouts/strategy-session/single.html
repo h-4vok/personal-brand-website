@@ -12,13 +12,17 @@
         </div>
 
         <div class="strategy-session-hero__media">
-          <img
-            src="{{ .Params.hero_image | relURL }}"
-            alt="{{ .Params.hero_image_alt }}"
-            class="strategy-session-portrait"
-            width="300"
-            height="300"
-          >
+          {{ partial "image.html" (dict
+            "Src" .Params.hero_image
+            "Alt" .Params.hero_image_alt
+            "Class" "strategy-session-portrait"
+            "Loading" "eager"
+            "DisplaySM" "320x"
+            "DisplayMD" "420x"
+            "DisplayLG" "520x"
+            "DisplayXL" "600x"
+            "Context" .
+          ) }}
         </div>
       </header>
 
