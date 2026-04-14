@@ -18,8 +18,14 @@
       </div>
       {{"<!-- /section title -->" | safeHTML}}
       {{ $paginator := .Paginate .Data.Pages 9 }}
-      {{ range $paginator.Pages }}
-      {{ .Render "article" }}
+      {{ range $i, $page := $paginator.Pages }}
+      {{ if and (hasPrefix $.RelPermalink "/articles/") (lt $i 3) }}
+        {{ $page.Scratch.Set "aboveFoldCard" true }}
+        {{ if eq $i 0 }}
+          {{ $page.Scratch.Set "lcpCard" true }}
+        {{ end }}
+      {{ end }}
+      {{ $page.Render "article" }}
       {{ end }}
       <div class="col-12">
         {{ template "_internal/pagination.html" . }}

@@ -231,6 +231,35 @@ describe('SEO build assertions', () => {
         );
       }
 
+      if (page.relativePath === 'articles/index.html') {
+        const articleImages = $('.media-wrapper img.img-blog').slice(0, 3);
+        assert(
+          articleImages.length === 3,
+          `[${page.relativePath}] must render at least 3 article card images for the above-the-fold eager loading assertions.`,
+        );
+
+        articleImages.each((index, element) => {
+          const img = $(element);
+          const className = img.attr('class') ?? '';
+          assert(
+            !className.split(/\s+/).includes('lozad'),
+            `[${page.relativePath}] above-the-fold article card image ${index + 1} must not include the \"lozad\" class.`,
+          );
+          const loading = img.attr('loading')?.trim() ?? '';
+          assert(
+            loading === 'eager',
+            `[${page.relativePath}] above-the-fold article card image ${index + 1} must use loading=\"eager\". Actual value: \"${loading}\".`,
+          );
+        });
+
+        const firstImage = articleImages.first();
+        const fetchPriority = firstImage.attr('fetchpriority')?.trim() ?? '';
+        assert(
+          fetchPriority === 'high',
+          `[${page.relativePath}] first above-the-fold article card image must use fetchpriority=\"high\". Actual value: \"${fetchPriority}\".`,
+        );
+      }
+
       const schemas = readStructuredData($, page.relativePath);
       const schemaTypes = collectSchemaTypes(schemas);
       const hasArticleSchema = schemaTypes.some((type) => ARTICLE_SCHEMA_TYPES.has(type));
