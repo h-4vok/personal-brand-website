@@ -1,7 +1,5 @@
 {{ define "main" }}
 
-{{ partial "navigation.html" . }}
-
 {{ if not (hasPrefix .RelPermalink "/articles/") }}
 {{ partial "blog-breadcrumb.html" . }}
 {{ end }}
