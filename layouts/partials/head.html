@@ -100,7 +100,7 @@
 	{{ $vendorCssParts := slice }}
 	{{ range site.Params.plugins.css }}
 		{{ if or (hasPrefix .link "http://") (hasPrefix .link "https://") }}
-			<link rel="stylesheet" href="{{ .link | absURL }}">
+			{{ $vendorCssParts = $vendorCssParts | append (resources.FromString (printf "css/vendor/%s" (path.Base .link)) (printf "@import url(%q);" .link)) }}
 		{{ else }}
 			{{ $diskPath := printf "static/%s" .link }}
 			{{ if not (fileExists $diskPath) }}
@@ -113,14 +113,9 @@
 			{{ $vendorCssParts = $vendorCssParts | append (resources.FromString (printf "css/vendor/%s" (path.Base .link)) $content) }}
 		{{ end }}
 	{{ end }}
-	{{ if gt (len $vendorCssParts) 0 }}
-		{{ $vendorCss := $vendorCssParts | resources.Concat "css/vendor.css" | minify | fingerprint "sha384" }}
-		<link rel="stylesheet" href="{{ $vendorCss.Permalink }}" integrity="{{ $vendorCss.Data.Integrity }}" media="screen">
-	{{ end }}
 
 	{{"<!-- Main Stylesheet -->"|safeHTML}}
-	{{ $styles := resources.Get "css/style.css" | minify | fingerprint "sha384" }}
-	<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+	{{ $styles := resources.Get "css/style.css" }}
 
 	{{"<!-- Custom stylesheet bundle -->" |safeHTML}}
 	{{ $customPaths := slice
@@ -142,21 +137,35 @@
 			{{ $customParts = $customParts | append . }}
 		{{ end }}
 	{{ end }}
+	{{ $deferredCssParts := slice }}
+	{{ if gt (len $vendorCssParts) 0 }}
+		{{ $deferredCssParts = $deferredCssParts | append ($vendorCssParts | resources.Concat "css/vendor.css") }}
+	{{ end }}
+	{{ with $styles }}
+		{{ $deferredCssParts = $deferredCssParts | append . }}
+	{{ end }}
 	{{ if gt (len $customParts) 0 }}
-		{{ $custom := $customParts | resources.Concat "css/custom.bundle.css" | minify | fingerprint "sha384" }}
-		<link rel="stylesheet" href="{{ $custom.Permalink }}" integrity="{{ $custom.Data.Integrity }}" media="screen">
+		{{ $deferredCssParts = $deferredCssParts | append ($customParts | resources.Concat "css/custom.bundle.css") }}
+	{{ end }}
+	{{ partial "critical-css.html" . }}
+	{{ if gt (len $deferredCssParts) 0 }}
+		{{ $siteCss := $deferredCssParts | resources.Concat "css/site.css" | minify | fingerprint "sha384" }}
+		<link rel="preload" href="{{ $siteCss.Permalink }}" as="style" integrity="{{ $siteCss.Data.Integrity }}">
+		<link rel="stylesheet" href="{{ $siteCss.Permalink }}" integrity="{{ $siteCss.Data.Integrity }}" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript>
+			<link rel="stylesheet" href="{{ $siteCss.Permalink }}" integrity="{{ $siteCss.Data.Integrity }}">
+		</noscript>
 	{{ end }}
 
 	{{ "<!--Favicon-->" | safeHTML }}
 	<link rel="icon" type="image/png" sizes="32x32" href="{{ `images/icons/favicon-32x32.png` | absURL }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ `images/icons/favicon-16x16.png` | absURL }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ `images/icons/favicon-16x16.png` | absURL }}">
   <link rel="shortcut icon" type="image/png" href="{{ `images/icons/favicon-32x32.png` | absURL }}" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ `images/icons/apple-touch-icon.png` | absURL }}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ `images/icons/apple-touch-icon.png` | absURL }}">
   <link rel="manifest" href="/site.webmanifest">
 
 	{{ partial "analytics.html" . }}
-	<script src="https://analytics.ahrefs.com/analytics.js" data-key="A5YQA1IobngQ0vKl+SpY8g" async></script>
 
 	{{ $websiteSchema := dict
 		"@context" "https://schema.org"

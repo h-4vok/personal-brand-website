@@ -14,7 +14,7 @@ const SERVICE_SCHEMA_TYPES = new Set(['Service']);
 const LANGUAGE_HOME_SEGMENTS = new Set(['en', 'english', 'fr']);
 const LEGACY_PUBLIC_SEGMENTS = ['/english/', '/en/', '/fr/'];
 
-const { baseUrl, siteTitle, twitterSite, twitterCreator } = readHugoConfig(HUGO_CONFIG_PATH);
+const { baseUrl, siteTitle, twitterSite, twitterCreator, ahrefsDataKey } = readHugoConfig(HUGO_CONFIG_PATH);
 const netlifyConfig = fs.readFileSync(NETLIFY_CONFIG_PATH, 'utf8');
 const htmlFiles = fs.existsSync(PUBLIC_DIR)
   ? walkHtmlFiles(PUBLIC_DIR)
@@ -143,6 +143,63 @@ describe('SEO build assertions', () => {
       const twitterTitle = readRequiredMeta($, 'twitter:title', page.relativePath);
       const twitterDescription = readRequiredMeta($, 'twitter:description', page.relativePath);
       readRequiredMeta($, 'twitter:card', page.relativePath);
+
+      const criticalCss = $('style[data-critical-css="true"]');
+      assert(
+        criticalCss.length === 1,
+        `[${page.relativePath}] must emit exactly one inline critical CSS block.`,
+      );
+
+      const preloadStyles = $('link[rel="preload"][as="style"]');
+      assert(
+        preloadStyles.length === 1,
+        `[${page.relativePath}] must preload exactly one deferred stylesheet bundle.`,
+      );
+
+      const deferredStylesheet = $('link[rel="stylesheet"][href*="/css/site."]');
+      assert(
+        deferredStylesheet.length === 1,
+        `[${page.relativePath}] must load the combined site stylesheet bundle.`,
+      );
+
+      assert(
+        $('link[rel="stylesheet"][href*="/css/vendor."]').length === 0,
+        `[${page.relativePath}] must not emit a blocking vendor.css stylesheet link.`,
+      );
+      assert(
+        $('link[rel="stylesheet"][href*="/css/custom.bundle."]').length === 0,
+        `[${page.relativePath}] must not emit a blocking custom.bundle.css stylesheet link.`,
+      );
+      assert(
+        $('link[rel="stylesheet"][href*="/css/style."]').length === 0,
+        `[${page.relativePath}] must not emit a blocking style.css stylesheet link.`,
+      );
+
+      if (ahrefsDataKey) {
+        const ahrefsScript = $(`script[data-key="${ahrefsDataKey}"]`);
+        assert(
+          ahrefsScript.length === 1,
+          `[${page.relativePath}] must emit exactly one Ahrefs analytics script tag with the configured data-key.`,
+        );
+
+        const ahrefsSrc = ahrefsScript.attr('src')?.trim() ?? '';
+        assert(
+          ahrefsSrc && !ahrefsSrc.includes('analytics.ahrefs.com'),
+          `[${page.relativePath}] Ahrefs analytics must be served from the local site, not analytics.ahrefs.com. Actual src: "${ahrefsSrc}".`,
+        );
+
+        assertResolvableAssetUrl(
+          ahrefsSrc,
+          baseUrl,
+          `[${page.relativePath}] Ahrefs analytics src must be absolute or root-relative. Actual value: "${ahrefsSrc}".`,
+        );
+        assertPublicAssetExists(
+          ahrefsSrc,
+          baseUrl,
+          page.relativePath,
+          'Ahrefs analytics script',
+        );
+      }
 
       if (twitterSite) {
         assert(
@@ -350,6 +407,7 @@ function readHugoConfig(configPath) {
   const siteTitle = readTopLevelTomlString(config, 'title');
   const twitterSite = readTomlSectionString(config, 'params.seo', 'twitterSite');
   const twitterCreator = readTomlSectionString(config, 'params.seo', 'twitterCreator');
+  const ahrefsDataKey = readTomlSectionString(config, 'params.analytics.ahrefs', 'dataKey');
 
   assert(baseUrlRaw, `Could not read baseURL from ${configPath}.`);
   assert(siteTitle, `Could not read title from ${configPath}.`);
@@ -359,6 +417,7 @@ function readHugoConfig(configPath) {
     siteTitle,
     twitterSite,
     twitterCreator,
+    ahrefsDataKey,
   };
 }
 

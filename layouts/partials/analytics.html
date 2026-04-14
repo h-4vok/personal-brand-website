@@ -2,6 +2,8 @@
 {{ $umamiWebsiteID := default (getenv "HUGO_UMAMI_WEBSITE_ID") site.Params.analytics.umami.websiteId }}
 {{ $umamiScriptURL := default (getenv "HUGO_UMAMI_SCRIPT_URL") site.Params.analytics.umami.scriptURL }}
 {{ $umamiDomains := default (getenv "HUGO_UMAMI_DOMAINS") site.Params.analytics.umami.domains }}
+{{ $ahrefsEnabled := default true site.Params.analytics.ahrefs.enable }}
+{{ $ahrefsDataKey := default "A5YQA1IobngQ0vKl+SpY8g" site.Params.analytics.ahrefs.dataKey }}
 
 {{ if and $umamiEnabled $umamiWebsiteID $umamiScriptURL }}
 <script
@@ -10,5 +12,15 @@
   src="{{ $umamiScriptURL | safeURL }}"
   data-website-id="{{ $umamiWebsiteID }}"
   {{ with $umamiDomains }}data-domains="{{ . }}"{{ end }}
+></script>
+{{ end }}
+
+{{ if and $ahrefsEnabled $ahrefsDataKey (eq hugo.Environment "production") }}
+{{ $ahrefsScript := resources.Get "vendor/ahrefs/analytics.js" | fingerprint "sha384" }}
+<script
+  async
+  src="{{ $ahrefsScript.Permalink }}"
+  integrity="{{ $ahrefsScript.Data.Integrity }}"
+  data-key="{{ $ahrefsDataKey }}"
 ></script>
 {{ end }}
