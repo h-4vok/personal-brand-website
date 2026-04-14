@@ -1,108 +1,144 @@
 ---
 title: "LinkedIn was stealing my attention: How I used agentic AI to take it back"
-date: "2026-04-14T21:00:00Z"
+date: "2026-04-20T08:00:00Z"
 author: "Christian Guzman"
 image: "images/blog/article/agentic-ai-escaping-attention-trap.jpg"
-description: "lorem ipsum"
+description: "How I built a custom AI-powered system to eliminate the doomscrolling trap, filter out social media noise, and protect my attention as a leader."
 keywords:
-  - "Engineering Leadership"
+  - "Agentic AI"
   - "Signal to Noise Ratio"
-  - "Human Systems Architecture"
-  - "Leadership Systems"
-  - "AI Strategy"
+  - "Social Media Algorithm"
+  - "Time Management for Leaders"
+  - "Engineering Leadership"
+  - "Vibe Coding"
 categories:
   - "Leadership"
-  - "Human Systems"
+  - "Technology & AI"
 tags:
-  - "Management"
-  - "Team Dynamics"
-  - "Autonomy"
-  - "Mentorship"
+  - "Agentic AI"
+  - "Productivity"
+  - "Attention Economy"
+  - "Systems Architecture"
 slug: "agentic-ai-escaping-attention-trap"
 ---
 
-I always felt uncomfortable scrolling down LinkedIn.
+I’ve always felt a deep friction whenever I scroll through LinkedIn.
 
-At one point, I had made the decision to work on my networking and branding skills. This included, among many other things, building a great social media presence, especially in LinkedIn.
+A while ago, I made a strategic choice to invest in my personal brand. I needed to build a strong presence, and LinkedIn is the obvious arena where the decision-makers live.
 
-The plan was simple, comment a bit here and there on things I cared about, post my ideas, post about my articles, try to gain an audience and followers, etc. The usual.
+The plan was the standard playbook: post my ideas, share my articles, and engage with the right niches to find my audience. Simple. Or so I thought.
 
-But I immediately started feeling... "uncomfortable" about the necessary doom scrolling to find the niches I wanted to talk about.
+But I immediately hit a trap. I was feeling "uncomfortable". To find the high-signal conversations I actually wanted to talk about, I had to pay with my time and attention: sessions of soul-crushing doomscrolling. I was being harvested by an algorithm designed for retention, not for my growth.
 
-## Design vs Need
+## My Needs Above All
 
-There was a default cost associated with how social media feeds are designed for retention. What I needed is targeting, what social media offers is a buckshot.
+There is a fundamental misalignment in the architecture of social media. These platforms are optimized for retention, but as a leader, I needed targeting. What I was looking for was precision; what the feed offered me was a buckshot of noise.
 
-I could not spend this many hours, day by day, only doomscrolling trying ot build a brand. It should be about writing articles like these, ebooks, doing coaching sessions, thinking about topics, self learning, etc. Every irrelevant post was waste that I had to pay with my time.
+I couldn't afford to burn hours every day doomscrolling just to maintain a "presence." Building a brand should be about high-leverage activities: writing deep-dives, coaching, and strategic thinking. Every irrelevant post in my feed was distraction, it was waste, it was a systemic inefficiency I was forced to pay for with my most non-renewable resource: my time.
 
-## The typical problem: Signal vs Noise
+## The Typical Problem: Signal vs. Noise
 
-The more experienced you become as a leader, the more you value true signals, and you tend to build defenses against noise. This is why I felt uncomfortable. I could not explain it until much later, as I was building my vibe coded solution and learning more about myself in the process.
+As you grow in leadership, your noise filter becomes invaluable. You learn to value high-fidelity signals and build robust defenses against noise and distraction. You almost become disgusted by it. 
 
-What was so "low signal" about the feed? Corporate announcements, topics I did not care for, posts that seemed interesting only to end in some kind of sale process or trying to get me to click in a link to buy a ticket or a product or book a call with a sales rep, and of course, just content that I did not care about, even if it was legitimate.
+This was the root of my friction. I couldn't fully articulate it until I started building my vibe-coded solution, realizing that my discomfort was a rejection of a low-signal environment, and not a simple urge to automate things.
 
-This low signal noise is necessary for LinkedIn, but life is not endless, so I have to do the best I can with my time. Not only in business, but also with my family.
+But, what exactly defines "noise"? On LinkedIn it’s the corporate fluff, the repetitive PR announcements, and the engagement bait that inevitably leads to a sales pitch. Even legitimate content becomes noise if it doesn't align with your strategic growth.
 
-So in order to avoid low signals, I had to define what a high signal was. For me, it was leaders talking about what does not working, leaders discussing new workflows, ideas, AI breakthroughs. People talking about struggles and systemic failures and anti-patterns.
+While this noise is the lifeblood of LinkedIn’s business model, human life is finite. I refuse to trade my time—the hours that belong to my business and my family—for the sake of an algorithm's retention metrics.
+
+To solve the problem, I had to define what a High Signal actually looked like. I defined it as leaders being honest about what isn’t working, deep dives into new workflows, and genuine AI breakthroughs. I want to hear about systemic failures, real-world struggles, and anti-patterns. I don’t want the polished surface; I want the architectural truth. Your own definition might (and should) differ.
 
 ## The build process
 
-*Skip this part if how I built the solution is noise for you*
+*(Skip this part if the technical "how" is noise for you)*
 
-I am always thinking in automation, and no, AI is not the default answer. For this case, I needed something to doomscroll social media for me, identify what people were talking about, discern what I would really care for, and then provide me with a list of distilled posts to actually read.
+I operate with an automation-first mindset, but AI is rarely my default answer. For this challenge, I needed a system that could doomscroll for me, identify themes, discern relevance, and present a distilled list of "high-signal" posts.
 
-The first thing I tried is to build automation with Comet. Ok yes, that is AI, and that is exactly why it failed spectacularly. It would do its job for a bit but then fail for different reasons after just a bit. At one point, it almost seemed to indicate it just did not want to do that.
+### The Failed Experiment: AI is not a Silver Bullet
 
-It was worth the shot, I needed to validate I was not crazy for thinking AI was not the solution. But you never know, and the cost of the experiment was minimal to be honest, less than two hours.
+My first attempt was building an automation with *Comet*. Yes, that is AI, and that is precisely why it failed. It would work for a few minutes and then fail for erratic reasons. At one point, it felt as if the model simply "didn't want" to perform the task.
 
-So I went with a proper architecture for a Chrome Plugin that would inject itself onto the LinkedIn website and then take control when given, to doomscrool for me, simulate human behaviour, and simply "take note" of what was available for me to read.
+It was a valuable two-hour experiment. It validated my hunch: I didn't need a black box; I needed a robust architecture.
 
-With agentic coding doing the hard work, I designed the requirements and defined how to establish high signals:
-* Looking at people's profiles
-* Checking followers
-* Checking network proximity
-* Checking and filtering roles and profiles
+### The Architecture: A Chrome Plugin
 
-I created a skill "product-manager" to help me refine requirements and save them in github issues. Another skill "tech-lead" to build the technical definitions. They all interviewed me for a long time. I could take a passive role, and be interviewed, after a full day of work and meetings. It felt nice and relaxing, and progress was constant. I will soon write more about agentic skills.
+I shifted to a proper Chrome Plugin architecture. This allowed the system to inject itself directly into LinkedIn, take control on command, simulate human behavior, and "take notes" on everything available in my feed.
 
-Then AI became part of the picture. I added a way for this plugin to configure a Gemini API Key to use a free model for discerning which posts I would actually care about, and which ones not. Is this marketing or is it about something I cared for?
+Using *agentic coding*, I defined the requirements for high-signal detection:
+* Scraping profiles and follower counts.
+* Measuring network proximity.
+* Filtering by specific roles and professional profiles.
 
-I then defined and created a layer of enrichment, where the crawler would visit everyone's profile and add enrichment data to the output based on information found on people's profile. To avoid doing this constantly, any information found would be cached locally for 30 days.
+### Agentic Skills: Being Interviewed by my own Code
 
-And then I would get a final JSON output with the information. But Christian, you mean you changed the feed UX for a JSON file? No sir.
+This was the most relaxing part of the process. I created two specific "skills" (agents): a [Product Manager](https://github.com/h-4vok/linkedin-post-gatherer/blob/main/.agents/skills/product-manager/SKILL.md) to refine requirements and save them as GitHub issues, and a [Tech Lead](https://github.com/h-4vok/linkedin-post-gatherer/blob/main/.agents/skills/tech-lead/SKILL.md) to handle technical definitions.
 
-In under an hour, I had a pretty website hosted online that allowed me to load these JSON files into it. I hosted it for free in netlify but you can quickly spin up your own version: https://github.com/h-4vok/linkedin-post-presenter
+After a full day of meetings and work, I took a passive role. I let these agents interview me. They asked the hard questions, and I just provided the vision. Progress was constant, and it felt like having a tireless staff at my disposal. (I’ll write more about these agentic skills soon).
 
-You just dropped or upload the file there and wallah, you get a list of all posts, with pills indicating whether you should pay attention to it or not, and a group of filters to play with. Some simple buttons to go see that post, and post your comment.
+### The Intelligence Layer: Gemini & Enrichment
 
-On purpose, I decided to not use AI to create these comments, and not even to suggest ideas. I never wanted my voice to be replaced by AI, nor my creativity be biased by "average ideas". That is another key decision. I would still spend time of my own writing here, writing a lot sometimes. But it is me, and its a proper investment. Its a high signal. Its what I should be doing.
+Once the data was scraped, I introduced a targeted AI layer. I configured a Gemini API key to use a free model for the final discernment: Is this post a genuine insight, or just a marketing funnel?
 
-## Echo Chamber
+To avoid redundancy, I added an *enrichment layer*. The crawler visits every profile to gather deeper context, caching that information locally for 30 days.
 
-The network proximity indicator (whether someone is connected to you, or its a 2nd or 3rd+ connection) is massively imporant. My another "human made" rule is to ensure 70% of my engagement to escape my echo chamber, to ensure I am not talking to the same people over and over.
+### The Interface: From JSON to UX
 
-The algorithm will always do that, serve you more of what you want, with a quota of "discovery". I needed to ensure discovery was always 70% new.
+The final output of the plugin is a JSON file. But I wasn't going to spend my life reading raw data.
 
-Besides, if you only listen to the same people and the ones you know, you are living in a closed system and not learning on your own.
+In under an hour, I built a web presenter hosted on Netlify and locally. You simply upload the JSON, and voila: you get a clean list of posts with pills indicating if they deserve your attention, plus a set of powerful filters to play with.
 
-This made exploration faster, exploitation easier, and introduced a learning component that is not what I originally expected when I began using LinkedIn so much more.
+Check it out [here](https://github.com/h-4vok/linkedin-post-presenter). Keep in mind I built the UX of all apps here just for me, but this one app should be self explanatory.
 
-## Quality over quantity
+### The Human Boundary: Why AI does not speak for me
 
-While obvious, with a doomscrolling feed you eventually tap out, you surrender to it. You have been tortured enough and just want out. So you do your "chore", you make a few low quality comments, cover your quota for the algorithm, and hope for the best.
+I made a deliberate decision: *I do not use AI to write my comments or suggest ideas*. I refuse to let my voice be replaced by an LLM or have my creativity biased by "average ideas." Writing a comment is an investment of my own energy. It’s a high-signal activity. By automating the noise-filtering, I finally have the time to ensure that every word I post is actually mine.
 
-By filering out low signals, all noise, I remained focused on quality. My struggle was no longer about finding where and what to talk about, but how some of the smarter people than me made me question things and made me think hard. 
+However, I must confess I have talked to AI so much that I have copied many of its quirks. But, what's better (or worse) is that I became a human detector for AI written content. I do not think this is a superhuman skill though, as so many others can detect slop just by looking at it. Please, if you are writing a document to be read by your entire company, do not slop it. Use AI for review, feedback, adversarial challenge, etc. Do not outsource your creativity and mind.
 
-I promised myself discipline, to never post mundane comments just to "finish the task".
+Anyway, back to our topic.
+
+## Escaping the Echo Chamber
+
+The network proximity indicator—whether someone is a direct connection or a 2nd/3rd+ degree—is paramount. Another of my "human-made" rules is to ensure that *70% of my engagement happens outside my immediate circle*. This is my deliberate strategy to escape the echo chamber and avoid the trap of talking to the same people over and over.
+
+Algorithms are naturally biased: they serve you more of what you already know, with only a tiny, controlled quota for "discovery." I decided to flip that logic. I needed to ensure that my discovery rate was always at least 70% new.
+
+If you only listen to the people you already know, you are effectively living in a closed system. In engineering, closed systems without new energy or information eventually stagnate. You stop learning when you eliminate the friction of unfamiliar ideas.
+
+By enforcing this ratio, I made exploration faster and exploitation easier. It introduced a learning component I didn't originally expect, transforming LinkedIn from a social media "chore" into a genuine systemic research tool.
+
+## Quality over Quantity
+
+It sounds obvious, but a doomscrolling feed eventually makes you tap out. You surrender to the noise. After being "tortured" by irrelevance long enough, you just want out. This is when you perform the "algorithm chore": you leave a few low-quality comments just to hit your quota, satisfy the machine, and hope for the best.
+
+By filtering out the low signals and the static, I reclaimed my focus on quality. My struggle was no longer about finding where or what to talk about. Instead, the challenge became purely intellectual: engaging with people smarter than me who forced me to question my assumptions and think hard.
+
+I promised myself a new discipline: never to post a mundane comment just to "finish the task".
 
 ## AI as an Attention companion
 
-So, perhaps LinkedIn will hate me for it, but I found a way to break out of the algorithm while still gradually getting its benefits. I used AI to get more time for me, for what I love doing and for spending with my family on those evenings. AI helped me in two ways, to build and to pre-process all noise.
+LinkedIn might not love me for this, but I’ve found a way to bypass the algorithm while still extracting its value. I’ve turned AI into a shield that buys me back my time—time for the deep work I love and for the evenings I owe my family.
+
+AI served me in four distinct ways: 
+* As a builder (to create the tool)
+* As a sparring partner (interviewing me until it had 99% certainty of what I wanted)
+* As a technical collaborator (which, towards the end, it was enough context to just decide for me)
+* As a filter (to pre-process the noise).
+
+AI didn't replace my attention; it protected it (remember what I said about taking on AI's quirks? this is how often AI writes phrases, framing it one way and then saying its another thing -makes me think we will never be able to use this framing strategy without sounding sus).
 
 ## Reclaim your authority
 
-While you can definitely visit my github repos, install them locally, give them a try (hey, be warned, I did not care about UX, this is a plugin just for myself -- for now at least), what actually matters here is that you design your own system for filtering noise. Maybe this is not it, but you have the tools today to imagine whatever you want. Step away from the known reality and build a new one. Maybe you don't need this plugin, you need OpenClaw, or you need a different approach to your problem, etc. Automate the noise filter, and manually enjoy the high signals.
+You can visit my GitHub repositories (this solution is at https://github.com/h-4vok/linkedin-post-gatherer btw!), install them locally, and give them a shot. But be warned: I didn’t care about the UX. This is a plugin built by me, for me—at least for now. So the button layout and stuff got very little attention.
 
-You know what they say, if you are not paying for it, you are the product.
+However, the code isn’t what actually matters here. What matters is that you *design your own system* for filtering noise.
 
-PS: Did I mention I spent 0$ on this? All vibe coded, hosted in my own browser, and using Gemini's free tier for smart filtering. If the solution is for yourself, you'll likely find a zero cost solution.
+My approach might not be your solution, but today you have the tools to imagine whatever you want. Step away from the "known reality" of default feeds and build a new one. Maybe you don’t need this specific plugin; maybe you need OpenClaw, or a completely different architectural approach to your digital life.
+
+The goal is simple: Automate the noise filter so you can manually enjoy the high signals.
+
+You know what they say: if you are not paying for it, you are the product. It's time to stop being the product and start being the architect.
+
+*PS*: Did I mention I spent $0 on this? It’s all vibe-coded, hosted in my own browser, and uses Gemini's free tier for the smart filtering. When the solution is for yourself, you’ll likely find a *zero-cost path*. Make that your objective.
+
+*PS2*: No, I don’t use this solution every day. As I mentioned before, *I got my time* back—and I’d rather spend it with my family.
