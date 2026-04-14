@@ -1,10 +1,9 @@
 ---
-title: "Architecting around the signal-to-noise ratio: A must-do in an Agentic world"
-date: "2026-03-31T21:00:00Z"
-draft: true
+title: "LinkedIn was stealing my attention: How I used agentic AI to take it back"
+date: "2026-04-14T21:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/bring-me-solutions.jpg"
-description: "How engineering leaders can design information systems that separate high-signal insight from algorithmic noise in an agentic era."
+image: "images/blog/article/agentic-ai-escaping-attention-trap.jpg"
+description: "lorem ipsum"
 keywords:
   - "Engineering Leadership"
   - "Signal to Noise Ratio"
@@ -19,7 +18,7 @@ tags:
   - "Team Dynamics"
   - "Autonomy"
   - "Mentorship"
-slug: "leadership-systems-manifesto-teaser"
+slug: "agentic-ai-escaping-attention-trap"
 ---
 
 I always felt uncomfortable scrolling down LinkedIn.
@@ -70,34 +69,40 @@ Then AI became part of the picture. I added a way for this plugin to configure a
 
 I then defined and created a layer of enrichment, where the crawler would visit everyone's profile and add enrichment data to the output based on information found on people's profile. To avoid doing this constantly, any information found would be cached locally for 30 days.
 
+And then I would get a final JSON output with the information. But Christian, you mean you changed the feed UX for a JSON file? No sir.
 
+In under an hour, I had a pretty website hosted online that allowed me to load these JSON files into it. I hosted it for free in netlify but you can quickly spin up your own version: https://github.com/h-4vok/linkedin-post-presenter
 
-# PLAN
+You just dropped or upload the file there and wallah, you get a list of all posts, with pills indicating whether you should pay attention to it or not, and a group of filters to play with. Some simple buttons to go see that post, and post your comment.
 
-3. La Arquitectura de Ingesta (Ingestion & Filtering)
-Acá hablás del "cómo" sin confesar el bot. Explicá que diseñaste un sistema de tres capas:
+On purpose, I decided to not use AI to create these comments, and not even to suggest ideas. I never wanted my voice to be replaced by AI, nor my creativity be biased by "average ideas". That is another key decision. I would still spend time of my own writing here, writing a lot sometimes. But it is me, and its a proper investment. Its a high signal. Its what I should be doing.
 
-Capa 1 (Categoría): Filtrado por roles y seniority (CTOs, VPs, Architects).
+## Echo Chamber
 
-Capa 2 (Semántica): Uso de IA para discernir el subtexto del post. ¿Es un post de marketing o es un post de ingeniería real?
+The network proximity indicator (whether someone is connected to you, or its a 2nd or 3rd+ connection) is massively imporant. My another "human made" rule is to ensure 70% of my engagement to escape my echo chamber, to ensure I am not talking to the same people over and over.
 
-Capa 3 (Contexto): Enriquecimiento de datos para entender desde dónde habla el autor (su trayectoria, no solo su último post).
+The algorithm will always do that, serve you more of what you want, with a quota of "discovery". I needed to ensure discovery was always 70% new.
 
-4. Escapar de la "Echo Chamber" (Exploración vs. Explotación)
-Explicá por qué es vital buscar gente fuera de tu red inmediata. Hablá de tu regla del 70/30: el 70% de tu energía debe ir a "Nuevos Territorios". Si solo escuchás a tus conocidos, estás viviendo en un sistema cerrado. La innovación requiere inputs externos.
+Besides, if you only listen to the same people and the ones you know, you are living in a closed system and not learning on your own.
 
-5. Data-Driven Networking: Calidad sobre Cantidad
-Atacá el mito de "postear mucho". Planteá que es más valioso un solo comentario de alta densidad técnica en un post de alta señal, que 10 posts propios al aire. El networking no es socializar; es un intercambio de valor arquitectónico.
+This made exploration faster, exploitation easier, and introduced a learning component that is not what I originally expected when I began using LinkedIn so much more.
 
-6. La IA como "Copiloto de Atención"
-Hacé énfasis en que no usás la IA para "escribir por vos" (el error común), sino para "leer por vos". La IA pre-procesa el ruido para que tu cerebro humano se concentre exclusivamente en la parte creativa y crítica: la respuesta estratégica.
+## Quality over quantity
 
-7. Conclusión: Reclamando la Autoridad
-Cerrá con tu tesis de Human Systems Architect: Un sistema humano no puede ser resiliente si sus líderes están distraídos. Diseñar tu propio flujo de información es el primer paso para diseñar organizaciones eficientes. Si no sos el arquitecto de lo que consumís, sos el producto de lo que otros venden.
+While obvious, with a doomscrolling feed you eventually tap out, you surrender to it. You have been tortured enough and just want out. So you do your "chore", you make a few low quality comments, cover your quota for the algorithm, and hope for the best.
 
-TIP: Un consejo para la redacción:
-Mantené ese tono de "Villano del Status Quo". Usá palabras como friction, noise, latent, leverage, system.
+By filering out low signals, all noise, I remained focused on quality. My struggle was no longer about finding where and what to talk about, but how some of the smarter people than me made me question things and made me think hard. 
 
-Cuando llegues al punto 3, podés decir: "He construido un dashboard privado que extrae la señal del ruido...". Dashboard es una palabra segura; a LinkedIn no le importa si tenés un dashboard, le importa si decís cómo sacás los datos.
+I promised myself discipline, to never post mundane comments just to "finish the task".
 
-¿Querés que te prepare un párrafo "hook" potente para el arranque, así ya tenés la mecha prendida?
+## AI as an Attention companion
+
+So, perhaps LinkedIn will hate me for it, but I found a way to break out of the algorithm while still gradually getting its benefits. I used AI to get more time for me, for what I love doing and for spending with my family on those evenings. AI helped me in two ways, to build and to pre-process all noise.
+
+## Reclaim your authority
+
+While you can definitely visit my github repos, install them locally, give them a try (hey, be warned, I did not care about UX, this is a plugin just for myself -- for now at least), what actually matters here is that you design your own system for filtering noise. Maybe this is not it, but you have the tools today to imagine whatever you want. Step away from the known reality and build a new one. Maybe you don't need this plugin, you need OpenClaw, or you need a different approach to your problem, etc. Automate the noise filter, and manually enjoy the high signals.
+
+You know what they say, if you are not paying for it, you are the product.
+
+PS: Did I mention I spent 0$ on this? All vibe coded, hosted in my own browser, and using Gemini's free tier for smart filtering. If the solution is for yourself, you'll likely find a zero cost solution.
