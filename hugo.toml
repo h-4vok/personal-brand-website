@@ -237,6 +237,10 @@ RSS = true                   # LoveIt NEW | 0.2.0
 [params.seo]
 # default site description used for metadata and WebSite JSON-LD
 siteDescription = "Christian Guzman helps engineering leaders build resilient organisations through coaching, systems thinking, and human-centred technical leadership."
+# Optional Twitter/X handles for Twitter Card metadata.
+# Expected format: "@handle" (kept as-is; no normalization).
+twitterSite = ""
+twitterCreator = ""
 # image URL
 image = "/images/social/og-default.jpg"
 # thumbnail URL
