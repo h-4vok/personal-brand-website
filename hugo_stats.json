@@ -27,6 +27,7 @@
       "link",
       "meta",
       "nav",
+      "noscript",
       "ol",
       "p",
       "path",
@@ -36,6 +37,7 @@
       "source",
       "span",
       "strong",
+      "style",
       "svg",
       "title",
       "ul"
