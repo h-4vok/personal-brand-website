@@ -2,14 +2,19 @@
   <div class="post-block">
     <div class="media-wrapper">
       <a href="{{ .Permalink }}">
+      {{ $aboveFold := .Scratch.Get "aboveFoldCard" }}
+      {{ $isLcp := .Scratch.Get "lcpCard" }}
       {{ partial "image.html" (dict
         "Src" .Params.Image
         "Alt" "Image"
-        "Class" "img-fluid lozad img-blog"
+        "Class" (cond $aboveFold "img-fluid img-blog" "img-fluid lozad img-blog")
+        "Loading" (cond $aboveFold "eager" "lazy")
+        "FetchPriority" (cond $isLcp "high" "")
         "DisplayXL" "800x"
         "DisplayLG" "640x"
         "DisplayMD" "480x"
         "DisplaySM" "360x"
+        "Context" .
       ) }}
       </a>
     </div>
