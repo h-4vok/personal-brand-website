@@ -71,10 +71,6 @@ link = "plugins/themify-icons/themify-icons.css"
 
 # js plugins
 [[params.plugins.js]]
-link = "plugins/jquery/jquery.min.js"
-[[params.plugins.js]]
-link = "plugins/bootstrap/bootstrap.min.js"
-[[params.plugins.js]]
 link = "plugins/lazy-load/lozad.min.js"
 
 ############################# Default Parameters ##########################

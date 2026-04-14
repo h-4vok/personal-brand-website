@@ -32,18 +32,20 @@
 	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-transparent">I Accept</span>
 </div>
 <script>
-	(function ($) {
+	(function () {
 		const cookieBox = document.getElementById('js-cookie-box');
 		const cookieButton = document.getElementById('js-cookie-button');
+		if (!cookieBox || !cookieButton || !window.Cookies) return;
+
 		if (!Cookies.get('cookie-box')) {
 			cookieBox.classList.remove('cookie-box-hide');
-			cookieButton.onclick = function () {
+			cookieButton.addEventListener('click', function () {
 				Cookies.set('cookie-box', true, {
 					expires: {{ site.Params.cookies.expire_days }}
 				});
 				cookieBox.classList.add('cookie-box-hide');
-			};
+			});
 		}
-	})(jQuery);
+	})();
 </script>
 {{ end }}
