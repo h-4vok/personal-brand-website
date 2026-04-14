@@ -155,11 +155,38 @@ describe('SEO build assertions', () => {
         preloadStyles.length === 1,
         `[${page.relativePath}] must preload exactly one deferred stylesheet bundle.`,
       );
+      const preloadHref = preloadStyles.first().attr('href')?.trim() ?? '';
+      assert(
+        preloadHref.includes('?v='),
+        `[${page.relativePath}] deferred stylesheet preload must include a stable cache-busting query string.`,
+      );
 
       const deferredStylesheet = $('link[rel="stylesheet"][href*="/css/site."]');
       assert(
         deferredStylesheet.length === 1,
         `[${page.relativePath}] must load the combined site stylesheet bundle.`,
+      );
+      const deferredHref = deferredStylesheet.attr('href')?.trim() ?? '';
+      assert(
+        deferredHref.includes('?v='),
+        `[${page.relativePath}] combined site stylesheet must include a stable cache-busting query string.`,
+      );
+      assert(
+        preloadHref === deferredHref,
+        `[${page.relativePath}] deferred stylesheet preload and stylesheet href must match exactly.`,
+      );
+
+      const noScriptDeferredMatch = html.match(
+        /<noscript>\s*<link rel=stylesheet href="([^"]*\/css\/site\.[^"]*)"/i,
+      );
+      assert(
+        noScriptDeferredMatch,
+        `[${page.relativePath}] must include a noscript fallback for the combined site stylesheet bundle.`,
+      );
+      const noScriptDeferredHref = noScriptDeferredMatch[1]?.trim() ?? '';
+      assert(
+        noScriptDeferredHref === deferredHref,
+        `[${page.relativePath}] noscript stylesheet href must match the deferred stylesheet href exactly.`,
       );
 
       assert(
@@ -186,6 +213,10 @@ describe('SEO build assertions', () => {
         assert(
           ahrefsSrc && !ahrefsSrc.includes('analytics.ahrefs.com'),
           `[${page.relativePath}] Ahrefs analytics must be served from the local site, not analytics.ahrefs.com. Actual src: "${ahrefsSrc}".`,
+        );
+        assert(
+          ahrefsSrc.includes('?v='),
+          `[${page.relativePath}] Ahrefs analytics must include a stable cache-busting query string.`,
         );
 
         assertResolvableAssetUrl(
@@ -278,6 +309,17 @@ describe('SEO build assertions', () => {
         assertNoLegacySegments(
           href.pathname,
           `[${page.relativePath}] found internal link to a retired language URL: "${href.href}".`,
+        );
+      }
+
+      const fingerprintedScripts = $('script[src*="/js/vendor."], script[src*="/js/script."]')
+        .toArray()
+        .map((scriptElement) => $(scriptElement).attr('src')?.trim() ?? '')
+        .filter(Boolean);
+      for (const scriptSrc of fingerprintedScripts) {
+        assert(
+          scriptSrc.includes('?v='),
+          `[${page.relativePath}] fingerprinted script assets must include a stable cache-busting query string. Actual src: "${scriptSrc}".`,
         );
       }
 

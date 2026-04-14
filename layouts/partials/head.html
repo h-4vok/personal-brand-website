@@ -150,10 +150,11 @@
 	{{ partial "critical-css.html" . }}
 	{{ if gt (len $deferredCssParts) 0 }}
 		{{ $siteCss := $deferredCssParts | resources.Concat "css/site.css" | minify | fingerprint "sha384" }}
-		<link rel="preload" href="{{ $siteCss.Permalink }}" as="style" integrity="{{ $siteCss.Data.Integrity }}">
-		<link rel="stylesheet" href="{{ $siteCss.Permalink }}" integrity="{{ $siteCss.Data.Integrity }}" onload="this.onload=null;this.rel='stylesheet'">
+		{{ $siteCssURL := printf "%s?v=%s" $siteCss.Permalink ($siteCss.Data.Integrity | urlquery) }}
+		<link rel="preload" href="{{ $siteCssURL }}" as="style" integrity="{{ $siteCss.Data.Integrity }}">
+		<link rel="stylesheet" href="{{ $siteCssURL }}" integrity="{{ $siteCss.Data.Integrity }}" onload="this.onload=null;this.rel='stylesheet'">
 		<noscript>
-			<link rel="stylesheet" href="{{ $siteCss.Permalink }}" integrity="{{ $siteCss.Data.Integrity }}">
+			<link rel="stylesheet" href="{{ $siteCssURL }}" integrity="{{ $siteCss.Data.Integrity }}">
 		</noscript>
 	{{ end }}
 

@@ -18,12 +18,14 @@
 {{ end }}
 {{ if gt (len $vendorJsParts) 0 }}
 	{{ $vendorJs := $vendorJsParts | resources.Concat "js/vendor.js" | minify | fingerprint "sha384" }}
-	<script src="{{ $vendorJs.Permalink }}" integrity="{{ $vendorJs.Data.Integrity }}" defer></script>
+	{{ $vendorJsURL := printf "%s?v=%s" $vendorJs.Permalink ($vendorJs.Data.Integrity | urlquery) }}
+	<script src="{{ $vendorJsURL }}" integrity="{{ $vendorJs.Data.Integrity }}" defer></script>
 {{ end }}
 
 {{ "<!-- Main Script -->" | safeHTML }}
 {{ $script := resources.Get "js/script.js" | minify | fingerprint "sha384"}}
-<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>
+{{ $scriptURL := printf "%s?v=%s" $script.Permalink ($script.Data.Integrity | urlquery) }}
+<script src="{{ $scriptURL }}" integrity="{{ $script.Data.Integrity }}" defer></script>
 
 <!-- cookie -->
 {{ if site.Params.cookies.enable }}
