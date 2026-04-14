@@ -1,150 +1,181 @@
-/* ========================================================================= */
-/*	Page Preloader
-/* ========================================================================= */
+(() => {
+  'use strict';
 
-$(window).on('load', function () {
-	$('.preloader').fadeOut(100);
-});
+  function hidePreloader() {
+    const preloader = document.querySelector('.preloader');
+    if (!preloader) return;
+    preloader.style.display = 'none';
+  }
 
-jQuery(function ($) {
-	"use strict";
+  function initLazyLoad() {
+    if (typeof window.lozad !== 'function') return;
+    const observer = window.lozad();
+    observer.observe();
+  }
 
-	/* ========================================================================= */
-	/*	lazy load initialize
-	/* ========================================================================= */
+  function scrollToTarget(target) {
+    const offset = 50;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
 
-	const observer = lozad(); // lazy loads elements with default selector as ".lozad"
-	observer.observe();
+  function initSmoothScroll() {
+    document.addEventListener('click', (event) => {
+      const anchor = event.target instanceof Element ? event.target.closest('a') : null;
+      if (!anchor) return;
 
-	/* ========================================================================= */
-	/*	Magnific popup (optional)
-	/* =========================================================================  */
+      const classList = anchor.classList;
+      const isSmooth =
+        anchor.closest('nav') ||
+        classList.contains('page-scroll') ||
+        classList.contains('js-smooth-scroll');
 
-	if ($.fn.magnificPopup && $('.image-popup').length) {
-		$('.image-popup').magnificPopup({
-			type: 'image',
-			removalDelay: 160, //delay removal by X to allow out-animation
-			callbacks: {
-				beforeOpen: function () {
-					// just a hack that adds mfp-anim class to markup
-					this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
-					this.st.mainClass = this.st.el.attr('data-effect');
-				}
-			},
-			closeOnContentClick: true,
-			midClick: true,
-			fixedContentPos: false,
-			fixedBgPos: true
-		});
-	}
+      if (!isSmooth) return;
 
-	/* ========================================================================= */
-	/*	Portfolio Filtering Hook (optional)
-	/* =========================================================================  */
+      const href = anchor.getAttribute('href') || '';
+      if (!href.startsWith('#')) return;
 
-	var containerEl = document.querySelector('.shuffle-wrapper');
-	if (containerEl && window.Shuffle) {
-		var Shuffle = window.Shuffle;
-		var myShuffle = new Shuffle(document.querySelector('.shuffle-wrapper'), {
-			itemSelector: '.shuffle-item',
-			buffer: 1
-		});
+      const target = document.getElementById(href.slice(1)) || document.querySelector(`[name="${href.slice(1)}"]`);
+      if (!target) return;
 
-		jQuery('input[name="shuffle-filter"]').on('change', function (evt) {
-			var input = evt.currentTarget;
-			if (input.checked) {
-				myShuffle.filter(input.value);
-			}
-		});
-	}
+      event.preventDefault();
+      scrollToTarget(target);
+    });
+  }
 
-	/* ========================================================================= */
-	/*	Testimonial Carousel (optional)
-	/* =========================================================================  */
+  function setCollapseExpanded(button, expanded) {
+    button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  }
 
-	if ($.fn.slick && $("#testimonials").length) {
-		$("#testimonials").slick({
-			infinite: true,
-			arrows: false,
-			autoplay: true,
-			autoplaySpeed: 4000
-		});
-	}
+  function initNavCollapse() {
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const menu = document.querySelector('[data-nav-menu]');
+    if (!toggle || !menu) return;
 
-	/* ========================================================================= */
-	/*	animation scroll js
-	/* ========================================================================= */
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.contains('show');
+      if (isOpen) {
+        menu.classList.remove('show');
+        setCollapseExpanded(toggle, false);
+      } else {
+        menu.classList.add('show');
+        setCollapseExpanded(toggle, true);
+      }
+    });
 
-	function myFunction(x) {
-		if (x.matches) {
-			var topOf = 50
-		} else {
-			var topOf = 350
-		}
-	}
+    menu.addEventListener('click', (event) => {
+      const anchor = event.target instanceof Element ? event.target.closest('a') : null;
+      if (!anchor) return;
+      if (anchor.hasAttribute('data-nav-dropdown-toggle')) return;
 
-	var html_body = $('html, body');
-	$('nav a, .page-scroll, .js-smooth-scroll').on('click', function () { //use page-scroll class in any HTML tag for scrolling
-		if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-			var target = $(this.hash);
-			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-			if (target.length) {
-				html_body.animate({
-					scrollTop: target.offset().top - 50
-				}, 1500, 'easeInOutExpo');
-				return false;
-			}
-		}
-	});
+      if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+        setCollapseExpanded(toggle, false);
+      }
+    });
+  }
 
-	// easeInOutExpo Declaration
-	jQuery.extend(jQuery.easing, {
-		easeInOutExpo: function (x, t, b, c, d) {
-			if (t === 0) {
-				return b;
-			}
-			if (t === d) {
-				return b + c;
-			}
-			if ((t /= d / 2) < 1) {
-				return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-			}
-			return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
-		}
-	});
+  function closeAllNavDropdowns(navRoot) {
+    const openDropdowns = navRoot.querySelectorAll('.dropdown.show');
+    openDropdowns.forEach((dropdown) => {
+      dropdown.classList.remove('show');
+      const menu = dropdown.querySelector('.dropdown-menu');
+      if (menu) menu.classList.remove('show');
+      const toggle = dropdown.querySelector('[data-nav-dropdown-toggle]');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
 
-	/* ========================================================================= */
-	/*	counter up
-	/* ========================================================================= */
-	function counter() {
-		var oTop;
-		if ($('.count').length !== 0) {
-			oTop = $('.count').offset().top - window.innerHeight;
-		}
-		if ($(window).scrollTop() > oTop) {
-			$('.count').each(function () {
-				var $this = $(this),
-					countTo = $this.attr('data-count');
-				$({
-					countNum: $this.text()
-				}).animate({
-					countNum: countTo
-				}, {
-					duration: 1000,
-					easing: 'swing',
-					step: function () {
-						$this.text(Math.floor(this.countNum));
-					},
-					complete: function () {
-						$this.text(this.countNum);
-					}
-				});
-			});
-		}
-	}
-	$(window).on('scroll', function () {
-		counter();
-	});
+  function initNavDropdowns() {
+    const navRoot = document.querySelector('.navigation');
+    if (!navRoot) return;
 
-});
+    navRoot.addEventListener('click', (event) => {
+      const toggle = event.target instanceof Element ? event.target.closest('[data-nav-dropdown-toggle]') : null;
+      if (!toggle) return;
+
+      event.preventDefault();
+      const dropdown = toggle.closest('.dropdown');
+      if (!dropdown) return;
+
+      const menu = dropdown.querySelector('.dropdown-menu');
+      const isOpen = dropdown.classList.contains('show');
+
+      closeAllNavDropdowns(navRoot);
+
+      if (!isOpen) {
+        dropdown.classList.add('show');
+        if (menu) menu.classList.add('show');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (navRoot.contains(target)) return;
+      closeAllNavDropdowns(navRoot);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      closeAllNavDropdowns(navRoot);
+    });
+  }
+
+  function initCounters() {
+    const counters = Array.from(document.querySelectorAll('.count[data-count]'));
+    if (counters.length === 0) return;
+
+    let hasRun = false;
+    const run = () => {
+      if (hasRun) return;
+      hasRun = true;
+
+      counters.forEach((counter) => {
+        const rawTarget = counter.getAttribute('data-count') || '0';
+        const targetValue = Number.parseInt(rawTarget, 10);
+        if (!Number.isFinite(targetValue)) return;
+
+        const durationMs = 1000;
+        const start = performance.now();
+        const startValue = 0;
+
+        const tick = (now) => {
+          const progress = Math.min(1, (now - start) / durationMs);
+          const current = Math.floor(startValue + (targetValue - startValue) * progress);
+          counter.textContent = String(current);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+      });
+    };
+
+    const first = counters[0];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          run();
+          observer.disconnect();
+        }
+      },
+      { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.01 },
+    );
+
+    observer.observe(first);
+  }
+
+  window.addEventListener('load', () => {
+    hidePreloader();
+    initLazyLoad();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initSmoothScroll();
+    initNavCollapse();
+    initNavDropdowns();
+    initCounters();
+  });
+})();
 

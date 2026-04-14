@@ -271,8 +271,8 @@
               lazy
             {{ end }} {{ $class }} img"
             alt="{{ .Alt }}"
-            width="{{ $image.Width }}"
-            height="{{ $image.Height }}" />
+            width="{{ $imageFallback.Width }}"
+            height="{{ $imageFallback.Height }}" />
         </picture>
       {{ end }}
       <!-- end image processing -->
