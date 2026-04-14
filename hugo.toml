@@ -281,6 +281,10 @@ enable = true
 websiteId = "54ba9f61-ea93-41db-a5e1-3e74b41605da"
 scriptURL = "/stats/script.js"
 domains = "christianguzman.uk"
+# Ahrefs analytics
+[params.analytics.ahrefs]
+enable = true
+dataKey = "A5YQA1IobngQ0vKl+SpY8g"
 # Yandex Metrica
 [params.analytics.yandexMetrica]
 id = ""
