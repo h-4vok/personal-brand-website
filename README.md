@@ -104,8 +104,9 @@ npm run audit:report
 
 Browser requirement:
 
-- Install Google Chrome for the most stable local LHCI behavior.
-- Microsoft Edge may work, but local runs can be less stable depending on Windows process permissions.
+- Google Chrome is preferred when present.
+- Set `CHROME_PATH` to force a specific browser binary.
+- Microsoft Edge is still supported, but Windows cleanup noise can still show up in some local runs.
 
 Quality gates:
 
@@ -120,6 +121,7 @@ CI automation:
 Windows note:
 
 - If you saw `EPERM` with direct `lhci autorun`, use `npm run audit` from this repo (it already applies a Windows-safe flow).
+- If `audit:report` logs a one-line cleanup warning on Windows, report output is still valid and the run should stay green.
 
 ### Theme / example commands
 

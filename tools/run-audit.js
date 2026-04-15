@@ -3,6 +3,9 @@ const fs = require("node:fs");
 const http = require("node:http");
 const path = require("node:path");
 
+const {
+  classifyLighthouseResult,
+} = require("./lighthouse-audit");
 const { detectBrowserPath } = require("./lighthouse-browser");
 
 const rootDir = path.resolve(__dirname, "..");
@@ -14,35 +17,13 @@ const isWindowsEdge = process.platform === "win32" && /msedge\.exe$/i.test(chrom
 
 const routes = ["/", "/articles/", "/engineering-leadership-coaching/"];
 const thresholds = { seo: 1.0, performance: 0.9 };
-const isCi = Boolean(process.env.CI);
 const isVerbose = process.env.AUDIT_VERBOSE
   ? process.env.AUDIT_VERBOSE !== "0" && process.env.AUDIT_VERBOSE !== "false"
-  : !isCi;
+  : false;
 
 function log(message) {
   if (!isVerbose) return;
   process.stderr.write(`${message}\n`);
-}
-
-function summarizeFailure(stderr) {
-  if (!stderr) return "";
-  const lines = String(stderr).split(/\r?\n/).map((line) => line.trim());
-  const interesting = lines.filter((line) => {
-    if (!line) return false;
-    return (
-      line.startsWith("Runtime error encountered:") ||
-      line.startsWith("Error:") ||
-      line.includes("EPERM") ||
-      line.includes("EACCES") ||
-      line.includes("ChromeNotInstalledError") ||
-      line.includes("No Chrome installations found") ||
-      line.includes("Timed out") ||
-      line.includes("Protocol error")
-    );
-  });
-
-  if (interesting.length === 0) return "";
-  return interesting.slice(-8).join("\n");
 }
 
 if (!fs.existsSync(path.join(rootDir, "public"))) {
@@ -236,8 +217,13 @@ function runLighthouse(url, outputPath) {
       const reportPath = path.join(outputDir, `${slugForRoute(route)}.json`);
       const result = runLighthouse(url, reportPath);
       const hasReport = fs.existsSync(reportPath);
+      const classification = classifyLighthouseResult({
+        status: result.status,
+        hasReport,
+        stderr: result.stderr,
+      });
 
-      if (result.status !== 0 && !hasReport) {
+      if (classification.kind === "fatal-no-report") {
         hasSeoFailure = true;
         console.error(`[audit] Lighthouse failed and no report was produced for ${route}.`);
         if (result.stdout) process.stderr.write(result.stdout);
@@ -245,14 +231,21 @@ function runLighthouse(url, outputPath) {
         continue;
       }
 
-      if (result.status !== 0 && hasReport) {
+      if (classification.kind === "cleanup-noise") {
         console.warn(
-          `[audit] Lighthouse returned non-zero for ${route}, but report was produced (known Windows EPERM cleanup issue).`,
+          `[audit] Lighthouse returned non-zero for ${route}, but report was produced (known Windows cleanup noise).`,
         );
-        const summary = summarizeFailure(result.stderr);
-        if (summary) {
-          log(`[audit] Non-fatal Lighthouse stderr summary:\n${summary}`);
+        if (classification.summary) {
+          log(`[audit] Non-fatal Lighthouse stderr summary:\n${classification.summary}`);
         }
+      }
+
+      if (classification.kind === "fatal-with-report") {
+        hasSeoFailure = true;
+        console.error(`[audit] Lighthouse failed for ${route} even though report was produced.`);
+        if (result.stdout) process.stderr.write(result.stdout);
+        if (result.stderr) process.stderr.write(result.stderr);
+        continue;
       }
 
       const report = JSON.parse(fs.readFileSync(reportPath, "utf8"));

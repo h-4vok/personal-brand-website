@@ -1,15 +1,6 @@
-const fs = require("node:fs");
+const { detectBrowserPath } = require("./tools/lighthouse-browser");
 
-const windowsChromeCandidates = [
-  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
-  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-];
-
-const detectedChromePath =
-  process.env.CHROME_PATH ||
-  windowsChromeCandidates.find((candidate) => fs.existsSync(candidate));
+const detectedChromePath = detectBrowserPath();
 
 module.exports = {
   ci: {
