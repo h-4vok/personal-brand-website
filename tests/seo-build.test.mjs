@@ -175,8 +175,8 @@ describe('SEO build assertions', () => {
       );
       const preloadHref = preloadStyles.first().attr('href')?.trim() ?? '';
       assert(
-        preloadHref.includes('?v='),
-        `[${page.relativePath}] deferred stylesheet preload must include a stable cache-busting query string.`,
+        /\/css\/site\.[^/?"]+\.css$/.test(preloadHref),
+        `[${page.relativePath}] deferred stylesheet preload must use the fingerprinted site stylesheet path without query-string cache busting. Actual href: "${preloadHref}".`,
       );
 
       const deferredStylesheet = $('link[rel="stylesheet"][href*="/css/site."]');
@@ -186,8 +186,8 @@ describe('SEO build assertions', () => {
       );
       const deferredHref = deferredStylesheet.attr('href')?.trim() ?? '';
       assert(
-        deferredHref.includes('?v='),
-        `[${page.relativePath}] combined site stylesheet must include a stable cache-busting query string.`,
+        /\/css\/site\.[^/?"]+\.css$/.test(deferredHref),
+        `[${page.relativePath}] combined site stylesheet must use the fingerprinted site stylesheet path without query-string cache busting. Actual href: "${deferredHref}".`,
       );
       assert(
         preloadHref === deferredHref,
@@ -195,13 +195,14 @@ describe('SEO build assertions', () => {
       );
 
       const noScriptDeferredMatch = html.match(
-        /<noscript>\s*<link rel=stylesheet href="([^"]*\/css\/site\.[^"]*)"/i,
+        /<noscript>\s*<link rel=stylesheet href=(?:"([^"]*\/css\/site\.[^"]*)"|([^\s>]*\/css\/site\.[^\s>]*))/i,
       );
       assert(
         noScriptDeferredMatch,
         `[${page.relativePath}] must include a noscript fallback for the combined site stylesheet bundle.`,
       );
-      const noScriptDeferredHref = noScriptDeferredMatch[1]?.trim() ?? '';
+      const noScriptDeferredHref =
+        noScriptDeferredMatch[1]?.trim() ?? noScriptDeferredMatch[2]?.trim() ?? '';
       assert(
         noScriptDeferredHref === deferredHref,
         `[${page.relativePath}] noscript stylesheet href must match the deferred stylesheet href exactly.`,
@@ -233,8 +234,8 @@ describe('SEO build assertions', () => {
           `[${page.relativePath}] Ahrefs analytics must be served from the local site, not analytics.ahrefs.com. Actual src: "${ahrefsSrc}".`,
         );
         assert(
-          ahrefsSrc.includes('?v='),
-          `[${page.relativePath}] Ahrefs analytics must include a stable cache-busting query string.`,
+          /\/vendor\/ahrefs\/analytics\.[^/?"]+\.js$/.test(ahrefsSrc),
+          `[${page.relativePath}] Ahrefs analytics must use the fingerprinted local asset path without query-string cache busting. Actual src: "${ahrefsSrc}".`,
         );
 
         assertResolvableAssetUrl(
@@ -336,8 +337,8 @@ describe('SEO build assertions', () => {
         .filter(Boolean);
       for (const scriptSrc of fingerprintedScripts) {
         assert(
-          scriptSrc.includes('?v='),
-          `[${page.relativePath}] fingerprinted script assets must include a stable cache-busting query string. Actual src: "${scriptSrc}".`,
+          /\/js\/(vendor|script)\.[^/?"]+\.js$/.test(scriptSrc),
+          `[${page.relativePath}] fingerprinted script assets must use hashed filenames without query-string cache busting. Actual src: "${scriptSrc}".`,
         );
       }
 
