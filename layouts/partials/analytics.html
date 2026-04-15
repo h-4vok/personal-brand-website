@@ -17,10 +17,9 @@
 
 {{ if and $ahrefsEnabled $ahrefsDataKey (eq hugo.Environment "production") }}
 {{ $ahrefsScript := resources.Get "vendor/ahrefs/analytics.js" | fingerprint "sha384" }}
-{{ $ahrefsScriptURL := printf "%s?v=%s" $ahrefsScript.Permalink ($ahrefsScript.Data.Integrity | urlquery) }}
 <script
   async
-  src="{{ $ahrefsScriptURL }}"
+  src="{{ $ahrefsScript.Permalink }}"
   integrity="{{ $ahrefsScript.Data.Integrity }}"
   data-key="{{ $ahrefsDataKey }}"
 ></script>
