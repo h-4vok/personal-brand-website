@@ -24,14 +24,14 @@
     ]
   },
   "scripts": {
-    "dev": "hugo server --buildDrafts --disableFastRender --forceSyncStatic --baseURL http://localhost:1313/ --bind 127.0.0.1 --port 1313",
-    "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic",
+    "dev": "hugo server --buildDrafts --buildFuture --disableFastRender --forceSyncStatic --baseURL http://localhost:1313/ --bind 127.0.0.1 --port 1313",
+    "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --forceSyncStatic",
     "hugo:build": "hugo --gc --minify",
     "audit": "node ./tools/run-audit.js",
     "audit:report": "node ./tools/lighthouse-report.js",
     "bootstrap:purge": "node ./tools/purge-bootstrap.mjs",
-    "test": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
-    "test:seo": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --buildFuture --forceSyncStatic --cleanDestinationDir && npm run test:seo:assert",
+    "test": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildExpired --watch --forceSyncStatic -e production --minify",
+    "test:seo": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --forceSyncStatic --cleanDestinationDir && npm run test:seo:assert",
     "test:seo:assert": "vitest run tests/seo-build.test.mjs",
     "lint:css": "stylelint \"**/*.{css,scss,sass}\" --allow-empty-input",
     "lint:css:fix": "stylelint \"**/*.{css,scss,sass}\" --fix --allow-empty-input",
@@ -39,8 +39,6 @@
     "format:check": "prettier --check \"**/*.{css,scss,sass}\"",
     "prepare": "husky install",
     "dev:example": "cd exampleSite; hugo server --themesDir ../..",
-    "build:example": "cd exampleSite; hugo --themesDir ../.. --gc --minify --templateMetrics --templateMetricsHints --buildDrafts --buildExpired --buildFuture --forceSyncStatic",
-    "test:example": "cd exampleSite; hugo server --themesDir ../.. --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --buildDrafts --buildExpired --buildFuture --watch --forceSyncStatic -e production --minify",
     "update-modules": "node ./scripts/clearModules.js && hugo mod clean --all && hugo mod get -u ./... && hugo mod tidy",
     "project-setup": "node ./scripts/projectSetup.js",
     "theme-setup": "node ./scripts/themeSetup.js"

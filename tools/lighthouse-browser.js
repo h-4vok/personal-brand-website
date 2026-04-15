@@ -4,20 +4,26 @@ const net = require("node:net");
 const path = require("node:path");
 
 const browserCandidates = [
-  process.env.CHROME_PATH,
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
-  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   "/opt/google/chrome/chrome",
   "/usr/bin/google-chrome",
   "/usr/bin/google-chrome-stable",
   "/usr/bin/chromium-browser",
   "/usr/bin/chromium",
+  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
+  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+  "C:\\Program Files (x86)\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+  "/opt/brave.com/brave/brave",
 ];
 
+function getBrowserCandidates() {
+  return [process.env.CHROME_PATH, ...browserCandidates];
+}
+
 function detectBrowserPath() {
-  return browserCandidates.find((candidate) => candidate && fs.existsSync(candidate)) || "";
+  return getBrowserCandidates().find((candidate) => candidate && fs.existsSync(candidate)) || "";
 }
 
 function waitForPort(port, timeoutMs = 15000) {
@@ -107,6 +113,8 @@ function killProcess(proc) {
 
 module.exports = {
   detectBrowserPath,
+  browserCandidates,
+  getBrowserCandidates,
   getAvailablePort,
   launchDebugBrowser,
   killProcess,

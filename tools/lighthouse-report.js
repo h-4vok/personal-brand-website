@@ -2,16 +2,18 @@ const { spawnSync } = require("node:child_process");
 const path = require("node:path");
 
 const fs = require("node:fs");
+const {
+  classifyLighthouseResult,
+} = require("./lighthouse-audit");
 const { detectBrowserPath } = require("./lighthouse-browser");
 
 const lighthouseCli = require.resolve("lighthouse/cli/index.js");
 const outputPath = path.resolve(__dirname, "..", "seo-report.json");
 const chromePath = detectBrowserPath();
 const profilesDir = path.resolve(__dirname, "..", ".lighthouseci", "profiles");
-const isCi = Boolean(process.env.CI);
 const isVerbose = process.env.AUDIT_VERBOSE
   ? process.env.AUDIT_VERBOSE !== "0" && process.env.AUDIT_VERBOSE !== "false"
-  : !isCi;
+  : false;
 
 function log(message) {
   if (!isVerbose) return;
@@ -34,27 +36,6 @@ function cleanupProfileDir(profileDir) {
   } catch {
     // Best-effort cleanup only.
   }
-}
-
-function summarizeFailure(stderr) {
-  if (!stderr) return "";
-  const lines = String(stderr).split(/\r?\n/).map((line) => line.trim());
-  const interesting = lines.filter((line) => {
-    if (!line) return false;
-    return (
-      line.startsWith("Runtime error encountered:") ||
-      line.startsWith("Error:") ||
-      line.includes("EPERM") ||
-      line.includes("EACCES") ||
-      line.includes("ChromeNotInstalledError") ||
-      line.includes("No Chrome installations found") ||
-      line.includes("Timed out") ||
-      line.includes("Protocol error")
-    );
-  });
-
-  if (interesting.length === 0) return "";
-  return interesting.slice(-8).join("\n");
 }
 
 if (!chromePath) {
@@ -109,15 +90,33 @@ if (fs.existsSync(outputPath)) {
   }
 }
 
-if ((result.status ?? 1) !== 0 && fs.existsSync(outputPath)) {
+const classification = classifyLighthouseResult({
+  status: result.status,
+  hasReport: fs.existsSync(outputPath),
+  stderr: result.stderr,
+});
+
+if (classification.kind === "cleanup-noise") {
   console.warn(
-    "[audit:report] Lighthouse returned non-zero but seo-report.json was generated (known Windows cleanup issue).",
+    "[audit:report] Lighthouse returned non-zero but seo-report.json was generated (known Windows cleanup noise).",
   );
-  const summary = summarizeFailure(result.stderr);
-  if (summary) {
-    log(`[audit:report] Non-fatal Lighthouse stderr summary:\n${summary}`);
+  if (classification.summary) {
+    log(`[audit:report] Non-fatal Lighthouse stderr summary:\n${classification.summary}`);
   }
   process.exit(0);
+}
+
+if (classification.kind === "fatal-with-report") {
+  console.error("[audit:report] Lighthouse failed even though seo-report.json was generated.");
+  if (result.stdout) process.stdout.write(result.stdout);
+  if (result.stderr) process.stderr.write(result.stderr);
+  process.exit(classification.exitStatus);
+}
+
+if (classification.kind === "fatal-no-report") {
+  if (result.stdout) process.stdout.write(result.stdout);
+  if (result.stderr) process.stderr.write(result.stderr);
+  process.exit(classification.exitStatus);
 }
 
 if (result.stdout) process.stdout.write(result.stdout);
