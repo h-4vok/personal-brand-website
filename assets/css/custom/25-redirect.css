@@ -1,0 +1,120 @@
+/** Section: Redirect Bridge **/
+.redirect-page {
+  background: var(--surface-base);
+  padding: 7rem 0 6rem;
+}
+
+.redirect-shell {
+  color: var(--text-base);
+  font-family: "EB Garamond", serif;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.redirect-hero {
+  border-bottom: 1px solid rgb(17 17 17 / 12%);
+  margin-bottom: 3rem;
+  padding-bottom: 2.25rem;
+  text-align: center;
+}
+
+.redirect-eyebrow {
+  color: var(--text-base);
+  font-family: Inter, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin: 0 0 1rem;
+  opacity: 0.65;
+  text-transform: uppercase;
+}
+
+.redirect-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.redirect-subtitle {
+  color: rgb(17 17 17 / 78%);
+  font-family: "EB Garamond", serif;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.6;
+  margin: 1.25rem auto 0;
+  max-width: 38rem;
+}
+
+.redirect-card {
+  background: var(--surface-card);
+  border: 1px solid rgb(17 17 17 / 12%);
+  padding: 1.75rem 1.85rem;
+}
+
+.redirect-row {
+  align-items: flex-start;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 44px minmax(0, 1fr);
+}
+
+.redirect-spinner {
+  border: 2px solid rgb(17 17 17 / 12%);
+  border-left-color: var(--text-base);
+  border-radius: 50%;
+  height: 44px;
+  width: 44px;
+  animation: redirect-spin 0.9s linear infinite;
+}
+
+@keyframes redirect-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.redirect-message {
+  font-family: "EB Garamond", serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.redirect-fallback {
+  color: rgb(17 17 17 / 72%);
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.redirect-fallback a {
+  color: var(--text-base);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.redirect-fallback a:hover,
+.redirect-fallback a:focus {
+  color: var(--brand-primary-hover);
+}
+
+@media (width <= 768px) {
+  .redirect-page {
+    padding: 6rem 0 4.5rem;
+  }
+
+  .redirect-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .redirect-row {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .redirect-spinner {
+    height: 38px;
+    width: 38px;
+  }
+}

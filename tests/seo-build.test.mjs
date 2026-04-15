@@ -88,6 +88,24 @@ describe('SEO build assertions', () => {
       const pageType = classifyPage(page.relativePath);
       const h1Count = $('h1').length;
 
+      if (page.relativePath === 'redirect/index.html') {
+        const robots = $('meta[name="robots"]').attr('content')?.trim() ?? '';
+        assert(
+          robots === 'noindex,nofollow',
+          `[${page.relativePath}] must include meta robots="noindex,nofollow". Actual value: "${robots || '(missing)'}".`,
+        );
+
+        assert(
+          $('.redirect-spinner').length === 1,
+          `[${page.relativePath}] must render exactly one redirect spinner (.redirect-spinner).`,
+        );
+
+        assert(
+          $('#redirect-link').length === 1,
+          `[${page.relativePath}] must render a fallback redirect link (#redirect-link).`,
+        );
+      }
+
       const title = readRequiredText($, 'title', page.relativePath);
       assert(
         title.includes(siteTitle),

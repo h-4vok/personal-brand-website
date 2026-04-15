@@ -67,6 +67,9 @@
 	<meta name="description" content="{{ $description }}">
 	<meta name="author" content="{{ $author }}">
 	<link rel="canonical" href="{{ .Permalink }}">
+	{{ if eq .Type "redirect" }}
+	<meta name="robots" content="noindex,nofollow">
+	{{ end }}
 
 	<meta property="og:title" content="{{ $title }}">
 	<meta property="og:description" content="{{ $description }}">
@@ -128,6 +131,7 @@
 		"css/custom/22-article-author-related.css"
 		"css/custom/23-article-effects.css"
 		"css/custom/24-strategy-session.css"
+		"css/custom/25-redirect.css"
 		"css/custom/30-funfacts.css"
 		"css/custom/40-footer.css"
 	}}

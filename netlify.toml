@@ -21,6 +21,12 @@
   force = true
 
 [[redirects]]
+  from = "/redirect/*"
+  to = "/redirect/"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/english/*"
   to = "/404.html"
   status = 410

@@ -1,0 +1,214 @@
+{{ define "main" }}
+
+<section class="section redirect-page" aria-label="Redirect bridge page">
+  <div class="container">
+    <div class="redirect-shell">
+      <header class="redirect-hero">
+        <p class="redirect-eyebrow">Redirect</p>
+        <h1 class="redirect-title">You are being redirected<span class="redirect-ellipsis" aria-hidden="true">...</span></h1>
+        <p class="redirect-subtitle" id="redirect-subtitle">Preparing destination.</p>
+      </header>
+
+      <div class="redirect-card" role="status" aria-live="polite">
+        <div class="redirect-row">
+          <span class="redirect-spinner" aria-hidden="true"></span>
+          <div class="redirect-copy">
+            <p class="redirect-message" id="redirect-message">Redirecting...</p>
+            <p class="redirect-fallback">
+              If you are not redirected within 5 seconds,
+              <a id="redirect-link" href="/engineering-leadership-coaching/" target="_blank" rel="noopener noreferrer">click here</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {{ $redirects := site.Data.en.redirects | default (slice) }}
+      <script type="application/json" id="redirect-map">{{ $redirects | jsonify }}</script>
+      <script>
+        (function () {
+          const FAILURE_URL = "/engineering-leadership-coaching/";
+          const REDIRECT_DELAY_MS = 1800;
+          const PASS_THROUGH_KEYS = new Set(["gclid", "fbclid", "msclkid"]);
+
+          function redirectFailure() {
+            window.location.assign(FAILURE_URL);
+          }
+
+          function readJsonScript(id) {
+            const node = document.getElementById(id);
+            if (!node) return null;
+            try {
+              let parsed = JSON.parse(node.textContent || "null");
+              // Hugo's minify pipeline can end up serializing data into a JSON string.
+              // Accept both: array/object OR JSON-string-wrapping-the-real-payload.
+              if (typeof parsed === "string") {
+                try {
+                  parsed = JSON.parse(parsed);
+                } catch {
+                  // ignore
+                }
+              }
+              return parsed;
+            } catch {
+              return null;
+            }
+          }
+
+          function extractSlug(pathname) {
+            const parts = pathname.split("/").filter(Boolean);
+            const redirectIndex = parts.indexOf("redirect");
+            if (redirectIndex < 0) return "";
+            return parts[redirectIndex + 1] || "";
+          }
+
+          function isAllowedHost(url, allowedHosts) {
+            try {
+              const parsed = new URL(url);
+              if (parsed.protocol !== "https:") return false;
+              return allowedHosts.has(parsed.host);
+            } catch {
+              return false;
+            }
+          }
+
+          function buildAllowedHosts(entries) {
+            const hosts = new Set();
+            for (const entry of entries) {
+              if (!entry || typeof entry.url !== "string") continue;
+              try {
+                const parsed = new URL(entry.url);
+                if (parsed.protocol === "https:" && parsed.host) hosts.add(parsed.host);
+              } catch {
+                // ignore invalid URLs in data
+              }
+            }
+            return hosts;
+          }
+
+          function readLabel(searchParams, entry, destinationUrl) {
+            const override = (searchParams.get("label") || "").trim();
+            if (override) return override;
+            if (entry && typeof entry.label === "string" && entry.label.trim()) return entry.label.trim();
+            const slug = (searchParams.get("slug") || "").trim();
+            if (slug) return slug;
+            try {
+              return new URL(destinationUrl).host;
+            } catch {
+              return "destination";
+            }
+          }
+
+          function copyAttributionParams(fromParams, toUrl) {
+            for (const [key, value] of fromParams.entries()) {
+              if (!key) continue;
+              if (key === "to" || key === "label" || key === "delay" || key === "slug") continue;
+              if (key.startsWith("utm_") || PASS_THROUGH_KEYS.has(key)) {
+                toUrl.searchParams.set(key, value);
+              }
+            }
+          }
+
+          const currentUrl = new URL(window.location.href);
+          const debug = (currentUrl.searchParams.get("debug") || "").trim() === "1";
+
+          const subtitle = document.getElementById("redirect-subtitle");
+          const message = document.getElementById("redirect-message");
+          const link = document.getElementById("redirect-link");
+
+          const slugFromPathRaw = extractSlug(window.location.pathname);
+          const slugFromQueryRaw = (currentUrl.searchParams.get("slug") || "").trim();
+          const slugRaw = (slugFromPathRaw || slugFromQueryRaw || "").trim();
+          const slugKey = slugRaw.toLowerCase();
+          if (!slugKey) {
+            redirectFailure();
+            return;
+          }
+
+          const entries = readJsonScript("redirect-map");
+          const redirectEntries = Array.isArray(entries) ? entries : [];
+          const allowedHosts = buildAllowedHosts(redirectEntries);
+
+          const entry =
+            redirectEntries.find((candidate) => {
+              if (!candidate || typeof candidate.slug !== "string") return false;
+              return candidate.slug.trim().toLowerCase() === slugKey;
+            }) || null;
+          const requestedTo = (currentUrl.searchParams.get("to") || "").trim();
+
+          let destination = "";
+          if (entry && typeof entry.url === "string" && entry.url.trim()) {
+            destination = entry.url.trim();
+          }
+          if (requestedTo) {
+            if (isAllowedHost(requestedTo, allowedHosts)) {
+              destination = requestedTo;
+            } else {
+              redirectFailure();
+              return;
+            }
+          }
+          let fallbackToCoaching = false;
+          if (!destination) {
+            fallbackToCoaching = true;
+            destination = FAILURE_URL;
+          }
+
+          let destinationUrl;
+          try {
+            destinationUrl = new URL(destination, window.location.origin);
+          } catch {
+            redirectFailure();
+            return;
+          }
+
+          if (!fallbackToCoaching) {
+            copyAttributionParams(currentUrl.searchParams, destinationUrl);
+          }
+
+          const labelParams = new URLSearchParams(currentUrl.searchParams);
+          if (!labelParams.has("slug") && slugRaw) {
+            labelParams.set("slug", slugRaw);
+          }
+          const label = readLabel(labelParams, entry, destinationUrl.href);
+          if (fallbackToCoaching) {
+            if (subtitle) subtitle.textContent = `Unknown redirect: ${label}`;
+            if (message) message.textContent = `Redirecting you to coaching...`;
+            if (link) link.href = FAILURE_URL;
+          } else {
+            if (subtitle) subtitle.textContent = `Destination: ${label}`;
+            if (message) message.textContent = `You are being redirected to ${label}...`;
+          }
+          if (link) link.href = destinationUrl.href;
+
+          if (debug) {
+            const details = {
+              slugRaw,
+              slugKey,
+              matched: Boolean(entry),
+              entry,
+              destination: destinationUrl.href,
+              requestedTo: requestedTo || null,
+              allowedHosts: Array.from(allowedHosts.values()),
+              fallbackToCoaching,
+              passThrough: Object.fromEntries(
+                Array.from(currentUrl.searchParams.entries()).filter(
+                  ([k]) => k.startsWith("utm_") || PASS_THROUGH_KEYS.has(k),
+                ),
+              ),
+            };
+            // eslint-disable-next-line no-console
+            console.info("[redirect-bridge debug]", details);
+            if (message) message.textContent = `Debug mode: check console.`;
+            return;
+          }
+
+          window.setTimeout(() => {
+            window.location.assign(destinationUrl.href);
+          }, REDIRECT_DELAY_MS);
+        })();
+      </script>
+    </div>
+  </div>
+</section>
+
+{{ end }}
