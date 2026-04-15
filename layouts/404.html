@@ -61,7 +61,17 @@
             const node = document.getElementById(id);
             if (!node) return null;
             try {
-              return JSON.parse(node.textContent || "null");
+              let parsed = JSON.parse(node.textContent || "null");
+              // Hugo's minify pipeline can end up serializing data into a JSON string.
+              // Accept both: array/object OR JSON-string-wrapping-the-real-payload.
+              if (typeof parsed === "string") {
+                try {
+                  parsed = JSON.parse(parsed);
+                } catch {
+                  // ignore
+                }
+              }
+              return parsed;
             } catch {
               return null;
             }
