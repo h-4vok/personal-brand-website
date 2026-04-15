@@ -1,0 +1,11 @@
+# Redirect destinations for /redirect/<slug>.
+#
+# Format:
+# - slug: "adplist-coaching"
+#   label: "ADPList"
+#   url: "https://adplist.org/..."
+#
+# Keep this list small and explicit. JS derives the allowed host list from `url` values.
+- slug: "adplist-coaching"
+  label: "ADPList"
+  url: "https://adplist.org/mentors/christian-guzman"
