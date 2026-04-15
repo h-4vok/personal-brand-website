@@ -98,15 +98,18 @@
             }
           }
 
+          const currentUrl = new URL(window.location.href);
+          const debug = (currentUrl.searchParams.get("debug") || "").trim() === "1";
+
           const subtitle = document.getElementById("redirect-subtitle");
           const message = document.getElementById("redirect-message");
           const link = document.getElementById("redirect-link");
 
-          const currentUrl = new URL(window.location.href);
-          const slugFromPath = extractSlug(window.location.pathname);
-          const slugFromQuery = (currentUrl.searchParams.get("slug") || "").trim();
-          const slug = slugFromPath || slugFromQuery;
-          if (!slug) {
+          const slugFromPathRaw = extractSlug(window.location.pathname);
+          const slugFromQueryRaw = (currentUrl.searchParams.get("slug") || "").trim();
+          const slugRaw = (slugFromPathRaw || slugFromQueryRaw || "").trim();
+          const slugKey = slugRaw.toLowerCase();
+          if (!slugKey) {
             redirectFailure();
             return;
           }
@@ -115,7 +118,11 @@
           const redirectEntries = Array.isArray(entries) ? entries : [];
           const allowedHosts = buildAllowedHosts(redirectEntries);
 
-          const entry = redirectEntries.find((candidate) => candidate && candidate.slug === slug) || null;
+          const entry =
+            redirectEntries.find((candidate) => {
+              if (!candidate || typeof candidate.slug !== "string") return false;
+              return candidate.slug.trim().toLowerCase() === slugKey;
+            }) || null;
           const requestedTo = (currentUrl.searchParams.get("to") || "").trim();
 
           let destination = "";
@@ -149,8 +156,8 @@
           }
 
           const labelParams = new URLSearchParams(currentUrl.searchParams);
-          if (!labelParams.has("slug") && slug) {
-            labelParams.set("slug", slug);
+          if (!labelParams.has("slug") && slugRaw) {
+            labelParams.set("slug", slugRaw);
           }
           const label = readLabel(labelParams, entry, destinationUrl.href);
           if (fallbackToCoaching) {
@@ -162,6 +169,28 @@
             if (message) message.textContent = `You are being redirected to ${label}...`;
           }
           if (link) link.href = destinationUrl.href;
+
+          if (debug) {
+            const details = {
+              slugRaw,
+              slugKey,
+              matched: Boolean(entry),
+              entry,
+              destination: destinationUrl.href,
+              requestedTo: requestedTo || null,
+              allowedHosts: Array.from(allowedHosts.values()),
+              fallbackToCoaching,
+              passThrough: Object.fromEntries(
+                Array.from(currentUrl.searchParams.entries()).filter(
+                  ([k]) => k.startsWith("utm_") || PASS_THROUGH_KEYS.has(k),
+                ),
+              ),
+            };
+            // eslint-disable-next-line no-console
+            console.info("[redirect-bridge debug]", details);
+            if (message) message.textContent = `Debug mode: check console.`;
+            return;
+          }
 
           window.setTimeout(() => {
             window.location.assign(destinationUrl.href);
