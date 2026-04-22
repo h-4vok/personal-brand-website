@@ -20,7 +20,7 @@ tags:
   - "Attention Economy"
   - "Systems Architecture"
 slug: "agentic-ai-escaping-attention-trap"
----
+--- 
 
 I’ve always felt a deep friction whenever I scroll through LinkedIn.
 
