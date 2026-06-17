@@ -137,6 +137,7 @@
       "power-thesis",
       "power-thesis__actions",
       "power-thesis__btn",
+      "power-thesis__btn--ghost",
       "power-thesis__btn--primary",
       "power-thesis__headline",
       "power-thesis__inner",
