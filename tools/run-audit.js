@@ -196,7 +196,7 @@ function runLighthouse(url, outputPath) {
   try {
     let baseUrl = "";
     if (isWindowsEdge) {
-      console.warn(
+      log(
         "[audit] Windows + Edge detected. Using production URL fallback to avoid local Edge protocol instability.",
       );
       baseUrl = "https://christianguzman.uk";
@@ -235,7 +235,7 @@ function runLighthouse(url, outputPath) {
       }
 
       if (classification.kind === "cleanup-noise") {
-        console.warn(
+        log(
           `[audit] Lighthouse returned non-zero for ${route}, but report was produced (known Windows cleanup noise).`,
         );
         if (classification.summary) {
