@@ -1,6 +1,7 @@
 const { spawnSync } = require("node:child_process");
 const fs = require("node:fs");
 const http = require("node:http");
+const { performance } = require("node:perf_hooks");
 const path = require("node:path");
 
 const {
@@ -191,6 +192,7 @@ function runLighthouse(url, outputPath) {
 
 (async () => {
   let server;
+  const auditStart = performance.now();
   try {
     let baseUrl = "";
     if (isWindowsEdge) {
@@ -213,6 +215,7 @@ function runLighthouse(url, outputPath) {
     let hasPerfWarning = false;
 
     for (const route of routes) {
+      const routeStart = performance.now();
       const url = `${baseUrl}${route}`;
       const reportPath = path.join(outputDir, `${slugForRoute(route)}.json`);
       const result = runLighthouse(url, reportPath);
@@ -253,6 +256,7 @@ function runLighthouse(url, outputPath) {
       const perf = report.categories?.performance?.score ?? 0;
 
       log(`[audit] Scores for ${route}: seo=${seo} perf=${perf}`);
+      log(`[audit] Route ${route} completed in ${((performance.now() - routeStart) / 1000).toFixed(2)}s`);
       if (seo < thresholds.seo) {
         hasSeoFailure = true;
         console.error(`[audit] SEO score for ${route} is ${seo}. Required: ${thresholds.seo}.`);
@@ -269,6 +273,7 @@ function runLighthouse(url, outputPath) {
       console.warn("[audit] Performance warnings detected.");
     }
 
+    log(`[audit] Total audit time: ${((performance.now() - auditStart) / 1000).toFixed(2)}s`);
     process.exit(hasSeoFailure ? 1 : 0);
   } catch (error) {
     console.error(`[audit] ${error.message}`);
