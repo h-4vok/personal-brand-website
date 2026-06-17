@@ -6,7 +6,7 @@ url = "/engineering-leadership-coaching/"
 aliases = ["/strategy-session/"]
 description = "Engineering Leadership Coaching to help Dev Leads and Managers scale from individual contribution to trusted leadership systems, with practical guidance from Christian Guzman."
 keywords = ["Engineering Leadership Coaching", "Engineering Mentor", "Fractional CTO", "Technical Debt Consulting", "Human Systems Architecture"]
-subtitle = "Engineering Leadership Coaching for leaders who need practical systems to scale trust, decision quality, and organisational resilience."
+subtitle = "Engineering Leadership Coaching for leaders who need practical advice, improve decision quality, and drive organisational resilience."
 hero_image = "images/portraits/christian-guzman-portrait.jpg"
 hero_image_alt = "Christian Guzman portrait"
 not_for_title = "This is not for everyone."
@@ -22,15 +22,15 @@ cta_text = "Book a Leadership Coaching Call"
 cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 
 [[sections.items]]
-label = "The Audit"
+label = "First, the Context"
 text = "Identify the leadership bottlenecks slowing your impact and progression."
 
 [[sections.items]]
-label = "The Roadmap"
+label = "Then, the Roadmap"
 text = "Build a practical roadmap to move from manager execution to director-level leadership."
 
 [[sections.items]]
-label = "The Mindset"
+label = "Finally, the Mindset"
 text = "Strengthen judgment, leverage, and intentionality across your leadership decisions."
 
 [[sections]]
@@ -42,14 +42,14 @@ cta_text = "Book a Coaching Session for Your Team"
 cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 
 [[sections.items]]
-label = "The Throughput Audit"
+label = "First, the Audit"
 text = "Diagnose where leadership systems are reducing delivery throughput and team trust."
 
 [[sections.items]]
-label = "The Scaling Blueprint"
+label = "Then, the Blueprint"
 text = "Design an operating model that stays lean, intentional, and resilient as you grow."
 
 [[sections.items]]
-label = "The Intent Gap"
+label = "Finally, the Intentionality"
 text = "Close the gap between executive intent and what product and engineering teams actually ship."
 +++

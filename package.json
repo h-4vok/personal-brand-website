@@ -6,6 +6,7 @@
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
     "cheerio": "^1.2.0",
+    "cspell": "^10.0.1",
     "cssnano": "^7.1.0",
     "husky": "^8.0.3",
     "lighthouse": "^13.1.0",
@@ -15,6 +16,12 @@
     "prettier": "^3.6.2",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
+    "textlint": "^15.7.1",
+    "textlint-rule-common-misspellings": "^1.0.1",
+    "textlint-rule-no-doubled-conjunction": "^3.0.1",
+    "textlint-rule-no-start-duplicated-conjunction": "^2.0.2",
+    "textlint-rule-terminology": "^5.2.16",
+    "textlint-rule-write-good": "^2.0.0",
     "vitest": "^4.1.4"
   },
   "lint-staged": {
@@ -35,6 +42,12 @@
     "test:seo:assert": "vitest run tests/seo-build.test.mjs",
     "lint:css": "stylelint \"**/*.{css,scss,sass}\" --allow-empty-input",
     "lint:css:fix": "stylelint \"**/*.{css,scss,sass}\" --fix --allow-empty-input",
+    "lint:text:style": "textlint \"content/**/*.md\"",
+    "lint:text:spell": "cspell lint \"content/**/*.md\" --no-progress --show-context --show-suggestions",
+    "lint:text": "npm run lint:text:style && npm run lint:text:spell",
+    "lint:text:debug": "powershell -NoProfile -Command \"$files = Get-ChildItem 'content' -Recurse -Filter *.md; Write-Host ('content lint: checking ' + $files.Count + ' markdown files under content/'); $files | ForEach-Object { Write-Host $_.FullName }; Write-Host ''; Write-Host '--- textlint --debug ---'; npx textlint 'content/**/*.md' --debug; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; Write-Host ''; Write-Host '--- cspell -v ---'; npx cspell lint 'content/**/*.md' -v --show-context --show-suggestions\"",
+    "lint:text:fix": "textlint --fix \"content/**/*.md\"",
+    "lint": "npm run lint:css && npm run lint:text",
     "format": "prettier --write \"**/*.{css,scss,sass}\"",
     "format:check": "prettier --check \"**/*.{css,scss,sass}\"",
     "prepare": "husky install",
