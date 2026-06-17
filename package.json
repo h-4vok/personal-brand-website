@@ -48,6 +48,7 @@
     "lint:text:debug": "powershell -NoProfile -Command \"$files = Get-ChildItem 'content' -Recurse -Filter *.md; Write-Host ('content lint: checking ' + $files.Count + ' markdown files under content/'); $files | ForEach-Object { Write-Host $_.FullName }; Write-Host ''; Write-Host '--- textlint --debug ---'; npx textlint 'content/**/*.md' --debug; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; Write-Host ''; Write-Host '--- cspell -v ---'; npx cspell lint 'content/**/*.md' -v --show-context --show-suggestions\"",
     "lint:text:fix": "textlint --fix \"content/**/*.md\"",
     "lint": "npm run lint:css && npm run lint:text",
+    "allchecks": "npm run format:check && npm run lint && npm run test:seo && npm run audit",
     "format": "prettier --write \"**/*.{css,scss,sass}\"",
     "format:check": "prettier --check \"**/*.{css,scss,sass}\"",
     "prepare": "husky install",
