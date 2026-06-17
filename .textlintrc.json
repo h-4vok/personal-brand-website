@@ -1,0 +1,64 @@
+{
+  "rules": {
+    "common-misspellings": {
+      "ignore": [
+        "ollama",
+        "codex",
+        "claude",
+        "github",
+        "linkedin",
+        "gemini",
+        "opencode",
+        "openclaw",
+        "litedllm",
+        "litellm",
+        "vscode",
+        "netlify",
+        "hugo"
+      ]
+    },
+    "no-doubled-conjunction": false,
+    "no-start-duplicated-conjunction": false,
+    "terminology": {
+      "defaultTerms": false,
+      "skip": [
+        "BlockQuote",
+        "Code",
+        "CodeBlock",
+        "Link",
+        "Image",
+        "Html"
+      ],
+      "terms": [
+        "AI",
+        "CLI",
+        "Claude",
+        "Claude Code",
+        "Codex",
+        "EC2",
+        "Gemini",
+        "GitHub",
+        "Hugo",
+        "LinkedIn",
+        "LiteLLM",
+        "LLM",
+        "Netlify",
+        "Ollama",
+        "OpenClaw",
+        "OpenAI",
+        "SLM",
+        "VSCode"
+      ]
+    },
+    "write-good": {
+      "adverb": false,
+      "cliches": false,
+      "eprime": false,
+      "passive": false,
+      "so": false,
+      "thereIs": false,
+      "tooWordy": false,
+      "weasel": false
+    }
+  }
+}

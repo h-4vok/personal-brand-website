@@ -3,7 +3,7 @@ title: "The Hidden Cost of Restructuring: When Companies Force Leaders to Break 
 date: "2025-09-13T15:15:00+01:00"
 author: "Christian Guzman"
 image: images/blog/article/the-ethical-crucible.jpg
-description: "A leader is forced to choose between their job and a team member's. As tragic as that is, we need to explore first the toxicity symptons of a failing organisation and then understand what we, as leaders, can do."
+description: "A leader is forced to choose between their job and a team member's. As tragic as that is, we need to explore first the toxicity symptoms of a failing organisation and then understand what we, as leaders, can do."
 keywords:
   - "Ethical Leadership"
   - "Leadership During Layoffs"
@@ -27,7 +27,7 @@ Recently, I have had the opportunity to look and work on a very unfortunate case
 
 Everyone thought things could not get worse, but they were wrong. Imagine this, weeks after you have been told that your job would be eliminated, you receive a different **"offer"**. _You can choose to be fired, or you can choose one of your direct reports to be fired instead_, and you will be taking on that person's responsibilities in addition to the ones you already have. What a fantastic offer, am I right? A dream come true...
 
-We have a company that has put one of their leaders (and we would not be surprised many others as well) in a position that is **personally destructive**. Any choice made here would have emotional repercusions to several individuals. And any choice definitely would not fix the real underlying problem; there is no indication any choice here would **fix the organisational issues**. It's a race to the bottom.
+We have a company that has put one of their leaders (and we would not be surprised many others as well) in a position that is **personally destructive**. Any choice made here would have emotional repercussions to several individuals. And any choice definitely would not fix the real underlying problem; there is no indication any choice here would **fix the organisational issues**. It's a race to the bottom.
 
 One of the problems presented is how seniority, tenure in the company, has been reduced to nothing. Even worse, it might be the very issue itself; as disconnected managers play a numbers game, deciding which figure on a spreadsheet is greater than the others.
 
@@ -41,7 +41,7 @@ An there is an additional ingredient. Steve would have to **own the responsibili
 
 ## From Personal Pain to Systemic Failure
 
-But what we really should talk about here, what the focal point of our story should be, is to look at the **System Failure of the organisation dynamics**. This is not a story of a manager failing to make a decision, or being too ethical or undecisive. This is a story of an organisation _**failing its leaders**_. A healthy system empowers leadership, and even in the worst scenarios (like layoffs or bankruptcy), ethical leaders can look at the eyes of others, own their mistakes and decisions, and act with accountability and respect. Here, Steve's managers have failed him. Instead of helping Steve or whoever is affected by layoffs to navigate this extremely difficult situation, they have decided to throw the problem at them and put them in an impossible situation. Accountability has been thrown out the window.
+But what we really should talk about here, what the focal point of our story should be, is to look at the **System Failure of the organisation dynamics**. This is not a story of a manager failing to make a decision, or being too ethical or indecisive. This is a story of an organisation _**failing its leaders**_. A healthy system empowers leadership, and even in the worst scenarios (like layoffs or bankruptcy), ethical leaders can look at the eyes of others, own their mistakes and decisions, and act with accountability and respect. Here, Steve's managers have failed him. Instead of helping Steve or whoever is affected by layoffs to navigate this extremely difficult situation, they have decided to throw the problem at them and put them in an impossible situation. Accountability has been thrown out the window.
 
 I always say that, in any organisation, **any problem is a leadership problem**. Layoffs, in particular, tend to be a lagging consequence of leadership decisions that did not turn out to be right, regardless of intent, experience or how well they were thought of. Everything that happens in a company is for leadership to own. This includes you as a leader, regardless of your rank, tenure or seniority. We are all accountable in some shape or form for everything.
 
@@ -61,16 +61,16 @@ We need an actionable way of moving forward. We need to think on principles that
 Your **reputation and integrity** are your greatest asset. A job can be replaced, but your ethical standing is harder to rebuild. Perhaps you have made a decision, years, even decades ago, and you tend to remember it from time to time, and to say to yourself "what a jerk I was!". These situations shape us, and stay with us until we are ready to leave. 
 
 Let's apply the following steps to our thinking.
-* **Define your non negotiables**
+* **Define your non-negotiables**
 * **Gather the facts**
 * **Model the impossible role**
 * **Explore external options simultaneously**
 
 ### Define your non-negotiables
 
-What are your absolute ethical red lines? What is it that you **cannot** comprimse on?
+What are your absolute ethical red lines? What is it that you **cannot** compromise on?
 
-How we feel about ourselves will unvariably affect who we are. We are a result of our looks, our sound, our confidence, our own emotions and feelings about ourselves.
+How we feel about ourselves will invariably affect who we are. We are a result of our looks, our sound, our confidence, our own emotions and feelings about ourselves.
 
 I am not here to tell you what your moral code should be, you are the only owner of that and I can only advice in a general direction. You **must ask yourself at this point** _Who am I?_. Some leaders would indeed take the offer from the organisation, and wing it. Others would take it but simultaneously jump ship as soon as possible. Others would be willing to sacrifice themselves, although they would be leaving that "saved direct report" with a massive issue anyway. (That person will not be safe the next round of layoffs most likely).
 
@@ -86,15 +86,15 @@ We must also ask ourselves at this stage, what are the signals, or the facts tha
 
 We must also look at our direct reports and understand both the reality and their emotional stance. What I mean by this is to analyse how they would emotionally take the news that they will be laid off, and the offer (if we have any details). This should not modify our decision. If we go down the path of firing somebody, we should not choose based on who would take it better. Or at least, this is a question you should ask yourself in the first step where you define your principles. I have some, and you might have others that are different, and we both might be right (or wrong). Just ensure that, within whatever framework or set of values you have defined, that you are being fair. So, why would we ask ourselves how they would take it if we are still going to go ahead without analysing emotions? Because you will be the one talking to this individual, and you want to be as respectful and mindful as possible, cut to the chase, and ensure they understand to the best of your abilities why the decision has been taken. 
 
-As HR is usually present in these meetings, you will be asked to read from a script. I personally never find these to be any good, so I tend to revise them and share them to HR before I go. I am very clear about this. "I will be the one talking and putting my face out there, so I will communicate with this employee the following statements". Of course, I am not looking to be inflamatory or disrepectful to anyone, and keep things rooted in facts where applicable. That is another example of one of my principles, but it might still be different for you.
+As HR is usually present in these meetings, you will be asked to read from a script. I personally never find these to be any good, so I tend to revise them and share them to HR before I go. I am very clear about this. "I will be the one talking and putting my face out there, so I will communicate with this employee the following statements". Of course, I am not looking to be inflammatory or disrespectful to anyone, and keep things rooted in facts where applicable. That is another example of one of my principles, but it might still be different for you.
 
 ### Model the impossible role
 
-Can you **truly** do the other person job if you chose to stay? Can you do it without **burning out**? Work hard on articulating the untenability of the role back to your leader with data, if possible. Not just with emotion. In Steve's case, there is a high probability that will discard his argument very quickly. Steve knows what to expect, but he should still go through this excercise.
+Can you **truly** do the other person job if you chose to stay? Can you do it without **burning out**? Work hard on articulating the untenability of the role back to your leader with data, if possible. Not just with emotion. In Steve's case, there is a high probability that will discard his argument very quickly. Steve knows what to expect, but he should still go through this exercise.
 
 We were **"overwhelmed"** by the impossible choice given to us, so let's split the problem in smaller pieces and attack each one of those in an order that makes sense.
 
-First, we said it was an opportunity for us to face these massive ethical conflicts as an opportunity of personal improvement, even if our final destination is updating our linkedin. On top of that, this is also an opportunity to learn how to navigate such intricate and emotional distress situations with professionalism, leadership and empathy. So yes, do your homework, and analyse what it would mean to have two jobs here, and how you would make it work. Something might need to give, something else might need to be sacrificed. Even if you already know from the beginning that you would be hitting the road.
+First, we said it was an opportunity for us to face these massive ethical conflicts as an opportunity of personal improvement, even if our final destination is updating our LinkedIn. On top of that, this is also an opportunity to learn how to navigate such intricate and emotional distress situations with professionalism, leadership and empathy. So yes, do your homework, and analyse what it would mean to have two jobs here, and how you would make it work. Something might need to give, something else might need to be sacrificed. Even if you already know from the beginning that you would be hitting the road.
 
 ### Explore external options simultaneously
 

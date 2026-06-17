@@ -101,8 +101,9 @@ When creating a new article, mirror that structure rather than using `hugo new` 
 
 1. Add or edit the Markdown file in `content/english/blog`.
 2. Add the matching image under `assets/images/blog/article` if needed.
-3. Run `npm run dev`.
-4. Open the post locally and verify:
+3. Run `npm run lint:text`.
+4. Run `npm run dev`.
+5. Open the post locally and verify:
    - title renders correctly
    - hero/cover image resolves
    - description looks reasonable in list pages
@@ -114,6 +115,8 @@ If the post should simulate production behavior, also run:
 ```powershell
 npm run build
 ```
+
+`lint:text` here is a technical editorial guardrail, not an absolute authority. It combines `textlint` for style/terminology and `cspell` for spelling. If a suggestion fights the intended tone or correct technical vocabulary, adjust the rule configuration instead of forcing awkward prose.
 
 ## Pre-publish checklist
 

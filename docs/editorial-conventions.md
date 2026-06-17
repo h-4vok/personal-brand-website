@@ -2,6 +2,8 @@
 
 These conventions are here to keep the site coherent and predictable during normal maintenance.
 
+`lint:text` is a supporting editorial check for technical English in `content/**/*.md`, not a replacement for judgment. It uses `textlint` for style and `cspell` for spelling. Keep the intended voice and domain vocabulary; tune the lint rules when they conflict with correct meaning or deliberate style.
+
 ## Language
 
 - Primary site language is currently English.

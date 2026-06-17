@@ -80,15 +80,15 @@ Here is the pragmatic way to set this up in *your local machine*.
 ### Step 1: Fire up your local model
 First, ensure Ollama is running with a model capable of strong reasoning and function calling. For coding, Qwen is very strong. Ensure you are downloading a version capable of function calling, otherwise it will not work. For deep reasoning work most people point to DeepSeek, although I am completely happy with Gemma 4's performance.
 
-To download the models do the following in cli (replace with the model of your choice):
+To download the models do the following in CLI (replace with the model of your choice):
 ```bash
 ollama pull gemma4:latest
 ```
 
 ### Step 2: Simply use the launch command
-No longer you need to manually setup ollama against your coding agent. Whether you want to use Codex, Hermes, Claude, OpenCode or whatever, there is a command for you.
+No longer do you need to manually setup Ollama against your coding agent. Whether you want to use Codex, Hermes, Claude, OpenCode or whatever, there is a command for you.
 
-My personal choice is keeping Codex pointing to OpenAI models and my subscription, and then use the Claude CLI pointing to my ollama.
+My personal choice is keeping Codex pointing to OpenAI models and my subscription, and then use the Claude CLI pointing to my Ollama.
 
 ```bash
 ollama launch claude
@@ -101,13 +101,13 @@ ollama launch opencode
 In theory you can add the ```bash --model gemma4:latest``` parameter but it has never worked well for me. So I simply use launch and then I get a list of models. Your locally installed one will be placed at the very end of this list.
 
 ### Step 3: That's it really
-Just start working. If you are using a model capable of function calling (listed as "tools" in ollama's catalogue) you are likely set.
+Just start working. If you are using a model capable of function calling (listed as "tools" in Ollama's catalogue) you are likely set.
 
-As I mentioned before, I use Codex to burn my OpenAI subscription but then run Claude against my local ollama. You might chose a different combination. Nothing stops you from trying whatever works for you.
+As I mentioned before, I use Codex to burn my OpenAI subscription but then run Claude against my local Ollama. You might chose a different combination. Nothing stops you from trying whatever works for you.
 
 Why not simply use plugins like Continue in VSCode? Well, the "interface" holds a lot more intelligence than you think. By leveraging the CLIs of these vendors you are getting a whole range of "tools" that are provided as context back to your LLM. They also automatically handle the "context" providing visibility of your codebase back to your model. With Continue, you need to be very precise many times otherwise your model flies blind.
 
-Configuring the agentic interfaces/cli against your own server is not impossible either, but exceeds our exploration for the day.
+Configuring the agentic interfaces/CLI against your own server is not impossible either, but exceeds our exploration for the day.
 
 ## Conclusion
 
@@ -115,4 +115,4 @@ Working with these CLI tools (or even the Codex App or Claude Cowork for example
 
 The first execution is extremely simple. As you want to scale to teams you must begin thinking on exposing ports and scaling the hardware, or thinking of a load balancing strategy.
 
-Resilience is no longer optional. You do not need to abandon your product roadmap immediately, but start planning your discovery and experimentation on self hosted models. Whether it's political pressure or economics, ollama has made it extremely simple now. This is an invitation for sovereignty and excellence. 
+Resilience is no longer optional. You do not need to abandon your product roadmap immediately, but start planning your discovery and experimentation on self hosted models. Whether it's political pressure or economics, Ollama has made it extremely simple now. This is an invitation for sovereignty and excellence. 

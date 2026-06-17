@@ -146,9 +146,14 @@ Note: the root `package.json` still exposes `project-setup` and `theme-setup`, b
 ```bash
 npm run lint:css
 npm run lint:css:fix
+npm run lint:text
+npm run lint:text:fix
+npm run lint
 npm run format:check
 npm run format
 ```
+
+`lint:text` checks only site content under `content/**/*.md`. It combines `textlint` for editorial/style checks with `cspell` for actual spelling errors in technical Markdown. It is enforced in CI on `push` and `pull_request`, but it is not part of the local pre-commit hook.
 
 ### Pre-commit hooks
 
@@ -156,7 +161,7 @@ npm run format
 npm run prepare
 ```
 
-Pre-commit runs `lint-staged` automatically on staged CSS/Sass files.
+Pre-commit runs `lint-staged` automatically on staged CSS/Sass files. Markdown prose linting is intentionally kept out of `pre-commit` for now and runs through `npm run lint:text` plus CI.
 
 ## Repository map
 
