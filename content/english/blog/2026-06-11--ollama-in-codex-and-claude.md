@@ -30,7 +30,7 @@ One of the primary walls when running open-source models locally is hardware lim
 
 But the other issue, even if you got your local model running on a powerful computer setup, was that the experience was just not the same. It wasn't as hands-off. Whether you were using basic editor extensions or earlier iteration tools, the experience felt "not smart enough." You had to point directly to files, the codebase, or specific context manually. If you wanted certain things run—like accessing GitHub issues through the `gh` CLI—you had to create specific skills, direct the LLM to use them, or simply do it yourself and feed the output back to the model. And many times your "interface" with the model would not be intelligent enough. The function calls would be skipped, fail mysteriously, and you'd be completely lost.
 
-With Codex and Claude, the experience is truly remarkable. Once you clearly define what needs to be done, you fire off the task and go work on something else. five seconds to thirty minutes later, Codex or Claude comes back with questions, results, or a finished implementation. You do not have to be constantly present nor permanently running manual commands yourself.
+With Codex and Claude, the experience is truly remarkable. Once you clearly define what needs to be done, you fire off the task and go work on something else. Five seconds to thirty minutes later, Codex or Claude comes back with questions, results, or a finished implementation. You do not have to be constantly present nor permanently running manual commands yourself.
 
 Add to this the ability to connect your mobile to your PC to continue interacting with these apps remotely, and the workflow becomes incredibly powerful. Basic VSCode plugins that merely chat with your Ollama instance simply cannot compete with that experience.
 
@@ -55,7 +55,7 @@ For example, one of the best uses I have for AI is helping me refine requirement
 
 For engineering leadership and executives, pushing for a hybrid local-cloud AI strategy is no longer just a cost-saving measure. We are now talking about risk mitigation. 
 
-There is a persistent myth that frontier models will inevitably become drastically cheaper. We have already seen the reality is quite the opposite. Whether it is a matter of frontier companies trying to achieve AGI, or just because it does not serve their business model that things become cheaper (for you of course!), vendor lock-in is real. The pricing power rests entirely with a few major providers and the only thing stopping them from commanding even premium-er prices is the fact you are struggling to breathe right now. And I do not mean just financially, but because the space has moved to quickly that barely anyone has been able to catch up, let alone implement those practices.
+There is a persistent myth that frontier models will inevitably become drastically cheaper. We have already seen the reality is quite the opposite. Whether it is a matter of frontier companies trying to achieve AGI, or just because it does not serve their business model that things become cheaper (for you of course!), vendor lock-in is real. The pricing power rests entirely with a few major providers and the only thing stopping them from commanding even more premium prices is the fact you are struggling to breathe right now. And I do not mean just financially, but because the space has moved to quickly that barely anyone has been able to catch up, let alone implement those practices.
 
 More importantly, the recent incident with Fable demonstrated the catastrophic risk of depending entirely on a frontier model hosted outside your jurisdiction. When regulatory shifts, compliance disputes, or sudden vendor policy changes occur, you are caught in the middle.
 
@@ -65,11 +65,13 @@ Running capable open-weight models locally—or on self-hosted infrastructure or
 
 For engineers, the appeal of local LLMs goes beyond corporate budgeting. It’s about protecting the "flow state."
 
-Nothing breaks momentum faster than hitting a rate limit right when you are deep into debugging a complex architectural issue. Having a local model seamlessly integrated into your agentic tools means unmetered, unlimited experimentation. You can ask "stupid" questions, run massive context searches, and iterate endlessly without watching a token counter.
+Nothing breaks momentum faster than hitting a rate limit right when you are deep into debugging a complex architectural issue. Having a local model seamlessly integrated into your agentic tools means unmetered, unlimited experimentation. You can ask "stupid" questions, run massive context searches, and iterate endlessly without watching a token counter. Being able to ask silly things often leads to breakthroughs. You are removing cognitive friction.
 
-Furthermore, there is the reality of data privacy. Engineers occasionally need to debug issues using sensitive context—production database dumps, internal network topologies, or files containing environmental variables. Sure, your cloud provider might be giving you guarantees or promises around security and isolation of data, but what happens when an engineer is almost out of tokens but they desesperately need to debug that one production incident? They will paste those sensible logs in ChatGPT, Gemini or Claude. Sure, you might have been clear about the AI guidelines, but consider what happens when pressure builds up and engineers no longer fathom doing things manually anymore? A solution to this is what we are talking about today. 
+Furthermore, there is the reality of data privacy. Engineers occasionally need to debug issues using sensitive context—production database dumps, internal network topologies, or files containing environmental variables. Sure, your cloud provider might be giving you guarantees or promises around security and isolation of data, but what happens when an engineer is almost out of tokens but they desperately need to debug that one production incident? They will paste those sensitive logs in ChatGPT, Gemini or Claude. Sure, you might have been clear about the AI guidelines, but consider what happens when pressure builds up and engineers no longer fathom doing things manually anymore? A solution to this is what we are talking about today. 
 
 ## The Technical Guide: Connecting Ollama to Codex and Claude
+
+So, how do we translate this high-level strategy into everyday execution? It starts at the terminal.
 
 The goal is to trick your premium agentic tools (like Codex, Cursor, or Claude Code) into talking to your local Ollama instance, leveraging their superior UI and agentic capabilities without spending cloud tokens. We will only focus on Ollama today, but there is an equivalent solution in LM Studio.
 
@@ -103,8 +105,14 @@ Just start working. If you are using a model capable of function calling (listed
 
 As I mentioned before, I use Codex to burn my OpenAI subscription but then run Claude against my local ollama. You might chose a different combination. Nothing stops you from trying whatever works for you.
 
-Why not simply use plugins like Continue in VSCode? Well, the "interface" holds a lot more intelligene than you think. By leveraging the CLIs of these vendors you are getting a whole range of "tools" that are provided as context back to your LLM. They also automatically handle the "context" providing visibility of your codebase back to your model. With Continue, you need to be very precise many times otherwise your model flies blind.
+Why not simply use plugins like Continue in VSCode? Well, the "interface" holds a lot more intelligence than you think. By leveraging the CLIs of these vendors you are getting a whole range of "tools" that are provided as context back to your LLM. They also automatically handle the "context" providing visibility of your codebase back to your model. With Continue, you need to be very precise many times otherwise your model flies blind.
+
+Configuring the agentic interfaces/cli against your own server is not impossible either, but exceeds our exploration for the day.
 
 ## Conclusion
 
-That's it. The execution is extremely simple. As you want to scale to teams you must begin thinking on exposing ports and scaling the hardware, or thinking of a load balancing strategy. Configuring the agentic interfaces/cli against your own server is not impossible either, but exceeds our exploration for the day.
+Working with these CLI tools (or even the Codex App or Claude Cowork for example) provides a fantastic user experience. It almost feels like you are working with a colleague. 
+
+The first execution is extremely simple. As you want to scale to teams you must begin thinking on exposing ports and scaling the hardware, or thinking of a load balancing strategy.
+
+Resilience is no longer optional. You do not need to abandon your product roadmap immediately, but start planning your discovery and experimentation on self hosted models. Whether it's political pressure or economics, ollama has made it extremely simple now. This is an invitation for sovereignty and excellence. 
