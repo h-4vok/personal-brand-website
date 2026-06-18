@@ -8,7 +8,15 @@ const {
 const { detectBrowserPath } = require("./lighthouse-browser");
 
 const lighthouseCli = require.resolve("lighthouse/cli/index.js");
-const outputPath = path.resolve(__dirname, "..", "seo-report.json");
+const reportBaseName = process.env.LIGHTHOUSE_REPORT_BASENAME || "seo-report";
+const outputDir = path.resolve(__dirname, "..");
+const outputJsonPath = path.join(outputDir, `${reportBaseName}.json`);
+const outputHtmlPath = path.join(outputDir, `${reportBaseName}.html`);
+const auditUrl = process.env.LIGHTHOUSE_REPORT_URL || "https://christianguzman.uk";
+const categories = (process.env.LIGHTHOUSE_CATEGORIES || "seo,performance")
+  .split(",")
+  .map((category) => category.trim())
+  .filter(Boolean);
 const chromePath = detectBrowserPath();
 const profilesDir = path.resolve(__dirname, "..", ".lighthouseci", "profiles");
 const isVerbose = process.env.AUDIT_VERBOSE
@@ -55,19 +63,22 @@ const chromeFlags = [
 ];
 
 log(`[audit:report] Browser: ${chromePath}`);
-log(`[audit:report] URL: https://christianguzman.uk`);
-log(`[audit:report] Output: ${outputPath}`);
+log(`[audit:report] URL: ${auditUrl}`);
+log(`[audit:report] HTML output: ${outputHtmlPath}`);
+log(`[audit:report] JSON output: ${outputJsonPath}`);
 
 const result = spawnSync(
   process.execPath,
   [
     lighthouseCli,
-    "https://christianguzman.uk",
-    "--only-categories=seo,performance",
+    auditUrl,
+    `--only-categories=${categories.join(",")}`,
+    "--output",
+    "html",
     "--output",
     "json",
     "--output-path",
-    outputPath,
+    outputJsonPath,
     `--chrome-flags=${chromeFlags.join(" ")}`,
   ],
   {
@@ -79,9 +90,9 @@ const result = spawnSync(
 
 cleanupProfileDir(profileDir);
 
-if (fs.existsSync(outputPath)) {
+if (fs.existsSync(outputJsonPath)) {
   try {
-    const report = JSON.parse(fs.readFileSync(outputPath, "utf8"));
+    const report = JSON.parse(fs.readFileSync(outputJsonPath, "utf8"));
     const seo = report.categories?.seo?.score;
     const perf = report.categories?.performance?.score;
     log(`[audit:report] Scores: seo=${seo} perf=${perf}`);
@@ -92,13 +103,13 @@ if (fs.existsSync(outputPath)) {
 
 const classification = classifyLighthouseResult({
   status: result.status,
-  hasReport: fs.existsSync(outputPath),
+  hasReport: fs.existsSync(outputJsonPath),
   stderr: result.stderr,
 });
 
 if (classification.kind === "cleanup-noise") {
   console.warn(
-    "[audit:report] Lighthouse returned non-zero but seo-report.json was generated (known Windows cleanup noise).",
+    `[audit:report] Lighthouse returned non-zero but ${path.basename(outputJsonPath)} was generated (known Windows cleanup noise).`,
   );
   if (classification.summary) {
     log(`[audit:report] Non-fatal Lighthouse stderr summary:\n${classification.summary}`);
