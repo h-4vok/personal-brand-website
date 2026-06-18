@@ -11,6 +11,7 @@ categories:
 tags:
   - "Productivity"
 slug: "void-activity"
+draft: true
 ---
 
 Our job as leaders is to watch over the space of our people. What do I mean by that? Well, let's put it in simple performance terms. Let's start with the heavy artillery immediately.
