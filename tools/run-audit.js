@@ -17,6 +17,10 @@ const chromePath = detectBrowserPath();
 const isWindowsEdge = process.platform === "win32" && /msedge\.exe$/i.test(chromePath);
 
 const defaultRoutes = ["/", "/articles/", "/engineering-leadership-coaching/"];
+const defaultBuildMarkerName = process.env.LIGHTHOUSE_BUILD_MARKER_NAME || "x-build-commit";
+const expectedBuildSha = (process.env.LIGHTHOUSE_EXPECTED_BUILD_SHA || "").trim().toLowerCase();
+const buildWaitTimeoutMs = Number(process.env.LIGHTHOUSE_BUILD_TIMEOUT_MS || 600000);
+const buildPollIntervalMs = Number(process.env.LIGHTHOUSE_BUILD_POLL_INTERVAL_MS || 10000);
 const routes = (process.env.LIGHTHOUSE_ROUTES || "")
   .split(",")
   .map((route) => route.trim())
@@ -37,11 +41,6 @@ const isVerbose = process.env.AUDIT_VERBOSE
 function log(message) {
   if (!isVerbose) return;
   process.stderr.write(`${message}\n`);
-}
-
-if (!fs.existsSync(path.join(rootDir, "public"))) {
-  console.error("Missing public/ directory. Run `npm run hugo:build` first.");
-  process.exit(1);
 }
 
 if (!chromePath) {
@@ -162,6 +161,83 @@ function cleanupProfileDir(profileDir) {
   }
 }
 
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function parseBuildMarker(html, markerName) {
+  const escapedName = markerName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const metaPattern = new RegExp(
+    `<meta[^>]+name=["']${escapedName}["'][^>]+content=["']([^"']+)["'][^>]*>`,
+    "i",
+  );
+  const match = String(html).match(metaPattern);
+  return (match?.[1] || "").trim();
+}
+
+async function fetchBuildMarker(baseUrl, markerName) {
+  const requestUrl = new URL("/", baseUrl);
+  requestUrl.searchParams.set("__build_marker", Date.now().toString());
+  const response = await fetch(requestUrl, {
+    headers: {
+      Accept: "text/html",
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
+    },
+    redirect: "follow",
+  });
+
+  const body = await response.text();
+  return {
+    ok: response.ok,
+    status: response.status,
+    marker: parseBuildMarker(body, markerName),
+  };
+}
+
+async function waitForExpectedBuild(baseUrl, markerName, expectedSha) {
+  const startedAt = Date.now();
+  let attempts = 0;
+  let lastObserved = "";
+  let lastStatus = 0;
+  let lastError = "";
+
+  while (Date.now() - startedAt < buildWaitTimeoutMs) {
+    attempts += 1;
+    try {
+      const result = await fetchBuildMarker(baseUrl, markerName);
+      lastStatus = result.status;
+      lastObserved = result.marker;
+
+      if (result.ok && result.marker.toLowerCase() === expectedSha) {
+        log(
+          `[audit] Preview build marker ${markerName} matched expected SHA ${expectedSha} after ${attempts} attempt(s).`,
+        );
+        return;
+      }
+
+      log(
+        `[audit] Waiting for preview build marker ${markerName}. HTTP ${result.status}; observed="${result.marker || "<missing>"}"; expected="${expectedSha}".`,
+      );
+    } catch (error) {
+      lastError = error.message;
+      log(`[audit] Waiting for preview build marker ${markerName}. Request failed: ${error.message}`);
+    }
+
+    await delay(buildPollIntervalMs);
+  }
+
+  const timeoutSeconds = (buildWaitTimeoutMs / 1000).toFixed(0);
+  const statusSuffix = lastStatus ? ` Last HTTP status: ${lastStatus}.` : "";
+  const markerSuffix = lastObserved
+    ? ` Last observed marker: ${lastObserved}.`
+    : " Marker was missing from the response.";
+  const errorSuffix = lastError ? ` Last request error: ${lastError}.` : "";
+  throw new Error(
+    `Timed out after ${timeoutSeconds}s waiting for preview ${baseUrl} to serve ${markerName}=${expectedSha}.${statusSuffix}${markerSuffix}${errorSuffix}`,
+  );
+}
+
 function runLighthouse(url, outputPath) {
   const profileDir = createProfileDir(path.basename(outputPath, ".json"));
   const chromeFlags = [
@@ -218,6 +294,15 @@ function runLighthouse(url, outputPath) {
       const served = await createStaticServer(path.join(rootDir, "public"));
       server = served.server;
       baseUrl = `http://127.0.0.1:${served.port}`;
+    }
+
+    if (!process.env.LIGHTHOUSE_BASE_URL && !fs.existsSync(path.join(rootDir, "public"))) {
+      console.error("Missing public/ directory. Run `npm run hugo:build` first.");
+      process.exit(1);
+    }
+
+    if (expectedBuildSha) {
+      await waitForExpectedBuild(baseUrl, defaultBuildMarkerName, expectedBuildSha);
     }
 
     log(`[audit] Browser: ${chromePath}`);

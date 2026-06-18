@@ -66,6 +66,10 @@
 	<link rel="preload" href="{{ `/fonts/eb-garamond-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
 	<meta name="description" content="{{ $description }}">
 	<meta name="author" content="{{ $author }}">
+	{{ $buildSha := getenv "HUGO_BUILD_SHA" | strings.TrimSpace }}
+	{{ if $buildSha }}
+	<meta name="x-build-commit" content="{{ $buildSha }}">
+	{{ end }}
 	<link rel="canonical" href="{{ .Permalink }}">
 	{{ if eq .Type "redirect" }}
 	<meta name="robots" content="noindex,nofollow">

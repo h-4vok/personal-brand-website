@@ -35,6 +35,7 @@
     "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --forceSyncStatic",
     "hugo:build": "hugo --gc --minify",
     "audit": "node ./tools/run-audit.js",
+    "audit:preview": "node ./tools/run-audit.js",
     "audit:smoke": "node ./tools/run-audit.js",
     "audit:report": "node ./tools/lighthouse-report.js",
     "bootstrap:purge": "node ./tools/purge-bootstrap.mjs",

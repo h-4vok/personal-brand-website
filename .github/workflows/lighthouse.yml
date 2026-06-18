@@ -1,6 +1,27 @@
 name: Lighthouse CI
 
 on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "assets/**"
+      - "content/**"
+      - "data/**"
+      - "i18n/**"
+      - "layouts/**"
+      - "static/**"
+      - "themes/**"
+      - "archetypes/**"
+      - "hugo.toml"
+      - "hugo.yaml"
+      - "hugo.yml"
+      - "config/**"
+      - "package.json"
+      - "package-lock.json"
+      - "netlify.toml"
+      - "lighthouserc.js"
+      - "tools/**"
   push:
     branches:
       - main
@@ -19,23 +40,22 @@ on:
       - "config/**"
       - "package.json"
       - "package-lock.json"
+      - "netlify.toml"
       - "lighthouserc.js"
-      - "tools/run-audit.js"
-      - "tools/lighthouse-*.js"
+      - "tools/**"
   workflow_dispatch: {}
 
 concurrency:
-  group: lighthouse-${{ github.ref }}
+  group: lighthouse-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   lighthouse:
-    runs-on: windows-latest
-    timeout-minutes: 12
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
     env:
       HUSKY: 0
       AUDIT_VERBOSE: 1
-      LIGHTHOUSE_BASE_URL: https://christianguzman.uk
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,9 +78,43 @@ jobs:
         run: npm ci
 
       - name: Build static site
+        env:
+          HUGO_BUILD_SHA: ${{ github.sha }}
         run: npm run hugo:build
 
+      - name: Resolve Netlify preview URL
+        if: github.event_name == 'pull_request'
+        id: preview
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const ref = context.payload.pull_request.head.sha;
+            const { data } = await github.rest.repos.listCommitStatusesForRef({
+              owner,
+              repo,
+              ref,
+              per_page: 100,
+            });
+
+            const previewStatus = data.find((status) => {
+              if (!status.target_url || !status.context) return false;
+              return /netlify/i.test(status.context) && /netlify\.app/i.test(status.target_url);
+            });
+
+            if (!previewStatus) {
+              core.setFailed(`No Netlify preview status with a netlify.app target URL found for ${ref}.`);
+              return;
+            }
+
+            core.info(`Using Netlify preview status "${previewStatus.context}" -> ${previewStatus.target_url}`);
+            core.setOutput("url", previewStatus.target_url);
+
       - name: Run Lighthouse CI
+        env:
+          LIGHTHOUSE_BASE_URL: ${{ github.event_name == 'pull_request' && steps.preview.outputs.url || 'https://christianguzman.uk' }}
+          LIGHTHOUSE_EXPECTED_BUILD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || '' }}
         run: npm run audit
 
       - name: Upload Lighthouse artifacts
