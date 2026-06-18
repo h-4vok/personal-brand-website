@@ -16,7 +16,7 @@ draft: true
 
 Our job as leaders is to watch over the space of our people. What do I mean by that? Well, let's put it in simple performance terms. Let's start with the heavy artillery immediately.
 
-People, teams, organisations, exist in relation to the space they are in. We can see this from all perspectives: Industries, competitors, social networks, acquantances, other teams, etc. As you watch over the "space" one of the primary objectives is to establish empathy. To properly and actually care about your people.
+People, teams, organisations, exist in relation to the space they are in. We can see this from all perspectives: Industries, competitors, social networks, acquaintances, other teams, etc. As you watch over the "space" one of the primary objectives is to establish empathy. To properly and actually care about your people.
 
 > "Certainly the world of nature abounds with surfaces and lines, with areas of density and vacuity, which we employ in making out the boundaries of events and things. But here again, the maya doctrine asserts that these forms have no "own-being" or "self-nature": they do not exist in their own right, but only in relation to a space..."
 > 
@@ -48,5 +48,5 @@ Most burnout comes from the fact that people feel _they have no control over the
 
 Creative thinking is applied on every single job regardless of how mechanical the tasks can be. And creativity requires space. As water tends to flow downstream, unless contained, organisations tend to pour urgencies and lack of clarity down into the organisation, driving lack of focus, confusion and to generate large profit losses. These loses are rather difficult to detect, and if your company is already doing circles with an unclear execution mandate, then measuring confusion is probably not in your agenda anyway.
 
-There is also another phantom that kills productivity bit by bit and becomes invisible to everyone, both victim and victimary. You guessed it, it's meetings. But not any meetings, don't get me wrong. But the lack of balance between talking about work and doing actual work. When all we do is talk about activities, we are not performing activities. If we talk about work, we are not doing work. It is _part_ of the work, and of course collaboration and communication are more than necessary, let's be honest, not everything can be fun play times.
+There is also another phantom that kills productivity bit by bit and becomes invisible to everyone, both victim and victimizer. You guessed it, it's meetings. But not any meetings, don't get me wrong. But the lack of balance between talking about work and doing actual work. When all we do is talk about activities, we are not performing activities. If we talk about work, we are not doing work. It is _part_ of the work, and of course collaboration and communication are more than necessary, let's be honest, not everything can be fun play times.
 
