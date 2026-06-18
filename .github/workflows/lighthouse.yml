@@ -21,6 +21,27 @@ on:
       - "tools/run-audit.js"
       - "tools/lighthouse-*.js"
   workflow_dispatch: {}
+  push:
+    branches:
+      - main
+    paths:
+      - "assets/**"
+      - "content/**"
+      - "data/**"
+      - "i18n/**"
+      - "layouts/**"
+      - "static/**"
+      - "themes/**"
+      - "archetypes/**"
+      - "hugo.toml"
+      - "hugo.yaml"
+      - "hugo.yml"
+      - "config/**"
+      - "package.json"
+      - "package-lock.json"
+      - "lighthouserc.js"
+      - "tools/run-audit.js"
+      - "tools/lighthouse-*.js"
 
 concurrency:
   group: lighthouse-${{ github.event.pull_request.number || github.ref }}
@@ -28,9 +49,11 @@ concurrency:
 
 jobs:
   lighthouse:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    timeout-minutes: 12
     env:
       HUSKY: 0
+      AUDIT_VERBOSE: 1
     steps:
       - name: Checkout
         uses: actions/checkout@v4

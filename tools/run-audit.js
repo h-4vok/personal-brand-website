@@ -16,8 +16,20 @@ const lighthouseCli = require.resolve("lighthouse/cli/index.js");
 const chromePath = detectBrowserPath();
 const isWindowsEdge = process.platform === "win32" && /msedge\.exe$/i.test(chromePath);
 
-const routes = ["/", "/articles/", "/engineering-leadership-coaching/"];
-const thresholds = { seo: 1.0, performance: 0.9 };
+const defaultRoutes = ["/", "/articles/", "/engineering-leadership-coaching/"];
+const routes = (process.env.LIGHTHOUSE_ROUTES || "")
+  .split(",")
+  .map((route) => route.trim())
+  .filter(Boolean);
+const auditRoutes = routes.length > 0 ? routes : defaultRoutes;
+const categories = (process.env.LIGHTHOUSE_CATEGORIES || "seo,performance")
+  .split(",")
+  .map((category) => category.trim())
+  .filter(Boolean);
+const thresholds = {
+  seo: Number(process.env.LIGHTHOUSE_SEO_THRESHOLD || 1.0),
+  performance: Number(process.env.LIGHTHOUSE_PERF_THRESHOLD || 0.9),
+};
 const isVerbose = process.env.AUDIT_VERBOSE
   ? process.env.AUDIT_VERBOSE !== "0" && process.env.AUDIT_VERBOSE !== "false"
   : false;
@@ -168,7 +180,7 @@ function runLighthouse(url, outputPath) {
     [
       lighthouseCli,
       url,
-      "--only-categories=seo,performance",
+      `--only-categories=${categories.join(",")}`,
       "--output",
       "json",
       "--output-path",
@@ -195,7 +207,9 @@ function runLighthouse(url, outputPath) {
   const auditStart = performance.now();
   try {
     let baseUrl = "";
-    if (isWindowsEdge) {
+    if (process.env.LIGHTHOUSE_BASE_URL) {
+      baseUrl = process.env.LIGHTHOUSE_BASE_URL;
+    } else if (isWindowsEdge) {
       log(
         "[audit] Windows + Edge detected. Using production URL fallback to avoid local Edge protocol instability.",
       );
@@ -208,13 +222,14 @@ function runLighthouse(url, outputPath) {
 
     log(`[audit] Browser: ${chromePath}`);
     log(`[audit] Base URL: ${baseUrl}`);
-    log(`[audit] Routes: ${routes.join(", ")}`);
+    log(`[audit] Categories: ${categories.join(", ")}`);
+    log(`[audit] Routes: ${auditRoutes.join(", ")}`);
     log(`[audit] Output dir: ${outputDir}`);
 
     let hasSeoFailure = false;
     let hasPerfWarning = false;
 
-    for (const route of routes) {
+    for (const route of auditRoutes) {
       const routeStart = performance.now();
       const url = `${baseUrl}${route}`;
       const reportPath = path.join(outputDir, `${slugForRoute(route)}.json`);
@@ -257,11 +272,11 @@ function runLighthouse(url, outputPath) {
 
       log(`[audit] Scores for ${route}: seo=${seo} perf=${perf}`);
       log(`[audit] Route ${route} completed in ${((performance.now() - routeStart) / 1000).toFixed(2)}s`);
-      if (seo < thresholds.seo) {
+      if (categories.includes("seo") && seo < thresholds.seo) {
         hasSeoFailure = true;
         console.error(`[audit] SEO score for ${route} is ${seo}. Required: ${thresholds.seo}.`);
       }
-      if (perf < thresholds.performance) {
+      if (categories.includes("performance") && perf < thresholds.performance) {
         hasPerfWarning = true;
         console.warn(
           `[audit] Performance score for ${route} is ${perf}. Warning threshold: ${thresholds.performance}.`,
