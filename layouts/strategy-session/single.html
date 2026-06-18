@@ -2,12 +2,32 @@
 
 <section class="section strategy-session-page">
   <div class="container">
-    <div class="strategy-session-shell">
+    <article class="strategy-session-shell">
       <header class="strategy-session-hero">
         <div class="strategy-session-hero__copy">
           <h1>{{ .Title }}</h1>
           {{ with .Params.subtitle }}
             <p class="strategy-session-subtitle">{{ . }}</p>
+          {{ end }}
+
+          <div class="strategy-session-intro">
+            <p>Sometimes the problem is not technical.</p>
+            <p>Sometimes the problem is not the team.</p>
+            <p>Sometimes the problem is how decisions are made, how ownership is structured, or how leadership is being exercised.</p>
+            <p>The goal of this session is to understand what is really happening and decide what is worth paying attention to next.</p>
+          </div>
+
+          {{ with .Params.cta_url }}
+            <p class="strategy-session-cta">
+              <a
+                href="{{ . | safeURL }}"
+                class="power-thesis__btn power-thesis__btn--primary"
+                target="_blank"
+                rel="noopener"
+              >
+                {{ $.Params.cta_text }}
+              </a>
+            </p>
           {{ end }}
         </div>
 
@@ -26,55 +46,83 @@
         </div>
       </header>
 
-      <section class="strategy-session-not-for">
-        <h3>{{ .Params.not_for_title }}</h3>
-        <p>{{ .Params.not_for_text }}</p>
-      </section>
-
-      <section class="strategy-session-format">
-        <h3>{{ .Params.format_title }}</h3>
-        <p>{{ .Params.format_text | safeHTML }}</p>
-      </section>
-
-      {{ with .Params.sections }}
-        <div class="strategy-session-content" aria-label="The two pillars">
-          {{ range . }}
-            <section class="strategy-session-block{{ if eq .variant `business` }} strategy-session-block--business{{ end }}">
-              <div class="strategy-session-block__body">
-                {{ with .eyebrow }}
-                  <p class="strategy-session-eyebrow">{{ . }}</p>
-                {{ end }}
-                <h2>{{ .title }}</h2>
-                <p class="strategy-session-context">{{ .context }}</p>
-
-                {{ with .items }}
-                  <ul class="strategy-session-list">
-                    {{ range . }}
-                      <li>
-                        <span class="strategy-session-list__label">{{ .label }}:</span>
-                        <span>{{ .text }}</span>
-                      </li>
-                    {{ end }}
-                  </ul>
-                {{ end }}
-              </div>
-
-              <p class="manifesto-cta">
-                <a
-                  href="{{ .cta_url | safeURL }}"
-                  class="power-thesis__btn power-thesis__btn--primary"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {{ .cta_text }}
-                </a>
-              </p>
-            </section>
-          {{ end }}
-        </div>
+      {{ with .Params.who }}
+        <section class="strategy-session-section">
+          <h2>{{ $.Params.who_title }}</h2>
+          <div class="strategy-session-prose">
+            {{ range . }}
+              <p>{{ .text }}</p>
+            {{ end }}
+          </div>
+        </section>
       {{ end }}
 
-    </div>
+      <section class="strategy-session-section">
+        <h2>{{ .Params.topics_title }}</h2>
+        <div class="strategy-session-prose">
+          <p>{{ .Params.topics_intro }}</p>
+        </div>
+        {{ with .Params.topics }}
+          <div class="strategy-session-topics-grid">
+            {{ range . }}
+              <section class="strategy-session-topic">
+                <h3>{{ .title }}</h3>
+                <p>{{ .text }}</p>
+              </section>
+            {{ end }}
+          </div>
+        {{ end }}
+      </section>
+
+      <section class="strategy-session-section strategy-session-section--about">
+        <h2>{{ .Params.about_title }}</h2>
+        <div class="strategy-session-prose strategy-session-prose--first-person">
+          {{ range split .Params.about_text "\n\n" }}
+            <p>{{ . }}</p>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="strategy-session-section">
+        <h2>{{ .Params.session_title }}</h2>
+        <div class="strategy-session-prose">
+          {{ range split .Params.session_text "\n\n" }}
+            <p>{{ . }}</p>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="strategy-session-section">
+        <h2>{{ .Params.not_for_title }}</h2>
+        {{ with .Params.not_for }}
+          <div class="strategy-session-topics-grid strategy-session-topics-grid--not-for">
+            {{ range . }}
+              <section class="strategy-session-topic strategy-session-topic--boxed">
+                <h3>{{ .title }}</h3>
+                <p>{{ .text }}</p>
+              </section>
+            {{ end }}
+          </div>
+        {{ end }}
+      </section>
+
+      <section class="strategy-session-closing">
+        <h2>{{ .Params.final_title }}</h2>
+        <p>{{ .Params.final_text }}</p>
+        {{ with .Params.cta_url }}
+          <p class="strategy-session-cta strategy-session-cta--closing">
+            <a
+              href="{{ . | safeURL }}"
+              class="power-thesis__btn power-thesis__btn--primary"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ $.Params.cta_text }}
+            </a>
+          </p>
+        {{ end }}
+      </section>
+    </article>
   </div>
 </section>
 
