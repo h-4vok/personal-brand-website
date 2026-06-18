@@ -1,9 +1,7 @@
-name: Lighthouse CI
+name: Site SEO
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
     paths:
       - "assets/**"
       - "content/**"
@@ -19,23 +17,20 @@ on:
       - "config/**"
       - "package.json"
       - "package-lock.json"
-      - "lighthouserc.js"
-      - "tools/run-audit.js"
-      - "tools/lighthouse-*.js"
+      - "tests/seo-build.test.mjs"
+      - "tools/**"
   workflow_dispatch: {}
 
 concurrency:
-  group: lighthouse-${{ github.ref }}
+  group: site-seo-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  lighthouse:
-    runs-on: windows-latest
-    timeout-minutes: 12
+  site-seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       HUSKY: 0
-      AUDIT_VERBOSE: 1
-      LIGHTHOUSE_BASE_URL: https://christianguzman.uk
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,17 +52,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static site
-        run: npm run hugo:build
-
-      - name: Run Lighthouse CI
-        run: npm run audit
-
-      - name: Upload Lighthouse artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-artifacts
-          path: |
-            .lighthouseci/**
-          if-no-files-found: ignore
+      - name: Validate built site SEO contract
+        run: npm run test:seo
