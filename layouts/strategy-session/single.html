@@ -46,17 +46,6 @@
         </div>
       </header>
 
-      {{ with .Params.who }}
-        <section class="strategy-session-section">
-          <h2>{{ $.Params.who_title }}</h2>
-          <div class="strategy-session-prose">
-            {{ range . }}
-              <p>{{ .text }}</p>
-            {{ end }}
-          </div>
-        </section>
-      {{ end }}
-
       <section class="strategy-session-section">
         <h2>{{ .Params.topics_title }}</h2>
         <div class="strategy-session-prose">
@@ -74,6 +63,8 @@
         {{ end }}
       </section>
 
+      <!-- Placeholder: Perspective quote block -->
+
       <section class="strategy-session-section strategy-session-section--about">
         <h2>{{ .Params.about_title }}</h2>
         <div class="strategy-session-prose strategy-session-prose--first-person">
@@ -83,6 +74,17 @@
         </div>
       </section>
 
+      {{ with .Params.who }}
+        <section class="strategy-session-section">
+          <h2>{{ $.Params.who_title }}</h2>
+          <div class="strategy-session-prose">
+            {{ range . }}
+              <p>{{ .text }}</p>
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+
       <section class="strategy-session-section">
         <h2>{{ .Params.session_title }}</h2>
         <div class="strategy-session-prose">
@@ -91,6 +93,8 @@
           {{ end }}
         </div>
       </section>
+
+      <!-- Placeholder: Testimonials -->
 
       <section class="strategy-session-section">
         <h2>{{ .Params.not_for_title }}</h2>
