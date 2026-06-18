@@ -167,12 +167,19 @@ function delay(ms) {
 
 function parseBuildMarker(html, markerName) {
   const escapedName = markerName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const metaPattern = new RegExp(
-    `<meta[^>]+name=["']${escapedName}["'][^>]+content=["']([^"']+)["'][^>]*>`,
-    "i",
-  );
-  const match = String(html).match(metaPattern);
-  return (match?.[1] || "").trim();
+  const metaTagPattern = /<meta\b[^>]*>/gi;
+  const metaTags = String(html).match(metaTagPattern) || [];
+
+  for (const tag of metaTags) {
+    const nameMatch = tag.match(new RegExp(`\\bname=(?:"${escapedName}"|'${escapedName}'|${escapedName})(?=\\s|>|/)`, "i"));
+    if (!nameMatch) continue;
+
+    const contentMatch = tag.match(/\bcontent=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i);
+    const content = contentMatch?.[1] || contentMatch?.[2] || contentMatch?.[3] || "";
+    if (content) return content.trim();
+  }
+
+  return "";
 }
 
 async function fetchBuildMarker(baseUrl, markerName) {
