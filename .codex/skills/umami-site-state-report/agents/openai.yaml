@@ -1,0 +1,4 @@
+interface:
+  display_name: "Umami Site State Report"
+  short_description: "Generate an HTML article-state report from Umami CSV exports"
+  default_prompt: "Use $umami-site-state-report to turn Umami CSV exports into a reusable HTML report for article depth and engaged-time analytics."
