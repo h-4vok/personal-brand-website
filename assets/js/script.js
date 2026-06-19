@@ -237,21 +237,25 @@
   function initArticleEngagedTime(context, umamiTrack, articleState) {
     const activeWindowMs = 15000;
     const tickIntervalMs = 5000;
-    const minReportableSeconds = 5;
     const trackedEvents = ['scroll', 'pointermove', 'keydown', 'touchstart'];
+    const milestones = [
+      { seconds: 10, bucket: '10s' },
+      { seconds: 20, bucket: '20s' },
+      { seconds: 30, bucket: '30s' },
+      { seconds: 40, bucket: '40s' },
+      { seconds: 50, bucket: '50s' },
+      { seconds: 60, bucket: '1m' },
+      { seconds: 120, bucket: '2m' },
+      { seconds: 180, bucket: '3m' },
+      { seconds: 300, bucket: '5m' },
+      { seconds: 600, bucket: '10m' },
+    ];
+    const overflowBucket = '+10m';
     let engagedMs = 0;
     let lastActiveAt = Date.now();
     let lastTickAt = Date.now();
-    let lastReportedSeconds = 0;
     let hasActivity = false;
-
-    const getSecondsBucket = (seconds) => {
-      if (seconds < 30) return '0-29';
-      if (seconds < 60) return '30-59';
-      if (seconds < 120) return '60-119';
-      if (seconds < 300) return '120-299';
-      return '300+';
-    };
+    const reportedBuckets = new Set();
 
     const isEngaged = (now) => {
       if (document.visibilityState !== 'visible') return false;
@@ -272,14 +276,26 @@
       updateEngagedTime();
 
       const seconds = Math.floor(engagedMs / 1000);
-      if (!force && seconds < minReportableSeconds) return;
-      if (seconds <= lastReportedSeconds) return;
+      if (!force && seconds < milestones[0].seconds) return;
 
-      lastReportedSeconds = seconds;
+      milestones.forEach(({ seconds: milestoneSeconds, bucket }) => {
+        if (seconds < milestoneSeconds || reportedBuckets.has(bucket)) return;
+        reportedBuckets.add(bucket);
+        umamiTrack('article_engaged_time', {
+          ...context,
+          seconds,
+          seconds_bucket: bucket,
+          max_depth: articleState.getMaxDepth(),
+        });
+      });
+
+      if (seconds <= milestones[milestones.length - 1].seconds || reportedBuckets.has(overflowBucket)) return;
+
+      reportedBuckets.add(overflowBucket);
       umamiTrack('article_engaged_time', {
         ...context,
         seconds,
-        seconds_bucket: getSecondsBucket(seconds),
+        seconds_bucket: overflowBucket,
         max_depth: articleState.getMaxDepth(),
       });
     };
