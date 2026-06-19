@@ -1,5 +1,14 @@
 {{ define "main" }}
 
+{{ $emphasize := slice
+  (dict "target" "delivery" "replacement" "<span class=\"strategy-session-emphasis\">delivery</span>")
+  (dict "target" "ownership" "replacement" "<span class=\"strategy-session-emphasis\">ownership</span>")
+  (dict "target" "decision-making" "replacement" "<span class=\"strategy-session-emphasis\">decision-making</span>")
+  (dict "target" "technical debt" "replacement" "<span class=\"strategy-session-emphasis\">technical debt</span>")
+  (dict "target" "communication" "replacement" "<span class=\"strategy-session-emphasis\">communication</span>")
+  (dict "target" "influence" "replacement" "<span class=\"strategy-session-emphasis\">influence</span>")
+}}
+
 <section class="section strategy-session-page">
   <div class="container">
     <article class="strategy-session-shell">
@@ -17,60 +26,68 @@
             <p>The goal of this session is to understand what is really happening and decide what is worth paying attention to next.</p>
           </div>
 
-          {{ with .Params.cta_url }}
-            <p class="strategy-session-cta">
-              <a
-                href="{{ . | safeURL }}"
-                class="power-thesis__btn power-thesis__btn--primary"
-                target="_blank"
-                rel="noopener"
-              >
-                {{ $.Params.cta_text }}
-              </a>
-            </p>
-          {{ end }}
-        </div>
-
-        <div class="strategy-session-hero__media">
-          {{ partial "image.html" (dict
-            "Src" .Params.hero_image
-            "Alt" .Params.hero_image_alt
-            "Class" "strategy-session-portrait"
-            "Loading" "eager"
-            "DisplaySM" "320x"
-            "DisplayMD" "420x"
-            "DisplayLG" "520x"
-            "DisplayXL" "600x"
-            "Context" .
-          ) }}
         </div>
       </header>
 
       <section class="strategy-session-section">
         <h2>{{ .Params.topics_title }}</h2>
         <div class="strategy-session-prose">
-          <p>{{ .Params.topics_intro }}</p>
+          {{ $topicsIntro := .Params.topics_intro }}
+          {{ range $emphasize }}
+            {{ $topicsIntro = replace $topicsIntro .target .replacement }}
+          {{ end }}
+          <p>{{ $topicsIntro | safeHTML }}</p>
         </div>
         {{ with .Params.topics }}
           <div class="strategy-session-topics-grid">
             {{ range . }}
               <section class="strategy-session-topic">
                 <h3>{{ .title }}</h3>
-                <p>{{ .text }}</p>
+                {{ $topicText := .text }}
+                {{ range $emphasize }}
+                  {{ $topicText = replace $topicText .target .replacement }}
+                {{ end }}
+                <p>{{ $topicText | safeHTML }}</p>
               </section>
             {{ end }}
           </div>
         {{ end }}
       </section>
 
-      <!-- Placeholder: Perspective quote block -->
+      <section class="strategy-session-quote" aria-label="Perspective">
+        <p class="strategy-session-quote__line">Perspective is elusive when you are close to the problem.</p>
+        <p class="strategy-session-quote__line strategy-session-quote__line--accent">Bring it.</p>
+        <p class="strategy-session-quote__line">We'll unpack it together.</p>
+      </section>
 
       <section class="strategy-session-section strategy-session-section--about">
-        <h2>{{ .Params.about_title }}</h2>
-        <div class="strategy-session-prose strategy-session-prose--first-person">
-          {{ range split .Params.about_text "\n\n" }}
-            <p>{{ . }}</p>
-          {{ end }}
+        <div class="strategy-session-about">
+          <div class="strategy-session-about__media">
+            {{ partial "image.html" (dict
+              "Src" .Params.hero_image
+              "Alt" .Params.hero_image_alt
+              "Class" "strategy-session-portrait strategy-session-portrait--about"
+              "Loading" "lazy"
+              "DisplaySM" "480x"
+              "DisplayMD" "640x"
+              "DisplayLG" "760x"
+              "DisplayXL" "840x"
+              "Context" .
+            ) }}
+          </div>
+
+          <div class="strategy-session-about__copy">
+            <h2>{{ .Params.about_title }}</h2>
+            <div class="strategy-session-prose strategy-session-prose--first-person">
+              {{ range split .Params.about_text "\n\n" }}
+                {{ $aboutParagraph := . }}
+                {{ range $emphasize }}
+                  {{ $aboutParagraph = replace $aboutParagraph .target .replacement }}
+                {{ end }}
+                <p>{{ $aboutParagraph | safeHTML }}</p>
+              {{ end }}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -94,7 +111,22 @@
         </div>
       </section>
 
-      <!-- Placeholder: Testimonials -->
+      <!-- Placeholder testimonials: replace with real client-approved quotes before launch -->
+      <section class="strategy-session-section strategy-session-testimonials" aria-label="Testimonials">
+        <div class="strategy-session-testimonials__list">
+          <blockquote class="strategy-session-testimonial">
+            <p class="strategy-session-testimonial__quote">I came into the conversation thinking I had a delivery problem. I left realising I had an ownership problem.</p>
+          </blockquote>
+
+          <blockquote class="strategy-session-testimonial">
+            <p class="strategy-session-testimonial__quote">The most useful part wasn't the answer. It was the quality of the questions.</p>
+          </blockquote>
+
+          <blockquote class="strategy-session-testimonial">
+            <p class="strategy-session-testimonial__quote">Christian helped me see a pattern that had been sitting in front of me for months.</p>
+          </blockquote>
+        </div>
+      </section>
 
       <section class="strategy-session-section">
         <h2>{{ .Params.not_for_title }}</h2>
@@ -112,8 +144,13 @@
 
       <section class="strategy-session-closing">
         <h2>{{ .Params.final_title }}</h2>
-        <p>{{ .Params.final_text }}</p>
+        <p>Sometimes a short conversation is enough to name the real problem more clearly.</p>
+        <p>If that happens, the session has done its job.</p>
         {{ with .Params.cta_url }}
+          <div class="strategy-session-closing__prompt" aria-label="Call to action">
+            <p class="strategy-session-closing__line strategy-session-closing__line--accent">Bring it.</p>
+            <p class="strategy-session-closing__line">We'll unpack it together.</p>
+          </div>
           <p class="strategy-session-cta strategy-session-cta--closing">
             <a
               href="{{ . | safeURL }}"
