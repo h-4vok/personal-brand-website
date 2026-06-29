@@ -16,31 +16,31 @@ topics_title = "What We Usually Talk About"
 about_title = "About Christian"
 session_title = "What Happens During The Session"
 not_for_title = "Who This Is Not For"
-final_title = "If something feels off, but you cannot yet explain why, that is usually a good reason to talk."
+final_title = "If it feels off, but you cannot yet explain why, that is usually a good reason to talk."
 final_text = "Sometimes a short conversation is enough to name the real problem more clearly. If that happens, the session has done its job."
 topics_intro = "Most conversations start with a specific problem and quickly become a discussion about decisions, systems, incentives, communication, or leadership."
 
-about_text = """I have spent most of my career building software and leading engineering teams.
+about_text = """I have spent <strong>20</strong> years building software and fixing organisational gaps.
 
-Along the way I became increasingly interested in a different question: why do some organisations become stronger as they grow while others become slower, more political, and more fragile?
+I've scaled departments to 60+ engineers, led complex M&A integrations, migrations, transitions and restructuring.
 
-Most of my writing explores that question.
+I have quadrupled <strong>velocity</strong>, reversed <strong>performance</strong> drift and mentored people into achieving <strong>career growth</strong>.
 
-Not through management theory, but through the day-to-day realities of delivery, decision-making, technical debt, communication, and organisational design.
+Here is an opportunity to talk to someone who has been in the trenches for two decades.
 
-These conversations are simply an extension of that work."""
+No performative execution. 
 
-session_text = """There is no presentation.
+Just clear <strong>decisions</strong>, strict <strong>accountability</strong>, and human systems that get you <strong>leverage</strong>."""
 
-There is no prepared framework.
+session_text = """There is <strong>no presentation</strong>.
 
-There is no sales pitch.
+There is <strong>no premade framework</strong>.
+
+There is <strong>no sales pitch</strong>.
 
 You bring a problem, a question, or a situation that feels stuck.
 
-We talk about it.
-
-If a useful next step becomes clear, that is a successful session."""
+"""
 
 [[not_for]]
 title = "Looking For Motivation"
@@ -76,7 +76,7 @@ text = "We look at where responsibility is diffusing, where accountability is we
 
 [[topics]]
 title = "Manager effectiveness"
-text = "The conversation usually turns toward judgment, delegation, prioritisation, and the pressure of leading through other people."
+text = "Judgment, delegation, prioritisation. And the pressure of leading through others."
 
 [[topics]]
 title = "Difficult stakeholder relationships"
@@ -84,25 +84,25 @@ text = "Misalignment across product, engineering, and leadership often has less 
 
 [[topics]]
 title = "Technical debt as a leadership problem"
-text = "Debt is rarely just a code problem; it is usually a consequence of incentives, tradeoffs, and repeated decisions."
+text = "How do you transform an organisation to understand technical debt? And to stop labeling it technical?"
 
 [[topics]]
-title = "Organisational design"
-text = "Sometimes the issue sits in reporting lines, team boundaries, or the way ownership has been distributed across the organisation."
+title = "Organisational topology"
+text = "Reporting lines, team boundaries, capabilities, ownership, collaboration models. Build your company like a professional."
 
 [[topics]]
 title = "Decision-making"
-text = "We talk about how decisions get made, who is making them, and why obvious calls still feel difficult."
+text = "Why obvious calls can feel difficult. How your leadership and stewardship needs to level up."
 
 [[topics]]
 title = "Promotion and career growth"
-text = "These conversations often involve readiness, visibility, and the difference between doing more work and becoming more effective."
+text = "Trying hard and getting nowhere? It is still a You problem. Let's figure it out."
 
 [[topics]]
 title = "Influence and communication"
 text = "A lot of leadership problems are really problems of language, framing, timing, and how ideas move through a system."
 
 [[topics]]
-title = "Scaling teams without unnecessary process"
-text = "The question is usually how to create more coherence and reliability without adding ceremony for its own sake."
+title = "Fluidity and creativity"
+text = "Methodologies seldom cure any organisational desease. Be the tailor of the flow of your teams."
 +++

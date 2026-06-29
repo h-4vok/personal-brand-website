@@ -9,34 +9,36 @@
   (dict "target" "influence" "replacement" "<span class=\"strategy-session-emphasis\">influence</span>")
 }}
 
+{{ $ctaText := .Params.cta_text }}
+{{ $ctaURL := .Params.cta_url }}
+
 <section class="section strategy-session-page">
   <div class="container">
     <article class="strategy-session-shell">
-      <header class="strategy-session-hero">
+      <header class="strategy-session-hero strategy-session-screen strategy-session-screen--hero">
         <div class="strategy-session-hero__copy">
-          <h1>{{ .Title }}</h1>
-          {{ with .Params.subtitle }}
-            <p class="strategy-session-subtitle">{{ . }}</p>
+          <p class="strategy-session-quote__line strategy-session-quote__line--lead">Perspective is elusive when you are close to the problem.</p>
+          <p class="strategy-session-quote__line strategy-session-quote__line--accent">BRING IT.</p>
+          <p class="strategy-session-quote__line strategy-session-quote__line--accent strategy-session-quote__line--accent-mixed">We'll unpack it together.</p>
+          {{ with $ctaURL }}
+            <p class="strategy-session-cta strategy-session-cta--hero">
+              <a
+                href="{{ . | safeURL }}"
+                class="power-thesis__btn power-thesis__btn--primary"
+                target="_blank"
+                rel="noopener"
+              >
+                {{ $ctaText }}
+              </a>
+            </p>
           {{ end }}
-
-          <div class="strategy-session-intro">
-            <p>Sometimes the problem is not technical.</p>
-            <p>Sometimes the problem is not the team.</p>
-            <p>Sometimes the problem is how decisions are made, how ownership is structured, or how leadership is being exercised.</p>
-            <p>The goal of this session is to understand what is really happening and decide what is worth paying attention to next.</p>
-          </div>
-
         </div>
       </header>
 
-      <section class="strategy-session-section">
-        <h2>{{ .Params.topics_title }}</h2>
-        <div class="strategy-session-prose">
-          {{ $topicsIntro := .Params.topics_intro }}
-          {{ range $emphasize }}
-            {{ $topicsIntro = replace $topicsIntro .target .replacement }}
-          {{ end }}
-          <p>{{ $topicsIntro | safeHTML }}</p>
+      <section class="strategy-session-section strategy-session-section--topics strategy-session-screen">
+        <div class="strategy-session-section__inner strategy-session-section__inner--topics">
+          <h1>{{ .Title }}</h1>
+          <h2>{{ .Params.topics_title }}</h2>
         </div>
         {{ with .Params.topics }}
           <div class="strategy-session-topics-grid">
@@ -52,34 +54,48 @@
             {{ end }}
           </div>
         {{ end }}
+        <div class="strategy-session-prose strategy-session-prose--session">
+          {{ range split .Params.session_text "\n\n" }}
+            <p>{{ . | safeHTML }}</p>
+          {{ end }}
+          <p>Sometimes the problem <strong>is not technical</strong>.</p>
+          <p>Sometimes the problem <strong>is not the team</strong>.</p>
+          <p>If something feels off, but you cannot yet explain why, that is usually a <strong>good reason</strong> to talk.</p>
+        </div>
+        {{ with $ctaURL }}
+          <p class="strategy-session-cta">
+            <a
+              href="{{ . | safeURL }}"
+              class="power-thesis__btn power-thesis__btn--primary"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ $ctaText }}
+            </a>
+          </p>
+        {{ end }}
       </section>
 
-      <section class="strategy-session-quote" aria-label="Perspective">
-        <p class="strategy-session-quote__line">Perspective is elusive when you are close to the problem.</p>
-        <p class="strategy-session-quote__line strategy-session-quote__line--accent">Bring it.</p>
-        <p class="strategy-session-quote__line">We'll unpack it together.</p>
-      </section>
-
-      <section class="strategy-session-section strategy-session-section--about">
+      <section class="strategy-session-section strategy-session-section--about strategy-session-screen">
         <div class="strategy-session-about">
-          <div class="strategy-session-about__media">
-            {{ partial "image.html" (dict
-              "Src" .Params.hero_image
-              "Alt" .Params.hero_image_alt
-              "Class" "strategy-session-portrait strategy-session-portrait--about"
-              "Loading" "lazy"
-              "DisplaySM" "480x"
-              "DisplayMD" "640x"
-              "DisplayLG" "760x"
-              "DisplayXL" "840x"
-              "Context" .
-            ) }}
-          </div>
-
           <div class="strategy-session-about__copy">
             <h2>{{ .Params.about_title }}</h2>
             <div class="strategy-session-prose strategy-session-prose--first-person">
-              {{ range split .Params.about_text "\n\n" }}
+              {{ $aboutText := replace .Params.about_text "\r\n" "\n" }}
+              <div class="strategy-session-about__media">
+                {{ partial "image.html" (dict
+                  "Src" .Params.hero_image
+                  "Alt" .Params.hero_image_alt
+                  "Class" "strategy-session-portrait strategy-session-portrait--about"
+                  "Loading" "lazy"
+                  "DisplaySM" "480x"
+                  "DisplayMD" "640x"
+                  "DisplayLG" "760x"
+                  "DisplayXL" "840x"
+                  "Context" .
+                ) }}
+              </div>
+              {{ range split $aboutText "\n\n" }}
                 {{ $aboutParagraph := . }}
                 {{ range $emphasize }}
                   {{ $aboutParagraph = replace $aboutParagraph .target .replacement }}
@@ -89,80 +105,136 @@
             </div>
           </div>
         </div>
-      </section>
-
-      {{ with .Params.who }}
-        <section class="strategy-session-section">
-          <h2>{{ $.Params.who_title }}</h2>
-          <div class="strategy-session-prose">
-            {{ range . }}
-              <p>{{ .text }}</p>
-            {{ end }}
-          </div>
-        </section>
-      {{ end }}
-
-      <section class="strategy-session-section">
-        <h2>{{ .Params.session_title }}</h2>
-        <div class="strategy-session-prose">
-          {{ range split .Params.session_text "\n\n" }}
-            <p>{{ . }}</p>
-          {{ end }}
-        </div>
-      </section>
-
-      <!-- Placeholder testimonials: replace with real client-approved quotes before launch -->
-      <section class="strategy-session-section strategy-session-testimonials" aria-label="Testimonials">
-        <div class="strategy-session-testimonials__list">
-          <blockquote class="strategy-session-testimonial">
-            <p class="strategy-session-testimonial__quote">I came into the conversation thinking I had a delivery problem. I left realising I had an ownership problem.</p>
-          </blockquote>
-
-          <blockquote class="strategy-session-testimonial">
-            <p class="strategy-session-testimonial__quote">The most useful part wasn't the answer. It was the quality of the questions.</p>
-          </blockquote>
-
-          <blockquote class="strategy-session-testimonial">
-            <p class="strategy-session-testimonial__quote">Christian helped me see a pattern that had been sitting in front of me for months.</p>
-          </blockquote>
-        </div>
-      </section>
-
-      <section class="strategy-session-section">
-        <h2>{{ .Params.not_for_title }}</h2>
-        {{ with .Params.not_for }}
-          <div class="strategy-session-topics-grid strategy-session-topics-grid--not-for">
-            {{ range . }}
-              <section class="strategy-session-topic strategy-session-topic--boxed">
-                <h3>{{ .title }}</h3>
-                <p>{{ .text }}</p>
-              </section>
-            {{ end }}
-          </div>
-        {{ end }}
-      </section>
-
-      <section class="strategy-session-closing">
-        <h2>{{ .Params.final_title }}</h2>
-        <p>Sometimes a short conversation is enough to name the real problem more clearly.</p>
-        <p>If that happens, the session has done its job.</p>
-        {{ with .Params.cta_url }}
-          <div class="strategy-session-closing__prompt" aria-label="Call to action">
-            <p class="strategy-session-closing__line strategy-session-closing__line--accent">Bring it.</p>
-            <p class="strategy-session-closing__line">We'll unpack it together.</p>
-          </div>
-          <p class="strategy-session-cta strategy-session-cta--closing">
+        {{ with $ctaURL }}
+          <p class="strategy-session-cta">
             <a
               href="{{ . | safeURL }}"
               class="power-thesis__btn power-thesis__btn--primary"
               target="_blank"
               rel="noopener"
             >
-              {{ $.Params.cta_text }}
+              {{ $ctaText }}
             </a>
           </p>
         {{ end }}
       </section>
+
+      <!-- Placeholder testimonials: replace with real client-approved quotes before launch -->
+      <section class="strategy-session-section strategy-session-testimonials strategy-session-screen" aria-label="Testimonials">
+        <h2>Testimonials</h2>
+        <div class="strategy-session-testimonials__carousel" data-testimonial-carousel data-autoplay-ms="6000">
+          <div class="strategy-session-testimonials__viewport">
+            <div class="strategy-session-testimonials__list">
+              <blockquote class="strategy-session-testimonial is-active" data-testimonial-slide>
+                <p class="strategy-session-testimonial__quote">I came into the conversation thinking I had a delivery problem. I left realising I had an ownership problem.</p>
+                <footer class="strategy-session-testimonial__role">Engineering Manager</footer>
+              </blockquote>
+
+              <blockquote class="strategy-session-testimonial" data-testimonial-slide hidden>
+                <p class="strategy-session-testimonial__quote">The most useful part wasn't the answer. It was the quality of the questions.</p>
+                <footer class="strategy-session-testimonial__role">Head of Engineering</footer>
+              </blockquote>
+
+              <blockquote class="strategy-session-testimonial" data-testimonial-slide hidden>
+                <p class="strategy-session-testimonial__quote">Christian helped me see a pattern that had been sitting in front of me for months.</p>
+                <footer class="strategy-session-testimonial__role">VP Engineering</footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="strategy-session-testimonials__controls" aria-label="Testimonial navigation">
+            <button type="button" class="strategy-session-testimonials__button" data-testimonial-prev aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M14.5 5.5 8 12l6.5 6.5" />
+              </svg>
+            </button>
+            <div class="strategy-session-testimonials__dots">
+              <button type="button" class="strategy-session-testimonials__dot is-active" data-testimonial-dot data-index="0" aria-label="Show testimonial 1" aria-pressed="true"></button>
+              <button type="button" class="strategy-session-testimonials__dot" data-testimonial-dot data-index="1" aria-label="Show testimonial 2" aria-pressed="false"></button>
+              <button type="button" class="strategy-session-testimonials__dot" data-testimonial-dot data-index="2" aria-label="Show testimonial 3" aria-pressed="false"></button>
+            </div>
+            <button type="button" class="strategy-session-testimonials__button" data-testimonial-next aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9.5 5.5 16 12l-6.5 6.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        {{ with $ctaURL }}
+          <p class="strategy-session-cta">
+            <a
+              href="{{ . | safeURL }}"
+              class="power-thesis__btn power-thesis__btn--primary"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ $ctaText }}
+            </a>
+          </p>
+        {{ end }}
+      </section>
+
+      <script>
+        (() => {
+          const carousel = document.querySelector('[data-testimonial-carousel]');
+          if (!carousel) return;
+
+          const slides = Array.from(carousel.querySelectorAll('[data-testimonial-slide]'));
+          const dots = Array.from(carousel.querySelectorAll('[data-testimonial-dot]'));
+          const prev = carousel.querySelector('[data-testimonial-prev]');
+          const next = carousel.querySelector('[data-testimonial-next]');
+          const autoplayMs = Number(carousel.getAttribute('data-autoplay-ms')) || 6000;
+          let activeIndex = 0;
+          let timerId = null;
+
+          const render = (index) => {
+            activeIndex = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, slideIndex) => {
+              const isActive = slideIndex === activeIndex;
+              slide.hidden = !isActive;
+              slide.classList.toggle('is-active', isActive);
+            });
+
+            dots.forEach((dot, dotIndex) => {
+              const isActive = dotIndex === activeIndex;
+              dot.classList.toggle('is-active', isActive);
+              dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+          };
+
+          const restartAutoplay = () => {
+            if (timerId) window.clearInterval(timerId);
+            timerId = window.setInterval(() => render(activeIndex + 1), autoplayMs);
+          };
+
+          prev?.addEventListener('click', () => {
+            render(activeIndex - 1);
+            restartAutoplay();
+          });
+
+          next?.addEventListener('click', () => {
+            render(activeIndex + 1);
+            restartAutoplay();
+          });
+
+          dots.forEach((dot) => {
+            dot.addEventListener('click', () => {
+              render(Number(dot.getAttribute('data-index')));
+              restartAutoplay();
+            });
+          });
+
+          carousel.addEventListener('mouseenter', () => {
+            if (timerId) window.clearInterval(timerId);
+          });
+
+          carousel.addEventListener('mouseleave', restartAutoplay);
+
+          render(0);
+          restartAutoplay();
+        })();
+      </script>
+
     </article>
   </div>
 </section>

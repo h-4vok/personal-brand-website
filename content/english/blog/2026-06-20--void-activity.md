@@ -14,6 +14,48 @@ slug: "void-activity"
 draft: true
 ---
 
+Leverage. Performance. Creativity. Craftmanship. Insert Buzzword here. All leaders want to build and get these out of their teams. But in organisations nowadays there is one huge, palpable, substantial and weirdly invisible factor. Everyone is extremely busy, and not necessarily because of high value activities.
+
+In high pressure situations, leaders tend to over-delegate and to advice others to do the same. It always seems like its a *you* problem when you do not delegate enough; well, it is! But not the way you might think it.
+
+## The consequences of over-delegating
+
+What happens when you over-delegate? You might think that the main consequence is that you are overloading someone else, and/or that someone else will overload someone that reports to them. Right?
+
+Well, that is the short term. That is the immediate consequence. 
+
+Let me ask you this, what happens when they keep saying Yes? When you ask if they can handle it and they say *_"oh yes, of course"_*. I have fallen for this many times. How we say something does impact the answer, even if it was the same question.
+
+_"Can you handle it?"_
+
+I am asking about workload, capacity, time. But what they are hearing is me challenging their capability, intelligence, skills. Even if the answer to that was "no" you might still get a *_"oh yes, of course"_*. 
+
+The *long term consequence* that you have created by over-delegating and by asking the wrong questions is that there is a (perhaps perceived) unsafe environment to speak up.
+
+A better (not perfect) question for all of this could be.
+
+_*Do you have the time?*_
+
+A bit more direct, you are specifically asking about their schedule. However, this is still a weaker way of interacting with someone that reports to you. The other chap is likely to still say _*"oh yes, of course"*_. You could take notice of how quickly they reply back and then suspect something is up, but in this situation where you are highly pressured you will probably not see it, and continue delegating.
+
+Here is a much better question.
+
+_*If we prioritise this now, what should we consider to leave out?*_
+
+You might be think that you must establish the priorities (you do) but by framing the question this way you are specifically making them think about what else is going on, and what can be moved out. Many times, they will say _*I think we can squeeze this in anyway*_ or something alike. Sometimes they will say _*You tell me*_ and that's perfectly fine. More often than not, they will ask you questions back.
+
+> "The test of happiness is the amount of control you have over your time."
+>
+> — *Nassim Nicholas Taleb, The Black Swan: The Impact of the Highly Improbable, 2007*
+
+Through a question like this you can create further autonomy and you invite your reportee to take control of their own time.
+
+## Of Space and Void
+
+Mindlessly delegating down to your people will reinforce this and eventually create a snowball that cannot be stopped. So what do we do?
+
+The problem is similar to our
+
 Our job as leaders is to watch over the space of our people. What do I mean by that? Well, let's put it in simple performance terms. Let's start with the heavy artillery immediately.
 
 People, teams, organisations, exist in relation to the space they are in. We can see this from all perspectives: Industries, competitors, social networks, acquaintances, other teams, etc. As you watch over the "space" one of the primary objectives is to establish empathy. To properly and actually care about your people.
