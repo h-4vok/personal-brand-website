@@ -10,7 +10,7 @@ categories:
   - "Leadership"
 tags:
   - "Productivity"
-slug: "void-activity"
+slug: "template-draft"
 draft: true
 ---
 

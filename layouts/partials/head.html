@@ -2,9 +2,14 @@
 	<meta charset="utf-8">
 	{{ $siteTitle := site.Title }}
 	{{ $siteDescription := site.Params.seo.siteDescription | default site.Params.description | default $siteTitle }}
+	{{ $homeSeo := site.Params.seo.home | default dict }}
 	{{ $pageTitle := .Title | default $siteTitle }}
 	{{ $title := $siteTitle }}
-	{{ if and $pageTitle (ne $pageTitle $siteTitle) }}
+	{{ if .IsHome }}
+		{{ with index $homeSeo "title" }}
+			{{ $title = . | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
+		{{ end }}
+	{{ else if and $pageTitle (ne $pageTitle $siteTitle) }}
 		{{ $title = printf "%s | %s" $pageTitle $siteTitle }}
 	{{ end }}
 
@@ -14,10 +19,31 @@
 		{{ $contentDescription = truncate 150 $plainContent }}
 	{{ end }}
 	{{ $description := $siteDescription }}
-	{{ if .Params.description }}
+	{{ if and .IsHome (index $homeSeo "description") }}
+		{{ $description = index $homeSeo "description" | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
+	{{ else if .Params.description }}
 		{{ $description = .Params.description | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
 	{{ else if $contentDescription }}
 		{{ $description = $contentDescription }}
+	{{ end }}
+
+	{{ $keywords := slice }}
+	{{ if .Params.keywords }}
+		{{ range .Params.keywords }}
+			{{ $keyword := . | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
+			{{ if $keyword }}
+				{{ $keywords = $keywords | append $keyword }}
+			{{ end }}
+		{{ end }}
+	{{ else if .IsHome }}
+		{{ with index $homeSeo "keywords" }}
+			{{ range . }}
+				{{ $keyword := . | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
+				{{ if $keyword }}
+					{{ $keywords = $keywords | append $keyword }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
 	{{ end }}
 
 	{{ $author := site.Params.author | default site.Title }}
@@ -65,6 +91,9 @@
 	<link rel="preload" href="{{ `/fonts/inter-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="{{ `/fonts/eb-garamond-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
 	<meta name="description" content="{{ $description }}">
+	{{ if gt (len $keywords) 0 }}
+	<meta name="keywords" content="{{ delimit $keywords `, ` }}">
+	{{ end }}
 	<meta name="author" content="{{ $author }}">
 	<link rel="canonical" href="{{ .Permalink }}">
 	{{ if eq .Type "redirect" }}
