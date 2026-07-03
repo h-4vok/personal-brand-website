@@ -22,7 +22,7 @@ topics_intro = "Most conversations start with a specific problem and quickly bec
 
 about_text = """I have spent <strong>20</strong> years building software and fixing organisational gaps.
 
-I've scaled departments to 60+ engineers, led complex M&A integrations, migrations, transitions and restructuring.
+I've scaled departments to 60+ engineers/11+ cross-functional teams, led complex M&A integrations, migrations, transitions, restructuring and AI transformation.
 
 I have quadrupled <strong>velocity</strong>, reversed <strong>performance</strong> drift and mentored people into achieving <strong>career growth</strong>.
 
