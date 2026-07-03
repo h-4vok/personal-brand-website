@@ -106,49 +106,74 @@
           </div>
         </div>
         {{ with $ctaURL }}
-          <p class="strategy-session-cta">
-            <a
-              href="{{ . | safeURL }}"
-              class="power-thesis__btn power-thesis__btn--primary"
-              target="_blank"
-              rel="noopener"
-            >
-              {{ $ctaText }}
-            </a>
-          </p>
-        {{ end }}
+        <p class="strategy-session-cta">
+          <a
+            href="{{ . | safeURL }}"
+            class="power-thesis__btn power-thesis__btn--primary"
+            target="_blank"
+            rel="noopener"
+          >
+            {{ $ctaText }}
+          </a>
+        </p>
+      {{ end }}
       </section>
 
-      <!-- Placeholder testimonials: replace with real client-approved quotes before launch -->
+      {{ $testimonials := (index site.Data "strategy-session").testimonials }}
+      {{ if $testimonials }}
       <section class="strategy-session-section strategy-session-testimonials strategy-session-screen" aria-label="Testimonials">
         <h2>Testimonials</h2>
-        <div class="strategy-session-testimonials__carousel" data-testimonial-carousel data-autoplay-ms="6000">
+        <style>
+          .strategy-session-testimonials__carousel {
+            position: relative;
+          }
+
+          .strategy-session-testimonials__carousel::before {
+            color: rgb(163 139 91 / 34%);
+            content: "\201C";
+            font-size: clamp(4.2rem, 7vw, 6rem);
+            left: 1.1rem;
+            line-height: 1;
+            position: absolute;
+            top: 0.75rem;
+            pointer-events: none;
+          }
+
+          .strategy-session-testimonial {
+            padding-top: 3rem;
+          }
+
+          .strategy-session-testimonial__quote::before {
+            content: none;
+          }
+
+          .strategy-session-testimonial__quote {
+            font-weight: 600;
+            font-size: clamp(1.65rem, 2.45vw, 2.1rem);
+            max-width: 34ch;
+          }
+
+          .strategy-session-testimonial__role {
+            font-size: 0.76rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            max-width: 30ch;
+          }
+
+          .strategy-session-testimonials__viewport {
+            min-height: clamp(17rem, 20vw, 19rem);
+          }
+        </style>
+
+        <div class="strategy-session-testimonials__carousel" data-testimonial-carousel data-autoplay-ms="6000" style="background: linear-gradient(180deg, rgba(236,231,220,.72) 0%, rgba(246,242,236,.96) 100%); border: 1px solid rgba(17,17,17,.12);">
           <div class="strategy-session-testimonials__viewport">
             <div class="strategy-session-testimonials__list">
-              <blockquote class="strategy-session-testimonial is-active" data-testimonial-slide>
-                <p class="strategy-session-testimonial__quote">Christian looks past the immediate fire and understands the broader system.</p>
-                <footer class="strategy-session-testimonial__role">Head of Product at Leading Global Mobile Gaming Company</footer>
-              </blockquote>
-
-              <blockquote class="strategy-session-testimonial" data-testimonial-slide hidden>
-                <p class="strategy-session-testimonial__quote">Christian builds teams that perform without burning people out.</p>
-                <footer class="strategy-session-testimonial__role">Head of Engineering at Fast-growing EdTech Startup</footer>
-              </blockquote>
-
-              <blockquote class="strategy-session-testimonial" data-testimonial-slide hidden>
-                <p class="strategy-session-testimonial__quote">Christian sees connections that most people miss, bringing clarity to complex organisational problems.</p>
-                <footer class="strategy-session-testimonial__role">Founder & CEO at Global Technology Consulting Firm (later acquired)</footer>
-              </blockquote>
-
-              <blockquote class="strategy-session-testimonial" data-testimonial-slide hidden>
-                <p class="strategy-session-testimonial__quote">One of the strongest engineering leaders I've worked with.</p>
-                <footer class="strategy-session-testimonial__role">SVP of Technology at Global Technology Consulting Firm</footer>
-              </blockquote>
-
-              <blockquote class="strategy-session-testimonial" data-testimonial-slide hidden>
-                <p class="strategy-session-testimonial__quote">He consistently found the root cause instead of treating symptoms.</p>
-                <footer class="strategy-session-testimonial__role">Director at Big Four Consulting Firm</footer>
-              </blockquote>
+              {{ range $index, $testimonial := $testimonials }}
+                <blockquote class="strategy-session-testimonial{{ if eq $index 0 }} is-active{{ end }}" data-testimonial-slide{{ if ne $index 0 }} hidden{{ end }}>
+                  <p class="strategy-session-testimonial__quote">{{ $testimonial.quote }}</p>
+                  <footer class="strategy-session-testimonial__role">{{ $testimonial.role }}</footer>
+                </blockquote>
+              {{ end }}
             </div>
           </div>
           <div class="strategy-session-testimonials__controls" aria-label="Testimonial navigation">
@@ -158,11 +183,9 @@
               </svg>
             </button>
             <div class="strategy-session-testimonials__dots">
-              <button type="button" class="strategy-session-testimonials__dot is-active" data-testimonial-dot data-index="0" aria-label="Show testimonial 1" aria-pressed="true"></button>
-              <button type="button" class="strategy-session-testimonials__dot" data-testimonial-dot data-index="1" aria-label="Show testimonial 2" aria-pressed="false"></button>
-              <button type="button" class="strategy-session-testimonials__dot" data-testimonial-dot data-index="2" aria-label="Show testimonial 3" aria-pressed="false"></button>
-              <button type="button" class="strategy-session-testimonials__dot" data-testimonial-dot data-index="3" aria-label="Show testimonial 3" aria-pressed="false"></button>
-              <button type="button" class="strategy-session-testimonials__dot" data-testimonial-dot data-index="4" aria-label="Show testimonial 3" aria-pressed="false"></button>
+              {{ range $index, $testimonial := $testimonials }}
+                <button type="button" class="strategy-session-testimonials__dot{{ if eq $index 0 }} is-active{{ end }}" data-testimonial-dot data-index="{{ $index }}" aria-label="Show testimonial {{ add $index 1 }}" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}"></button>
+              {{ end }}
             </div>
             <button type="button" class="strategy-session-testimonials__button" data-testimonial-next aria-label="Next testimonial">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -171,81 +194,54 @@
             </button>
           </div>
         </div>
-        {{ with $ctaURL }}
-          <p class="strategy-session-cta">
-            <a
-              href="{{ . | safeURL }}"
-              class="power-thesis__btn power-thesis__btn--primary"
-              target="_blank"
-              rel="noopener"
-            >
-              {{ $ctaText }}
-            </a>
-          </p>
-        {{ end }}
-      </section>
 
-      <script>
-        (() => {
-          const carousel = document.querySelector('[data-testimonial-carousel]');
-          if (!carousel) return;
+        <script>
+          (() => {
+            const carousels = Array.from(document.querySelectorAll('[data-testimonial-carousel]'));
+            if (!carousels.length) return;
 
-          const slides = Array.from(carousel.querySelectorAll('[data-testimonial-slide]'));
-          const dots = Array.from(carousel.querySelectorAll('[data-testimonial-dot]'));
-          const prev = carousel.querySelector('[data-testimonial-prev]');
-          const next = carousel.querySelector('[data-testimonial-next]');
-          const autoplayMs = Number(carousel.getAttribute('data-autoplay-ms')) || 6000;
-          let activeIndex = 0;
-          let timerId = null;
+            carousels.forEach((carousel) => {
+              const slides = Array.from(carousel.querySelectorAll('[data-testimonial-slide]'));
+              const dots = Array.from(carousel.querySelectorAll('[data-testimonial-dot]'));
+              const prev = carousel.querySelector('[data-testimonial-prev]');
+              const next = carousel.querySelector('[data-testimonial-next]');
+              const autoplayMs = Number(carousel.getAttribute('data-autoplay-ms')) || 6000;
+              let activeIndex = 0;
+              let timerId = null;
 
-          const render = (index) => {
-            activeIndex = (index + slides.length) % slides.length;
+              const render = (index) => {
+                activeIndex = (index + slides.length) % slides.length;
+                slides.forEach((slide, slideIndex) => {
+                  const isActive = slideIndex === activeIndex;
+                  slide.hidden = !isActive;
+                  slide.classList.toggle('is-active', isActive);
+                });
+                dots.forEach((dot, dotIndex) => {
+                  const isActive = dotIndex === activeIndex;
+                  dot.classList.toggle('is-active', isActive);
+                  dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                });
+              };
 
-            slides.forEach((slide, slideIndex) => {
-              const isActive = slideIndex === activeIndex;
-              slide.hidden = !isActive;
-              slide.classList.toggle('is-active', isActive);
-            });
+              const restartAutoplay = () => {
+                if (timerId) window.clearInterval(timerId);
+                timerId = window.setInterval(() => render(activeIndex + 1), autoplayMs);
+              };
 
-            dots.forEach((dot, dotIndex) => {
-              const isActive = dotIndex === activeIndex;
-              dot.classList.toggle('is-active', isActive);
-              dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-            });
-          };
-
-          const restartAutoplay = () => {
-            if (timerId) window.clearInterval(timerId);
-            timerId = window.setInterval(() => render(activeIndex + 1), autoplayMs);
-          };
-
-          prev?.addEventListener('click', () => {
-            render(activeIndex - 1);
-            restartAutoplay();
-          });
-
-          next?.addEventListener('click', () => {
-            render(activeIndex + 1);
-            restartAutoplay();
-          });
-
-          dots.forEach((dot) => {
-            dot.addEventListener('click', () => {
-              render(Number(dot.getAttribute('data-index')));
+              prev?.addEventListener('click', () => { render(activeIndex - 1); restartAutoplay(); });
+              next?.addEventListener('click', () => { render(activeIndex + 1); restartAutoplay(); });
+              dots.forEach((dot) => dot.addEventListener('click', () => { render(Number(dot.getAttribute('data-index'))); restartAutoplay(); }));
+              carousel.addEventListener('mouseenter', () => { if (timerId) window.clearInterval(timerId); });
+              carousel.addEventListener('mouseleave', restartAutoplay);
+              render(0);
               restartAutoplay();
             });
-          });
+          })();
+        </script>
+      </section>
 
-          carousel.addEventListener('mouseenter', () => {
-            if (timerId) window.clearInterval(timerId);
-          });
-
-          carousel.addEventListener('mouseleave', restartAutoplay);
-
-          render(0);
-          restartAutoplay();
-        })();
-      </script>
+      
+      {{ end }}
 
     </article>
   </div>

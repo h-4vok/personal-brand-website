@@ -12,7 +12,7 @@ hero_image_alt = "Christian Guzman portrait"
 cta_text = "Book A Conversation"
 cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 who_title = "Who Typically Reaches Out"
-topics_title = "What We Usually Talk About"
+topics_title = "Bring Me Problems Like These"
 about_title = "About Christian"
 session_title = "What Happens During The Session"
 not_for_title = "Who This Is Not For"
@@ -20,17 +20,24 @@ final_title = "If it feels off, but you cannot yet explain why, that is usually 
 final_text = "Sometimes a short conversation is enough to name the real problem more clearly. If that happens, the session has done its job."
 topics_intro = "Most conversations start with a specific problem and quickly become a discussion about decisions, systems, incentives, communication, or leadership."
 
-about_text = """I have spent <strong>20</strong> years building software and fixing organisational gaps.
+about_text = """After <strong>twenty years</strong> building software, scaling engineering organisations and leading technical teams, I noticed a pattern.
 
-I've scaled departments to 60+ engineers/11+ cross-functional teams, led complex M&A integrations, migrations, transitions, restructuring and AI transformation.
+The hardest problems were rarely technical.
 
-I have quadrupled <strong>velocity</strong>, reversed <strong>performance</strong> drift and mentored people into achieving <strong>career growth</strong>.
+They looked technical on the surface. The symptoms usually were.
 
-Here is an opportunity to talk to someone who has been in the trenches for two decades.
+But underneath they were almost always about ownership, incentives, communication, trust, organisational design, or leadership.
 
-No performative execution. 
+That's the work I enjoy most.
 
-Just clear <strong>decisions</strong>, strict <strong>accountability</strong>, and human systems that get you <strong>leverage</strong>."""
+Understanding the system before trying to fix the symptom.
+
+I've led organisations through growth, restructuring, M&A integrations, platform migrations and AI transformation.
+
+If you're dealing with a problem that refuses to stay solved, there's a good chance it isn't the problem you think it is.
+
+Just clear decisions, strict accountability, and systems that help people do their best work.
+"""
 
 session_text = """There is <strong>no presentation</strong>.
 
