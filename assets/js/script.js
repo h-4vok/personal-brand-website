@@ -166,6 +166,170 @@
     observer.observe(first);
   }
 
+  function initArticleAnalytics() {
+    const article = document.querySelector('[data-article-content]');
+    if (!(article instanceof HTMLElement)) return;
+
+    const umamiTrack =
+      window.umami && typeof window.umami.track === 'function'
+        ? window.umami.track.bind(window.umami)
+        : null;
+    if (!umamiTrack) return;
+
+    const context = {
+      slug: article.dataset.articleSlug || window.location.pathname,
+      title: article.dataset.articleTitle || document.title,
+      reading_time: article.dataset.articleReadingTime || '',
+    };
+
+    const articleState = initArticleScrollDepth(article, context, umamiTrack);
+    initArticleEngagedTime(context, umamiTrack, articleState);
+  }
+
+  function initArticleScrollDepth(article, context, umamiTrack) {
+    const thresholds = [25, 50, 75, 100];
+    const reached = new Set();
+    let rafId = 0;
+    let maxDepth = 0;
+
+    const getProgress = () => {
+      const articleTop = article.getBoundingClientRect().top + window.scrollY;
+      const articleHeight = article.offsetHeight;
+      if (articleHeight <= 0) return 0;
+
+      const viewportBottom = window.scrollY + window.innerHeight;
+      const rawProgress = ((viewportBottom - articleTop) / articleHeight) * 100;
+      return Math.max(0, Math.min(100, rawProgress));
+    };
+
+    const trackDepth = () => {
+      rafId = 0;
+      const progress = getProgress();
+      maxDepth = Math.max(maxDepth, progress);
+
+      thresholds.forEach((threshold) => {
+        if (progress < threshold || reached.has(threshold)) return;
+        reached.add(threshold);
+        umamiTrack('article_scroll_depth', {
+          ...context,
+          depth: threshold,
+        });
+      });
+    };
+
+    const scheduleTrackDepth = () => {
+      if (rafId !== 0) return;
+      rafId = window.requestAnimationFrame(trackDepth);
+    };
+
+    window.addEventListener('scroll', scheduleTrackDepth, { passive: true });
+    window.addEventListener('resize', scheduleTrackDepth);
+    window.addEventListener('load', scheduleTrackDepth);
+    scheduleTrackDepth();
+
+    return {
+      getMaxDepth() {
+        return Math.round(maxDepth);
+      },
+    };
+  }
+
+  function initArticleEngagedTime(context, umamiTrack, articleState) {
+    const activeWindowMs = 15000;
+    const tickIntervalMs = 5000;
+    const trackedEvents = ['scroll', 'pointermove', 'keydown', 'touchstart'];
+    const milestones = [
+      { seconds: 10, bucket: '10s' },
+      { seconds: 20, bucket: '20s' },
+      { seconds: 30, bucket: '30s' },
+      { seconds: 40, bucket: '40s' },
+      { seconds: 50, bucket: '50s' },
+      { seconds: 60, bucket: '1m' },
+      { seconds: 120, bucket: '2m' },
+      { seconds: 180, bucket: '3m' },
+      { seconds: 300, bucket: '5m' },
+      { seconds: 600, bucket: '10m' },
+    ];
+    const overflowBucket = '+10m';
+    let engagedMs = 0;
+    let lastActiveAt = Date.now();
+    let lastTickAt = Date.now();
+    let hasActivity = false;
+    const reportedBuckets = new Set();
+
+    const isEngaged = (now) => {
+      if (document.visibilityState !== 'visible') return false;
+      if (typeof document.hasFocus === 'function' && !document.hasFocus()) return false;
+      return hasActivity && now - lastActiveAt <= activeWindowMs;
+    };
+
+    const updateEngagedTime = () => {
+      const now = Date.now();
+      const delta = now - lastTickAt;
+      lastTickAt = now;
+
+      if (delta <= 0) return;
+      if (isEngaged(now)) engagedMs += delta;
+    };
+
+    const reportEngagedTime = (force = false) => {
+      updateEngagedTime();
+
+      const seconds = Math.floor(engagedMs / 1000);
+      if (!force && seconds < milestones[0].seconds) return;
+
+      milestones.forEach(({ seconds: milestoneSeconds, bucket }) => {
+        if (seconds < milestoneSeconds || reportedBuckets.has(bucket)) return;
+        reportedBuckets.add(bucket);
+        umamiTrack('article_engaged_time', {
+          ...context,
+          seconds,
+          seconds_bucket: bucket,
+          max_depth: articleState.getMaxDepth(),
+        });
+      });
+
+      if (seconds <= milestones[milestones.length - 1].seconds || reportedBuckets.has(overflowBucket)) return;
+
+      reportedBuckets.add(overflowBucket);
+      umamiTrack('article_engaged_time', {
+        ...context,
+        seconds,
+        seconds_bucket: overflowBucket,
+        max_depth: articleState.getMaxDepth(),
+      });
+    };
+
+    const markActivity = () => {
+      hasActivity = true;
+      lastActiveAt = Date.now();
+    };
+
+    trackedEvents.forEach((eventName) => {
+      window.addEventListener(eventName, markActivity, { passive: true });
+    });
+
+    markActivity();
+
+    window.setInterval(() => {
+      reportEngagedTime(false);
+    }, tickIntervalMs);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        reportEngagedTime(true);
+        return;
+      }
+
+      lastTickAt = Date.now();
+      markActivity();
+    });
+
+    window.addEventListener('pagehide', () => {
+      reportEngagedTime(true);
+    });
+  }
+
   window.addEventListener('load', () => {
     hidePreloader();
     initLazyLoad();
@@ -176,6 +340,7 @@
     initNavCollapse();
     initNavDropdowns();
     initCounters();
+    initArticleAnalytics();
   });
 })();
 
