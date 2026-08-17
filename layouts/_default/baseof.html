@@ -5,10 +5,10 @@
 <body id="body">
   {{ partial "navigation.html" . }}
   
-  <div id="content">
+  <main id="content">
     {{ partial "preloader.html" . }}
     {{- block "main" . }}{{- end }}
-  </div>
+  </main>
   {{ partial "site-footer.html" . }}
   {{ partial "site-scripts.html" . }}
 

@@ -102,6 +102,15 @@ npm run audit:report
 - `audit`: runs the local audit loop against `public/` (Windows-safe runner) and keeps LHCI as the backend path in non-Windows environments/CI.
 - `audit:report`: runs Lighthouse directly against production (`https://christianguzman.uk`) and writes `seo-report.json` in the repo root (with browser auto-detection).
 
+Accessibility checks are available as a production audit:
+
+```bash
+npm run a11y:prod
+```
+
+- `a11y:prod`: audits `https://christianguzman.uk` directly using Lighthouse.
+- The audit scans rendered HTML, not Markdown source files.
+
 Browser requirement:
 
 - Google Chrome is preferred when present.
@@ -116,6 +125,7 @@ Quality gates:
 CI automation:
 
 - `.github/workflows/lighthouse.yml` runs on every `push` and `pull_request` to `main`.
+- `.github/workflows/a11y.yml` runs the production accessibility audit manually via `workflow_dispatch`.
 - Lighthouse artifacts are uploaded from `.lighthouseci/` (and `seo-report.json` when present) for PR diagnostics.
 
 Windows note:

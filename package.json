@@ -34,6 +34,8 @@
     "allchecks": "npm run format:check && npm run lint && npm run test:seo",
     "audit": "node ./tools/run-audit.js",
     "audit:prod:report": "node ./tools/lighthouse-report.js",
+    "a11y": "node ./tools/a11y-audit.js",
+    "a11y:prod": "node ./tools/a11y-audit.js --prod",
     "bootstrap:purge": "node ./tools/purge-bootstrap.mjs",
     "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --buildExpired --forceSyncStatic",
     "dev": "hugo server --buildDrafts --buildFuture --disableFastRender --forceSyncStatic --baseURL http://localhost:1313/ --bind 127.0.0.1 --port 1313",
