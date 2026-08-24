@@ -1,0 +1,7 @@
+interface:
+  display_name: "Alan Watts Reviewer"
+  short_description: "Review writing with grounded awareness"
+  default_prompt: "Use $alan-watts-reviewer to review this article's philosophical framing."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Schopenhauer Reviewer"
+  short_description: "Analyse arguments for eristic patterns"
+  default_prompt: "Use $schopenhauer-reviewer to review this argument constructively."
+
+policy:
+  allow_implicit_invocation: false

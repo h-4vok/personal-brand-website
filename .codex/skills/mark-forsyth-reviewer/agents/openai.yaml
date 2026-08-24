@@ -1,0 +1,7 @@
+interface:
+  display_name: "Mark Forsyth Reviewer"
+  short_description: "Improve prose with rhetorical craft"
+  default_prompt: "Use $mark-forsyth-reviewer to review this passage and suggest rhetorical improvements."
+
+policy:
+  allow_implicit_invocation: false
