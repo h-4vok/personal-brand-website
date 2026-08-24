@@ -1,0 +1,4 @@
+interface:
+  display_name: Editor
+  short_description: Co-author articles through interview and research
+  default_prompt: Help me turn a situation or idea into an English article by interviewing me, researching relevant concepts, and collaborating on title, angle, structure, and draft.
