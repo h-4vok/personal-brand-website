@@ -1,6 +1,6 @@
 ---
-title: "From JR to SR"
-date: "2026-09-03T08:00:00Z"
+title: "To help or not to help:"
+date: "2026-09-18T08:00:00Z"
 author: "Christian Guzman"
 image: "images/blog/article/agentic-ai-escaping-attention-trap.jpg"
 description: "Lorem ipsum"
@@ -11,20 +11,15 @@ categories:
 tags:
   - "Productivity"
 slug: "from-jr-to-senior"
-draft: true
 ---
-
-hook: te preocupa ser micromanager pero no puedes permitirte que tu equipo fracase?
-
-ambas cosas estan mal, ni eres micromanager, ni se espera que tu equipo sea infalible
-
-hay 3 tipos de interaccion que debes masterear para balancear tu involucramiento en el trabajo de tu equipo, y tu apetito por el riesgo
 
 No matter how many years of experience you have, there is always something that haunts us as leaders. We do not wish to micromanage people but we also want to see them do the right things right.
 
 Actually, let's be sincere, we do not want to be *perceived* as micromanagers, and we want to ensure we are not gambling our *accountability* in a reckless way.
 
 Whether you want to see this from the altruist or the selfish angle, both statements are logic traps. If you are already thinking like a leader, _you are not_ a micromanager, _nor you need_ your team to always flawlessly succeed.
+
+> Seniority is not a permanent trait of a person, but the level of autonomy someone can exercise in a specific skill, under a shared understanding of risk and accountability.
 
 I will give you a simple framework that you can apply everyday with the people that report to you, which ensures you are properly balancing _risk and autonomy_, _leaning in and leaning back_, _perception and results_.
 
@@ -96,6 +91,19 @@ People are always concerned about their performance. But what this truly means i
 
 ## The risks of this system
 
-If you introduce the concept too early to your folks, they will start coming with the 3 proposals all the time (overthinking) or they will jump the gun too often (gamgling so they can be perceived level 3 to you). 
+The risk of any system is how it can be gamed. 
 
-There is not golden standard for when you need to explain these expectations 
+If you introduce the concept too early to your folks, they will start coming with the 3 proposals all the time (overthinking) or they will jump the gun too often (gamgling so they can be perceived level 3 to you). They could irresponsibly _play the game_ instead of learning and getting things done.
+
+Present this framework to someone that needs to coach others. If their awareness is great enough, they will understand when you are using it yourself, which means it creates a direct relationship between your involvement and their perception of their performance. 
+
+If you provide this framework to another leader that reports to you and then starts to irresponsibly hide facts and problems so you do not get involved, your problem is not seniority or skills. It's their professionalism, and that is a much different conversation to have.
+
+## What you should do now
+
+Start applying this framework when you coach others. You do not need to explain, you do not need to link this article, you do not need anyone's permission. Practice and bake this into your leadership style.
+* You will start ensuring the results you seek for
+* Your people will appreciate the involvement "at the right time" and your ability to lean in and lean back when necessary.
+* You will become a much better leader quite quickly.
+
+No one likes micro-managers, but we all need a hand sometimes. Now you know when is what.
