@@ -1,0 +1,36 @@
+{{ $data := index site.Data site.Language.Lang }} {{ if $data.about.about.enable
+}} {{"<!-- Start About Section -->" | safeHTML}}
+<section class="bg-one about section power-thesis" id="about">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        {{/* Temporarily hidden while the generalist positioning is active. */}}
+        <div class="power-thesis__inner text-center" hidden>
+          <h1 class="power-thesis__headline">
+            Build organisations as robust as the software you ship.
+          </h1>
+          <p class="power-thesis__subheadline">
+            I help engineering leaders move beyond mindless standardisation to scale trust, clarity, and intentionality.
+          </p>
+          <div class="power-thesis__actions">
+            <a
+              href="/leadership-office-hours/"
+              class="power-thesis__btn power-thesis__btn--primary"
+            >
+              Book a free conversation
+            </a>
+          </div>
+        </div>
+        <div class="power-thesis__inner text-center wow fadeIn" data-wow-duration="900ms">
+          <h1 class="power-thesis__headline">
+            Sharing my passion for people and technical leadership
+          </h1>
+          <p class="power-thesis__subheadline">
+            I am a generalist by choice. I enjoy engineering, product, people, strategy and the business connecting them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{"<!-- /about -->" | safeHTML}} {{ end }}

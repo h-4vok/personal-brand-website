@@ -76,8 +76,8 @@
 	{{ end }}
 
 	{{ $isBlogPost := and (eq .Kind "page") (or (in .RelPermalink "/articles/") (in .RelPermalink "/blog/")) }}
-	{{ $isServicePage := eq .Type "strategy-session" }}
-	{{ $isBrandDefiningPage := or .IsHome (eq .Type "author") (eq .Type "manifesto") $isServicePage }}
+	{{ $isOfficeHoursPage := eq .Type "strategy-session" }}
+	{{ $isBrandDefiningPage := or .IsHome (eq .Type "author") (eq .Type "manifesto") $isOfficeHoursPage }}
 	{{ $ogType := "website" }}
 	{{ if $isBlogPost }}
 		{{ $ogType = "article" }}
@@ -261,23 +261,6 @@
 			{{ $articleSchema = merge $articleSchema (dict "image" (slice .)) }}
 		{{ end }}
 	<script type="application/ld+json">{{ $articleSchema | jsonify | safeJS }}</script>
-	{{ end }}
-
-	{{ if $isServicePage }}
-		{{ $serviceSchema := dict
-			"@context" "https://schema.org"
-			"@type" "Service"
-			"name" $pageTitle
-			"description" $description
-			"url" .Permalink
-			"serviceType" "Engineering Leadership Coaching"
-			"provider" (dict
-				"@type" "Person"
-				"name" $personName
-				"url" site.Home.Permalink
-			)
-		}}
-		<script type="application/ld+json">{{ $serviceSchema | jsonify | safeJS }}</script>
 	{{ end }}
 
 	{{ with site.Params.google_analytics_id }}

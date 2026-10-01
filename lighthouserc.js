@@ -7,7 +7,7 @@ module.exports = {
     collect: {
       staticDistDir: "./public",
       numberOfRuns: 1,
-      url: ["/", "/articles/", "/engineering-leadership-coaching/"],
+      url: ["/", "/articles/", "/leadership-office-hours/"],
       chromePath: detectedChromePath,
       settings: {
         chromeFlags: [

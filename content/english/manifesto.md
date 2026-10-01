@@ -40,4 +40,4 @@ Beyond organizational systems, I help leaders navigate stalled careers and a lac
 
 If you wish to bring **intentionality** back to your life or your organisation, let's skip the reading and go straight to the diagnostic.
 
-{{< cta-button text="Book a free 30-min intro call" url="/engineering-leadership-coaching/" >}}
+{{< cta-button text="Book a free 30-min conversation" url="/leadership-office-hours/" >}}

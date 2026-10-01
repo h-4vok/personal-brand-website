@@ -28,7 +28,7 @@
             <p class="redirect-message" id="redirect-message">Redirecting...</p>
             <p class="redirect-fallback">
               If you are not redirected within 5 seconds,
-              <a id="redirect-link" href="/engineering-leadership-coaching/" target="_blank" rel="noopener noreferrer">click here</a>.
+              <a id="redirect-link" href="/leadership-office-hours/" target="_blank" rel="noopener noreferrer">click here</a>.
             </p>
           </div>
         </div>
@@ -49,7 +49,7 @@
           if (regular404) regular404.style.display = "none";
           if (redirect404) redirect404.style.display = "";
 
-          const FAILURE_URL = "/engineering-leadership-coaching/";
+          const FAILURE_URL = "/leadership-office-hours/";
           const REDIRECT_DELAY_MS = 1800;
           const PASS_THROUGH_KEYS = new Set(["gclid", "fbclid", "msclkid"]);
 
@@ -170,9 +170,9 @@
               return;
             }
           }
-          let fallbackToCoaching = false;
+          let fallbackToOfficeHours = false;
           if (!destination) {
-            fallbackToCoaching = true;
+            fallbackToOfficeHours = true;
             destination = FAILURE_URL;
           }
 
@@ -184,7 +184,7 @@
             return;
           }
 
-          if (!fallbackToCoaching) {
+          if (!fallbackToOfficeHours) {
             copyAttributionParams(currentUrl.searchParams, destinationUrl);
           }
 
@@ -193,9 +193,9 @@
             labelParams.set("slug", slugRaw);
           }
           const label = readLabel(labelParams, entry, destinationUrl.href);
-          if (fallbackToCoaching) {
+          if (fallbackToOfficeHours) {
             if (subtitle) subtitle.textContent = `Unknown redirect: ${label}`;
-            if (message) message.textContent = `Redirecting you to coaching...`;
+            if (message) message.textContent = `Redirecting you to leadership office hours...`;
           } else {
             if (subtitle) subtitle.textContent = `Destination: ${label}`;
             if (message) message.textContent = `You are being redirected to ${label}...`;
@@ -211,7 +211,7 @@
               destination: destinationUrl.href,
               requestedTo: requestedTo || null,
               allowedHosts: Array.from(allowedHosts.values()),
-              fallbackToCoaching,
+              fallbackToOfficeHours,
               passThrough: Object.fromEntries(
                 Array.from(currentUrl.searchParams.entries()).filter(
                   ([k]) => k.startsWith("utm_") || PASS_THROUGH_KEYS.has(k),

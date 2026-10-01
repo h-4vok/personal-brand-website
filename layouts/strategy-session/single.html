@@ -20,6 +20,7 @@
           <p class="strategy-session-quote__line strategy-session-quote__line--lead">Perspective is elusive when you are close to the problem.</p>
           <p class="strategy-session-quote__line strategy-session-quote__line--accent">BRING IT.</p>
           <p class="strategy-session-quote__line strategy-session-quote__line--accent strategy-session-quote__line--accent-mixed">We'll unpack it together.</p>
+          <p class="strategy-session-quote__line strategy-session-quote__line--lead">Free conversation. No pitch. No programme.</p>
           {{ with $ctaURL }}
             <p class="strategy-session-cta strategy-session-cta--hero">
               <a
@@ -40,6 +41,14 @@
           <h1>{{ .Title }}</h1>
           <h2>{{ .Params.topics_title }}</h2>
         </div>
+        <div class="strategy-session-prose strategy-session-prose--session">
+          {{ range split .Params.session_text "\n\n" }}
+            <p>{{ . | safeHTML }}</p>
+          {{ end }}
+          <p>Sometimes the problem <strong>is not technical</strong>.</p>
+          <p>Sometimes the problem <strong>is not the team</strong>.</p>
+          <p>If something feels off, but you cannot yet explain why, that is usually a <strong>good reason</strong> to talk.</p>
+        </div>
         {{ with .Params.topics }}
           <div class="strategy-session-topics-grid">
             {{ range . }}
@@ -54,14 +63,6 @@
             {{ end }}
           </div>
         {{ end }}
-        <div class="strategy-session-prose strategy-session-prose--session">
-          {{ range split .Params.session_text "\n\n" }}
-            <p>{{ . | safeHTML }}</p>
-          {{ end }}
-          <p>Sometimes the problem <strong>is not technical</strong>.</p>
-          <p>Sometimes the problem <strong>is not the team</strong>.</p>
-          <p>If something feels off, but you cannot yet explain why, that is usually a <strong>good reason</strong> to talk.</p>
-        </div>
         {{ with $ctaURL }}
           <p class="strategy-session-cta">
             <a
