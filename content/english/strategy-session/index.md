@@ -1,11 +1,11 @@
 +++
-title = "Advisory For Engineering Leaders"
+title = "Engineering Leadership Office Hours"
 layout = "single"
 type = "strategy-session"
-url = "/engineering-leadership-coaching/"
-aliases = ["/strategy-session/"]
-description = "A focused conversation for engineering leaders who want to think more clearly about delivery, leadership, organisational friction, or their own growth."
-keywords = ["Engineering Leadership Coaching", "Engineering Leadership Advisor", "Leadership Coaching for Engineering Managers", "Organisational Friction", "Delivery Leadership"]
+url = "/leadership-office-hours/"
+aliases = ["/engineering-leadership-coaching/", "/strategy-session/"]
+description = "Free engineering leadership office hours: a focused peer conversation about delivery, leadership, organisational friction, or your own growth. No pitch or programme."
+keywords = ["Engineering Leadership Office Hours", "Engineering Leadership", "Peer Conversation", "Organisational Friction", "Delivery Leadership"]
 subtitle = "A focused conversation for engineering leaders who want to think more clearly about delivery, leadership, organisational friction, or their own growth."
 hero_image = "images/portraits/christian-guzman-portrait.jpg"
 hero_image_alt = "Christian Guzman portrait"
@@ -14,10 +14,10 @@ cta_url = "https://cal.com/christian-guzman/30-min-one-off-coaching"
 who_title = "Who Typically Reaches Out"
 topics_title = "Bring Me Problems Like These"
 about_title = "About Christian"
-session_title = "What Happens During The Session"
+session_title = "What Happens During The Conversation"
 not_for_title = "Who This Is Not For"
 final_title = "If it feels off, but you cannot yet explain why, that is usually a good reason to talk."
-final_text = "Sometimes a short conversation is enough to name the real problem more clearly. If that happens, the session has done its job."
+final_text = "Sometimes a short conversation is enough to name the real problem more clearly. If that happens, the conversation has done its job."
 topics_intro = "Most conversations start with a specific problem and quickly become a discussion about decisions, systems, incentives, communication, or leadership."
 
 about_text = """After <strong>twenty years</strong> building software, scaling engineering organisations and leading technical teams, I noticed a pattern.
@@ -51,7 +51,7 @@ You bring a problem, a question, or a situation that feels stuck.
 
 [[not_for]]
 title = "Looking For Motivation"
-text = "This is not motivational coaching."
+text = "This is not a motivational call."
 
 [[not_for]]
 title = "Looking For A Shortcut"

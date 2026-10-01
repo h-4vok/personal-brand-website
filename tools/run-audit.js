@@ -14,7 +14,7 @@ const profilesDir = path.join(rootDir, ".lighthouseci", "profiles");
 const lighthouseCli = require.resolve("lighthouse/cli/index.js");
 const chromePath = detectBrowserPath();
 
-const defaultRoutes = ["/", "/articles/", "/engineering-leadership-coaching/"];
+const defaultRoutes = ["/", "/articles/", "/leadership-office-hours/"];
 const routes = (process.env.LIGHTHOUSE_ROUTES || "")
   .split(",")
   .map((route) => route.trim())

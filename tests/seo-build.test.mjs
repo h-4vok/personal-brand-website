@@ -12,7 +12,13 @@ const NETLIFY_CONFIG_PATH = path.join(REPO_ROOT, 'netlify.toml');
 const ARTICLE_SCHEMA_TYPES = new Set(['Article', 'BlogPosting', 'NewsArticle']);
 const SERVICE_SCHEMA_TYPES = new Set(['Service']);
 const LANGUAGE_HOME_SEGMENTS = new Set(['en', 'english', 'fr']);
-const LEGACY_PUBLIC_SEGMENTS = ['/english/', '/en/', '/fr/'];
+const LEGACY_PUBLIC_SEGMENTS = [
+  '/english/',
+  '/en/',
+  '/fr/',
+  '/engineering-leadership-coaching/',
+  '/strategy-session/',
+];
 
 const { baseUrl, siteTitle, twitterSite, twitterCreator, ahrefsDataKey } = readHugoConfig(HUGO_CONFIG_PATH);
 const netlifyConfig = fs.readFileSync(NETLIFY_CONFIG_PATH, 'utf8');
@@ -382,9 +388,36 @@ describe('SEO build assertions', () => {
       const schemaTypes = collectSchemaTypes(schemas);
       const hasArticleSchema = schemaTypes.some((type) => ARTICLE_SCHEMA_TYPES.has(type));
       const hasServiceSchema = schemaTypes.some((type) => SERVICE_SCHEMA_TYPES.has(type));
-      const isServiceLanding = page.relativePath === 'engineering-leadership-coaching/index.html';
+      const isOfficeHoursPage = page.relativePath === 'leadership-office-hours/index.html';
 
-      if (isServiceLanding) {
+      if (isOfficeHoursPage) {
+        assert(
+          $('h1').first().text().trim() === 'Engineering Leadership Office Hours',
+          `[${page.relativePath}] must use the office hours framing in its primary heading.`,
+        );
+        assert(
+          $('.strategy-session-hero').text().includes('Free conversation. No pitch. No programme.'),
+          `[${page.relativePath}] hero must make the free, non-commercial framing explicit.`,
+        );
+        assert(
+          html.indexOf('There is <strong>no presentation</strong>') >= 0 &&
+            html.indexOf('There is <strong>no presentation</strong>') <
+              html.indexOf('strategy-session-topics-grid'),
+          `[${page.relativePath}] no-presentation/no-framework/no-pitch disclaimer must appear before the problem list.`,
+        );
+
+        const ctas = $('a.power-thesis__btn');
+        assert(
+          ctas.length <= 3,
+          `[${page.relativePath}] must not add more calls to action. Found ${ctas.length}.`,
+        );
+        ctas.each((_, element) => {
+          assert(
+            $(element).text().trim() === 'Book A Conversation',
+            `[${page.relativePath}] calls to action must use conversation language.`,
+          );
+        });
+
         const portrait = $('img.strategy-session-portrait');
         assert(
           portrait.length === 1,
@@ -443,21 +476,16 @@ describe('SEO build assertions', () => {
         );
       }
 
-      if (isServiceLanding) {
+      if (isOfficeHoursPage) {
         assert(
           schemaTypes.includes('Person'),
-          `[${page.relativePath}] service landing must emit Person JSON-LD. Found schema types: ${formatList(schemaTypes)}.`,
-        );
-        assert(
-          schemaTypes.includes('Service'),
-          `[${page.relativePath}] service landing must emit Service JSON-LD. Found schema types: ${formatList(schemaTypes)}.`,
-        );
-      } else {
-        assert(
-          !hasServiceSchema,
-          `[${page.relativePath}] non-service pages must not emit Service schema types. Found schema types: ${formatList(schemaTypes)}.`,
+          `[${page.relativePath}] office hours page must emit Person JSON-LD. Found schema types: ${formatList(schemaTypes)}.`,
         );
       }
+      assert(
+        !hasServiceSchema,
+        `[${page.relativePath}] pages must not emit Service schema types. Found schema types: ${formatList(schemaTypes)}.`,
+      );
     });
   }
 });

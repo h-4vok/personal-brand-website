@@ -46,13 +46,25 @@
 
 [[redirects]]
   from = "/strategy-session/"
-  to = "/engineering-leadership-coaching/"
+  to = "/leadership-office-hours/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/strategy-session"
-  to = "/engineering-leadership-coaching/"
+  to = "/leadership-office-hours/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/engineering-leadership-coaching/"
+  to = "/leadership-office-hours/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/engineering-leadership-coaching"
+  to = "/leadership-office-hours/"
   status = 301
   force = true
 
