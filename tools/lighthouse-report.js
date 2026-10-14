@@ -6,6 +6,7 @@ const {
   classifyLighthouseResult,
 } = require("./lighthouse-audit");
 const { detectBrowserPath } = require("./lighthouse-browser");
+const { cleanupLighthouseRuntimeArtifacts } = require("./lighthouse-cleanup");
 
 const lighthouseCli = require.resolve("lighthouse/cli/index.js");
 const reportBaseName = process.env.LIGHTHOUSE_REPORT_BASENAME || "seo-report";
@@ -67,28 +68,32 @@ log(`[audit:report] URL: ${auditUrl}`);
 log(`[audit:report] HTML output: ${outputHtmlPath}`);
 log(`[audit:report] JSON output: ${outputJsonPath}`);
 
-const result = spawnSync(
-  process.execPath,
-  [
-    lighthouseCli,
-    auditUrl,
-    `--only-categories=${categories.join(",")}`,
-    "--output",
-    "html",
-    "--output",
-    "json",
-    "--output-path",
-    outputJsonPath,
-    `--chrome-flags=${chromeFlags.join(" ")}`,
-  ],
-  {
-    stdio: "pipe",
-    encoding: "utf8",
-    env: { ...process.env, CHROME_PATH: chromePath },
-  },
-);
-
-cleanupProfileDir(profileDir);
+let result;
+try {
+  result = spawnSync(
+    process.execPath,
+    [
+      lighthouseCli,
+      auditUrl,
+      `--only-categories=${categories.join(",")}`,
+      "--output",
+      "html",
+      "--output",
+      "json",
+      "--output-path",
+      outputJsonPath,
+      `--chrome-flags=${chromeFlags.join(" ")}`,
+    ],
+    {
+      stdio: "pipe",
+      encoding: "utf8",
+      env: { ...process.env, CHROME_PATH: chromePath },
+    },
+  );
+} finally {
+  cleanupProfileDir(profileDir);
+  cleanupLighthouseRuntimeArtifacts();
+}
 
 if (fs.existsSync(outputJsonPath)) {
   try {

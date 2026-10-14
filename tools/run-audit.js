@@ -7,6 +7,7 @@ const {
   classifyLighthouseResult,
 } = require("./lighthouse-audit");
 const { detectBrowserPath } = require("./lighthouse-browser");
+const { cleanupLighthouseRuntimeArtifacts } = require("./lighthouse-cleanup");
 
 const rootDir = path.resolve(__dirname, "..");
 const outputDir = path.join(rootDir, ".lighthouseci", "local");
@@ -181,8 +182,10 @@ function runLighthouse(url, outputPath) {
     }
 
     log(`[audit] Total audit time: ${((performance.now() - auditStart) / 1000).toFixed(2)}s`);
+    cleanupLighthouseRuntimeArtifacts();
     process.exit(hasSeoFailure ? 1 : 0);
   } catch (error) {
+    cleanupLighthouseRuntimeArtifacts();
     console.error(`[audit] ${error.message}`);
     process.exit(1);
   }
