@@ -17,3 +17,6 @@ seo-report.json
 # Local temp artifacts
 .tmp/
 seo-report-20260413.md
+
+# Ignore serena/headroom folders
+.serena/
