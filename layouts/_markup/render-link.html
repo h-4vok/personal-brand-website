@@ -1,0 +1,9 @@
+{{- $destination := .Destination -}}
+{{- $parsedURL := urls.Parse $destination -}}
+{{- $siteURL := urls.Parse site.BaseURL -}}
+{{- $isWebURL := or (eq $parsedURL.Scheme "http") (eq $parsedURL.Scheme "https") -}}
+{{- $isExternal := and $isWebURL (ne $parsedURL.Hostname $siteURL.Hostname) -}}
+{{- $path := strings.TrimPrefix "/" $parsedURL.Path -}}
+{{- $isInternalArticle := and (or (not $parsedURL.Hostname) (eq $parsedURL.Hostname $siteURL.Hostname)) (strings.HasPrefix $path "articles/") -}}
+{{- $opensNewTab := or $isExternal $isInternalArticle -}}
+<a href="{{ $destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $opensNewTab }} target="_blank" rel="{{ if $isExternal }}noopener noreferrer{{ else }}noopener{{ end }}"{{ end }}>{{ .Text | safeHTML }}{{ if $opensNewTab }}<svg class="external-link-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3h4v4M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg><span class="external-link-visually-hidden"> (opens in a new tab)</span>{{ end }}</a>
