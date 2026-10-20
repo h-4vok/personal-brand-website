@@ -1,0 +1,16 @@
+.external-link-icon {
+  display: inline-block;
+  height: 0.78em;
+  margin-left: 0.2em;
+  vertical-align: 0.02em;
+  width: 0.78em;
+}
+
+.external-link-visually-hidden {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
