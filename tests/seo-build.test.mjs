@@ -82,6 +82,32 @@ describe('SEO build assertions', () => {
       `robots.txt must include the canonical sitemap URL. Expected to find "${expected}".`,
     );
   });
+  it('keeps redirect pages out of the sitemap', () => {
+    const sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf8');
+    assert(
+      !sitemap.includes(`${baseUrl.origin}/redirect/`),
+      'Redirect page must not appear in sitemap.xml.',
+    );
+  });
+
+  it('self-canonicalizes paginated lists', () => {
+    const paginatedPages = htmlFiles.filter(({ relativePath }) =>
+      /\/page\/(?:[2-9]|\d{2,})\/index\.html$/.test(relativePath),
+    );
+    assert(paginatedPages.length > 0, 'Expected at least one generated paginated list.');
+    for (const page of paginatedPages) {
+      const $ = load(fs.readFileSync(page.absolutePath, 'utf8'));
+      const expected = new URL(page.relativePath.replace(/index\.html$/, ''), baseUrl).href;
+      assert(
+        readCanonicalHref($, page.relativePath) === expected,
+        `[${page.relativePath}] canonical must be ${expected}.`,
+      );
+      assert(
+        readRequiredMeta($, 'og:url', page.relativePath) === expected,
+        `[${page.relativePath}] og:url must be ${expected}.`,
+      );
+    }
+  });
 
   for (const page of htmlFiles) {
     it(`validates ${page.relativePath}`, () => {

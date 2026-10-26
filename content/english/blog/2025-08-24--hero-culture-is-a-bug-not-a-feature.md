@@ -56,13 +56,15 @@ A culture that relies on heroes pays a heavy tax, often in ways that aren't imme
 
 - **It Kills Psychological Safety**: If only a few people can solve the problem, others are less likely to propose solutions or admit they don't understand the system for fear of looking incompetent. Your hero culture has now created an unsafe environment that stifles learning and collaborative problem-solving.
 
+Tolerating a high performer who undermines colleagues carries [a similar hidden cost](/articles/brilliant-jerk-hidden-tax/).
+
 ## From Heroes to Resilience: A New Operating System
 
 With all that said, it would also be unfair **not to** celebrate your heroes. The gist is that if you identify an over-reliance on hero behaviour, then you might have a bug in your organisational system. Shifting from a hero culture to a resilient one requires a deliberate change in what you choose to measure, celebrate, and reward. It requires a new operating system for leadership.
 
 **Principle 1: Measure What's Quiet**
 
-The first step is to make the invisible, visible. While my team was being praised for fixing outages, we discovered our customers were suffering from over 60,000 non-critical exceptions per month. They weren't reporting it, but it was a major deterrent on their experience. We shifted our focus from the noisy outage to this quiet friction. We organised ourselves together with our dev team to proactively start finding problems and getting them resolved. We did not wait for outages to build up, but instead we started to look at our system, our tech debt and our customers' experience for clues on what to do next.
+The first step is to make the invisible, visible. While my team was being praised for fixing outages, we discovered our customers were suffering from over 60,000 non-critical exceptions per month. They weren't reporting it, but it was a major deterrent on their experience. We shifted our focus from the noisy outage to this quiet friction. We organised ourselves together with our dev team to proactively start finding problems and getting them resolved. We did not wait for outages to build up, but instead we started to look at our system, [our technical debt](/articles/politics-of-technical-debt/) and our customers' experience for clues on what to do next.
 
 A leader's job is to find and reward the invisible work of prevention. Start by measuring the "paper cuts"—the small, recurring issues that drain energy and erode quality. When you fix these, you're not just improving the product; you're building the cultural muscle of proactive problem-solving.
 
