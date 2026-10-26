@@ -82,6 +82,10 @@
 	{{ if $isBlogPost }}
 		{{ $ogType = "article" }}
 	{{ end }}
+	{{ $pageURL := .Permalink }}
+	{{ if in (slice "section" "taxonomy" "term") .Kind }}
+		{{ $pageURL = (.Paginate .Data.Pages 9).URL | absURL }}
+	{{ end }}
 
 	<title>{{ $title }}</title>
 
@@ -95,7 +99,7 @@
 	<meta name="keywords" content="{{ delimit $keywords `, ` }}">
 	{{ end }}
 	<meta name="author" content="{{ $author }}">
-	<link rel="canonical" href="{{ .Permalink }}">
+	<link rel="canonical" href="{{ $pageURL }}">
 	{{ if eq .Type "redirect" }}
 	<meta name="robots" content="noindex,nofollow">
 	{{ end }}
@@ -103,7 +107,7 @@
 	<meta property="og:title" content="{{ $title }}">
 	<meta property="og:description" content="{{ $description }}">
 	<meta property="og:type" content="{{ $ogType }}">
-	<meta property="og:url" content="{{ .Permalink }}">
+	<meta property="og:url" content="{{ $pageURL }}">
 	{{ with $socialImage }}
 	<meta property="og:image" content="{{ . }}">
 	{{ end }}
