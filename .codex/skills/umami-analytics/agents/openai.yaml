@@ -1,0 +1,3 @@
+interface:
+  display_name: "Umami Analytics"
+  short_description: "Review live Umami traffic, events, and UTM reports"
