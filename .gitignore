@@ -22,3 +22,7 @@ seo-report-20260413.md
 .serena/
 .playwright-mcp/
 screenshots/
+/.taste-skill/
+/server.log
+/server-error.log
+/themes/arcade-terminal/
