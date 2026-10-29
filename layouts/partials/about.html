@@ -1,36 +1,21 @@
-{{ $data := index site.Data site.Language.Lang }} {{ if $data.about.about.enable
-}} {{"<!-- Start About Section -->" | safeHTML}}
-<section class="bg-one about section power-thesis" id="about">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        {{/* Temporarily hidden while the generalist positioning is active. */}}
-        <div class="power-thesis__inner text-center" hidden>
-          <h1 class="power-thesis__headline">
-            Build organisations as robust as the software you ship.
-          </h1>
-          <p class="power-thesis__subheadline">
-            I help engineering leaders move beyond mindless standardisation to scale trust, clarity, and intentionality.
-          </p>
-          <div class="power-thesis__actions">
-            <a
-              href="/leadership-office-hours/"
-              class="power-thesis__btn power-thesis__btn--primary"
-            >
-              Book a free conversation
-            </a>
-          </div>
-        </div>
-        <div class="power-thesis__inner text-center wow fadeIn" data-wow-duration="900ms">
-          <h1 class="power-thesis__headline">
-            Sharing my passion for people and technical leadership
-          </h1>
-          <p class="power-thesis__subheadline">
-            I am a generalist by choice. I enjoy engineering, product, people, strategy and the business connecting them.
-          </p>
-        </div>
-      </div>
+{{ $data := index site.Data site.Language.Lang }}
+{{ if $data.about.about.enable }}
+<section id="about" class="section zine-cover" aria-labelledby="zine-title">
+  <div class="zine-cover__grid">
+    <div class="zine-cover__copy">
+      <p class="zine-kicker">FIELD NOTES FOR PEOPLE BUILDING THINGS · VOL. 01</p>
+      <h1 id="zine-title">Make<br>management<br><em>weird.</em><br>Make teams<br>work.</h1>
+      <p class="zine-cover__intro">A working notebook on engineering leadership, team dynamics, and the messy middle between a good idea and good work.</p>
+      <a class="zine-button" href="/leadership-office-hours/">Bring me the hard problem <span aria-hidden="true">↗</span></a>
     </div>
+    <div class="zine-cover__art" aria-label="A typographic collage about team leadership">
+      <span class="zine-cover__art-top">NOT A PLAYBOOK</span>
+      <span class="zine-cover__art-big">MAKE<br>SPACE<br><i>FOR</i><br>PEOPLE</span>
+      <span class="zine-cover__art-note">ISSUE 01<br>NO EASY ANSWERS</span>
+      <span class="zine-cover__burst" aria-hidden="true">★</span>
+    </div>
+    <p class="zine-cover__side-note" aria-hidden="true">LEADERSHIP IS A VERB — KEEP IT MOVING —</p>
   </div>
+  <div class="zine-cover__ticker" aria-hidden="true"><span>LESS THEATRE · MORE TRUST · BETTER QUESTIONS · LESS THEATRE · MORE TRUST · BETTER QUESTIONS ·</span></div>
 </section>
-{{"<!-- /about -->" | safeHTML}} {{ end }}
+{{ end }}
