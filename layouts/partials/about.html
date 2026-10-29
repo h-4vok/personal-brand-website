@@ -1,36 +1,37 @@
-{{ $data := index site.Data site.Language.Lang }} {{ if $data.about.about.enable
-}} {{"<!-- Start About Section -->" | safeHTML}}
-<section class="bg-one about section power-thesis" id="about">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        {{/* Temporarily hidden while the generalist positioning is active. */}}
-        <div class="power-thesis__inner text-center" hidden>
-          <h1 class="power-thesis__headline">
-            Build organisations as robust as the software you ship.
-          </h1>
-          <p class="power-thesis__subheadline">
-            I help engineering leaders move beyond mindless standardisation to scale trust, clarity, and intentionality.
-          </p>
-          <div class="power-thesis__actions">
-            <a
-              href="/leadership-office-hours/"
-              class="power-thesis__btn power-thesis__btn--primary"
-            >
-              Book a free conversation
-            </a>
-          </div>
-        </div>
-        <div class="power-thesis__inner text-center wow fadeIn" data-wow-duration="900ms">
-          <h1 class="power-thesis__headline">
-            Sharing my passion for people and technical leadership
-          </h1>
-          <p class="power-thesis__subheadline">
-            I am a generalist by choice. I enjoy engineering, product, people, strategy and the business connecting them.
-          </p>
-        </div>
+{{ $data := index site.Data site.Language.Lang }}
+{{ if $data.about.about.enable }}
+<section id="about" class="ops-dashboard">
+  <div class="ops-dashboard__topline">
+    <span>INDEPENDENT ENGINEERING ADVISORY</span>
+    <span class="ops-live"><i aria-hidden="true"></i> ACCEPTING CONVERSATIONS</span>
+  </div>
+
+  <div class="ops-dashboard__hero">
+    <div class="ops-dashboard__intro">
+      <p class="ops-eyebrow">LEADERSHIP SYSTEMS / 01</p>
+      <h1>Make the team work without you in every room.</h1>
+      <p class="ops-lede">I help engineering leaders reduce delivery drag, build ownership, and make better decisions under pressure.</p>
+      <div class="ops-actions">
+        <a class="ops-button" href="/leadership-office-hours/">Book a working session <span aria-hidden="true">↗</span></a>
+        <a class="ops-text-link" href="#blog">Read the field notes <span aria-hidden="true">↓</span></a>
       </div>
     </div>
+
+    <aside class="ops-signal" aria-label="Engineering leadership system overview">
+      <div class="ops-signal__head"><span>TEAM SYSTEM / LIVE VIEW</span><span>CG—01</span></div>
+      <div class="ops-signal__status"><span>REVIEW REQUIRED</span><b aria-hidden="true">!</b></div>
+      <p class="ops-signal__label">Common pressure points</p>
+      <div class="ops-meter"><span>Delivery flow</span><i><b style="--level: 78%"></b></i><strong>78</strong></div>
+      <div class="ops-meter"><span>Decision ownership</span><i><b style="--level: 46%"></b></i><strong>46</strong></div>
+      <div class="ops-meter"><span>Team resilience</span><i><b style="--level: 64%"></b></i><strong>64</strong></div>
+      <p class="ops-signal__note">A useful signal is a starting point, not a scorecard.</p>
+    </aside>
+  </div>
+
+  <div class="ops-dashboard__focus" aria-label="Advisory focus areas">
+    <div><span>01 / FLOW</span><strong>Reduce delivery drag</strong></div>
+    <div><span>02 / OWNERSHIP</span><strong>Move decisions closer</strong></div>
+    <div><span>03 / TRUST</span><strong>Build resilient teams</strong></div>
   </div>
 </section>
-{{"<!-- /about -->" | safeHTML}} {{ end }}
+{{ end }}
