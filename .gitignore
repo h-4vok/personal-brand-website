@@ -20,3 +20,10 @@ seo-report-20260413.md
 
 # Ignore serena/headroom folders
 .serena/
+/screenshots/*
+!/screenshots/home.png
+.playwright-mcp/
+.taste-skill/
+/server.log
+/server-error.log
+/themes/arcade-terminal/

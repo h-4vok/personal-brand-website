@@ -1,39 +1,12 @@
 {{ define "main" }}
-
-{{ if not (hasPrefix .RelPermalink "/articles/") }}
-{{ partial "blog-breadcrumb.html" . }}
-{{ end }}
-
-{{"<!-- Start Blog Section -->" | safeHTML}}
-<section id="blog" class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        {{"<!-- section title -->" | safeHTML}}
-        <div class="title text-center wow fadeInDown">
-          <h1>{{ with i18n "blogTitle" }} {{ index (split . " ") 0 | safeHTML }} {{ end }}<span class="color">
-              {{ with i18n "blogTitle" }} {{ index (split . " ") 1 | safeHTML }} {{ end }}</span></h1>
-          <div class="border-guzman"></div>
-        </div>
-      </div>
-      {{"<!-- /section title -->" | safeHTML}}
-      {{ $paginator := .Paginate .Data.Pages 9 }}
-      {{ range $i, $page := $paginator.Pages }}
-      {{ if and (hasPrefix $.RelPermalink "/articles/") (lt $i 3) }}
-        {{ $page.Scratch.Set "aboveFoldCard" true }}
-        {{ if eq $i 0 }}
-          {{ $page.Scratch.Set "lcpCard" true }}
-        {{ end }}
-      {{ end }}
-      {{ $page.Render "article" }}
-      {{ end }}
-      <div class="col-12">
-        {{ template "_internal/pagination.html" . }}
-      </div>
-    </div>
+{{ $paginator := .Paginate .Data.Pages 9 }}
+<section class="archive-index" id="blog">
+  <div class="archive-index__masthead"><p class="archive-kicker">The loom / Pattern index 01</p><h1>{{ if .Title }}{{ .Title }}{{ else }}Collected thoughts{{ end }}</h1><p class="archive-index__intro">Threads from the work of engineering leadership: choices, tensions, practices and the small repeats that shape a culture.</p><div class="archive-home__index"><span>{{ len .Data.Pages }} patterns</span><span>Latest thread first</span><span>Trace the weave</span></div></div>
+  <div class="archive-index__records">
+    {{ range $paginator.Pages }}
+      {{ .Render "article" }}
+    {{ end }}
   </div>
+  <nav class="archive-pagination" aria-label="Article pages">{{ template "_internal/pagination.html" . }}</nav>
 </section>
-{{"<!-- /blog -->" | safeHTML}}
-
 {{ end }}
-

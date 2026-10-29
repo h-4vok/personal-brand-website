@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="archive-article">
+  <header class="archive-article__hero">
+    <div class="archive-article__folio"><a href="/articles/">Pattern index / 01</a><span>Thread {{ .Date.Format "0601" }}—{{ .Date.Format "02" }}</span></div>
+    {{ with .Params.categories }}<p class="archive-kicker">{{ index . 0 }} · Thread study</p>{{ else }}<p class="archive-kicker">Thread study · {{ .Date.Format "2006" }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="archive-article__dek">{{ . }}</p>{{ end }}
+    <div class="archive-article__byline"><span>Christian Guzman</span><span>{{ .Date.Format "2 January 2006" }}</span><span>{{ .ReadingTime }} minute read</span></div>
+    <div class="archive-article__specimen" aria-hidden="true"><span class="specimen-shape"></span><span class="specimen-caption">WEAVE {{ .Date.Format "01" }} / PATTERN IN PROGRESS</span></div>
+  </header>
+  <div class="archive-reading">
+    <aside class="archive-reading__margin"><span>THREAD NOTES</span><span>Follow one line.<br>Notice the crossings.</span><a href="/articles/">← Pattern index</a></aside>
+    <div class="archive-reading__body" data-article-content data-article-slug="{{ .RelPermalink }}" data-article-title="{{ .Title }}" data-article-reading-time="{{ .ReadingTime }}">
+      {{ .Content }}
+    </div>
+  </div>
+  <section class="archive-curator" aria-labelledby="curator-title">
+    <div class="archive-curator__portrait"><img src="{{ site.Params.authorbox.image | relURL }}" alt="Christian Guzman" loading="lazy" width="180" height="220"></div>
+    <div class="archive-curator__copy"><p class="archive-kicker">Woven by</p><h2 id="curator-title">Christian Guzman</h2><p>{{ site.Params.authorbox.bio }}</p><a href="https://www.linkedin.com/in/guzmanchristian" target="_blank" rel="noopener">Follow the work ↗</a></div>
+    <span class="archive-curator__stamp" aria-hidden="true">CG<br>THREAD</span>
+  </section>
+  {{ $related := where site.RegularPages "Section" "blog" }}
+  <section class="archive-related" aria-labelledby="related-title"><div class="archive-section-heading"><div><p class="archive-kicker">Next swatches</p><h2 id="related-title">Pick up another thread.</h2></div><a href="/articles/">All patterns →</a></div><div class="archive-related__grid">{{ $shown := 0 }}{{ range $related }}{{ if and (ne .RelPermalink $.RelPermalink) (lt $shown 3) }}<a href="{{ .RelPermalink }}"><span>{{ .Date.Format "2006" }} · {{ .ReadingTime }} min</span><strong>{{ .Title }}</strong><span class="archive-related__arrow" aria-hidden="true">↗</span></a>{{ $shown = add $shown 1 }}{{ end }}{{ end }}</div></section>
+</article>
+{{ end }}

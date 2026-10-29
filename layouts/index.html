@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{ $articles := where site.RegularPages "Section" "blog" }}
+<div class="archive-home">
+  <section class="archive-home__opening" aria-labelledby="home-title">
+    <div class="archive-home__eyebrow"><span>Pattern study · Vol. 01</span><span>People × practice</span></div>
+    <div class="archive-home__hero">
+      <div>
+        <p class="archive-kicker">A study in how teams hold together</p>
+        <h1 id="home-title">Culture is woven<br><em>one thread at a time.</em></h1>
+        <p class="archive-home__intro">Notes from the loom of engineering: the quiet decisions, shared habits and working relationships that give an organisation its shape.</p>
+        <a class="archive-button" href="/articles/">Trace the patterns <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="archive-home__catalogue" aria-label="Collection catalogue card">
+        <div class="catalogue-top"><span>WEAVE / 001</span><span>THREAD STUDY</span></div>
+        <div class="catalogue-object" aria-hidden="true"><span class="object-ring"></span><span class="object-core"></span><span class="object-rule"></span></div>
+        <p class="catalogue-label">Material / Leadership</p>
+        <p class="catalogue-title">People, practice<br>& patterns of work.</p>
+        <div class="catalogue-bottom"><span>Trust</span><span>Craft</span><span>Teams</span></div>
+      </aside>
+    </div>
+    <div class="archive-home__index"><span>Pattern map</span><span>01 — Ideas</span><span>02 — Practice</span><span>03 — Conversation</span></div>
+  </section>
+
+  <section class="archive-home__collection" id="collection" aria-labelledby="collection-title">
+    <div class="archive-section-heading"><div><p class="archive-kicker">Woven patterns / 2025—26</p><h2 id="collection-title">Each thread changes the whole.</h2></div><a href="/articles/">Browse every pattern <span aria-hidden="true">→</span></a></div>
+    <div class="archive-drawers">
+      {{ range $index, $article := first 6 $articles }}
+      <article class="archive-drawer">
+        <a class="archive-drawer__link" href="{{ .RelPermalink }}">
+          <span class="archive-drawer__number">T{{ printf "%02d" (add $index 1) }} · {{ $article.Date.Format "06" }}</span>
+          <span class="archive-drawer__symbol" aria-hidden="true"><span></span></span>
+          <span class="archive-drawer__copy"><span class="archive-drawer__category">{{ with $article.Params.categories }}{{ index . 0 }}{{ else }}Thread {{ printf "%02d" (add $index 1) }}{{ end }}</span><strong>{{ $article.Title }}</strong><span class="archive-drawer__description">{{ $article.Description }}</span></span>
+          <span class="archive-drawer__arrow" aria-hidden="true">↗</span>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="archive-home__note" aria-labelledby="note-title">
+    <p class="archive-kicker">Thread count / A point of view</p>
+    <div class="archive-home__note-layout"><h2 id="note-title">What we repeat<br>becomes the<br><em>pattern we live in.</em></h2><div><p>Technical problems rarely stay technical for long. This work follows what happens when incentives, ownership, trust and craft are woven into the daily reality of building software together.</p><a class="archive-text-link" href="/author/christian-guzman/">Meet the person at the loom <span aria-hidden="true">↗</span></a></div></div>
+  </section>
+
+  <section class="archive-home__visit" aria-labelledby="visit-title"><div class="archive-home__visit-mark" aria-hidden="true">PUNCH<br>PASS<br><span>30 MIN</span></div><div><p class="archive-kicker">Open thread / A conversation</p><h2 id="visit-title">Every knot has<br>a way through.</h2><p>A free, focused conversation for engineering leaders working through delivery, leadership or organisational friction.</p></div><a class="archive-button archive-button--light" href="/leadership-office-hours/">Find a time <span aria-hidden="true">↗</span></a></section>
+</div>
+{{ end }}
