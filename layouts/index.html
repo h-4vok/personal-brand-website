@@ -1,0 +1,62 @@
+{{ define "main" }}
+{{ $articles := where site.RegularPages "Section" "==" "blog" }}
+<div class="field-site">
+  <section class="field-home" aria-labelledby="field-home-title">
+    <div class="field-home__rail" aria-hidden="true">
+      <span>CYANOTYPE ARCHIVE</span><span>CG / 026</span><span>LEADERSHIP SYSTEMS</span>
+    </div>
+    <div class="field-home__main">
+      <p class="field-kicker"><span class="field-stamp">SUNPRINT / 001</span> Independent practice · Est. 2004</p>
+      <h1 id="field-home-title">Leadership,<br><em>revealed in blue.</em></h1>
+      <p class="field-home__lede">I help engineering leaders make sense of the real conditions around their teams: the pressure, the people, the decisions, and the systems underneath.</p>
+      <div class="field-home__actions">
+      <a class="field-button" href="/leadership-office-hours/">Develop a new perspective <span aria-hidden="true">↗</span></a>
+      <a class="field-text-link" href="/articles/">Open the archive ↓</a>
+      </div>
+    </div>
+    <figure class="field-map" aria-label="A cyanotype botanical plate with an annotated branching stem">
+      <span class="field-map__tag">BOTANICAL PLATE / 001</span>
+      <svg viewBox="0 0 520 430" role="img" aria-label="Blue sunprint illustration of a branching plant with measured leaves">
+        <g class="cyanotype-specimen">
+          <path class="cyanotype-stem" d="M262 378 C252 320 270 276 258 222 C246 166 263 112 248 57" />
+          <path d="M256 306 C224 285 188 280 150 286 C178 317 216 326 258 321Z"/><path d="M258 277 C292 244 326 230 370 232 C349 268 315 290 261 300Z"/>
+          <path d="M254 238 C216 216 194 188 184 152 C224 165 249 190 264 225Z"/><path d="M258 198 C286 164 322 146 364 143 C343 181 309 204 264 217Z"/>
+          <path d="M254 157 C224 130 207 99 207 64 C239 84 258 113 264 148Z"/><path d="M255 119 C275 81 307 55 347 42 C332 82 303 110 261 137Z"/>
+          <path class="cyanotype-vein" d="M256 374 L252 83 M255 313 L168 291 M260 296 L357 239 M255 222 L192 161 M260 212 L350 151 M255 149 L216 77 M259 137 L338 50"/>
+          <path class="cyanotype-measure" d="M118 76h28m-14-14v28M396 326h28m-14-14v28M112 186h18m-9-9v18M389 97h18m-9-9v18"/>
+        </g>
+      </svg>
+      <span class="field-map__label field-map__label--one">ROOT / CONDITIONS</span>
+      <span class="field-map__label field-map__label--two">STEM / DECISION</span>
+      <span class="field-map__label field-map__label--three">CANOPY / DELIVERY</span>
+      <figcaption>Leadership becomes visible in the conditions that help people grow.</figcaption>
+    </figure>
+    <div class="field-home__folio" aria-hidden="true"><span>51°30'26.4"N</span><span>PLATE 001 / ARCHIVE</span></div>
+  </section>
+
+  <section class="field-notes" id="articles" aria-labelledby="field-notes-title">
+    <header class="field-section-head">
+      <div><p class="field-kicker">ARCHIVE / RECENT PLATES</p><h2 id="field-notes-title">Observations in blue.</h2></div>
+      <a class="field-text-link" href="/articles/">All archive plates <span aria-hidden="true">↗</span></a>
+    </header>
+    <div class="field-card-grid">
+      {{ range first 4 $articles }}{{ .Render "article" }}{{ end }}
+    </div>
+  </section>
+
+  <section class="field-practice" aria-labelledby="field-practice-title">
+    <div class="field-practice__intro"><p class="field-kicker">A PRACTICE, NOT A PLAYBOOK</p><h2 id="field-practice-title">Look closely.<br>Let the pattern appear.</h2><p>There is rarely one universal answer to a human system. Better work starts with noticing what is happening before deciding what should happen next.</p></div>
+    <div class="field-practice__list">
+      <article><span>01</span><h3>Read the conditions</h3><p>Understand the pressures and relationships shaping the work.</p></article>
+      <article><span>02</span><h3>Find the real constraint</h3><p>Separate visible symptoms from the system creating them.</p></article>
+      <article><span>03</span><h3>Make a deliberate move</h3><p>Choose an intervention that fits the moment and the people in it.</p></article>
+    </div>
+  </section>
+
+  <section class="field-dispatch">
+    <div><p class="field-kicker">NEXT ENTRY / IN PERSON OR REMOTE</p><h2>Bring a problem<br>from the field.</h2><p>A free conversation for engineering leaders who want a clear outside perspective.</p></div>
+    <a class="field-button field-button--light" href="/leadership-office-hours/">Arrange a conversation <span aria-hidden="true">↗</span></a>
+    <span class="field-dispatch__mark" aria-hidden="true">CG</span>
+  </section>
+</div>
+{{ end }}

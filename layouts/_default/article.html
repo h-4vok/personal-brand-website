@@ -1,28 +1,8 @@
-<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp mb-4" data-wow-duration="500ms">
-  <div class="post-block">
-    <div class="media-wrapper">
-      <a href="{{ .Permalink }}">
-      {{ $aboveFold := .Scratch.Get "aboveFoldCard" }}
-      {{ $isLcp := .Scratch.Get "lcpCard" }}
-      {{ partial "image.html" (dict
-        "Src" .Params.Image
-        "Alt" "Image"
-        "Class" (cond $aboveFold "img-fluid img-blog" "img-fluid lozad img-blog")
-        "Loading" (cond $aboveFold "eager" "lazy")
-        "FetchPriority" (cond $isLcp "high" "")
-        "DisplayXL" "800x q70"
-        "DisplayLG" "640x q70"
-        "DisplayMD" "480x q70"
-        "DisplaySM" "360x q70"
-        "Context" .
-      ) }}
-      </a>
-    </div>
-
-    <div class="content">
-      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Description }}</p>
-      <!-- <a class="btn btn-transparent" href="{{ .Permalink }}">{{ i18n "readMore" }}</a> -->
-    </div>
-  </div>
+<article class="field-entry">
+  {{ $category := "FIELD NOTE" }}{{ with .Params.categories }}{{ $category = index . 0 }}{{ end }}
+  <p class="field-entry__meta"><span>{{ $category }}</span><span>{{ .Date.Format "02 Jan 2006" }}</span></p>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p class="field-entry__description">{{ .Description }}</p>
+  <a class="field-entry__read" href="{{ .RelPermalink }}" aria-label="Read {{ .Title }}">Read entry <span aria-hidden="true">↗</span></a>
+  <span class="field-entry__number" aria-hidden="true">{{ .Date.Format "06" }}—{{ printf "%02d" .Date.Month }}</span>
 </article>

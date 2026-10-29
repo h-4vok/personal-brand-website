@@ -1,39 +1,14 @@
 {{ define "main" }}
-
-{{ if not (hasPrefix .RelPermalink "/articles/") }}
-{{ partial "blog-breadcrumb.html" . }}
-{{ end }}
-
-{{"<!-- Start Blog Section -->" | safeHTML}}
-<section id="blog" class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        {{"<!-- section title -->" | safeHTML}}
-        <div class="title text-center wow fadeInDown">
-          <h1>{{ with i18n "blogTitle" }} {{ index (split . " ") 0 | safeHTML }} {{ end }}<span class="color">
-              {{ with i18n "blogTitle" }} {{ index (split . " ") 1 | safeHTML }} {{ end }}</span></h1>
-          <div class="border-guzman"></div>
-        </div>
-      </div>
-      {{"<!-- /section title -->" | safeHTML}}
-      {{ $paginator := .Paginate .Data.Pages 9 }}
-      {{ range $i, $page := $paginator.Pages }}
-      {{ if and (hasPrefix $.RelPermalink "/articles/") (lt $i 3) }}
-        {{ $page.Scratch.Set "aboveFoldCard" true }}
-        {{ if eq $i 0 }}
-          {{ $page.Scratch.Set "lcpCard" true }}
-        {{ end }}
-      {{ end }}
-      {{ $page.Render "article" }}
-      {{ end }}
-      <div class="col-12">
-        {{ template "_internal/pagination.html" . }}
-      </div>
-    </div>
+<section class="field-notes field-archive" id="blog" aria-labelledby="archive-title">
+  <header class="field-archive__hero">
+    <p class="field-kicker"><span class="field-stamp">INDEX / 01</span> Field records · {{ len .Pages }} entries</p>
+    <h1 id="archive-title">Working notes<br><em>from the field.</em></h1>
+    <p>Ideas, patterns, and hard-won observations from building teams and leading engineering organisations.</p>
+  </header>
+  <div class="field-card-grid">
+    {{ $paginator := .Paginate .Data.Pages 9 }}
+    {{ range $paginator.Pages }}{{ .Render "article" }}{{ end }}
   </div>
+  <nav class="field-pagination" aria-label="Article pages">{{ template "_internal/pagination.html" . }}</nav>
 </section>
-{{"<!-- /blog -->" | safeHTML}}
-
 {{ end }}
-

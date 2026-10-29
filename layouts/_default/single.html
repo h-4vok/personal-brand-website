@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article class="field-article" data-article-content data-article-slug="{{ .RelPermalink }}" data-article-title="{{ .Title }}" data-article-reading-time="{{ .ReadingTime }}">
+  <header class="field-article__hero">
+    <div class="field-article__folio"><a href="/articles/">← Field notes</a><span>ENTRY / {{ .Date.Format "2006.01.02" }}</span></div>
+    {{ with .Params.categories }}<p class="field-kicker"><span class="field-stamp">{{ index . 0 }}</span> Research note · {{ $.ReadingTime }} min</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p class="field-article__dek">{{ . }}</p>{{ end }}
+    {{ if eq .Slug "leadership-stances" }}
+    <figure class="cyanotype-plate" aria-labelledby="cyanotype-caption">
+      <p class="cyanotype-plate__id">BOTANICAL STUDY / 004 · FOUR STANCES</p>
+      <svg viewBox="0 0 520 250" role="img" aria-label="Cyanotype study of four branching leadership stances">
+        <path d="M258 224 C250 174 265 138 255 92 C247 60 249 36 256 18 M256 100 C214 78 176 79 139 91 C176 112 211 116 258 112 M258 126 C294 96 334 88 378 93 C344 122 311 139 260 139 M254 161 C216 139 188 140 159 150 C190 168 220 174 258 172 M260 183 C291 157 324 152 359 159 C333 180 302 194 261 195" />
+        <path d="M139 91l38 8m201-6-38 10m-181 48 37 9m163-1-39 10M256 30l8 22m-7 49 8 22m-8 44 8 23" />
+      </svg>
+      <figcaption id="cyanotype-caption"><span>LEAN IN</span><span>LEAN WITH</span><span>LEAN BACK</span><span>DON'T LEAN</span></figcaption>
+    </figure>
+    {{ else }}{{ $category := "OBSERVATION" }}{{ with .Params.categories }}{{ $category = index . 0 }}{{ end }}<div class="field-article__artifact" aria-hidden="true"><span>{{ $category }}</span><span>FIELD STUDY / {{ .Date.Format "06—01" }}</span></div>{{ end }}
+  </header>
+  <section class="field-article__body">
+    <div class="field-article__meta"><span>FIELD RECORD / {{ .ReadingTime }} MIN READ</span><span>{{ .Date.Format "02 JAN 2006" }}</span></div>
+    {{ .Content }}
+    {{ partial "author-box.html" . }}
+    <div id="article-recommendations">{{ partial "more-like-this.html" . }}</div>
+  </section>
+</article>
+{{ end }}
