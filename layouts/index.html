@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ $articles := where site.RegularPages "Section" "blog" }}
+  {{ $articles = sort $articles "Date" "desc" }}
+  <section class="optical-home-hero" aria-labelledby="optical-home-title">
+    <div class="optical-home-hero__copy">
+      <p class="optical-eyebrow"><span class="optical-status-dot"></span> LEADERSHIP · SYSTEMS · PEOPLE</p>
+      <h1 id="optical-home-title">A clearer view<br>of <em>leadership.</em></h1>
+      <p class="optical-home-hero__dek">Ideas for building engineering organisations where good work—and good people—can thrive.</p>
+      <div class="optical-actions"><a class="optical-button" href="/articles/">Explore the archive <span aria-hidden="true">↗</span></a><a class="optical-quiet-link" href="/leadership-office-hours/">Talk through a challenge <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="optical-lens-stack" aria-hidden="true"><span class="optical-lens-stack__halo"></span><span class="optical-lens-stack__glass optical-lens-stack__glass--one"></span><span class="optical-lens-stack__glass optical-lens-stack__glass--two"></span><span class="optical-lens-stack__core"></span><span class="optical-lens-stack__spark"></span><span class="optical-lens-stack__caption">LIGHT / STUDY 01</span></div>
+    <div class="optical-home-hero__foot"><span>CHRISTIAN GUZMAN</span><span>ENGINEERING LEADERSHIP, IN FOCUS</span><span>SCROLL TO EXPLORE ↓</span></div>
+  </section>
+  <section class="optical-featured" aria-labelledby="optical-featured-title">
+    <div class="optical-section-heading"><div><p class="optical-eyebrow">RECENT PERSPECTIVES <span>· {{ len $articles }} ARTICLES</span></p><h2 id="optical-featured-title">Ideas, in focus</h2></div><a class="optical-quiet-link" href="/articles/">View all articles <span aria-hidden="true">↗</span></a></div>
+    <div class="optical-grid">{{ range first 6 $articles }}{{ .Render "article" }}{{ end }}</div>
+  </section>
+  <section class="optical-contact-bloom"><div class="optical-contact-bloom__rings" aria-hidden="true"></div><div class="optical-contact-bloom__copy"><p class="optical-eyebrow">A FRESH PERSPECTIVE</p><h2>A clearer view starts<br>with a conversation.</h2><p>Bring the messy, half-formed challenge. We’ll look at it together, with no pitch and no programme.</p><a class="optical-button optical-button--dark" href="/leadership-office-hours/">Book a conversation <span aria-hidden="true">↗</span></a></div></section>
+{{ end }}

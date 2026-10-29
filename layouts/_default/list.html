@@ -1,39 +1,17 @@
 {{ define "main" }}
-
-{{ if not (hasPrefix .RelPermalink "/articles/") }}
-{{ partial "blog-breadcrumb.html" . }}
-{{ end }}
-
-{{"<!-- Start Blog Section -->" | safeHTML}}
-<section id="blog" class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        {{"<!-- section title -->" | safeHTML}}
-        <div class="title text-center wow fadeInDown">
-          <h1>{{ with i18n "blogTitle" }} {{ index (split . " ") 0 | safeHTML }} {{ end }}<span class="color">
-              {{ with i18n "blogTitle" }} {{ index (split . " ") 1 | safeHTML }} {{ end }}</span></h1>
-          <div class="border-guzman"></div>
-        </div>
-      </div>
-      {{"<!-- /section title -->" | safeHTML}}
+  {{ if eq .RelPermalink "/articles/" }}
+    {{ partial "blog.html" . }}
+  {{ else }}
+    <section id="blog" class="optical-archive" aria-labelledby="archive-title">
+      <header class="optical-archive__header">
+        <p class="optical-eyebrow">EXPLORE BY TOPIC</p>
+        <h1 id="archive-title">{{ .Title }}</h1>
+        {{ with .Content }}<div>{{ . }}</div>{{ end }}
+        <span class="optical-archive__lens" aria-hidden="true"></span>
+      </header>
       {{ $paginator := .Paginate .Data.Pages 9 }}
-      {{ range $i, $page := $paginator.Pages }}
-      {{ if and (hasPrefix $.RelPermalink "/articles/") (lt $i 3) }}
-        {{ $page.Scratch.Set "aboveFoldCard" true }}
-        {{ if eq $i 0 }}
-          {{ $page.Scratch.Set "lcpCard" true }}
-        {{ end }}
-      {{ end }}
-      {{ $page.Render "article" }}
-      {{ end }}
-      <div class="col-12">
-        {{ template "_internal/pagination.html" . }}
-      </div>
-    </div>
-  </div>
-</section>
-{{"<!-- /blog -->" | safeHTML}}
-
+      <div class="optical-grid optical-grid--archive">{{ range $paginator.Pages }}{{ .Render "article" }}{{ end }}</div>
+      <nav class="optical-pagination" aria-label="Pages">{{ template "_internal/pagination.html" . }}</nav>
+    </section>
+  {{ end }}
 {{ end }}
-

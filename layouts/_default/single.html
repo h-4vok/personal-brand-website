@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article class="optical-article">
+  <header class="optical-article-hero">
+    <div class="optical-article-hero__prism" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="optical-article-hero__copy">
+      <p class="optical-eyebrow">{{ with .Params.categories }}{{ index . 0 | upper }}{{ else }}PERSPECTIVE{{ end }} <span>· A FIELD NOTE</span></p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.description }}<p class="optical-article-hero__dek">{{ . }}</p>{{ end }}
+      <div class="optical-article-meta"><span>{{ .Date.Format "2 January 2006" }}</span><span>{{ .ReadingTime }} minute read</span><span>By Christian Guzman</span></div>
+    </div>
+    <div class="optical-article-hero__label" aria-hidden="true">PRISM<br>STUDY / 01</div>
+  </header>
+  <div class="optical-reading-area">
+    <aside class="optical-reading-index" aria-label="Article details"><span>IN THIS PERSPECTIVE</span><span class="optical-reading-index__line"></span><span>{{ .ReadingTime }} MIN</span></aside>
+    <div class="post-single-content optical-reading-panel" data-article-content data-article-slug="{{ .RelPermalink }}" data-article-title="{{ .Title }}" data-article-reading-time="{{ .ReadingTime }}">
+      <div class="optical-reading-note"><span>FIELD NOTE</span><span>{{ .Date.Format "02 / 01 / 2006" }} · CHRISTIAN GUZMAN</span></div>
+      {{ .Content }}
+      <div class="optical-refraction" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div id="article-credits" class="optical-article-credits">
+        {{ partial "author-box.html" . }}
+        {{ partial "more-like-this.html" . }}
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}

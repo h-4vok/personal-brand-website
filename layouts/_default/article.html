@@ -1,28 +1,6 @@
-<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp mb-4" data-wow-duration="500ms">
-  <div class="post-block">
-    <div class="media-wrapper">
-      <a href="{{ .Permalink }}">
-      {{ $aboveFold := .Scratch.Get "aboveFoldCard" }}
-      {{ $isLcp := .Scratch.Get "lcpCard" }}
-      {{ partial "image.html" (dict
-        "Src" .Params.Image
-        "Alt" "Image"
-        "Class" (cond $aboveFold "img-fluid img-blog" "img-fluid lozad img-blog")
-        "Loading" (cond $aboveFold "eager" "lazy")
-        "FetchPriority" (cond $isLcp "high" "")
-        "DisplayXL" "800x q70"
-        "DisplayLG" "640x q70"
-        "DisplayMD" "480x q70"
-        "DisplaySM" "360x q70"
-        "Context" .
-      ) }}
-      </a>
-    </div>
-
-    <div class="content">
-      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Description }}</p>
-      <!-- <a class="btn btn-transparent" href="{{ .Permalink }}">{{ i18n "readMore" }}</a> -->
-    </div>
-  </div>
+<article class="optic-card">
+  <a class="optic-card__link" href="{{ .Permalink }}">
+    <div class="optic-card__glass" aria-hidden="true"><span class="optic-card__category">{{ with .Params.categories }}{{ index . 0 }}{{ else }}FIELD NOTE{{ end }}</span><span class="optic-card__prism"></span><span class="optic-card__glint"></span><span class="optic-card__glass-note">LIGHT / STUDY {{ with .Date }}{{ .Format "06" }}{{ end }}</span></div>
+    <div class="optic-card__copy"><p class="optic-card__meta">{{ with .Date }}{{ .Format "02 JAN 2006" }}{{ end }} <span>·</span> {{ .ReadingTime }} MIN READ</p><h3>{{ .Title }}</h3><p class="optic-card__excerpt">{{ .Description | default .Summary | plainify | truncate 130 }}</p><span class="optic-card__cta">Read the perspective <span aria-hidden="true">↗</span></span></div>
+  </a>
 </article>

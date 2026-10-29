@@ -1,31 +1,11 @@
-{{ if gt (where site.RegularPages "Section" "==" "blog") 0}}
-{{"<!-- Start Blog Section -->" | safeHTML}}
-<section id="blog" class="section">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-12">
-				{{"<!-- section title -->" | safeHTML}}
-				<div class="title text-center wow fadeInDown">
-					<h2> {{ with i18n "blogTitle" }} {{ index (split . " ") 0 | safeHTML }} {{ end }}<span class="color">
-							{{ with i18n "blogTitle" }} {{ index (split . " ") 1 | safeHTML }} {{ end }} </span></h2>
-					<div class="border-guzman"></div>
-				</div>
-			</div>
-			{{"<!-- /section title -->" | safeHTML}}
-
-			<div class="all-post text-center col-lg-12 mt-0 mb-5">
-				<a class="btn btn-main" href="{{ `articles/` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
-			</div>
-
-			{{ range first 6 (where site.RegularPages "Section" "==" "blog")}}
-			{{ .Render "article"}}
-			{{ end }}
-
-			<div class="all-post text-center col-lg-12">
-				<a class="btn btn-main" href="{{ `articles/` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
-			</div>
-		</div>
-	</div>
+{{ $paginator := .Paginate .Data.Pages 9 }}
+<section id="blog" class="optical-archive" aria-labelledby="archive-title">
+  <header class="optical-archive__header">
+    <p class="optical-eyebrow">THE ARTICLE INDEX <span>· {{ len .Data.Pages }} PERSPECTIVES</span></p>
+    <h1 id="archive-title">A different angle.</h1>
+    <p>Notes on the people, systems and decisions that shape engineering organisations.</p>
+    <span class="optical-archive__lens" aria-hidden="true"></span>
+  </header>
+  <div class="optical-grid optical-grid--archive">{{ range $paginator.Pages }}{{ .Render "article" }}{{ end }}</div>
+  <nav class="optical-pagination" aria-label="Article pages">{{ template "_internal/pagination.html" . }}</nav>
 </section>
-{{"<!-- /blog -->" | safeHTML}}
-{{ end }}
