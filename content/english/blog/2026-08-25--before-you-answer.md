@@ -1,6 +1,10 @@
 ---
 title: "Before You Answer: Pause, Breathe and Listen"
 date: "2026-08-25T08:00:00Z"
+card_beats:
+  - "Already rehearsing your reply while they are speaking?"
+  - "A pause helps you test the story you are telling yourself."
+  - "Breathe. Listen long enough to understand."
 author: "Christian Guzman"
 image: "images/blog/article/before-you-answer.jpg"
 description: "Difficult conversations improve when you notice the urge to rebut, pause, breathe, and listen long enough to test your own judgement."

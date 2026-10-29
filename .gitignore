@@ -20,3 +20,5 @@ seo-report-20260413.md
 
 # Ignore serena/headroom folders
 .serena/
+.playwright-mcp/
+screenshots/

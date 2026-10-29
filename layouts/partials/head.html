@@ -1,5 +1,8 @@
 <head>
 	<meta charset="utf-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu+Mono:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 	{{ $siteTitle := site.Title }}
 	{{ $siteDescription := site.Params.seo.siteDescription | default site.Params.description | default $siteTitle }}
 	{{ $homeSeo := site.Params.seo.home | default dict }}
@@ -168,6 +171,11 @@
 		"css/custom/26-article-link-icons.css"
 		"css/custom/30-funfacts.css"
 		"css/custom/40-footer.css"
+		"css/custom/99-redesign.css"
+		"css/custom/100-scroll-unlock.css"
+		"css/custom/101-arcade-readability.css"
+		"css/custom/102-field-notes-office-hours.css"
+		"css/custom/103-bridge-home.css"
 	}}
 	{{ $customParts := slice }}
 	{{ range $customPaths }}
@@ -187,11 +195,11 @@
 	{{ end }}
 	{{ partial "critical-css.html" . }}
 	{{ if gt (len $deferredCssParts) 0 }}
-		{{ $siteCss := $deferredCssParts | resources.Concat "css/site.css" | minify }}
-		<link rel="preload" href="{{ $siteCss.RelPermalink }}" as="style">
-		<link rel="stylesheet" href="{{ $siteCss.RelPermalink }}" onload="this.onload=null;this.rel='stylesheet'">
+		{{ $siteCss := $deferredCssParts | resources.Concat "css/site.css" | minify | fingerprint "sha384" }}
+		<link rel="preload" href="{{ $siteCss.RelPermalink }}" as="style" integrity="{{ $siteCss.Data.Integrity }}">
+		<link rel="stylesheet" href="{{ $siteCss.RelPermalink }}" integrity="{{ $siteCss.Data.Integrity }}" onload="this.onload=null;this.rel='stylesheet'">
 		<noscript>
-			<link rel="stylesheet" href="{{ $siteCss.RelPermalink }}">
+			<link rel="stylesheet" href="{{ $siteCss.RelPermalink }}" integrity="{{ $siteCss.Data.Integrity }}">
 		</noscript>
 	{{ end }}
 

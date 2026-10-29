@@ -1,6 +1,10 @@
 ---
 title: "Void activity"
 date: "2026-06-16T08:00:00Z"
+card_beats:
+  - "A tension the reader will recognise."
+  - "The useful reframe the article offers."
+  - "A practical next step for the reader."
 author: "Christian Guzman"
 image: "images/blog/article/agentic-ai-escaping-attention-trap.jpg"
 description: "Lorem ipsum"

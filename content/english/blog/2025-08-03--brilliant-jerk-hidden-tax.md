@@ -1,6 +1,10 @@
 ---
 title: "The Hidden Tax of the Brilliant Jerk: Why tolerating low integrity is your biggest performance killer"
 date: "2025-08-03T21:00:00+01:00"
+card_beats:
+  - "A high performer can make everyone else pay."
+  - "High output does not erase the cost of broken trust."
+  - "Set a clear integrity bar before the culture absorbs the damage."
 author: Christian Guzman
 image: images/blog/article/brilliant-jerk-hidden-tax.jpg
 description: "Every leader faces the Brilliant Jerk problem. This article explores why tolerating a high-performer with low integrity is a hidden tax on your entire organisation and a critical failure of leadership."

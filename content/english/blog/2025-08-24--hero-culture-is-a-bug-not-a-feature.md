@@ -1,6 +1,10 @@
 ---
 title: "'Hero Culture' Is a Bug, Not a Feature"
 date: "2025-08-24T00:00:00+01:00"
+card_beats:
+  - "Why does the team keep needing a hero?"
+  - "Repeated firefighting often points to a system failure."
+  - "Reward the fixes that make the next crisis smaller."
 author: Christian Guzman
 image: images/blog/article/hero-culture-is-a-bug.jpg
 description: "Learn why celebrating last-minute 'heroes' is a dangerous bug in your company's culture. Lets explore how to shift from rewarding firefighting to building resilient systems."

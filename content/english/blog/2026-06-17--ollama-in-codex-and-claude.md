@@ -1,6 +1,10 @@
 ---
 title: "Use local LLMs within Codex and Claude: A pragmatic guide"
 date: "2026-06-17T08:00:00Z"
+card_beats:
+  - "Local models promise greater privacy and control."
+  - "Hardware limits and rough workflows can get in the way."
+  - "Connect Ollama to the agent tools you already use."
 author: "Christian Guzman"
 image: "images/blog/article/ollama-in-codex-and-claude.png"
 description: "A pragmatic guide to integrating local LLMs via Ollama with agentic tools like Codex and Claude. Reduce cloud spend, bypass rate limits, and secure your AI sovereignty."

@@ -21,12 +21,12 @@
 # weight = 5
 
 [[main]]
-name = "Articles"
-url = "/articles/"
+name = "Field Notes"
+url = "/#blog"
 weight = 1
 
 [[main]]
-name = "Leadership Office Hours"
+name = "Office Hours"
 url = "/leadership-office-hours/"
 weight = 2
 

@@ -1,6 +1,10 @@
 ---
 title: "Your Words, Your Authority: Why Your Team Hears What You Don't Say"
 date: "2025-10-05T00:00:00+01:00"
+card_beats:
+  - "A familiar phrase can make a sound point harder to hear."
+  - "Small language habits shape how your team reads your intent."
+  - "Replace self-doubt with a clear, useful request."
 author: "Christian Guzman"
 image: "images/blog/article/your-words-your-authority.jpg"
 description: "Learn how common phrases undermine authority with your own team and master powerful, actionable alternatives for impactful leadership communication."

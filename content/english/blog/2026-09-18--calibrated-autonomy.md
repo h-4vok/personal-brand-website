@@ -1,6 +1,10 @@
 ---
 title: "Calibrated Autonomy: The Leadership Skill That You Are Missing"
 date: "2026-09-18T08:00:00Z"
+card_beats:
+  - "How much freedom fits this person and this task?"
+  - "Autonomy depends on skill, context and shared risk."
+  - "Calibrate support and ownership to the situation."
 author: "Christian Guzman"
 image: "images/blog/article/calibrated-autonomy.jpg"
 description: "Seniority is not a permanent trait. It is the level of autonomy someone can exercise in a specific skill while sharing responsibility for risk and outcomes."

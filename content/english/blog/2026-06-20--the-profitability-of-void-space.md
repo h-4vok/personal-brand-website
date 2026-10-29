@@ -1,6 +1,10 @@
 ---
 title: "The Profitability of Void Space"
 date: "2026-07-08T08:00:00Z"
+card_beats:
+  - "Everyone is busy. Why does progress still feel slow?"
+  - "Over-delegation can multiply noise instead of autonomy."
+  - "Protect space for focus, creativity and meaningful work."
 author: "Christian Guzman"
 image: "images/blog/article/the-profitability-of-void-space.png"
 description: "In a 'Culture of Busyness', over-delegation fractures psychological safety and destroys creativity. True leadership isn't about managing the noise—it is about having the courage to protect the space."

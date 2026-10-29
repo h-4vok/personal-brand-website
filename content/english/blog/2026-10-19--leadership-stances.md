@@ -1,6 +1,10 @@
 ---
 title: "Four Leadership Stances: Choose How to Lead in the Moment"
 date: "2026-10-19T08:00:00Z"
+card_beats:
+  - "Your first leadership instinct may not fit this moment."
+  - "Lean In, Lean Back, Lean With, or Do Not Lean."
+  - "Choose the stance that helps the team move forward."
 author: "Christian Guzman"
 image: "images/blog/article/leadership-stances.jpg"
 description: "A practical guide to the four leadership stances and how emotional intelligence helps you choose the right response in real situations."

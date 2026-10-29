@@ -1,6 +1,10 @@
 ---
 title: "LinkedIn was stealing my attention: How I used agentic AI to take it back"
 date: "2026-04-20T08:00:00Z"
+card_beats:
+  - "LinkedIn kept taking attention I meant to spend elsewhere."
+  - "A personal AI workflow helped filter noise from useful signal."
+  - "Build a feed around the attention you want to protect."
 author: "Christian Guzman"
 image: "images/blog/article/agentic-ai-escaping-attention-trap.jpg"
 description: "How I built a custom AI-powered system to eliminate the doomscrolling trap, filter out social media noise, and protect my attention as a leader."

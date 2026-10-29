@@ -1,6 +1,10 @@
 ---
 title: "Why 'Bring Me a Solution' is an Anti-Pattern"
 date: "2026-02-17T21:00:00Z"
+card_beats:
+  - "'Bring me a solution' can teach people to hide problems."
+  - "Solution-first habits reward certainty before understanding."
+  - "Ask for context and options, then share accountability."
 author: "Christian Guzman"
 image: "images/blog/article/bring-me-solutions.jpg"
 description: "Demanding solutions to our team alongside every problem sounds efficient, but it often leads to concealment and forest fires. Here is how to debug your team's initiative levels."

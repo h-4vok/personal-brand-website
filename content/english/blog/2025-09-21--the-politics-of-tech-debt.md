@@ -1,6 +1,10 @@
 ---
 title: "Why Does It Take So Long to Ship Anything? A Leader's Guide to the Politics of Debt"
 date: "2025-09-21T12:00:00+01:00"
+card_beats:
+  - "Technical debt rarely comes down to code alone."
+  - "Influence and incentives shape which risks get addressed."
+  - "Make the trade-offs visible before negotiating the work."
 author: "Christian Guzman"
 image: "images/blog/article/politics-of-technical-debt.png"
 description: "When delivery slows to a crawl, the explanation is always 'technical debt'. But the real problem isn't the code—it's the failure to master the politics of influence and negotiation."
