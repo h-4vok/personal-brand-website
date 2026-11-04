@@ -26,7 +26,7 @@ url = "/articles/"
 weight = 1
 
 [[main]]
-name = "Leadership Office Hours"
+name = "Mentoring"
 url = "/leadership-office-hours/"
 weight = 2
 

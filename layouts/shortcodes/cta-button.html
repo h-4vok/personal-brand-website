@@ -1,5 +1,5 @@
 {{- $text := .Get "text" | default "Book a free 30-min intro call" -}}
-{{- $url := .Get "url" | default "https://cal.com/christian-guzman/30-min-one-off-coaching" -}}
+{{- $url := .Get "url" | default "/redirect/adplist-coaching" -}}
 {{- $external := strings.HasPrefix $url "http" -}}
 <p class="manifesto-cta">
   <a

@@ -11,9 +11,9 @@ keywords:
   - "Fractional CTO"
 social:
   - icon: "ti-linkedin" # themify icon pack : https://themify.me/themify-icons
-    link: "https://www.linkedin.com/in/guzmanchristian/"
+    link: "/redirect/linkedin?utm_source=website&utm_medium=referral&utm_content=author_bio"
   - icon: "ti-github" # themify icon pack : https://themify.me/themify-icons
-    link: "https://github.com/h-4vok"
+    link: "/redirect/github?utm_source=website&utm_medium=referral&utm_content=author_bio"
 ---
 
 Engineering Leadership

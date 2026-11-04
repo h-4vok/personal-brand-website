@@ -2,7 +2,7 @@
 title: "The Profitability of Void Space"
 date: "2026-07-08T08:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/the-profitability-of-void-space.png"
+image: "images/blog/article/the-profitability-of-void-space.jpg"
 description: "In a 'Culture of Busyness', over-delegation fractures psychological safety and destroys creativity. True leadership isn't about managing the noise—it is about having the courage to protect the space."
 keywords:
   - "Culture of Busyness"

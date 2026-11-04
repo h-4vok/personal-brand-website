@@ -17,7 +17,7 @@
         </div>
       </div>
       {{"<!-- /section title -->" | safeHTML}}
-      {{ $paginator := .Paginate .Data.Pages 9 }}
+      {{ $paginator := .Paginate .Data.Pages 50 }}
       {{ range $i, $page := $paginator.Pages }}
       {{ if and (hasPrefix $.RelPermalink "/articles/") (lt $i 3) }}
         {{ $page.Scratch.Set "aboveFoldCard" true }}

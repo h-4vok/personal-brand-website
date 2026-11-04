@@ -17,7 +17,7 @@
 				<a class="btn btn-main" href="{{ `articles/` | absLangURL }}">{{ i18n "viewAllPost" }}</a>
 			</div>
 
-			{{ range first 6 (where site.RegularPages "Section" "==" "blog")}}
+			{{ range first 50 (where site.RegularPages "Section" "==" "blog")}}
 			{{ .Render "article"}}
 			{{ end }}
 

@@ -36,7 +36,7 @@ images = ["/images/social/og-default.jpg"]
 # Author config
 [params.authorbox]
 name = "Christian Guzman"
-bio = "I am a seasoned technology leader with over 20 years of experience, passionate about building resilient teams and human-centric systems."
+bio = "I’ve spent more than 20 years building technology, products and teams. I’ve built products and businesses from scratch, built teams from the ground up, and led engineering and product organisations. I still build, with a current focus on AI-native, looped software engineering. I believe constraints help us focus on what matters. AI speeds up building and testing, but **judgement** still determines what’s worth building."
 image = "/images/avatar3.jpg"
 
 # Header config
@@ -146,7 +146,7 @@ defaultHiddenFromHomePage = false
 # New social config
 [[params.footer.socialLinks]]
 name = "LinkedIn"
-link = "https://www.linkedin.com/in/guzmanchristian"
+link = "/redirect/linkedin?utm_source=website&utm_medium=referral&utm_content=footer"
 
 # We keep the legacy configuration until its stripped out
 [params.social]
