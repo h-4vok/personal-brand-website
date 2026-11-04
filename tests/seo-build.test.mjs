@@ -418,67 +418,24 @@ describe('SEO build assertions', () => {
 
       if (isOfficeHoursPage) {
         assert(
-          $('h1').first().text().trim() === 'Engineering Leadership Office Hours',
-          `[${page.relativePath}] must use the office hours framing in its primary heading.`,
+          $('h1').first().text().trim() === 'Career and leadership mentoring',
+          `[${page.relativePath}] must use the mentoring framing in its primary heading.`,
         );
+        const intro = $('.office-hours__intro').text();
         assert(
-          $('.strategy-session-hero').text().includes('Free conversation. No pitch. No programme.'),
-          `[${page.relativePath}] hero must make the free, non-commercial framing explicit.`,
-        );
-        assert(
-          html.indexOf('There is <strong>no presentation</strong>') >= 0 &&
-            html.indexOf('There is <strong>no presentation</strong>') <
-              html.indexOf('strategy-session-topics-grid'),
-          `[${page.relativePath}] no-presentation/no-framework/no-pitch disclaimer must appear before the problem list.`,
+          intro.includes('Free') && intro.includes('practical conversations'),
+          `[${page.relativePath}] intro must describe free, practical mentoring.`,
         );
 
-        const ctas = $('a.power-thesis__btn');
-        assert(
-          ctas.length <= 3,
-          `[${page.relativePath}] must not add more calls to action. Found ${ctas.length}.`,
-        );
+        const ctas = $('a.office-hours__button');
+        assert(ctas.length === 2, `[${page.relativePath}] must offer career and leadership mentoring.`);
         ctas.each((_, element) => {
           assert(
-            $(element).text().trim() === 'Book A Conversation',
-            `[${page.relativePath}] calls to action must use conversation language.`,
+            $(element).attr('href')?.startsWith('/redirect/adplist-coaching?'),
+            `[${page.relativePath}] mentoring calls to action must use the tracked ADPList redirect.`,
           );
         });
-
-        const portrait = $('img.strategy-session-portrait');
-        assert(
-          portrait.length === 1,
-          `[${page.relativePath}] must render exactly one strategy-session portrait image.`,
-        );
-
-        const loading = portrait.attr('loading')?.trim() ?? '';
-        assert(
-          loading === 'eager',
-          `[${page.relativePath}] strategy-session portrait must use loading=\"eager\". Actual value: \"${loading}\".`,
-        );
-
-        const portraitSrc = portrait.attr('src')?.trim() ?? '';
-        assert(
-          portraitSrc && !portraitSrc.includes('images/avatar3.jpg'),
-          `[${page.relativePath}] strategy-session portrait must not use the oversized static avatar3.jpg. Actual src: \"${portraitSrc}\".`,
-        );
-        assert(
-          portraitSrc.includes('_hu_') || portraitSrc.endsWith('.webp'),
-          `[${page.relativePath}] strategy-session portrait should be served from Hugo image processing output. Actual src: \"${portraitSrc}\".`,
-        );
-
-        const pictureSources = portrait
-          .closest('picture')
-          .find('source')
-          .map((_, el) => $(el).attr('srcset')?.trim() ?? '')
-          .get()
-          .join(' ');
-
-        assert(
-          !pictureSources.includes('images/avatar3.jpg'),
-          `[${page.relativePath}] strategy-session portrait sources must not reference the oversized static avatar3.jpg.`,
-        );
       }
-
       if (pageType === 'blog-post') {
         assert(
           ogType === 'article',
