@@ -1,0 +1,145 @@
+.homepage-hero {
+  position: relative;
+  min-height: min(78svh, 52rem);
+  overflow: hidden;
+  color: var(--text-base);
+  background: var(--surface-base);
+}
+
+.homepage-hero-portrait {
+  position: absolute;
+  inset: 0 0 0 46%;
+  background: var(--surface-base);
+}
+
+.homepage-hero-portrait::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: var(--homepage-portrait) center 38% / cover;
+  mask-image: linear-gradient(90deg, #000 0%, #000 62%, transparent 88%);
+  transform: scaleX(-1);
+}
+
+.homepage-hero-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: inherit;
+}
+
+.homepage-hero-copy {
+  max-width: 52%;
+  padding: 5rem 0;
+}
+
+.homepage-hero h1 {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--text-base);
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(4.5rem, 7vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.91;
+  text-wrap: balance;
+}
+
+.homepage-hero p {
+  max-width: 33rem;
+  margin: 2rem 0 0;
+  color: var(--text-secondary);
+  font-family: Inter, sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  line-height: 1.55;
+}
+
+.homepage-intro {
+  padding: clamp(4rem, 9vw, 8rem) 0;
+  color: var(--text-base);
+  background: var(--surface-muted);
+}
+
+.homepage-intro-inner {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(2rem, 8vw, 8rem);
+}
+
+.homepage-intro h2 {
+  margin: 0;
+  color: var(--text-base);
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.homepage-intro-copy {
+  max-width: 52rem;
+  font-family: Inter, sans-serif;
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.homepage-intro-copy p {
+  margin: 0 0 1.25rem;
+}
+
+.homepage-intro-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.homepage-intro-copy a {
+  color: var(--text-base);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+@media (width <= 767.98px) {
+  .homepage-hero {
+    min-height: max(42rem, calc(100svh - 4.5rem));
+  }
+  .homepage-hero-portrait {
+    inset: 0 0 28%;
+  }
+
+  .homepage-hero-portrait::before {
+    background-position: center 30%;
+    mask-image: linear-gradient(180deg, #000 0%, #000 40%, transparent 100%);
+    transform: none;
+  }
+
+  .homepage-hero-inner {
+    align-items: flex-end;
+  }
+
+  .homepage-hero-copy {
+    max-width: 38rem;
+    padding: 0 0 3rem;
+  }
+
+  .homepage-hero h1 {
+    max-width: 10ch;
+    font-size: clamp(4rem, 14vw, 6.25rem);
+  }
+
+  .homepage-hero p {
+    max-width: 34rem;
+    margin-top: 1.25rem;
+    font-size: 1.05rem;
+  }
+  .homepage-intro {
+    padding: 4rem 0;
+  }
+  .homepage-intro-inner {
+    display: block;
+  }
+  .homepage-intro h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .homepage-intro-copy {
+    font-size: 1rem;
+  }
+}

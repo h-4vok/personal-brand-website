@@ -1,5 +1,5 @@
 ---
-title: "LinkedIn was stealing my attention: How I used agentic AI to take it back"
+title: "How I Used AI to Find Signal on LinkedIn Without Doomscrolling"
 date: "2026-04-20T08:00:00Z"
 author: "Christian Guzman"
 image: "images/blog/article/agentic-ai-escaping-attention-trap.jpg"
