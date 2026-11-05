@@ -8,9 +8,6 @@
 }
 
 .article-list-heading-home {
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 2rem;
 }
 
@@ -196,9 +193,6 @@
 
 @media (width <= 767.98px) {
   .article-list-heading-home {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1rem;
     margin-bottom: 1.5rem;
   }
 

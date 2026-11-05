@@ -1,9 +1,8 @@
 {{ if gt (where site.RegularPages "Section" "==" "blog") 0 }}
 <section id="blog" class="section article-list-section article-list-section--home">
 	<div class="container">
-		<header class="article-list-heading article-list-heading--home">
+		<header class="article-list-heading article-list-heading-home">
 			<h2>{{ i18n "blogTitle" }}</h2>
-			<a class="article-list-index-link" href="{{ `articles/` | absLangURL }}">{{ i18n "openFullIndex" }} <span aria-hidden="true">↗</span></a>
 		</header>
 		<div class="article-list">
 			{{ range first 50 (where site.RegularPages "Section" "==" "blog") }}
