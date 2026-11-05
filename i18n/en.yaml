@@ -4,6 +4,16 @@
   translation: Read more
 - id: viewAllPost
   translation: View All Posts
+- id: openFullIndex
+  translation: Open the full index
+- id: articlesTitle
+  translation: Articles
+- id: articlesIntro
+  translation: I write about the decisions behind resilient teams, useful technology and products that reach people.
+- id: minutesRead
+  translation: min read
+- id: readArticle
+  translation: "Read article: %s"
 - id: share
   translation: Share
 - id: aboutAuthor

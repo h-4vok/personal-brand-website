@@ -4,6 +4,16 @@
   translation: Lire la suite
 - id: viewAllPost
   translation: Voir tous les articles
+- id: openFullIndex
+  translation: Ouvrir l’index complet
+- id: articlesTitle
+  translation: Articles
+- id: articlesIntro
+  translation: J’écris sur les décisions qui renforcent les équipes, la technologie utile et les produits qui trouvent leur public.
+- id: minutesRead
+  translation: min de lecture
+- id: readArticle
+  translation: "Lire l’article : %s"
 - id: share
   translation: Partager
 - id: aboutAuthor

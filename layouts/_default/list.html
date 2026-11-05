@@ -4,36 +4,28 @@
 {{ partial "blog-breadcrumb.html" . }}
 {{ end }}
 
-{{"<!-- Start Blog Section -->" | safeHTML}}
-<section id="blog" class="section">
+<section id="blog" class="section article-list-section article-list-section--index">
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        {{"<!-- section title -->" | safeHTML}}
-        <div class="title text-center wow fadeInDown">
-          <h1>{{ with i18n "blogTitle" }} {{ index (split . " ") 0 | safeHTML }} {{ end }}<span class="color">
-              {{ with i18n "blogTitle" }} {{ index (split . " ") 1 | safeHTML }} {{ end }}</span></h1>
-          <div class="border-guzman"></div>
-        </div>
-      </div>
-      {{"<!-- /section title -->" | safeHTML}}
-      {{ $paginator := .Paginate .Data.Pages 50 }}
+    <header class="article-index-heading">
+      <h1>{{ i18n "articlesTitle" }}</h1>
+      <p>{{ i18n "articlesIntro" }}</p>
+    </header>
+
+    {{ $paginator := .Paginate .Data.Pages 50 }}
+    <div class="article-list">
       {{ range $i, $page := $paginator.Pages }}
-      {{ if and (hasPrefix $.RelPermalink "/articles/") (lt $i 3) }}
-        {{ $page.Scratch.Set "aboveFoldCard" true }}
-        {{ if eq $i 0 }}
-          {{ $page.Scratch.Set "lcpCard" true }}
+        {{ if and (hasPrefix $.RelPermalink "/articles/") (lt $i 3) }}
+          {{ $page.Scratch.Set "aboveFoldCard" true }}
+          {{ if eq $i 0 }}
+            {{ $page.Scratch.Set "lcpCard" true }}
+          {{ end }}
         {{ end }}
+        {{ $page.Render "article" }}
       {{ end }}
-      {{ $page.Render "article" }}
-      {{ end }}
-      <div class="col-12">
-        {{ template "_internal/pagination.html" . }}
-      </div>
     </div>
+
+    {{ template "_internal/pagination.html" . }}
   </div>
 </section>
-{{"<!-- /blog -->" | safeHTML}}
 
 {{ end }}
-

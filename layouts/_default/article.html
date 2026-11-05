@@ -1,13 +1,12 @@
-<article class="col-lg-4 col-md-6 col-12 clearfix wow fadeInUp mb-4" data-wow-duration="500ms">
-  <div class="post-block">
-    <div class="media-wrapper">
-      <a href="{{ .Permalink }}">
+<article class="article-list-item">
+  <a class="article-list-item-link" href="{{ .Permalink }}" aria-label="{{ .Title }}">
+    <span class="article-list-item-image">
       {{ $aboveFold := .Scratch.Get "aboveFoldCard" }}
       {{ $isLcp := .Scratch.Get "lcpCard" }}
       {{ partial "image.html" (dict
         "Src" .Params.Image
-        "Alt" "Image"
-        "Class" (cond $aboveFold "img-fluid img-blog" "img-fluid lozad img-blog")
+        "Alt" ""
+        "Class" (cond $aboveFold "img-fluid" "img-fluid lozad")
         "Loading" (cond $aboveFold "eager" "lazy")
         "FetchPriority" (cond $isLcp "high" "")
         "DisplayXL" "800x q70"
@@ -16,13 +15,24 @@
         "DisplaySM" "360x q70"
         "Context" .
       ) }}
-      </a>
+    </span>
+
+    <div class="article-list-item-content">
+      <div class="article-list-item-meta">
+        {{ with .Params.categories }}
+          <span class="article-list-item-categories">
+            {{ range $index, $category := . }}{{ if $index }}<span aria-hidden="true"> · </span>{{ end }}{{ $category }}{{ end }}
+          </span>
+        {{ end }}
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+      </div>
+      <h3 class="article-list-item-title">{{ .Title }}</h3>
+      {{ with .Description }}<p class="article-list-item-description">{{ . }}</p>{{ end }}
     </div>
 
-    <div class="content">
-      <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Description }}</p>
-      <!-- <a class="btn btn-transparent" href="{{ .Permalink }}">{{ i18n "readMore" }}</a> -->
-    </div>
-  </div>
+    <span class="article-list-item-reading-time">
+      <span>{{ .ReadingTime }} {{ i18n "minutesRead" }}</span>
+      <span class="article-list-item-arrow" aria-hidden="true">↗</span>
+    </span>
+  </a>
 </article>
