@@ -191,6 +191,12 @@
   padding-top: 1.5rem;
 }
 
+.pagination .page-item .page-link {
+  background-color: var(--surface-muted);
+  border-color: var(--border-card);
+  color: var(--text-base);
+}
+
 @media (width <= 767.98px) {
   .article-list-heading-home {
     margin-bottom: 1.5rem;
