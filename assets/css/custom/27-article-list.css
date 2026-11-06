@@ -27,29 +27,6 @@
   font-size: clamp(2rem, 3vw, 2.75rem);
 }
 
-.article-list-index-link {
-  align-items: center;
-  color: var(--text-base) !important;
-  display: inline-flex;
-  font-family: Inter, sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  gap: 0.45rem;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.3em;
-}
-
-.article-list-index-link span {
-  font-size: 1rem;
-}
-
-.article-list-index-link:hover,
-.article-list-index-link:focus-visible {
-  color: var(--text-base) !important;
-  text-decoration-thickness: 2px;
-}
-
 .article-list {
   border-top: 1px solid var(--border-card);
 }
@@ -183,12 +160,6 @@
   line-height: 1.55;
   margin: 1rem 0 0;
   max-width: 48rem;
-}
-
-.article-list-footer {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 1.5rem;
 }
 
 .pagination .page-item .page-link {

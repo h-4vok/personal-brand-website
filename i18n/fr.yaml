@@ -4,8 +4,6 @@
   translation: Lire la suite
 - id: viewAllPost
   translation: Voir tous les articles
-- id: openFullIndex
-  translation: Ouvrir l’index complet
 - id: articlesTitle
   translation: Articles
 - id: articlesIntro

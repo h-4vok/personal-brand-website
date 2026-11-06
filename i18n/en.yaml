@@ -4,8 +4,6 @@
   translation: Read more
 - id: viewAllPost
   translation: View All Posts
-- id: openFullIndex
-  translation: Open the full index
 - id: articlesTitle
   translation: Articles
 - id: articlesIntro
