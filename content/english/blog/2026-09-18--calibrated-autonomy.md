@@ -2,7 +2,7 @@
 title: "Calibrated Autonomy: The Leadership Skill That You Are Missing"
 date: "2026-09-18T08:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/calibrated-autonomy.jpg"
+image: "images/blog/article/calibrated-autonomy-20260918-v2.jpg"
 description: "Seniority is not a permanent trait. It is the level of autonomy someone can exercise in a specific skill while sharing responsibility for risk and outcomes."
 keywords:
   - "Leadership Autonomy"

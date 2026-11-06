@@ -2,7 +2,7 @@
 title: "Four Leadership Stances: Choose How to Lead in the Moment"
 date: "2026-10-19T08:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/leadership-stances.jpg"
+image: "images/blog/article/leadership-stances-20261019-v2.jpg"
 description: "A practical guide to the four leadership stances and how emotional intelligence helps you choose the right response in real situations."
 keywords:
   - "Leadership Stances"

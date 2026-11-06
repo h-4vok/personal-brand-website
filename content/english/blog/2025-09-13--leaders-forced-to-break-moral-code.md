@@ -2,7 +2,7 @@
 title: "The Hidden Cost of Restructuring: When Companies Force Leaders to Break Their Moral Code"
 date: "2025-09-13T15:15:00+01:00"
 author: "Christian Guzman"
-image: images/blog/article/the-ethical-crucible.jpg
+image: images/blog/article/the-hidden-cost-of-restructuring-20250913-v2.jpg
 description: "A leader is forced to choose between their job and a team member's. As tragic as that is, we need to explore first the toxicity symptoms of a failing organisation and then understand what we, as leaders, can do."
 keywords:
   - "Ethical Leadership"
