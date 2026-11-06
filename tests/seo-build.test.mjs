@@ -94,7 +94,6 @@ describe('SEO build assertions', () => {
     const paginatedPages = htmlFiles.filter(({ relativePath }) =>
       /\/page\/(?:[2-9]|\d{2,})\/index\.html$/.test(relativePath),
     );
-    assert(paginatedPages.length > 0, 'Expected at least one generated paginated list.');
     for (const page of paginatedPages) {
       const $ = load(fs.readFileSync(page.absolutePath, 'utf8'));
       const expected = new URL(page.relativePath.replace(/index\.html$/, ''), baseUrl).href;
@@ -107,6 +106,19 @@ describe('SEO build assertions', () => {
         `[${page.relativePath}] og:url must be ${expected}.`,
       );
     }
+  });
+
+  it('shows the same number of articles on home and the full index', () => {
+    const $home = load(fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf8'));
+    const $articles = load(fs.readFileSync(path.join(PUBLIC_DIR, 'articles/index.html'), 'utf8'));
+    const homeCount = $home('.article-list-item').length;
+    const articleIndexCount = $articles('.article-list-item').length;
+
+    assert(homeCount <= 50, `Home must show no more than 50 articles. Actual: ${homeCount}.`);
+    assert(
+      articleIndexCount === homeCount,
+      `Articles page one must match Home article count. Home: ${homeCount}; Articles: ${articleIndexCount}.`,
+    );
   });
 
   for (const page of htmlFiles) {

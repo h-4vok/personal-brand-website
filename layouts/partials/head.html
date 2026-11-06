@@ -84,7 +84,7 @@
 	{{ end }}
 	{{ $pageURL := .Permalink }}
 	{{ if in (slice "section" "taxonomy" "term") .Kind }}
-		{{ $pageURL = (.Paginate .Data.Pages 9).URL | absURL }}
+{{ $pageURL = (.Paginate .Data.Pages 50).URL | absURL }}
 	{{ end }}
 
 	<title>{{ $title }}</title>
