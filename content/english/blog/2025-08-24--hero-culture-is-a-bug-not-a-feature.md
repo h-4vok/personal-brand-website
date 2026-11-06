@@ -2,7 +2,7 @@
 title: "Hero Culture Rewards the Wrong Work"
 date: "2025-08-24T00:00:00+01:00"
 author: Christian Guzman
-image: images/blog/article/hero-culture-is-a-bug.jpg
+image: images/blog/article/hero-culture-is-a-bug-20250824-v2.jpg
 description: "Learn why celebrating last-minute 'heroes' is a dangerous bug in your company's culture. Lets explore how to shift from rewarding firefighting to building resilient systems."
 keywords:
   - "Hero Culture"

@@ -2,7 +2,7 @@
 title: "Before You Answer: Pause, Breathe and Listen"
 date: "2026-08-25T08:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/before-you-answer.jpg"
+image: "images/blog/article/before-you-answer-20260825-v2.jpg"
 description: "Difficult conversations improve when you notice the urge to rebut, pause, breathe, and listen long enough to test your own judgement."
 keywords:
   - "Difficult Conversations"

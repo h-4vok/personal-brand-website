@@ -2,7 +2,7 @@
 title: "How I Used AI to Find Signal on LinkedIn Without Doomscrolling"
 date: "2026-04-20T08:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/agentic-ai-escaping-attention-trap.jpg"
+image: "images/blog/article/agentic-ai-escaping-attention-trap-20260420-v2.jpg"
 description: "How I built a custom AI-powered system to eliminate the doomscrolling trap, filter out social media noise, and protect my attention as a leader."
 keywords:
   - "Agentic AI"

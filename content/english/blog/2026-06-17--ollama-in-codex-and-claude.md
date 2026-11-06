@@ -2,7 +2,7 @@
 title: "Use local LLMs within Codex and Claude: A pragmatic guide"
 date: "2026-06-17T08:00:00Z"
 author: "Christian Guzman"
-image: "images/blog/article/ollama-in-codex-and-claude.jpg"
+image: "images/blog/article/ollama-in-codex-and-claude-20260617-v2.jpg"
 description: "A pragmatic guide to integrating local LLMs via Ollama with agentic tools like Codex and Claude. Reduce cloud spend, bypass rate limits, and secure your AI sovereignty."
 keywords:
   - "Agentic AI"
