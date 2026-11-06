@@ -1,36 +1,20 @@
-{{ $data := index site.Data site.Language.Lang }} {{ if $data.about.about.enable
-}} {{"<!-- Start About Section -->" | safeHTML}}
-<section class="bg-one about section power-thesis" id="about">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        {{/* Temporarily hidden while the generalist positioning is active. */}}
-        <div class="power-thesis__inner text-center" hidden>
-          <h1 class="power-thesis__headline">
-            Build organisations as robust as the software you ship.
-          </h1>
-          <p class="power-thesis__subheadline">
-            I help engineering leaders move beyond mindless standardisation to scale trust, clarity, and intentionality.
-          </p>
-          <div class="power-thesis__actions">
-            <a
-              href="/leadership-office-hours/"
-              class="power-thesis__btn power-thesis__btn--primary"
-            >
-              Book a free conversation
-            </a>
-          </div>
-        </div>
-        <div class="power-thesis__inner text-center wow fadeIn" data-wow-duration="900ms">
-          <h1 class="power-thesis__headline">
-            Sharing my passion for people and technical leadership
-          </h1>
-          <p class="power-thesis__subheadline">
-            I am a generalist by choice. I enjoy engineering, product, people, strategy and the business connecting them.
-          </p>
-        </div>
-      </div>
+{{ $portrait := resources.Get "images/portraits/christian-guzman-portrait.jpg" }}
+
+<section class="homepage-hero" aria-labelledby="homepage-title">
+  <div class="homepage-hero-portrait" aria-hidden="true" style="--homepage-portrait: url('{{ $portrait.RelPermalink }}')"></div>
+  <div class="container homepage-hero-inner">
+    <div class="homepage-hero-copy">
+      <h1 id="homepage-title">Leadership shaped by care</h1>
+      <p>I connect people, product and technology to help organisations make clearer decisions and build systems that last.</p>
     </div>
   </div>
 </section>
-{{"<!-- /about -->" | safeHTML}} {{ end }}
+<section class="homepage-intro" aria-labelledby="homepage-intro-title">
+  <div class="container homepage-intro-inner">
+    <h2 id="homepage-intro-title">A little about how I work</h2>
+    <div class="homepage-intro-copy">
+      <p>I’ve spent more than 20 years building technology, products and teams. I’ve built products and businesses from scratch, built teams from the ground up, and led engineering and product organisations. I still build, with a current focus on AI-native, looped software engineering.</p>
+      <p>I write about the decisions behind resilient teams, useful technology and products that reach people. If you’re working through a leadership challenge, exploring mentoring, or looking for someone who can connect product and engineering while staying close to the work, <a href="/leadership-office-hours/">let’s talk</a>.</p>
+    </div>
+  </div>
+</section>

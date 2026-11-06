@@ -1,5 +1,5 @@
 ---
-title: "'Hero Culture' Is a Bug, Not a Feature"
+title: "Hero Culture Rewards the Wrong Work"
 date: "2025-08-24T00:00:00+01:00"
 author: Christian Guzman
 image: images/blog/article/hero-culture-is-a-bug.jpg

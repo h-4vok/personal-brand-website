@@ -1,5 +1,5 @@
 ---
-title: "Why 'Bring Me a Solution' is an Anti-Pattern"
+title: "“Bring Me a Solution” Can Make Teams Less Likely to Ask for Help"
 date: "2026-02-17T21:00:00Z"
 author: "Christian Guzman"
 image: "images/blog/article/bring-me-solutions.jpg"

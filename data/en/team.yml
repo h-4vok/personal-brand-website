@@ -11,7 +11,7 @@ team:
       content:
       social:
         - icon: ti-linkedin # themify icon pack : https://themify.me/themify-icons
-          link: "https://www.linkedin.com/in/guzmanchristian/"
+          link: "/redirect/linkedin?utm_source=website&utm_medium=referral&utm_content=team_section"
 
     # # team member loop
     # - name: Frank Miller

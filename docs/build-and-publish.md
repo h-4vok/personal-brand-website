@@ -50,6 +50,10 @@ That folder is the publishable artifact:
 
 Do not hand-edit `public/`; regenerate it from source.
 
+## Cache rule for deploys
+
+`netlify.toml` gives `/css/*`, `/js/*`, `/images/*`, and `/plugins/*` a one-year `immutable` cache. Any asset that can change at the same path must use a content fingerprint in its URL, or use a shorter revalidating cache policy. Hugo CSS and JS bundles use `fingerprint`; keep that when changing their resource pipelines. `npm run test:seo` checks the generated HTML for fingerprinted CSS and JS URLs, and the Site SEO workflow runs that check for pull requests and updates to `netlify.toml`.
+
 ## Why the current build flags matter
 
 - `--gc`: removes unused cache files from Hugo's generated resources
@@ -71,6 +75,7 @@ Recommended check before publishing:
 2. Run `npm run build` before publishing.
 3. Inspect the generated `public/` output if the rendered result looks wrong in the browser.
 4. Verify article URLs, homepage sections, and asset paths.
+5. Run `npm run test:seo` to verify the generated HTML and cache-safe CSS/JS URLs.
 
 ## Publishing procedure
 

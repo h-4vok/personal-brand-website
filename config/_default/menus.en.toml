@@ -22,11 +22,11 @@
 
 [[main]]
 name = "Articles"
-url = "/articles/"
+url = "/#blog"
 weight = 1
 
 [[main]]
-name = "Leadership Office Hours"
+name = "Mentoring"
 url = "/leadership-office-hours/"
 weight = 2
 

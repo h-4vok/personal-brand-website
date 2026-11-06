@@ -84,7 +84,7 @@
 	{{ end }}
 	{{ $pageURL := .Permalink }}
 	{{ if in (slice "section" "taxonomy" "term") .Kind }}
-		{{ $pageURL = (.Paginate .Data.Pages 9).URL | absURL }}
+{{ $pageURL = (.Paginate .Data.Pages 50).URL | absURL }}
 	{{ end }}
 
 	<title>{{ $title }}</title>
@@ -159,6 +159,7 @@
 		"css/custom/01-tokens.css"
 		"css/custom/02-base-navigation.css"
 		"css/custom/10-home.css"
+		"css/custom/11-homepage-intro.css"
 		"css/custom/20-article-core.css"
 		"css/custom/21-article-hero-meta.css"
 		"css/custom/22-article-author-related.css"
@@ -166,6 +167,7 @@
 		"css/custom/24-strategy-session.css"
 		"css/custom/25-redirect.css"
 		"css/custom/26-article-link-icons.css"
+		"css/custom/27-article-list.css"
 		"css/custom/30-funfacts.css"
 		"css/custom/40-footer.css"
 	}}
@@ -187,7 +189,7 @@
 	{{ end }}
 	{{ partial "critical-css.html" . }}
 	{{ if gt (len $deferredCssParts) 0 }}
-		{{ $siteCss := $deferredCssParts | resources.Concat "css/site.css" | minify }}
+		{{ $siteCss := $deferredCssParts | resources.Concat "css/site.css" | minify | fingerprint "sha384" }}
 		<link rel="preload" href="{{ $siteCss.RelPermalink }}" as="style">
 		<link rel="stylesheet" href="{{ $siteCss.RelPermalink }}" onload="this.onload=null;this.rel='stylesheet'">
 		<noscript>
