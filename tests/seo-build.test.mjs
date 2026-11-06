@@ -382,7 +382,7 @@ describe('SEO build assertions', () => {
       }
 
       if (page.relativePath === 'articles/index.html') {
-        const articleImages = $('.media-wrapper img.img-blog').slice(0, 3);
+        const articleImages = $('.article-list-item-image img').slice(0, 3);
         assert(
           articleImages.length === 3,
           `[${page.relativePath}] must render at least 3 article card images for the above-the-fold eager loading assertions.`,

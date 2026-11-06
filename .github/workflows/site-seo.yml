@@ -17,6 +17,7 @@ on:
       - "config/**"
       - "package.json"
       - "package-lock.json"
+      - "netlify.toml"
       - "tests/seo-build.test.mjs"
       - "tools/**"
   workflow_dispatch: {}
