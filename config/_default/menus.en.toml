@@ -22,7 +22,7 @@
 
 [[main]]
 name = "Articles"
-url = "/articles/"
+url = "/#blog"
 weight = 1
 
 [[main]]
