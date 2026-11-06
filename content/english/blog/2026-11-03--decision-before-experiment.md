@@ -1,6 +1,6 @@
 ---
 title: "If the Result Won’t Change the Decision, Why Run the Experiment?"
-date: "2026-10-29T08:00:00Z"
+date: "2026-11-06T08:00:00Z"
 author: "Christian Guzman"
 image: "images/blog/article/decision-before-experiment.jpg"
 description: "A practical way to decide what an experiment needs to teach before choosing its hypothesis, metric or design."
