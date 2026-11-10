@@ -23,3 +23,18 @@ if (scenes.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").
   });
 }
 
+
+const eventList = document.querySelector(".events");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (eventList && !reduceMotion && "IntersectionObserver" in window) {
+  eventList.querySelectorAll("li").forEach((row, index) => row.style.setProperty("--event-index", index));
+  eventList.classList.add("is-animating");
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      eventList.classList.add("is-visible");
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+  observer.observe(eventList);
+}

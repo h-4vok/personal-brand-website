@@ -18,7 +18,7 @@
 .loopard-page .nav{position:sticky;top:0;z-index:20;background:var(--cream)}
 .loopard-page .nav.wrap{width:100%;max-width:none;padding-inline:max(20px,calc((100vw - 1320px)/2))}
 .loopard-page .nav{align-items:center}
-.loopard-page .nav-install{display:inline-flex;align-items:center;align-self:center;min-height:36px;border:0;padding:0;color:var(--orange);line-height:1}
+.loopard-page .nav-install{display:inline-block;align-self:center;min-height:0;border:0;padding:0;color:var(--orange);line-height:1;position:relative}
 .brandmark{width:40px;height:40px;background:transparent}
 .brandmark svg{display:block;width:100%;height:100%}
 .brand-orbit{fill:var(--ink)}
@@ -73,3 +73,36 @@
 @media(max-width:1000px){.diagram-scroll-hint{display:block}}
 
 @keyframes decisionPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(212,104,35,0)}50%{opacity:.68;box-shadow:0 0 0 5px rgba(212,104,35,.22)}}
+
+/* Responsive diagrams and aligned navigation. */
+.method-grid{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:4%}
+.method-intro,.loop-plate,.loop-diagram-scroll{min-width:0}
+.loop-diagram{min-width:0}
+.flow-board .flow-map{overflow:hidden}
+.flow-lines{width:100%;height:auto;display:block}
+.flow-lines .wire{stroke-dasharray:7 7;animation:diagram-flow 1.35s linear infinite}
+.flow-lines .goal-wire{stroke-dasharray:none;animation:none}
+.flow-lines .return-wire{stroke:var(--orange)}
+.flow-lines .metrics-wire,.flow-lines .metrics-return{stroke:var(--ink)}
+.flow-lines .wire[marker-end="url(#flow-return-arrow)"]{stroke:var(--orange)}
+.flow-lines .wire[marker-end="url(#flow-metric-arrow)"]{stroke:var(--ink)}
+.events.is-animating li{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease;transition-delay:calc(var(--event-index)*.85s)}
+.events.is-animating.is-visible li{opacity:1;transform:none}
+.events .decision{animation:decisionRowPulse 2.4s ease-in-out infinite}
+.events .decision .event-dot{animation:none}
+@keyframes decisionRowPulse{0%,100%{background-color:#f7e5d5}50%{background-color:#f2d0b6}}
+@media(max-width:1000px){.method-grid{grid-template-columns:minmax(0,1fr);gap:35px}.method-intro h2{max-width:800px}.loop-diagram-scroll{overflow:hidden}.loop-diagram{width:100%}}
+@media(max-width:700px){.flow-board .flow-map{padding:10px}.flow-lines{min-width:0;width:100%}.flow-top,.flow-bottom{flex-direction:column}.flow-bottom span:first-child{font-size:12px}.flow-bottom span:last-child{font-size:9px}.method-intro h2{font-size:clamp(46px,12vw,64px)}.loop-plate{padding:14px}.loop-diagram{min-width:0;width:100%}.plate-top{font-size:8px;gap:12px}.diagram-scroll-hint{display:none}.events{padding-inline:14px}.events li{grid-template-columns:34px 10px 1fr;gap:9px}.log-title{padding:20px 16px}.log-title strong{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.flow-lines .wire,.events .decision{animation:none}.events.is-animating li{opacity:1;transform:none;transition:none}}
+
+.flow-board .flow-map{height:auto;min-height:0;aspect-ratio:1320/670;padding:0}
+.flow-board .flow-map .flow-lines{position:absolute;inset:0;width:100%;height:100%;min-width:0;max-width:none}
+.flow-lines .spec-wire{stroke:#789782}
+.diagram-person rect{fill:var(--cream);stroke:var(--ink);stroke-width:2}
+
+
+@media(max-width:1000px){.diagram-scroll-hint{display:none}}
+
+.loopard-page .nav .nav-install:after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--orange)}
+
+@media(max-width:700px){.flow-lines .node-no{font-size:15px}.flow-lines .node-title{font-size:27px}.flow-lines .node-title-small{font-size:21px}.flow-lines .node-copy{font-size:17px}.flow-lines .agent-name{font-size:17px}.flow-lines .agent-task{font-size:15px}.diagram-label{font-size:17px}.diagram-small{font-size:15px}.scene-kicker{font-size:17px}.diagram-orchestrator text:not(.diagram-small){font-size:28px}}

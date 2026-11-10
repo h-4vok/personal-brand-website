@@ -31,7 +31,7 @@
           <div class="flow-map">
             <svg class="flow-lines" viewBox="0 0 1320 670" role="img" aria-labelledby="flow-diagram-title flow-diagram-desc">
               <title id="flow-diagram-title">A coordinated five-agent build loop</title>
-              <desc id="flow-diagram-desc">A person speaks a goal to LoopARD. LoopARD produces a specification and checkpoints. A work planner assigns five build agents. Their changes meet in a shared workspace, pass an independent and an adversarial review, and send feedback back to the builders. A control plane reports run metrics to LoopARD.</desc>
+              <desc id="flow-diagram-desc">A goal goes to LoopARD. LoopARD produces a specification and checkpoints. A work planner assigns five build agents. Their changes meet in a shared workspace, pass an independent and an adversarial review, and send feedback back to the builders. A control plane reports run metrics to LoopARD.</desc>
               <defs>
                 <marker id="flow-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#789782"/></marker>
                 <marker id="flow-return-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#d46823"/></marker>
@@ -42,11 +42,6 @@
                 <text class="node-no" x="48" y="285">01 / YOUR INPUT</text>
                 <text class="node-title" x="48" y="327">Your goal</text>
                 <text class="node-copy" x="48" y="351">Say what should change</text>
-                <circle class="person-disc" cx="164" cy="286" r="18"/>
-                <circle class="person-head" cx="163" cy="282" r="5"/>
-                <path class="person-body" d="M153 296c1-7 18-7 20 0"/>
-                <path class="speech-bubble" d="M144 250h35a7 7 0 0 1 7 7v13a7 7 0 0 1-7 7h-12l-7 6v-6h-16a7 7 0 0 1-7-7v-13a7 7 0 0 1 7-7Z"/>
-                <path class="speech-lines" d="M147 259h25m-25 6h18"/>
               </g>
 
               <g class="diagram-node loopard-node">
@@ -102,7 +97,7 @@
               </g>
 
               <g class="wires" aria-hidden="true">
-                <path class="wire goal-wire" d="M200 326 H250" marker-end="url(#flow-arrow)"/>
+                <path class="wire goal-wire" d="M200 326 H250"/>
                 <path class="wire spec-wire" d="M460 325 H480 V137 H500" marker-end="url(#flow-arrow)"/>
                 <path class="wire planner-trunk" d="M700 137 H730 V370"/>
                 <path class="wire planner-branch" d="M730 82 H760" marker-end="url(#flow-arrow)"/>
@@ -118,23 +113,18 @@
                 <path class="wire build-trunk" d="M1000 82 V370 M1000 260 H1020" marker-end="url(#flow-arrow)"/>
                 <path class="wire review-branch" d="M1150 330 V415 H870 V445" marker-end="url(#flow-arrow)"/>
                 <path class="wire review-branch" d="M1150 330 V445" marker-end="url(#flow-arrow)"/>
-                <path class="wire return-wire" d="M870 541 V610 H710 V82 M1150 541 V610 H710"/>
-                <path class="wire return-branch" d="M710 82 H760" marker-end="url(#flow-return-arrow)"/>
-                <path class="wire return-branch" d="M710 154 H760" marker-end="url(#flow-return-arrow)"/>
-                <path class="wire return-branch" d="M710 226 H760" marker-end="url(#flow-return-arrow)"/>
-                <path class="wire return-branch" d="M710 298 H760" marker-end="url(#flow-return-arrow)"/>
-                <path class="wire return-branch" d="M710 370 H760" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire return-wire" d="M870 541 V590 H490 V405 H420" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire return-wire" d="M1150 541 V620 H520 V405 H390" marker-end="url(#flow-return-arrow)"/>
+
+
+
+
+
                 <path class="wire metrics-wire" d="M1280 260 H1300 V545 H280" marker-end="url(#flow-metric-arrow)"/>
                 <path class="wire metrics-return" d="M155 490 V430 H355 V405" marker-end="url(#flow-metric-arrow)"/>
               </g>
 
               <circle class="packet packet-goal" r="6"><animateMotion dur="3s" repeatCount="indefinite" path="M200 326 H250"/></circle>
-              <circle class="packet packet-spec" r="6"><animateMotion dur="4s" repeatCount="indefinite" path="M460 325 H480 V137 H500"/></circle>
-              <circle class="packet packet-plan" r="6"><animateMotion dur="4.8s" repeatCount="indefinite" path="M700 137 H730 V82 H760"/></circle>
-              <circle class="packet packet-build" r="6"><animateMotion dur="4.2s" begin="-1.2s" repeatCount="indefinite" path="M980 226 H1000 V260 H1020"/></circle>
-              <circle class="packet packet-review" r="6"><animateMotion dur="4.8s" begin="-2s" repeatCount="indefinite" path="M1150 330 V415 H870 V445"/></circle>
-              <circle class="packet packet-feedback" r="6"><animateMotion dur="6s" begin="-2.6s" repeatCount="indefinite" path="M870 541 V610 H710 V82 H760"/></circle>
-              <circle class="packet packet-metrics" r="6"><animateMotion dur="7s" begin="-3s" repeatCount="indefinite" path="M1280 260 H1300 V640 H280 V600"/></circle>
             </svg>
           </div>
           <div class="flow-bottom"><span id="flow-diagram-copy">The planner splits the spec. Five agents build in parallel. Independent and adversarial reviews send findings back; a run monitor reports progress, blockers and usage to LoopARD.</span><span>FEEDBACK CLOSES THE LOOP</span></div>
@@ -156,61 +146,54 @@
             <svg class="loop-diagram" viewBox="0 0 1000 500" role="img" aria-labelledby="method-diagram-title method-diagram-desc">
               <title id="method-diagram-title">A loop that grows with the work</title>
               <desc id="method-diagram-desc">The diagram evolves from one person working with two agents, to parallel loops, then coordinated agent groups with metrics and independent review.</desc>
-              <defs>
-                <marker id="method-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#789782"/></marker>
-                <marker id="method-return-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#d46823"/></marker>
-              </defs>
 
               <g class="loop-scene loop-scene-one">
                 <text class="scene-kicker" x="42" y="46">LOOP 01 / TWO AGENTS</text>
-                <path class="diagram-wire" d="M190 250 H342" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M515 230 H590 V165 H665" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M515 270 H590 V335 H665" marker-end="url(#method-arrow)"/>
-                <g class="diagram-person">
-                  <circle class="person-icon" cx="90" cy="234" r="18"/><circle class="person-head" cx="90" cy="229" r="5"/><path class="person-body" d="M80 245c2-8 18-8 20 0"/>
-                  <text class="diagram-label" x="45" y="285">PERSON</text>
-                </g>
-                <g class="diagram-orchestrator"><rect x="342" y="205" width="173" height="90" rx="2"/><text x="365" y="244">LoopARD</text><text class="diagram-small" x="365" y="269">shape the work</text></g>
+                <path class="diagram-wire" d="M190 250 H342"/>
+                <path class="diagram-wire" d="M515 230 H590 V165 H665"/>
+                <path class="diagram-wire" d="M515 270 H590 V335 H665"/>
+                <g class="diagram-person"><rect x="42" y="214" width="148" height="72"/><text class="diagram-label" x="91" y="255">YOU</text></g>
+                <g class="diagram-orchestrator"><rect x="342" y="205" width="173" height="90" rx="2"/><image href="{{ $controlRoom.RelPermalink }}" x="395" y="211" width="70" height="42" preserveAspectRatio="xMidYMid slice"/><text x="365" y="276">LoopARD</text></g>
                 <g class="diagram-agent"><rect x="665" y="130" width="230" height="70"/><circle cx="690" cy="165" r="10"/><text class="diagram-label" x="714" y="170">AGENT</text></g>
                 <g class="diagram-agent"><rect x="665" y="300" width="230" height="70"/><circle cx="690" cy="335" r="10"/><text class="diagram-label" x="714" y="340">AGENT</text></g>
               </g>
 
               <g class="loop-scene loop-scene-two">
                 <text class="scene-kicker" x="42" y="46">LOOP 02 / PARALLEL WORK</text>
-                <path class="diagram-wire" d="M158 250 H263" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M420 235 H480 V145 H538" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M420 250 H538" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M420 265 H480 V355 H538" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire side-loop-link" d="M342 295 V430 H850 V325" marker-end="url(#method-arrow)"/>
-                <g class="diagram-person"><circle class="person-icon" cx="76" cy="234" r="18"/><circle class="person-head" cx="76" cy="229" r="5"/><path class="person-body" d="M66 245c2-8 18-8 20 0"/><text class="diagram-label" x="32" y="285">PERSON</text></g>
-                <g class="diagram-orchestrator"><rect x="263" y="205" width="157" height="90"/><text x="282" y="244">LoopARD</text><text class="diagram-small" x="282" y="269">shape the work</text></g>
+                <path class="diagram-wire" d="M158 250 H263"/>
+                <path class="diagram-wire" d="M420 235 H480 V145 H538"/>
+                <path class="diagram-wire" d="M420 250 H538"/>
+                <path class="diagram-wire" d="M420 265 H480 V355 H538"/>
+                <path class="diagram-wire side-loop-link" d="M342 295 V430 H850 V325"/>
+                <g class="diagram-person"><rect x="32" y="214" width="126" height="72"/><text class="diagram-label" x="74" y="255">YOU</text></g>
+                <g class="diagram-orchestrator"><rect x="263" y="205" width="157" height="90"/><image href="{{ $controlRoom.RelPermalink }}" x="309" y="211" width="58" height="42" preserveAspectRatio="xMidYMid slice"/><text x="282" y="276">LoopARD</text></g>
                 <g class="diagram-agent"><rect x="538" y="110" width="174" height="70"/><circle cx="562" cy="145" r="10"/><text class="diagram-label" x="585" y="150">AGENT</text></g>
                 <g class="diagram-agent"><rect x="538" y="215" width="174" height="70"/><circle cx="562" cy="250" r="10"/><text class="diagram-label" x="585" y="255">AGENT</text></g>
                 <g class="diagram-agent"><rect x="538" y="320" width="174" height="70"/><circle cx="562" cy="355" r="10"/><text class="diagram-label" x="585" y="360">AGENT</text></g>
                 <text class="diagram-small" x="770" y="231">PARALLEL LOOP</text>
                 <g class="diagram-side-system"><rect x="740" y="240" width="225" height="85"/><circle cx="780" cy="282" r="10"/><circle cx="925" cy="282" r="10"/></g>
-                <path class="diagram-wire side-loop" d="M790 276 H915" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire side-loop" d="M915 288 H790" marker-end="url(#method-return-arrow)"/>
+                <path class="diagram-wire side-loop" d="M790 276 H915"/>
+                <path class="diagram-wire side-loop" d="M915 288 H790"/>
               </g>
 
               <g class="loop-scene loop-scene-three">
                 <text class="scene-kicker" x="30" y="40">LOOP 03 / SPECIALISTS + OVERSIGHT</text>
-                <path class="diagram-wire" d="M123 247 H205" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M335 230 H365 V112 H390" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M335 247 H390" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M335 264 H365 V382 H390" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire metric-wire" d="M545 112 H644" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire metric-wire" d="M545 247 H644" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire metric-wire" d="M545 382 H644" marker-end="url(#method-arrow)"/>
+                <path class="diagram-wire" d="M123 247 H205"/>
+                <path class="diagram-wire" d="M335 230 H365 V112 H390"/>
+                <path class="diagram-wire" d="M335 247 H390"/>
+                <path class="diagram-wire" d="M335 264 H365 V382 H390"/>
+                <path class="diagram-wire metric-wire" d="M545 112 H644"/>
+                <path class="diagram-wire metric-wire" d="M545 247 H644"/>
+                <path class="diagram-wire metric-wire" d="M545 382 H644"/>
                 <path class="diagram-wire metric-wire" d="M670 112 H730"/>
                 <path class="diagram-wire metric-wire" d="M670 247 H730"/>
                 <path class="diagram-wire metric-wire" d="M670 382 H730"/>
-                <path class="diagram-wire metric-wire" d="M730 112 V382 M730 157 H800" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M690 247 H748 V272 H800" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire" d="M920 272 V350" marker-end="url(#method-arrow)"/>
-                <path class="diagram-wire feedback-wire" d="M923 413 V450 H270 V292" marker-end="url(#method-return-arrow)"/>
-                <g class="diagram-person"><circle class="person-icon" cx="62" cy="230" r="17"/><circle class="person-head" cx="62" cy="225" r="5"/><path class="person-body" d="M52 241c2-8 18-8 20 0"/><text class="diagram-label" x="29" y="278">PERSON</text></g>
-                <g class="diagram-orchestrator"><rect x="205" y="202" width="130" height="90"/><text x="219" y="241">LoopARD</text><text class="diagram-small" x="219" y="266">shape the work</text></g>
+                <path class="diagram-wire metric-wire" d="M730 112 V382 M730 157 H800"/>
+                <path class="diagram-wire" d="M690 247 H748 V272 H800"/>
+                <path class="diagram-wire" d="M920 272 V350"/>
+                <path class="diagram-wire feedback-wire" d="M923 413 V450 H270 V292"/>
+                <g class="diagram-person"><rect x="18" y="207" width="105" height="72"/><text class="diagram-label" x="53" y="248">YOU</text></g>
+                <g class="diagram-orchestrator"><rect x="205" y="202" width="130" height="90"/><image href="{{ $controlRoom.RelPermalink }}" x="243" y="208" width="48" height="42" preserveAspectRatio="xMidYMid slice"/><text x="219" y="276">LoopARD</text></g>
 
                 <g class="diagram-agent-group"><rect x="390" y="78" width="155" height="68"/><circle cx="416" cy="112" r="8"/><circle cx="444" cy="112" r="8"/><circle cx="472" cy="112" r="8"/><circle cx="500" cy="112" r="8"/><text class="diagram-small" x="405" y="165">AGENT GROUP</text></g>
                 <g class="diagram-agent-group"><rect x="390" y="213" width="155" height="68"/><circle cx="416" cy="247" r="8"/><circle cx="444" cy="247" r="8"/><circle cx="472" cy="247" r="8"/><circle cx="500" cy="247" r="8"/><text class="diagram-small" x="405" y="300">AGENT GROUP</text></g>
@@ -243,12 +226,12 @@
           <div class="log-header"><span>LOOPARD / EVENTS LOG</span><span>ILLUSTRATIVE VIEW</span></div>
           <div class="log-title"><strong>A run history that keeps decisions in context.</strong></div>
           <ol class="events">
-            <li><span class="event-time">09:41</span><span class="event-dot"></span><span><strong>Goal and checks agreed</strong><small>Outcome and acceptance criteria recorded</small></span></li>
-            <li><span class="event-time">09:43</span><span class="event-dot"></span><span><strong>Work split</strong><small>Implementation, tests and documentation assigned</small></span></li>
-            <li><span class="event-time">09:47</span><span class="event-dot"></span><span><strong>Review finding</strong><small>Some existing records have no owner assigned</small></span></li>
-            <li class="decision"><span class="event-time">09:52</span><span class="event-dot"></span><span><strong>Decision needed</strong><small>Assign a default owner, or leave those records unchanged?</small></span></li>
-          </ol>
-          <figcaption>Illustrative timeline. No live run data is shown.</figcaption>
+<li><span class="event-time">09:41</span><span class="event-dot"></span><span><strong>Goal and checks agreed</strong><small>Outcome and acceptance criteria recorded</small></span></li>
+<li class="decision"><span class="event-time">09:42</span><span class="event-dot"></span><span><strong>Decision needed</strong><small>Include archived records, or focus on active work?</small></span></li>
+<li><span class="event-time">09:45</span><span class="event-dot"></span><span><strong>Work split</strong><small>Implementation, tests and documentation assigned</small></span></li>
+<li><span class="event-time">09:49</span><span class="event-dot"></span><span><strong>Review finding</strong><small>Some existing records have no assigned owner</small></span></li>
+</ol>
+
         </figure>
       </div>
     </section>
