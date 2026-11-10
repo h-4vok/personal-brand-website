@@ -231,7 +231,27 @@
     {{ $methodScript := resources.Get "js/loopard-diagram.js" | js.Build (dict "minify" true) | fingerprint }}
     <script type="module" src="{{ $methodScript.RelPermalink }}" integrity="{{ $methodScript.Data.Integrity }}" crossorigin="anonymous"></script>
 
-    <section class="visibility section-pad" id="visibility" aria-labelledby="visibility-title"><div class="wrap visibility-grid"><div class="visibility-intro"><p class="kicker">FIG. 03 / THE FIELD LOG</p><h2 id="visibility-title">See what moved.<br><em>See what needs you.</em></h2><p>A local, read-only dashboard tracks progress, milestones, blockers and decisions during a run.</p><p class="privacy-note">Prompts and full agent responses stay out of the dashboard.</p></div><figure class="log"><div class="log-header"><span>LOOPARD / FIELD LOG</span><span>ILLUSTRATIVE VIEW</span></div><div class="log-title"><span>EXAMPLE RUN / IMPLEMENTATION REVIEW</span><strong>Three specialists. One review point.</strong></div><ol class="events"><li><span class="event-time">09:41</span><span class="event-dot"></span><span><strong>Scope agreed</strong><small>Run design confirmed</small></span><span class="event-tag">DONE</span></li><li><span class="event-time">09:43</span><span class="event-dot"></span><span><strong>Workstreams started</strong><small>Research, build and review assigned</small></span><span class="event-tag">MOVING</span></li><li><span class="event-time">09:47</span><span class="event-dot"></span><span><strong>Finding shared</strong><small>Research informs build</small></span><span class="event-tag">HANDOFF</span></li><li class="decision"><span class="event-time">09:52</span><span class="event-dot"></span><span><strong>Decision needed</strong><small>Review checkpoint reached</small></span><span class="event-tag">YOUR CALL</span></li></ol><figcaption>Example events only. No live run data is shown.</figcaption></figure></div></section>
+    <section class="visibility section-pad" id="visibility" aria-labelledby="visibility-title">
+      <div class="wrap visibility-grid">
+        <div class="visibility-intro">
+          <p class="kicker">FIG. 03 / EVENTS LOG</p>
+          <h2 id="visibility-title">See what moved.<br><em>See what needs you.</em></h2>
+          <p>A local, read-only dashboard tracks progress, milestones, blockers and decisions during a run.</p>
+          <p class="privacy-note">Prompts and full agent responses stay out of the dashboard.</p>
+        </div>
+        <figure class="log">
+          <div class="log-header"><span>LOOPARD / EVENTS LOG</span><span>ILLUSTRATIVE VIEW</span></div>
+          <div class="log-title"><strong>A run history that keeps decisions in context.</strong></div>
+          <ol class="events">
+            <li><span class="event-time">09:41</span><span class="event-dot"></span><span><strong>Goal and checks agreed</strong><small>Outcome and acceptance criteria recorded</small></span></li>
+            <li><span class="event-time">09:43</span><span class="event-dot"></span><span><strong>Work split</strong><small>Implementation, tests and documentation assigned</small></span></li>
+            <li><span class="event-time">09:47</span><span class="event-dot"></span><span><strong>Review finding</strong><small>Some existing records have no owner assigned</small></span></li>
+            <li class="decision"><span class="event-time">09:52</span><span class="event-dot"></span><span><strong>Decision needed</strong><small>Assign a default owner, or leave those records unchanged?</small></span></li>
+          </ol>
+          <figcaption>Illustrative timeline. No live run data is shown.</figcaption>
+        </figure>
+      </div>
+    </section>
 
     <section class="control section-pad" id="control" aria-labelledby="control-title"><div class="wrap control-grid"><div><p class="kicker">FIG. 04 / HUMAN CONTROL</p><h2 id="control-title">The pause is<br><em>part of the plan.</em></h2></div><div class="control-right"><p>Set the checkpoints. Read the evidence. Steer, pause or continue when the next decision is yours.</p><div class="decision-line" role="img" aria-label="Work reaches a human review gate before the next step"><span>WORK</span><span class="decision-track"></span><span class="decision-gate">HUMAN<br>REVIEW</span><span class="decision-track after"></span><span>NEXT STEP</span></div><span class="control-caption">NO AUTOPILOT CLAIMS. JUST A CLEAR PLACE TO DECIDE.</span></div></div></section>
 
