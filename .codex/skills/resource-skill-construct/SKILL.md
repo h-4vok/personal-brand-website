@@ -16,6 +16,8 @@ Create a useful, source-backed resource page in this Hugo site. The Resources in
 
 ## Build
 
+- Set `draft = true` in each new resource page's front matter by default. Set `draft = false` only when the user explicitly asks to publish.
+- Store resource imagery in `assets/images/resources/<slug>/` and publish it through Hugo Pipes. Never put draft-resource assets in `static/`, which is copied independently of page draft state.
 - Add a real resource entry under `content/english/resources/<slug>/`; do not add placeholder cards or imply Christian created a third-party product.
 - Keep `/resources/` in the Christian Guzman site identity and main theme. A resource detail page at `/resources/<slug>/` must have a distinct design, typography, navigation, footer and CSS from the main theme and from other resource landings.
 - Reuse the Hugo resource shell and head/SEO infrastructure where suitable. Add only the page-specific layout and stylesheet needed. Shared resource tokens and font declarations are available; do not import the main theme stylesheet into a resource detail page.
@@ -27,6 +29,7 @@ Create a useful, source-backed resource page in this Hugo site. The Resources in
 
 ## Verify and report
 
+- Confirm draft cards/routes are absent from the production build and present through `npm run dev`, which enables `--buildDrafts`.
 - Build the site and inspect generated HTML for the intended route, title, description, canonical, social image, schema and stylesheet. Confirm the main Resources index uses the main theme and the detail page does not load main theme CSS.
 - Review the rendered index and landing on desktop and mobile, and check navigation, internal/external links, image loading and keyboard access. Run additional repository checks when requested or required by repository instructions.
 - Summarize the route, design separation, SEO/attribution decisions, checks performed and any unverified production behavior. Do not commit or publish unless asked.

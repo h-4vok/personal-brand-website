@@ -36,3 +36,11 @@ The resource creator and the author of Christian's guide are separate facts. Kee
 - The index currently has a hard-coded `AI Skill · Open Source` card label in `layouts/resources/list.html`. Before adding a plugin, closed-source product or tutorial, make the card type/status reflect the new resource's verified `kind` instead of reusing that label.
 - The shared resource stylesheet selector in `layouts/partials/head.html` uses each page's `resource_style`. Add a matching CSS file for every new style value.
 - The current section index uses the main site bundle; resource detail pages use the isolated resource bundle. Preserve that boundary when updating templates or metadata handling.
+
+## Draft lifecycle
+
+The project-local `resource-skill-construct` skill adds `draft = true` to each new resource page. Clarity is also `draft = true`: it is a test page and design archetype, not a published resource. Set `draft = false` only when publication is intentional. Hugo excludes draft pages from normal builds and page collections, so their route and Resources card stay out of production.
+
+Only `npm run dev` passes `--buildDrafts`, so draft pages and cards appear during local design. `npm run test`, production build commands, and Netlify deploy contexts omit that flag. Production build commands use `--cleanDestinationDir` to remove old output if a previously published route becomes a draft; otherwise Hugo may leave stale files in `public/`.
+
+Store resource images in `assets/images/resources/<slug>/` and emit them through Hugo Pipes. Hugo copies files in `static/` independently of page draft state, so draft assets there could remain directly accessible. Assets in the pipeline are emitted only when a rendered page or visible card references them. See Hugo's [draft behavior](https://gohugo.io/methods/page/draft/) and [build workflow](https://gohugo.io/getting-started/usage/#draft-future-and-expired-content).

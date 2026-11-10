@@ -5,6 +5,7 @@ keywords = ["Clarity AI writing skill", "Clarity by Addy Osmani", "AI writing sk
 author = "Christian Guzman"
 image = "images/resources/clarity/clarity-social.png"
 image_alt = "Clarity writing guide by Addy Osmani: interview, rewrite, and review modes on a dark editorial field guide."
+draft = true
 resource_style = "clarity"
 
 [resource]

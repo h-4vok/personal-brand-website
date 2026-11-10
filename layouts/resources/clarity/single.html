@@ -1,4 +1,6 @@
 {{ define "main" }}
+{{ $methodImage := resources.Get "images/resources/clarity/clarity-method.svg" }}
+{{ if not $methodImage }}{{ errorf "Missing Clarity hero image: assets/images/resources/clarity/clarity-method.svg" }}{{ end }}
 <a class="clarity-skip" href="#clarity-content">Skip to content</a>
 <div class="clarity-page">
   <header class="clarity-nav">
@@ -22,7 +24,7 @@
           <a class="clarity-button" href="#setup">See how to use it <span aria-hidden="true">↓</span></a>
         </div>
         <figure class="clarity-hero__figure">
-          <img src="{{ "images/resources/clarity/clarity-method.svg" | relURL }}" alt="Clarity’s three modes: interview, rewrite, and review, arranged as an editorial workflow." width="1200" height="630" fetchpriority="high">
+          <img src="{{ $methodImage.RelPermalink }}" alt="Clarity’s three modes: interview, rewrite, and review, arranged as an editorial workflow." width="1200" height="630" fetchpriority="high">
           <figcaption>THREE MODES · ONE READER-LED METHOD</figcaption>
         </figure>
         <div class="clarity-hero__folio" aria-hidden="true">01<br>18 RULES<br>MIT LICENSE</div>

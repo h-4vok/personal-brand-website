@@ -8,10 +8,18 @@
 
     <div class="article-list">
       {{ range .Pages.ByWeight }}
+      {{ $cardImage := .Params.image }}
+      {{ if not (or (hasPrefix $cardImage "http://") (hasPrefix $cardImage "https://")) }}
+        {{ with resources.Get (strings.TrimPrefix "/" $cardImage) }}
+          {{ $cardImage = .RelPermalink }}
+        {{ else }}
+          {{ $cardImage = $cardImage | relURL }}
+        {{ end }}
+      {{ end }}
       <article class="article-list-item resource-directory-card">
         <a class="article-list-item-link" href="{{ .RelPermalink }}" aria-label="{{ .Params.resource.name }}: {{ .Description }}">
           <span class="article-list-item-image">
-            <img src="{{ .Params.image | relURL }}" alt="" width="1200" height="630" loading="eager" decoding="async">
+            <img src="{{ $cardImage }}" alt="" width="1200" height="630" loading="eager" decoding="async">
           </span>
           <div class="article-list-item-content">
             <div class="article-list-item-meta">
