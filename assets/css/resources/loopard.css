@@ -84,8 +84,6 @@
 .flow-lines .goal-wire{stroke-dasharray:none;animation:none}
 .flow-lines .return-wire{stroke:var(--orange)}
 .flow-lines .metrics-wire,.flow-lines .metrics-return{stroke:var(--ink)}
-.flow-lines .wire[marker-end="url(#flow-return-arrow)"]{stroke:var(--orange)}
-.flow-lines .wire[marker-end="url(#flow-metric-arrow)"]{stroke:var(--ink)}
 .events.is-animating li{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease;transition-delay:calc(var(--event-index)*.85s)}
 .events.is-animating.is-visible li{opacity:1;transform:none}
 .events .decision{animation:decisionRowPulse 2.4s ease-in-out infinite}

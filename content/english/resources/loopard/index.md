@@ -5,6 +5,7 @@ keywords = ["multi-agent orchestration", "agent orchestration skill", "Codex mul
 author = "Christian Guzman"
 image = "images/resources/loopard/loopard-social.png"
 image_alt = "LoopARD coordinates a human-led task across three agents, then brings their work back for review."
+card_image = "images/resources/loopard/loopard-loop-card.png"
 resource_style = "loopard"
 weight = 2
 draft = true

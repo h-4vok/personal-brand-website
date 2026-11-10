@@ -8,7 +8,7 @@
 
     <div class="article-list">
       {{ range .Pages.ByWeight }}
-      {{ $cardImage := .Params.image }}
+      {{ $cardImage := .Params.card_image | default .Params.image }}
       {{ if not (or (hasPrefix $cardImage "http://") (hasPrefix $cardImage "https://")) }}
         {{ with resources.Get (strings.TrimPrefix "/" $cardImage) }}
           {{ $cardImage = .RelPermalink }}

@@ -32,11 +32,6 @@
             <svg class="flow-lines" viewBox="0 0 1320 670" role="img" aria-labelledby="flow-diagram-title flow-diagram-desc">
               <title id="flow-diagram-title">A coordinated five-agent build loop</title>
               <desc id="flow-diagram-desc">A goal goes to LoopARD. LoopARD produces a specification and checkpoints. A work planner assigns five build agents. Their changes meet in a shared workspace, pass an independent and an adversarial review, and send feedback back to the builders. A control plane reports run metrics to LoopARD.</desc>
-              <defs>
-                <marker id="flow-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#789782"/></marker>
-                <marker id="flow-return-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#d46823"/></marker>
-                <marker id="flow-metric-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#132d25"/></marker>
-              </defs>
               <g class="diagram-node goal-node">
                 <rect x="30" y="260" width="170" height="132"/>
                 <text class="node-no" x="48" y="285">01 / YOUR INPUT</text>
@@ -98,30 +93,30 @@
 
               <g class="wires" aria-hidden="true">
                 <path class="wire goal-wire" d="M200 326 H250"/>
-                <path class="wire spec-wire" d="M460 325 H480 V137 H500" marker-end="url(#flow-arrow)"/>
+                <path class="wire spec-wire" d="M460 325 H480 V137 H500"/>
                 <path class="wire planner-trunk" d="M700 137 H730 V370"/>
-                <path class="wire planner-branch" d="M730 82 H760" marker-end="url(#flow-arrow)"/>
-                <path class="wire planner-branch" d="M730 154 H760" marker-end="url(#flow-arrow)"/>
-                <path class="wire planner-branch" d="M730 226 H760" marker-end="url(#flow-arrow)"/>
-                <path class="wire planner-branch" d="M730 298 H760" marker-end="url(#flow-arrow)"/>
-                <path class="wire planner-branch" d="M730 370 H760" marker-end="url(#flow-arrow)"/>
-                <path class="wire build-branch" d="M980 82 H1000" marker-end="url(#flow-arrow)"/>
-                <path class="wire build-branch" d="M980 154 H1000" marker-end="url(#flow-arrow)"/>
-                <path class="wire build-branch" d="M980 226 H1000" marker-end="url(#flow-arrow)"/>
-                <path class="wire build-branch" d="M980 298 H1000" marker-end="url(#flow-arrow)"/>
-                <path class="wire build-branch" d="M980 370 H1000" marker-end="url(#flow-arrow)"/>
-                <path class="wire build-trunk" d="M1000 82 V370 M1000 260 H1020" marker-end="url(#flow-arrow)"/>
-                <path class="wire review-branch" d="M1150 330 V415 H870 V445" marker-end="url(#flow-arrow)"/>
-                <path class="wire review-branch" d="M1150 330 V445" marker-end="url(#flow-arrow)"/>
-                <path class="wire return-wire" d="M870 541 V590 H490 V405 H420" marker-end="url(#flow-return-arrow)"/>
-                <path class="wire return-wire" d="M1150 541 V620 H520 V405 H390" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire planner-branch" d="M730 82 H760"/>
+                <path class="wire planner-branch" d="M730 154 H760"/>
+                <path class="wire planner-branch" d="M730 226 H760"/>
+                <path class="wire planner-branch" d="M730 298 H760"/>
+                <path class="wire planner-branch" d="M730 370 H760"/>
+                <path class="wire build-branch" d="M980 82 H1000"/>
+                <path class="wire build-branch" d="M980 154 H1000"/>
+                <path class="wire build-branch" d="M980 226 H1000"/>
+                <path class="wire build-branch" d="M980 298 H1000"/>
+                <path class="wire build-branch" d="M980 370 H1000"/>
+                <path class="wire build-trunk" d="M1000 82 V370 M1000 260 H1020"/>
+                <path class="wire review-branch" d="M1150 330 V415 H870 V445"/>
+                <path class="wire review-branch" d="M1150 330 V445"/>
+                <path class="wire return-wire" d="M870 541 V590 H490 V405 H420"/>
+                <path class="wire return-wire" d="M1150 541 V620 H520 V405 H390"/>
 
 
 
 
 
-                <path class="wire metrics-wire" d="M1280 260 H1300 V545 H280" marker-end="url(#flow-metric-arrow)"/>
-                <path class="wire metrics-return" d="M155 490 V430 H355 V405" marker-end="url(#flow-metric-arrow)"/>
+                <path class="wire metrics-wire" d="M1280 260 H1300 V650 H155 V600"/>
+                <path class="wire metrics-return" d="M155 490 V430 H355 V405"/>
               </g>
 
               <circle class="packet packet-goal" r="6"><animateMotion dur="3s" repeatCount="indefinite" path="M200 326 H250"/></circle>
