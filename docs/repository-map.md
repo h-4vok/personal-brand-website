@@ -7,6 +7,7 @@ Use this file when the question is "what file should I edit for this change?"
 | Change you want | Primary location | Notes |
 | --- | --- | --- |
 | Add or edit a blog post | `content/english/blog` | Markdown content plus front matter |
+| Create a resource/AI skill landing | `docs/resource-sites.md` and `$resource-skill-construct` | Main-branded `/resources/` index; independent detail pages under `/resources/<slug>/` |
 | Edit the author profile | `content/english/author/christian-guzman.md` | Author name, social links, tagline |
 | Change homepage hero | `data/en/banner.yml` | Main headline, short copy, hero image |
 | Change about cards | `data/en/about.yml` | Three-card intro section |

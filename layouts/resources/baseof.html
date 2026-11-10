@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ with site.LanguageCode }}{{ . }}{{ else }}en-us{{ end }}">
+{{ partial "head.html" . }}
+{{ if eq .Kind "section" }}
+<body id="body">
+  {{ partial "navigation.html" . }}
+  <main id="content">
+    {{ partial "preloader.html" . }}
+{{ else }}
+<body class="resource-site resource-site--{{ .Params.resource_style }}">
+{{ end }}
+  {{- block "main" . }}{{- end }}
+{{ if eq .Kind "section" }}
+  </main>
+  {{ partial "site-footer.html" . }}
+  {{ partial "site-scripts.html" . }}
+{{ end }}
+</body>
+</html>

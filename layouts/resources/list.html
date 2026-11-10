@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="section article-list-section article-list-section--index">
+  <div class="container">
+    <header class="article-index-heading">
+      <h1>AI Skills</h1>
+      <p>Practical guides to AI skills and developer tools: what they do, how they work, and when they help.</p>
+    </header>
+
+    <div class="article-list">
+      {{ range .Pages.ByWeight }}
+      <article class="article-list-item resource-directory-card">
+        <a class="article-list-item-link" href="{{ .RelPermalink }}" aria-label="{{ .Params.resource.name }}: {{ .Description }}">
+          <span class="article-list-item-image">
+            <img src="{{ .Params.image | relURL }}" alt="" width="1200" height="630" loading="eager" decoding="async">
+          </span>
+          <div class="article-list-item-content">
+            <div class="article-list-item-meta">
+              <span class="article-list-item-categories">AI Skill · Open Source</span>
+              <span>By {{ .Params.resource.creator }}</span>
+            </div>
+            <h2 class="article-list-item-title">{{ .Params.resource.name }}</h2>
+            <p class="article-list-item-description">{{ .Description }}</p>
+          </div>
+          <span class="article-list-item-reading-time"><span>Explore resource</span><span class="article-list-item-arrow" aria-hidden="true">↗</span></span>
+        </a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

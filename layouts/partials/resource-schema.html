@@ -1,0 +1,23 @@
+{{- $resource := .Params.resource -}}
+{{- $creator := dict "@type" "Person" "name" $resource.creator -}}
+{{- with $resource.creator_url -}}
+	{{- $creator = merge $creator (dict "url" .) -}}
+{{- end -}}
+{{- $sameAs := slice $resource.url -}}
+{{- with $resource.repository -}}
+	{{- $sameAs = $sameAs | append . -}}
+{{- end -}}
+{{- $about := dict "@type" "CreativeWork" "name" $resource.name "creator" $creator "sameAs" $sameAs -}}
+{{- with $resource.license -}}
+	{{- $about = merge $about (dict "license" .) -}}
+{{- end -}}
+{{- $schema := dict
+	"@context" "https://schema.org"
+	"@type" "WebPage"
+	"name" .Title
+	"url" .Permalink
+	"description" .Description
+	"author" (dict "@type" "Person" "name" .Params.author)
+	"about" $about
+-}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>

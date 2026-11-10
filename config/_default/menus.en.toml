@@ -30,6 +30,11 @@ name = "Mentoring"
 url = "/leadership-office-hours/"
 weight = 2
 
+[[main]]
+name = "AI Skills"
+url = "/resources/"
+weight = 3
+
 # [[main]]
 # name = "Dropdown"
 # weight = 7

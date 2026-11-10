@@ -1,6 +1,7 @@
 <head>
 	<meta charset="utf-8">
 	{{ $siteTitle := site.Title }}
+	{{ $isResourcePage := and (eq .Section "resources") (ne .Kind "section") }}
 	{{ $siteDescription := site.Params.seo.siteDescription | default site.Params.description | default $siteTitle }}
 	{{ $homeSeo := site.Params.seo.home | default dict }}
 	{{ $pageTitle := .Title | default $siteTitle }}
@@ -92,8 +93,13 @@
 	{{ "<!-- mobile responsive meta -->" | safeHTML }}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+{{ if $isResourcePage }}
+<link rel="preload" href="{{ `/fonts/anaheim-latin-400-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ `/fonts/quattrocento-sans-latin-400-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
+{{ else }}
 	<link rel="preload" href="{{ `/fonts/inter-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="{{ `/fonts/eb-garamond-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
+	{{ end }}
 	<meta name="description" content="{{ $description }}">
 	{{ if gt (len $keywords) 0 }}
 	<meta name="keywords" content="{{ delimit $keywords `, ` }}">
@@ -110,6 +116,7 @@
 	<meta property="og:url" content="{{ $pageURL }}">
 	{{ with $socialImage }}
 	<meta property="og:image" content="{{ . }}">
+		{{ with $.Params.image_alt }}<meta property="og:image:alt" content="{{ . | plainify | htmlEscape }}">{{ end }}
 	{{ end }}
 
 	<meta name="twitter:card" content="{{ if $socialImage }}summary_large_image{{ else }}summary{{ end }}">
@@ -126,12 +133,31 @@
 	{{ end }}
 	{{ with $socialImage }}
 	<meta name="twitter:image" content="{{ . }}">
+		{{ with $.Params.image_alt }}<meta name="twitter:image:alt" content="{{ . | plainify | htmlEscape }}">{{ end }}
 	{{ end }}
 
 	<!-- theme meta -->
 	<meta name="theme-name" content="Christian Guzman Hugo Theme" />
 	{{ hugo.Generator }}
 
+	{{ if $isResourcePage }}
+		{{ $resourceStyle := .Params.resource_style | default "index" }}
+		{{ $resourceCssParts := slice }}
+		{{ range slice "css/custom/00-fonts.css" "css/resources/tokens.css" }}
+			{{ with resources.Get . }}
+				{{ $resourceCssParts = $resourceCssParts | append . }}
+			{{ end }}
+		{{ end }}
+		{{ with resources.Get (printf "css/resources/%s.css" $resourceStyle) }}
+			{{ $resourceCssParts = $resourceCssParts | append . }}
+		{{ else }}
+			{{ errorf "Missing resource stylesheet for %q: css/resources/%s.css" $.RelPermalink $resourceStyle }}
+		{{ end }}
+		{{ $resourceCss := $resourceCssParts | resources.Concat (printf "css/resources/%s.bundle.css" $resourceStyle) | minify | fingerprint "sha384" }}
+		<link rel="preload" href="{{ $resourceCss.RelPermalink }}" as="style">
+		<link rel="stylesheet" href="{{ $resourceCss.RelPermalink }}" integrity="{{ $resourceCss.Data.Integrity }}" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="{{ $resourceCss.RelPermalink }}"></noscript>
+	{{ else }}
 	{{ "<!-- plugins -->" | safeHTML }}
 	{{ $vendorCssParts := slice }}
 	{{ range site.Params.plugins.css }}
@@ -195,6 +221,7 @@
 		<noscript>
 			<link rel="stylesheet" href="{{ $siteCss.RelPermalink }}">
 		</noscript>
+	{{ end }}
 	{{ end }}
 
 	{{ "<!--Favicon-->" | safeHTML }}
@@ -268,6 +295,10 @@
 			{{ $articleSchema = merge $articleSchema (dict "image" (slice .)) }}
 		{{ end }}
 	<script type="application/ld+json">{{ $articleSchema | jsonify | safeJS }}</script>
+	{{ end }}
+
+	{{ if .Params.resource }}
+		{{ partial "resource-schema.html" . }}
 	{{ end }}
 
 	{{ with site.Params.google_analytics_id }}

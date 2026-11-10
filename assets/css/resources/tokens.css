@@ -1,0 +1,12 @@
+:root {
+  --resource-bg: #111310;
+  --resource-bg-raised: #1a1d18;
+  --resource-ink: #f0ede4;
+  --resource-muted: #c5c3b9;
+  --resource-line: rgb(240 237 228 / 20%);
+  --resource-accent: #e5bc5e;
+  --resource-display: Anaheim, sans-serif;
+  --resource-body: "Quattrocento Sans", sans-serif;
+  --resource-mono: "Courier New", monospace;
+  --resource-measure: 68ch;
+}
