@@ -14,3 +14,5 @@
 @media(max-width:700px){.hero-copy{min-width:0;width:100%}.hero h1{overflow-wrap:normal}.nav nav{min-width:0}.nav .nav-install{white-space:nowrap}}
 
 @media(max-width:700px){.loopard-page .nav{display:flex;justify-content:space-between}.loopard-page .nav nav{width:auto;min-width:0;flex:none}.loopard-page .nav .nav-install{font-size:10px;white-space:nowrap}.hero-copy{max-width:calc(100vw - 36px)}.hero h1{font-size:40px;white-space:normal}.hero h1 em{white-space:normal;overflow-wrap:break-word}.hero-lede{max-width:100%;width:auto}}
+
+.loopard-page .nav{position:sticky;top:0;z-index:20;background:var(--cream)}
