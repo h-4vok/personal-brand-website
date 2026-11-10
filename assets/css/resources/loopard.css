@@ -17,3 +17,16 @@
 
 .loopard-page .nav{position:sticky;top:0;z-index:20;background:var(--cream)}
 .loopard-page .nav.wrap{width:100%;max-width:none;padding-inline:max(20px,calc((100vw - 1320px)/2))}
+.loopard-page .nav{align-items:center}
+.loopard-page .nav-install{display:inline-flex;align-items:center;align-self:center;min-height:36px;border:0;padding:0;color:var(--orange);line-height:1}
+.brandmark{width:40px;height:40px;background:transparent}
+.brandmark svg{display:block;width:100%;height:100%}
+.brand-orbit{fill:var(--ink)}
+.brand-loop{fill:none;stroke:var(--cream);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.brand-rosette{fill:var(--orange)}
+.brand-rosette-core{fill:var(--ink)}
+.footer-brand{display:inline-flex;align-items:center;gap:7px}
+.footer-brand svg{width:30px;height:30px}
+.install-command{margin-top:14px}
+.install-command>span{display:block;margin-bottom:6px;color:#efa369;font:500 10px/1.4 "DM Mono",Consolas,monospace;letter-spacing:.12em}
+.install-command pre{margin:0;padding:12px 14px;font-size:11px}
