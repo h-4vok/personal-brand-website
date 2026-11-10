@@ -1,0 +1,108 @@
+{{ define "main" }}
+<a class="loopard-skip" href="#loopard-main">Skip to content</a>
+<div class="loopard-page">
+  <header class="loopard-nav">
+    <a class="loopard-brand" href="{{ "/resources/loopard/" | relURL }}" aria-label="LoopARD home"><span class="loopard-brand__mark" aria-hidden="true">L</span>LoopARD</a>
+    <nav aria-label="LoopARD navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#control">Human control</a>
+      <a class="loopard-nav__cta" href="#install">Get LoopARD <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="loopard-main">
+    <section class="loopard-hero" aria-labelledby="loopard-title">
+      <div class="loopard-hero__copy">
+        <p class="loopard-eyebrow"><span></span> MULTI-AGENT ORCHESTRATION</p>
+        <h1 id="loopard-title">Complex work.<br><em>One clear loop.</em></h1>
+        <p class="loopard-lede">Plan the work with your AI agent. Coordinate specialist agents. Stay in control from first task to final check.</p>
+        <div class="loopard-actions">
+          <a class="loopard-button" href="#install">Explore LoopARD <span aria-hidden="true">↓</span></a>
+          <span class="loopard-license"><strong>MIT</strong> Free to use, including commercially</span>
+        </div>
+        <p class="loopard-platforms">An Agent Skill for Codex and Claude Code</p>
+      </div>
+      <figure class="loopard-orchestration" aria-labelledby="orchestration-caption">
+        <div class="loopard-orchestration__top"><span>WORKFLOW OVERVIEW</span><span class="loopard-live"><i></i> HUMAN-LED</span></div>
+        <div class="loopard-flow">
+          <div class="loopard-flow__human"><span class="loopard-node-icon" aria-hidden="true">H</span><strong>Your goal</strong><small>Scope and success</small></div>
+          <svg class="loopard-flow__wires" viewBox="0 0 600 290" preserveAspectRatio="none" role="img" aria-label="A human defines a task, LoopARD coordinates three agents, and their work returns for review.">
+            <path class="loopard-wire" d="M103 145 H215 M345 145 H410 M410 145 V75 H450 M410 145 H450 M410 145 V215 H450" />
+            <path class="loopard-wire loopard-wire--return" d="M515 75 H410 V145 H345" />
+            <circle class="loopard-packet loopard-packet--one" r="5"><animateMotion dur="3.4s" repeatCount="indefinite" path="M103 145 H215 M345 145 H410 M410 145 V75 H450" /></circle>
+            <circle class="loopard-packet loopard-packet--two" r="5"><animateMotion dur="3.8s" begin=".8s" repeatCount="indefinite" path="M103 145 H215 M345 145 H450" /></circle>
+            <circle class="loopard-packet loopard-packet--three" r="5"><animateMotion dur="4.1s" begin="1.5s" repeatCount="indefinite" path="M103 145 H215 M345 145 H410 M410 145 V215 H450" /></circle>
+            <circle class="loopard-packet loopard-packet--return" r="4"><animateMotion dur="3.5s" begin="1.2s" repeatCount="indefinite" path="M515 75 H410 V145 H345" /></circle>
+          </svg>
+          <div class="loopard-flow__coordinator"><span class="loopard-coordinator-mark" aria-hidden="true">L</span><strong>LoopARD</strong><small>Plan · coordinate · verify</small></div>
+          <div class="loopard-flow__agents" aria-label="Specialist agents">
+            <div class="loopard-agent"><i></i><strong>Agent 01</strong><small>Research</small></div>
+            <div class="loopard-agent"><i></i><strong>Agent 02</strong><small>Build</small></div>
+            <div class="loopard-agent"><i></i><strong>Agent 03</strong><small>Review</small></div>
+          </div>
+        </div>
+        <figcaption id="orchestration-caption">One conversation. Coordinated work. You stay in the loop.</figcaption>
+      </figure>
+      <div class="loopard-hero__foot"><span>BUILT FOR COMPLEX, DIVISIBLE WORK</span><span>01 / 03</span></div>
+    </section>
+
+    <section id="how-it-works" class="loopard-section loopard-process" aria-labelledby="process-title">
+      <div class="loopard-section__intro">
+        <p class="loopard-eyebrow">A CLEAR WAY TO WORK</p>
+        <h2 id="process-title">From first brief<br>to verified result.</h2>
+        <p>LoopARD helps shape the run before agents start, then keeps the work and decisions visible as it moves.</p>
+      </div>
+      <figure class="loopard-cycle" aria-labelledby="cycle-caption">
+        <div class="loopard-cycle__head"><span>THE WORK LOOP</span><span>DESIGN → RUN → REVIEW</span></div>
+        <div class="loopard-cycle__track" aria-label="Design the run, coordinate agents, review progress, then adjust with the human">
+          <div class="loopard-cycle__line"><i></i></div>
+          <article class="loopard-step loopard-step--one"><span>01</span><strong>Design</strong><small>Agree scope and success</small></article>
+          <article class="loopard-step loopard-step--two"><span>02</span><strong>Coordinate</strong><small>Assign roles and dependencies</small></article>
+          <article class="loopard-step loopard-step--three"><span>03</span><strong>Review</strong><small>Track progress and blockers</small></article>
+          <article class="loopard-step loopard-step--four"><span>04</span><strong>Adjust</strong><small>Steer, pause or replan</small></article>
+        </div>
+        <figcaption id="cycle-caption">A bounded run, with checkpoints and a human decision-maker.</figcaption>
+      </figure>
+    </section>
+
+    <section class="loopard-section loopard-visibility" aria-labelledby="visibility-title">
+      <div class="loopard-visibility__copy">
+        <p class="loopard-eyebrow">SEE WHAT’S HAPPENING</p>
+        <h2 id="visibility-title">Progress you can follow.<br>Decisions you can make.</h2>
+        <p>A local, read-only dashboard brings task status, milestones, blockers and key decisions into view.</p>
+        <p class="loopard-note"><span aria-hidden="true">✓</span> Prompts and full agent responses stay out of the dashboard.</p>
+      </div>
+      <figure class="loopard-dashboard" aria-labelledby="dashboard-caption">
+        <div class="loopard-dashboard__bar"><span class="loopard-dashboard__brand"><i>L</i> RUN OVERVIEW</span><span class="loopard-status"><i></i> RUNNING</span></div>
+        <div class="loopard-dashboard__body">
+          <div class="loopard-dashboard__summary"><span>DELIVERY PLAN</span><strong>Implementation review</strong><small>3 agents · 2 checkpoints</small></div>
+          <ol class="loopard-events">
+            <li class="loopard-event"><span class="loopard-event__icon">✓</span><span><strong>Scope agreed</strong><small>Run design confirmed</small></span><time>09:41</time></li>
+            <li class="loopard-event"><span class="loopard-event__icon">↗</span><span><strong>Agents started</strong><small>Three workstreams underway</small></span><time>09:43</time></li>
+            <li class="loopard-event"><span class="loopard-event__icon loopard-event__icon--human">H</span><span><strong>Decision needed</strong><small>Review checkpoint reached</small></span><time>NOW</time></li>
+          </ol>
+        </div>
+        <figcaption id="dashboard-caption">A live event stream, without exposing prompts or transcripts.</figcaption>
+      </figure>
+    </section>
+
+    <section id="control" class="loopard-control" aria-labelledby="control-title">
+      <div class="loopard-control__copy">
+        <p class="loopard-eyebrow">THE HUMAN STAYS IN CHARGE</p>
+        <h2 id="control-title">Agents do the work.<br>You set the boundaries.</h2>
+        <p>Agree the scope, access, budget and finish line before the run. Step in when a decision could change the plan.</p>
+      </div>
+      <div class="loopard-control__diagram" role="img" aria-label="The run pauses at a human decision, then resumes when the person steers it.">
+        <div class="loopard-control__route"><span class="loopard-route-node">RUN</span><span class="loopard-route-line"><i></i></span><span class="loopard-human-gate"><b>H</b><small>YOUR<br>DECISION</small></span><span class="loopard-route-line loopard-route-line--after"><i></i></span><span class="loopard-route-node loopard-route-node--end">RESUME</span></div>
+        <div class="loopard-control__labels"><span>Within agreed boundaries</span><span>Pause · steer · continue</span></div>
+      </div>
+    </section>
+
+    <section id="install" class="loopard-install" aria-labelledby="install-title">
+      <div><p class="loopard-eyebrow">OPEN SOURCE · MIT LICENSE</p><h2 id="install-title">Put the work in motion.</h2><p>Install LoopARD in your agent environment and start with one complex task.</p></div>
+      <div class="loopard-install__command"><span>INSTALL WITH SKILLS CLI</span><pre><code>npx skills add h-4vok/loopard --skill loopard -a codex -a claude-code</code></pre><a href="{{ .Params.resource.repository }}">View source and license <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+  <footer class="loopard-footer"><a href="{{ "/resources/" | relURL }}">← All resources</a><span>LOOPARD · CREATED BY CHRISTIAN GUZMAN</span><a href="{{ site.Home.RelPermalink }}">Christian Guzman ↗</a></footer>
+</div>
+{{ end }}

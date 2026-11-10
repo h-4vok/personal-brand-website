@@ -94,8 +94,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 {{ if $isResourcePage }}
+{{ if eq .Params.resource_style "loopard" }}
+<link rel="preload" href="{{ `/fonts/inter-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
+{{ else }}
 <link rel="preload" href="{{ `/fonts/anaheim-latin-400-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ `/fonts/quattrocento-sans-latin-400-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
+{{ end }}
 {{ else }}
 	<link rel="preload" href="{{ `/fonts/inter-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="{{ `/fonts/eb-garamond-latin-wght-normal.woff2` | absURL }}" as="font" type="font/woff2" crossorigin>
