@@ -1,6 +1,6 @@
 +++
-title = "LoopARD: Multi-Agent Orchestration for Codex and Claude Code"
-description = "Plan multi-agent work, coordinate a bounded run, and follow progress in a local dashboard with LoopARD, an open-source Agent Skill."
+title = "LoopARD: Design Multi-Agent Work Loops Together"
+description = "Turn a complex goal into a clear plan for coordinated AI agents. LoopARD helps you design the work, review progress, and steer the run."
 keywords = ["multi-agent orchestration", "agent orchestration skill", "Codex multi-agent", "Claude Code agents", "Agent Skills"]
 author = "Christian Guzman"
 image = "images/resources/loopard/loopard-social.png"
