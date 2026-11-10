@@ -1,6 +1,8 @@
 {{ define "main" }}
 {{ $leopard := resources.Get "images/resources/loopard/leopard-leap.png" }}
+{{ $controlRoom := resources.Get "images/resources/loopard/control-room-leopard.png" }}
 {{ if not $leopard }}{{ errorf "Missing LoopARD artwork" }}{{ end }}
+{{ if not $controlRoom }}{{ errorf "Missing LoopARD control-room artwork" }}{{ end }}
 <div class="loopard-page">
 <a class="skip" href="#main">Skip to content</a>
   <header class="nav wrap">
@@ -23,32 +25,122 @@
 
     <section class="flow-section section-pad" aria-labelledby="flow-title">
       <div class="wrap">
-        <div class="section-head"><p class="kicker">FIG. 01 / THE HANDOFF</p><h2 id="flow-title">One goal becomes<br><em>coordinated work.</em></h2><p>You bring the outcome. LoopARD helps you design a run, assign specialist work, and bring findings back for review.</p></div>
-        <div class="flow-board" role="img" aria-label="Illustrative flow: your goal goes to LoopARD, which coordinates research, build and review agents. Results return to a human review point.">
-          <div class="flow-top"><span>ILLUSTRATIVE ORCHESTRATION</span><span>HUMAN-LED / LOCAL</span></div>
+        <div class="section-head"><p class="kicker">FIG. 01 / THE HANDOFF</p><h2 id="flow-title">One goal becomes<br><em>coordinated work.</em></h2><p>LoopARD turns a spoken goal into a clear spec, then coordinates five builders, shared work and two review passes.</p></div>
+        <figure class="flow-board" aria-labelledby="flow-diagram-title" aria-describedby="flow-diagram-copy">
+          <div class="flow-top"><span>DESIGN THE LOOP · SEE IT WORK</span><span>EXAMPLE SYSTEM / ADAPTABLE RUN</span></div>
           <div class="flow-map">
-            <svg class="flow-lines" viewBox="0 0 1000 360" preserveAspectRatio="none" aria-hidden="true">
-              <defs><marker id="flow-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#789782"/></marker><marker id="return-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#d46823"/></marker></defs>
-              <path class="wire goal-wire" d="M130 180 H345" marker-end="url(#flow-arrow)"/>
-              <path class="wire outbound" d="M500 180 H580 V75 H725" marker-end="url(#flow-arrow)"/>
-              <path class="wire outbound" d="M500 180 H725" marker-end="url(#flow-arrow)"/>
-              <path class="wire outbound" d="M500 180 H580 V285 H725" marker-end="url(#flow-arrow)"/>
-              <path class="wire return-wire" d="M835 285 H900 V325 H410 V210" marker-end="url(#return-arrow)"/>
-              <circle class="packet packet-goal" r="6"><animateMotion dur="3.6s" repeatCount="indefinite" path="M130 180 H345"/></circle>
-              <circle class="packet packet-research" r="7"><animateMotion dur="4.3s" repeatCount="indefinite" path="M500 180 H580 V75 H725"/></circle>
-              <circle class="packet packet-build" r="7"><animateMotion dur="4.8s" begin="-1.4s" repeatCount="indefinite" path="M500 180 H725"/></circle>
-              <circle class="packet packet-review" r="7"><animateMotion dur="5.2s" begin="-2.8s" repeatCount="indefinite" path="M500 180 H580 V285 H725"/></circle>
-              <circle class="packet packet-return" r="7"><animateMotion dur="5.6s" begin="-1.2s" repeatCount="indefinite" path="M835 285 H900 V325 H410 V210"/></circle>
+            <svg class="flow-lines" viewBox="0 0 1320 670" role="img" aria-labelledby="flow-diagram-title flow-diagram-desc">
+              <title id="flow-diagram-title">A coordinated five-agent build loop</title>
+              <desc id="flow-diagram-desc">A person speaks a goal to LoopARD. LoopARD produces a specification and checkpoints. A work planner assigns five build agents. Their changes meet in a shared workspace, pass an independent and an adversarial review, and send feedback back to the builders. A control plane reports run metrics to LoopARD.</desc>
+              <defs>
+                <marker id="flow-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#789782"/></marker>
+                <marker id="flow-return-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#d46823"/></marker>
+                <marker id="flow-metric-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#132d25"/></marker>
+              </defs>
+              <g class="diagram-node goal-node">
+                <rect x="30" y="260" width="170" height="132"/>
+                <text class="node-no" x="48" y="285">01 / YOUR INPUT</text>
+                <text class="node-title" x="48" y="327">Your goal</text>
+                <text class="node-copy" x="48" y="351">Say what should change</text>
+                <circle class="person-disc" cx="164" cy="286" r="18"/>
+                <circle class="person-head" cx="163" cy="282" r="5"/>
+                <path class="person-body" d="M153 296c1-7 18-7 20 0"/>
+                <path class="speech-bubble" d="M144 250h35a7 7 0 0 1 7 7v13a7 7 0 0 1-7 7h-12l-7 6v-6h-16a7 7 0 0 1-7-7v-13a7 7 0 0 1 7-7Z"/>
+                <path class="speech-lines" d="M147 259h25m-25 6h18"/>
+              </g>
+
+              <g class="diagram-node loopard-node">
+                <rect x="250" y="245" width="210" height="160"/>
+                <text class="node-no" x="270" y="272">02 / SPEC + CONTROL</text>
+                <text class="loopard-title" x="270" y="305">LoopARD</text>
+                <text class="loopard-copy" x="270" y="327">Goal · roles · checks</text>
+                <image href="{{ $controlRoom.RelPermalink }}" x="278" y="330" width="174" height="70" preserveAspectRatio="xMidYMid meet"/>
+              </g>
+
+              <g class="diagram-node planner-node">
+                <rect x="500" y="80" width="200" height="115"/>
+                <text class="node-no" x="518" y="105">03 / WORK PLANNER</text>
+                <text class="node-title-small" x="518" y="132">Split the spec</text>
+                <text class="node-copy" x="518" y="154">Tasks + dependencies</text>
+                <text class="node-copy" x="518" y="174">Acceptance checks</text>
+              </g>
+
+              <text class="agent-group-label" x="760" y="31">04 / FIVE BUILD AGENTS</text>
+              <g class="diagram-agent agent-one"><rect x="760" y="54" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="82" r="13"/><path class="agent-rosette" d="M778 82c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="82" r="2"/><text class="agent-name" x="805" y="78">Build 01</text><text class="agent-task" x="805" y="95">UI changes</text></g>
+              <g class="diagram-agent agent-two"><rect x="760" y="126" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="154" r="13"/><path class="agent-rosette" d="M778 154c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="154" r="2"/><text class="agent-name" x="805" y="150">Build 02</text><text class="agent-task" x="805" y="167">API changes</text></g>
+              <g class="diagram-agent agent-three"><rect x="760" y="198" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="226" r="13"/><path class="agent-rosette" d="M778 226c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="226" r="2"/><text class="agent-name" x="805" y="222">Build 03</text><text class="agent-task" x="805" y="239">Test coverage</text></g>
+              <g class="diagram-agent agent-four"><rect x="760" y="270" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="298" r="13"/><path class="agent-rosette" d="M778 298c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="298" r="2"/><text class="agent-name" x="805" y="294">Build 04</text><text class="agent-task" x="805" y="311">Docs + examples</text></g>
+              <g class="diagram-agent agent-five"><rect x="760" y="342" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="370" r="13"/><path class="agent-rosette" d="M778 370c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="370" r="2"/><text class="agent-name" x="805" y="366">Build 05</text><text class="agent-task" x="805" y="383">Integration</text></g>
+
+              <g class="diagram-node workspace-node">
+                <rect x="1020" y="195" width="260" height="135"/>
+                <text class="node-no" x="1040" y="222">05 / SHARED WORKSPACE</text>
+                <text class="node-title-small" x="1040" y="250">Changes meet here</text>
+                <text class="node-copy" x="1040" y="274">One branch · one build</text>
+                <path class="workspace-mark" d="M1040 294h218m-218 12h160"/>
+              </g>
+
+              <g class="diagram-node review-node">
+                <rect x="760" y="445" width="220" height="96"/>
+                <text class="node-no" x="778" y="470">06A / INDEPENDENT</text>
+                <text class="node-title-small" x="778" y="498">Review</text>
+                <text class="node-copy" x="778" y="519">Check requirements + quality</text>
+              </g>
+              <g class="diagram-node adversarial-node">
+                <rect x="1020" y="445" width="260" height="96"/>
+                <text class="node-no" x="1038" y="470">06B / ADVERSARIAL</text>
+                <text class="node-title-small" x="1038" y="498">Try to break the work</text>
+                <text class="node-copy" x="1038" y="519">Send findings back to builders</text>
+              </g>
+
+              <g class="diagram-node control-node">
+                <rect x="30" y="490" width="250" height="110"/>
+                <text class="node-no" x="48" y="516">07 / CONTROL PLANE</text>
+                <text class="node-title-small" x="48" y="544">Watch the run</text>
+                <text class="node-copy" x="48" y="565">Progress · blockers · usage</text>
+                <text class="node-copy" x="48" y="584">Metrics back to LoopARD</text>
+              </g>
+
+              <g class="wires" aria-hidden="true">
+                <path class="wire goal-wire" d="M200 326 H250" marker-end="url(#flow-arrow)"/>
+                <path class="wire spec-wire" d="M460 325 H480 V137 H500" marker-end="url(#flow-arrow)"/>
+                <path class="wire planner-trunk" d="M700 137 H730 V370"/>
+                <path class="wire planner-branch" d="M730 82 H760" marker-end="url(#flow-arrow)"/>
+                <path class="wire planner-branch" d="M730 154 H760" marker-end="url(#flow-arrow)"/>
+                <path class="wire planner-branch" d="M730 226 H760" marker-end="url(#flow-arrow)"/>
+                <path class="wire planner-branch" d="M730 298 H760" marker-end="url(#flow-arrow)"/>
+                <path class="wire planner-branch" d="M730 370 H760" marker-end="url(#flow-arrow)"/>
+                <path class="wire build-branch" d="M980 82 H1000" marker-end="url(#flow-arrow)"/>
+                <path class="wire build-branch" d="M980 154 H1000" marker-end="url(#flow-arrow)"/>
+                <path class="wire build-branch" d="M980 226 H1000" marker-end="url(#flow-arrow)"/>
+                <path class="wire build-branch" d="M980 298 H1000" marker-end="url(#flow-arrow)"/>
+                <path class="wire build-branch" d="M980 370 H1000" marker-end="url(#flow-arrow)"/>
+                <path class="wire build-trunk" d="M1000 82 V370 M1000 260 H1020" marker-end="url(#flow-arrow)"/>
+                <path class="wire review-branch" d="M1150 330 V415 H870 V445" marker-end="url(#flow-arrow)"/>
+                <path class="wire review-branch" d="M1150 330 V445" marker-end="url(#flow-arrow)"/>
+                <path class="wire return-wire" d="M870 541 V610 H710 V82 M1150 541 V610 H710"/>
+                <path class="wire return-branch" d="M710 82 H760" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire return-branch" d="M710 154 H760" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire return-branch" d="M710 226 H760" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire return-branch" d="M710 298 H760" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire return-branch" d="M710 370 H760" marker-end="url(#flow-return-arrow)"/>
+                <path class="wire metrics-wire" d="M1280 260 H1300 V545 H280" marker-end="url(#flow-metric-arrow)"/>
+                <path class="wire metrics-return" d="M155 490 V430 H355 V405" marker-end="url(#flow-metric-arrow)"/>
+              </g>
+
+              <circle class="packet packet-goal" r="6"><animateMotion dur="3s" repeatCount="indefinite" path="M200 326 H250"/></circle>
+              <circle class="packet packet-spec" r="6"><animateMotion dur="4s" repeatCount="indefinite" path="M460 325 H480 V137 H500"/></circle>
+              <circle class="packet packet-plan" r="6"><animateMotion dur="4.8s" repeatCount="indefinite" path="M700 137 H730 V82 H760"/></circle>
+              <circle class="packet packet-build" r="6"><animateMotion dur="4.2s" begin="-1.2s" repeatCount="indefinite" path="M980 226 H1000 V260 H1020"/></circle>
+              <circle class="packet packet-review" r="6"><animateMotion dur="4.8s" begin="-2s" repeatCount="indefinite" path="M1150 330 V415 H870 V445"/></circle>
+              <circle class="packet packet-feedback" r="6"><animateMotion dur="6s" begin="-2.6s" repeatCount="indefinite" path="M870 541 V610 H710 V82 H760"/></circle>
+              <circle class="packet packet-metrics" r="6"><animateMotion dur="7s" begin="-3s" repeatCount="indefinite" path="M1280 260 H1300 V640 H280 V600"/></circle>
             </svg>
-            <div class="node goal"><span class="node-no">01 / INPUT</span><strong>Your goal</strong><small>What good looks like</small></div>
-            <div class="node coordinator"><span class="node-no">02 / CO-DESIGN</span><strong>LoopARD</strong><small>Plan · roles · checkpoints</small></div>
-            <div class="agents"><div class="agent agent-a"><span>03A / RESEARCH</span><strong>Find context</strong></div><div class="agent agent-b"><span>03B / BUILD</span><strong>Make progress</strong></div><div class="agent agent-c"><span>03C / REVIEW</span><strong>Check the work</strong></div></div>
           </div>
-          <div class="flow-bottom"><span>Messages travel to specialists. Findings return for review.</span><span>← HUMAN REVIEW</span></div>
-        </div>
+          <div class="flow-bottom"><span id="flow-diagram-copy">The planner splits the spec. Five agents build in parallel. Independent and adversarial reviews send findings back; a run monitor reports progress, blockers and usage to LoopARD.</span><span>FEEDBACK CLOSES THE LOOP</span></div>
+        </figure>
       </div>
     </section>
-
     <section class="method section-pad" id="method" aria-labelledby="method-title"><div class="wrap method-grid"><div class="method-intro"><p class="kicker">FIG. 02 / THE METHOD</p><h2 id="method-title">A loop you<br>can <em>shape.</em></h2><p>Agree the plan before agents start. Review what changes as the work develops. Adjust the next step together.</p><span class="side-note">THE PLAN IS A WORKING DOCUMENT, NOT A PROMISE.</span></div><div class="loop-plate"><div class="plate-top"><span>DESIGN → RUN → REVIEW</span><span>REPEAT AS NEEDED</span></div><div class="loop-wheel"><div class="wheel-ring"></div><div class="wheel-stage stage-one"><b>01</b><strong>Design</strong><small>Goal, roles, steps</small></div><div class="wheel-stage stage-two"><b>02</b><strong>Run</strong><small>Specialists coordinate</small></div><div class="wheel-stage stage-three"><b>03</b><strong>Review</strong><small>Inspect, decide, steer</small></div><div class="wheel-center">YOUR<br>CALL</div><span class="wheel-pointer" aria-hidden="true"></span></div><p class="plate-caption">The cycle stays visible. You choose when to pause, change direction, or continue.</p></div></div></section>
 
     <section class="visibility section-pad" id="visibility" aria-labelledby="visibility-title"><div class="wrap visibility-grid"><div class="visibility-intro"><p class="kicker">FIG. 03 / THE FIELD LOG</p><h2 id="visibility-title">See what moved.<br><em>See what needs you.</em></h2><p>A local, read-only dashboard tracks progress, milestones, blockers and decisions during a run.</p><p class="privacy-note">Prompts and full agent responses stay out of the dashboard.</p></div><figure class="log"><div class="log-header"><span>LOOPARD / FIELD LOG</span><span>ILLUSTRATIVE VIEW</span></div><div class="log-title"><span>EXAMPLE RUN / IMPLEMENTATION REVIEW</span><strong>Three specialists. One review point.</strong></div><ol class="events"><li><span class="event-time">09:41</span><span class="event-dot"></span><span><strong>Scope agreed</strong><small>Run design confirmed</small></span><span class="event-tag">DONE</span></li><li><span class="event-time">09:43</span><span class="event-dot"></span><span><strong>Workstreams started</strong><small>Research, build and review assigned</small></span><span class="event-tag">MOVING</span></li><li><span class="event-time">09:47</span><span class="event-dot"></span><span><strong>Finding shared</strong><small>Research informs build</small></span><span class="event-tag">HANDOFF</span></li><li class="decision"><span class="event-time">09:52</span><span class="event-dot"></span><span><strong>Decision needed</strong><small>Review checkpoint reached</small></span><span class="event-tag">YOUR CALL</span></li></ol><figcaption>Example events only. No live run data is shown.</figcaption></figure></div></section>

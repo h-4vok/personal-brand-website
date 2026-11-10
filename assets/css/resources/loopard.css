@@ -30,3 +30,38 @@
 .install-command{margin-top:14px}
 .install-command>span{display:block;margin-bottom:6px;color:#efa369;font:500 10px/1.4 "DM Mono",Consolas,monospace;letter-spacing:.12em}
 .install-command pre{margin:0;padding:12px 14px;font-size:11px}
+
+.flow-board .flow-map{height:auto;min-height:0;display:block;padding:18px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-color:var(--mint) var(--paper)}
+.flow-lines{position:relative;inset:auto;display:block;width:100%;height:auto;min-width:1120px;overflow:visible}
+.flow-lines .wire{fill:none;stroke:#789782;stroke-width:2.5;stroke-dasharray:6 6;stroke-linecap:round;stroke-linejoin:round}
+.flow-lines .goal-wire,.flow-lines .spec-wire{stroke:var(--orange);stroke-dasharray:none}
+.flow-lines .return-wire{stroke:var(--orange);stroke-width:2.5;stroke-dasharray:3 7}
+.flow-lines .metrics-wire,.flow-lines .metrics-return{stroke:var(--ink);stroke-width:2;stroke-dasharray:2 7}
+.flow-lines .diagram-node rect{fill:var(--cream);stroke:var(--ink);stroke-width:1.5}
+.flow-lines .diagram-agent rect{fill:var(--cream);stroke:var(--ink);stroke-width:1.5}
+.flow-lines .loopard-node rect{fill:var(--ink);stroke:var(--orange);stroke-width:3}
+.flow-lines .node-no,.flow-lines .agent-group-label{fill:var(--orange);font:500 10px "DM Mono",Consolas,monospace;letter-spacing:1.2px}
+.flow-lines .node-title,.flow-lines .node-title-small,.flow-lines .loopard-title{fill:var(--ink);font:600 20px Fraunces,Georgia,serif}
+.flow-lines .node-title{font-size:23px}
+.flow-lines .loopard-title{fill:var(--cream);font-size:26px}
+.flow-lines .loopard-copy,.flow-lines .node-copy{fill:var(--muted);font:12px "DM Sans",Arial,sans-serif}
+.flow-lines .loopard-copy{fill:#c5d4c8}
+.flow-lines .person-disc{fill:var(--mint)}
+.flow-lines .person-head{fill:var(--ink)}
+.flow-lines .person-body{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.flow-lines .speech-bubble{fill:var(--cream);stroke:var(--orange);stroke-width:2}
+.flow-lines .speech-lines{fill:none;stroke:var(--orange);stroke-width:1.5;stroke-linecap:round}
+.flow-lines .agent-avatar{fill:var(--mint);stroke:var(--ink);stroke-width:1}
+.flow-lines .agent-rosette{fill:var(--orange)}
+.flow-lines .agent-core{fill:var(--ink)}
+.flow-lines .agent-name{fill:var(--ink);font:700 13px "DM Sans",Arial,sans-serif}
+.flow-lines .agent-task{fill:var(--muted);font:11px "DM Sans",Arial,sans-serif}
+.flow-lines .workspace-mark{fill:none;stroke:var(--mint);stroke-width:3;stroke-linecap:round}
+.flow-lines .packet{fill:var(--orange)}
+.flow-lines .packet-build,.flow-lines .packet-plan{fill:var(--mint)}
+.flow-lines .packet-feedback{fill:#e6a05b}
+.flow-lines .packet-metrics{fill:var(--ink)}
+.flow-bottom{align-items:flex-start}
+.flow-bottom span:first-child{max-width:850px;font-family:"DM Sans",Arial,sans-serif;font-size:13px;line-height:1.7;letter-spacing:0}
+.flow-bottom span:last-child{flex:0 0 auto}
+@media(max-width:700px){.flow-board .flow-map{padding:12px}.flow-lines{width:1120px;min-width:1120px}.flow-top,.flow-bottom{flex-direction:column}.flow-bottom span:first-child{font-size:12px}.flow-bottom span:last-child{font-size:9px}}
