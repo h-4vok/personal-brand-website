@@ -1,0 +1,111 @@
+{{ $state := .state }}
+<article class="claude-window claude-window-{{ $state }}" aria-label="Claude desktop interface mockup, {{ $state }} state" id="{{ .id }}">
+  <div class="claude-window-menubar" aria-hidden="true">
+    <strong>Claude</strong>
+    <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Window</span><span>Help</span>
+    <span class="claude-window-menu-time">Wed Nov 11&nbsp; 17:51</span>
+  </div>
+  <div class="claude-window-titlebar">
+    <div class="claude-window-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    <span class="claude-window-brand"><span class="claude-window-spark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 2v28M2 16h28M6.1 6.1l19.8 19.8M25.9 6.1 6.1 25.9"/><circle cx="16" cy="16" r="3"/></svg></span> Claude</span>
+    {{ if ne $state "empty" }}<span class="claude-window-session-title">LoopARD · Team onboarding review</span>{{ end }}
+    <span class="claude-window-top-actions" aria-hidden="true"><i></i><i></i><i></i></span>
+  </div>
+
+  <div class="claude-window-workspace">
+    <aside class="claude-sidebar" aria-label="Claude navigation">
+      <nav class="claude-sidebar-primary" aria-label="Main navigation">
+        <span class="claude-sidebar-item"><b aria-hidden="true">＋</b> New</span>
+        <span class="claude-sidebar-item"><b aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.4"/><path d="m10.2 10.2 3 3"/></svg></b> Search</span>
+        <span class="claude-sidebar-item"><b aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg></b> Projects</span>
+        <span class="claude-sidebar-item"><b aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 2.5h5l3 3v8H4z"/><path d="M9 2.5v3h3M6 8.5h4M6 11h4"/></svg></b> Artifacts</span>
+        <span class="claude-sidebar-item"><b aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5"/><path d="M8 4.7V8l2.2 1.5"/></svg></b> Scheduled</span>
+        <span class="claude-sidebar-item"><b aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 4h10M3 8h10M3 12h10"/><circle cx="6" cy="4" r="1.4"/><circle cx="10" cy="8" r="1.4"/><circle cx="7" cy="12" r="1.4"/></svg></b> Customize</span>
+      </nav>
+      <div class="claude-sidebar-group">
+        <span class="claude-sidebar-label">PROJECT</span>
+        <span class="claude-sidebar-project"><i aria-hidden="true"></i> LoopARD</span>
+      </div>
+      <div class="claude-sidebar-group claude-sidebar-recent">
+        <span class="claude-sidebar-label">RECENTS</span>
+        <span>Team onboarding review</span>
+        <span>Shape the first-run loop</span>
+        <span>Review agent handoffs</span>
+        <span>LoopARD launch notes</span>
+      </div>
+      <div class="claude-sidebar-account"><span class="claude-sidebar-avatar">CG</span> Christian Guzman</div>
+    </aside>
+
+    {{ if eq $state "empty" }}
+      <section class="claude-home" aria-label="New conversation">
+        <div class="claude-home-content">
+          <h2><span class="claude-window-spark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 2v28M2 16h28M6.1 6.1l19.8 19.8M25.9 6.1 6.1 25.9"/><circle cx="16" cy="16" r="3"/></svg></span> Back at it, Christian</h2>
+          <div class="claude-usage"><span>You’ve used 91% of your weekly limit</span><span>Request usage credits</span><b aria-hidden="true">×</b></div>
+          <div class="claude-composer claude-composer-home">
+            <p>How can LoopARD help you today?</p>
+            <div class="claude-composer-tools"><span aria-hidden="true">＋</span><span>Project or folder&nbsp;⌄</span><span>Haiku 5.5&nbsp; Medium&nbsp; Manual</span><span aria-hidden="true">⌁</span></div>
+          </div>
+          <div class="claude-artifacts">
+            <div class="claude-artifacts-heading"><span>Recent artifacts</span><span>View all</span></div>
+            <div class="claude-artifacts-grid">
+              <div><i class="claude-artifact-thumb claude-artifact-thumb-guide"></i><span>LoopARD field guide</span><small>now</small></div>
+              <div><i class="claude-artifact-thumb claude-artifact-thumb-board"></i><span>Workflow board</span><small>now</small></div>
+              <div><i class="claude-artifact-thumb claude-artifact-thumb-map"></i><span>Agent map</span><small>1h ago</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {{ else if eq $state "conversation" }}
+      <section class="claude-chat" aria-label="Conversation about a team onboarding review">
+        <div class="claude-chat-thread">
+          <div class="claude-message claude-message-user"><p>Help me find where new teams get stuck.</p></div>
+          <div class="claude-thinking" aria-hidden="true"><span>Claude is thinking</span><i></i><i></i><i></i></div>
+          <div class="claude-message claude-message-assistant">
+            <p>Let’s shape the work around that outcome. I’d start by mapping the first-run steps, reviewing the guidance people see, and comparing where the two don’t line up.</p>
+            <p>Then we can bring those findings together and decide what to address first. Would that give us a useful picture?</p>
+            <div class="claude-proposal">
+              <div class="claude-proposal-title"><span class="claude-proposal-mark" aria-hidden="true">↗</span><span><small>WORKFLOW PROPOSAL</small><strong>Find the friction in first-run onboarding</strong></span></div>
+              <ol><li><b>Map</b> the first-run steps</li><li><b>Review</b> the supporting guidance</li><li><b>Compare</b> both and agree the next move</li></ol>
+              <span class="claude-proposal-hint">A working plan · adjust it together</span>
+            </div>
+          </div>
+          <div class="claude-message claude-message-user claude-message-short"><p>Yes. Let’s start with those three steps.</p></div>
+        </div>
+        <div class="claude-chat-composer"><div class="claude-composer"><p><span class="claude-composer-draft claude-composer-draft-first" aria-hidden="true">Help me find where new teams get stuck.</span><span class="claude-composer-draft claude-composer-draft-followup" aria-hidden="true">Yes. Let’s start with those three steps.</span><span class="claude-composer-ready">Reply to LoopARD…</span></p><div class="claude-composer-tools"><span aria-hidden="true">＋</span><span>LoopARD&nbsp;⌄</span><span>Sonnet 5.5&nbsp; Medium</span><span class="claude-composer-send" aria-hidden="true">↑</span></div></div><small>LoopARD helps design the work; you decide when the run begins.</small></div>
+      </section>
+    {{ else }}
+      <section class="claude-chat claude-chat-split" aria-label="Conversation with agent orchestration panel">
+        <div class="claude-chat-conversation">
+          <div class="claude-chat-thread">
+            <div class="claude-message claude-message-user orchestration-chat-prompt"><p>Find where teams stall on their first run. Suggest a fix.</p></div>
+            <div class="claude-message claude-message-assistant orchestration-chat-start"><p>I’ve started the review. Two agents are checking the setup journey and its guidance; a reviewer will compare their findings.</p></div>
+            <div class="claude-working orchestration-chat-working" aria-hidden="true"><span>LoopARD is coordinating the work</span><i></i><i></i><i></i></div>
+            <div class="claude-message claude-message-assistant orchestration-chat-result">
+              <p>The reviewer found a mismatch: the checklist asks teams to connect a repository before the guide explains how. I’d move that instruction earlier.</p>
+              <div class="claude-proposal orchestration-recommendation"><div class="claude-proposal-title"><span class="claude-proposal-mark" aria-hidden="true">↗</span><span><small>RECOMMENDED NEXT STEP</small><strong>Explain repository setup before the first-run checklist.</strong></span></div></div>
+            </div>
+          </div>
+          <div class="claude-chat-composer"><div class="claude-composer"><p><span class="claude-composer-draft orchestration-chat-draft" aria-hidden="true">Find where teams stall on their first run. Suggest a fix.</span><span class="claude-composer-ready">Message LoopARD…</span></p><div class="claude-composer-tools"><span aria-hidden="true">＋</span><span>LoopARD&nbsp;⌄</span><span>Sonnet 5.5&nbsp; Medium</span><span class="claude-composer-send" aria-hidden="true">↑</span></div></div></div>
+        </div>
+        <aside class="orchestration-panel" aria-label="Illustrative agent orchestration">
+          <header class="orchestration-panel-header"><span><small>LOOPARD / ORCHESTRATION</small><strong>First-run onboarding review</strong></span><span class="orchestration-panel-live" aria-hidden="true"><i></i><span class="orchestration-status"><span class="orchestration-state-waiting">WAITING</span><span class="orchestration-state-running">RUNNING</span><span class="orchestration-state-review">REVIEW</span><span class="orchestration-state-complete orchestration-status-static">READY</span></span></span></header>
+          <div class="orchestration-panel-summary"><span>Workflow</span><b>2 agents · 1 reviewer</b><span class="orchestration-panel-progress"><i></i></span><small>LoopARD coordinates the run and returns the reviewed finding.</small></div>
+          <div class="orchestration-flow">
+            <article class="orchestration-flow-human orchestration-status-card"><span class="orchestration-flow-role">HUMAN INPUT</span><strong>You</strong><small>Share the goal to start</small><span class="orchestration-status" aria-hidden="true"><span class="orchestration-state-writing">WRITING</span><span class="orchestration-state-sent orchestration-status-static">SENT</span></span></article>
+            <div class="orchestration-flow-link orchestration-link-human">talks with</div>
+            <article class="orchestration-flow-root orchestration-status-card"><span class="orchestration-flow-role">ORCHESTRATOR</span><strong>LoopARD</strong><small>plans, delegates, and reviews</small><span class="orchestration-status" aria-hidden="true"><span class="orchestration-state-waiting">WAITING FOR YOU</span><span class="orchestration-state-running">COORDINATING</span><span class="orchestration-state-complete orchestration-status-static">FINDINGS RECEIVED</span></span></article>
+            <div class="orchestration-flow-link orchestration-link-agents">delegates in parallel</div>
+            <div class="orchestration-flow-agents">
+              <article class="orchestration-agent orchestration-agent-one"><span class="orchestration-agent-status" aria-hidden="true"><i></i><span class="orchestration-state-queued">QUEUED</span><span class="orchestration-state-working">WORKING</span><span class="orchestration-state-done orchestration-status-static">DONE</span></span><strong>Map setup steps</strong><small>Trace the first-run journey</small></article>
+              <article class="orchestration-agent orchestration-agent-two"><span class="orchestration-agent-status" aria-hidden="true"><i></i><span class="orchestration-state-queued">QUEUED</span><span class="orchestration-state-working">WORKING</span><span class="orchestration-state-done orchestration-status-static">DONE</span></span><strong>Check the guide</strong><small>Audit instructions and handoffs</small></article>
+            </div>
+            <div class="orchestration-flow-link orchestration-link-review">findings go to review</div>
+            <article class="orchestration-reviewer orchestration-status-card"><span class="orchestration-flow-role">REVIEWER</span><strong>Cross-check the recommendation</strong><small>Confirm the evidence before it returns to LoopARD.</small><span class="orchestration-status" aria-hidden="true"><span class="orchestration-state-queued">WAITING</span><span class="orchestration-state-review">REVIEWING</span><span class="orchestration-state-approved orchestration-status-static">APPROVED</span></span></article>
+            <div class="orchestration-flow-return">↶ &nbsp;Reviewed findings return to LoopARD</div>
+          </div>
+          <footer class="orchestration-panel-legend"><span><i class="legend-dot legend-dot-active"></i> Working</span><span><i class="legend-dot"></i> Queued</span><span>ILLUSTRATIVE VIEW</span></footer>
+        </aside>
+      </section>
+    {{ end }}
+  </div>
+</article>

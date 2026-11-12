@@ -25,13 +25,13 @@
 
     <section class="flow-section section-pad" aria-labelledby="flow-title">
       <div class="wrap">
-        <div class="section-head"><p class="kicker">FIG. 01 / THE HANDOFF</p><h2 id="flow-title">One goal becomes<br><em>coordinated work.</em></h2><p>LoopARD turns a spoken goal into a clear spec, then coordinates five builders, shared work and two review passes.</p></div>
+        <div class="section-head"><p class="kicker">FIG. 01 / DESIGN + ORCHESTRATE</p><h2 id="flow-title">Design the workflow.<br><em>Then run it.</em></h2><p>LoopARD helps you design and coordinate an agreed workflow. How agents share work and feedback depends on that design and the harness they run in.</p></div>
         <figure class="flow-board" aria-labelledby="flow-diagram-title" aria-describedby="flow-diagram-copy">
-          <div class="flow-top"><span>DESIGN THE LOOP · SEE IT WORK</span><span>EXAMPLE SYSTEM / ADAPTABLE RUN</span></div>
+          <div class="flow-top"><span>DESIGN THE LOOP · SEE IT WORK</span><span>ONE POSSIBLE WORKFLOW</span></div>
           <div class="flow-map">
             <svg class="flow-lines" viewBox="0 0 1320 670" role="img" aria-labelledby="flow-diagram-title flow-diagram-desc">
-              <title id="flow-diagram-title">A coordinated five-agent build loop</title>
-              <desc id="flow-diagram-desc">A goal goes to LoopARD. LoopARD produces a specification and checkpoints. A work planner assigns five build agents. Their changes meet in a shared workspace, pass an independent and an adversarial review, and send feedback back to the builders. A control plane reports run metrics to LoopARD.</desc>
+              <title id="flow-diagram-title">An example of a coordinated agent workflow</title>
+              <desc id="flow-diagram-desc">One possible workflow: LoopARD helps shape a goal into a specification and checkpoints. This example uses a work planner, five build agents, a shared workspace, and optional independent and adversarial reviews. Findings can go back to agents, or a workflow can ask the user for a decision. A control plane reports run metrics to LoopARD. The workflow and agent exchanges depend on the design and harness.</desc>
               <g class="diagram-node goal-node">
                 <rect x="30" y="260" width="170" height="132"/>
                 <text class="node-no" x="48" y="285">01 / YOUR INPUT</text>
@@ -49,8 +49,8 @@
 
               <g class="diagram-node planner-node">
                 <rect x="500" y="80" width="200" height="115"/>
-                <text class="node-no" x="518" y="105">03 / WORK PLANNER</text>
-                <text class="node-title-small" x="518" y="132">Split the spec</text>
+                <text class="node-no" x="518" y="105">03 / EXAMPLE PLANNER</text>
+                <text class="node-title-small" x="518" y="132">Plan the work</text>
                 <text class="node-copy" x="518" y="154">Tasks + dependencies</text>
                 <text class="node-copy" x="518" y="174">Acceptance checks</text>
               </g>
@@ -64,7 +64,7 @@
 
               <g class="diagram-node workspace-node">
                 <rect x="1020" y="195" width="260" height="135"/>
-                <text class="node-no" x="1040" y="222">05 / SHARED WORKSPACE</text>
+                <text class="node-no" x="1040" y="222">05 / EXAMPLE WORKSPACE</text>
                 <text class="node-title-small" x="1040" y="250">Changes meet here</text>
                 <text class="node-copy" x="1040" y="274">One branch · one build</text>
                 <path class="workspace-mark" d="M1040 294h218m-218 12h160"/>
@@ -72,13 +72,13 @@
 
               <g class="diagram-node review-node">
                 <rect x="760" y="445" width="220" height="96"/>
-                <text class="node-no" x="778" y="470">06A / INDEPENDENT</text>
+                <text class="node-no" x="778" y="470">06A / OPTIONAL · INDEPENDENT</text>
                 <text class="node-title-small" x="778" y="498">Review</text>
                 <text class="node-copy" x="778" y="519">Check requirements + quality</text>
               </g>
               <g class="diagram-node adversarial-node">
                 <rect x="1020" y="445" width="260" height="96"/>
-                <text class="node-no" x="1038" y="470">06B / ADVERSARIAL</text>
+                <text class="node-no" x="1038" y="470">06B / OPTIONAL · ADVERSARIAL</text>
                 <text class="node-title-small" x="1038" y="498">Try to break the work</text>
                 <text class="node-copy" x="1038" y="519">Send findings back to builders</text>
               </g>
@@ -122,7 +122,7 @@
               <circle class="packet packet-goal" r="6"><animateMotion dur="3s" repeatCount="indefinite" path="M200 326 H250"/></circle>
             </svg>
           </div>
-          <div class="flow-bottom"><span id="flow-diagram-copy">The planner splits the spec. Five agents build in parallel. Independent and adversarial reviews send findings back; a run monitor reports progress, blockers and usage to LoopARD.</span><span>FEEDBACK CLOSES THE LOOP</span></div>
+          <div class="flow-bottom"><span id="flow-diagram-copy">This example uses a planner and shared workspace; add independent or adversarial review where useful. Route findings between agents or ask you for a decision—the exchanges supported depend on the workflow and harness.</span><span>DESIGN THE FEEDBACK PATH</span></div>
         </figure>
       </div>
     </section>
@@ -231,7 +231,7 @@
       </div>
     </section>
 
-    <section class="control section-pad" id="control" aria-labelledby="control-title"><div class="wrap control-grid"><div><p class="kicker">FIG. 04 / HUMAN CONTROL</p><h2 id="control-title">The pause is<br><em>part of the plan.</em></h2></div><div class="control-right"><p>Design checkpoints with LoopARD. Read only what matters. Steer, pause or continue when the next decision is yours.</p><div class="decision-line" role="img" aria-label="Work reaches a human review gate before the next step"><span>WORK</span><span class="decision-track"></span><span class="decision-gate">HUMAN<br>REVIEW</span><span class="decision-track after"></span><span>NEXT STEP</span></div><span class="control-caption">NO AUTOPILOT CLAIMS. JUST A CLEAR PLACE TO DECIDE.</span></div></div></section>
+    <section class="control section-pad" id="control" aria-labelledby="control-title"><div class="wrap control-grid"><div><p class="kicker">FIG. 04 / HUMAN CONTROL</p><h2 id="control-title">Make room for<br><em>human decisions.</em></h2></div><div class="control-right"><p>A workflow can include human checkpoints when a decision is needed. A checkpoint can wait for your answer; whether active agents pause depends on the workflow and harness.</p><div class="decision-line" role="img" aria-label="An optional human checkpoint in a workflow"><span>WORK</span><span class="decision-track"></span><span class="decision-gate">OPTIONAL<br>CHECKPOINT</span><span class="decision-track after"></span><span>NEXT STEP</span></div><span class="control-caption">DECISIONS CAN BE PART OF THE WORKFLOW.</span></div></div></section>
 
     <section class="install section-pad" id="install" aria-labelledby="install-title"><div class="wrap install-grid"><div><p class="kicker">FIELD KIT / INSTALLATION</p><h2 id="install-title">Ready to make<br><em>a working loop?</em></h2><p>LoopARD is Christian Guzman’s Agent Skill for Codex and Claude Code. MIT licensed and free for commercial use.</p></div><div class="install-panel"><div class="install-panel-top"><span>01 / INSTALL WITH SKILLS CLI</span><span>↘</span></div><div class="install-command"><span>CODEX</span><pre><code>npx skills add h-4vok/loopard --skill loopard -a codex</code></pre></div><div class="install-command"><span>CLAUDE CODE</span><pre><code>npx skills add h-4vok/loopard --skill loopard -a claude-code</code></pre></div><p>LoopARD handles runtime setup the first time you use it.</p>{{ with .Params.resource.repository }}<a href="{{ . }}">View source & license <span aria-hidden="true">↗</span></a>{{ end }}</div></div></section>
   </main>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <meta name="description" content="{{ .Description }}">
+    <title>{{ .Title }} · LoopARD UI Lab</title>
+    <link rel="preload" href="{{ "/fonts/inter-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+    {{ $styles := resources.Get "css/claude-desktop-demo.css" | minify | fingerprint "sha384" }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
+  </head>
+  <body class="claude-demo-page">
+    {{- block "main" . }}{{- end }}
+    <script>
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const animationObserver = new IntersectionObserver(
+          (entries) => entries.forEach((entry) => entry.target.classList.toggle("is-animating", entry.isIntersecting)),
+          { threshold: 0.35 },
+        );
+        document.querySelectorAll(".claude-window-conversation, .claude-window-orchestration").forEach((window) => animationObserver.observe(window));
+      }
+    </script>
+  </body>
+</html>
