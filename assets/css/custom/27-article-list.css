@@ -74,6 +74,10 @@
   width: 100%;
 }
 
+.resource-directory-card .article-list-item-image img {
+  object-position: left center;
+}
+
 .article-list-item-content {
   grid-area: content;
   min-width: 0;

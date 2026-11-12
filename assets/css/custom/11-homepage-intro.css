@@ -96,10 +96,17 @@
   text-underline-offset: 0.2em;
 }
 
+@media (width >= 1600px) {
+  .homepage-hero-portrait::before {
+    background-position: center 0%;
+  }
+}
+
 @media (width <= 767.98px) {
   .homepage-hero {
     min-height: max(42rem, calc(100svh - 4.5rem));
   }
+
   .homepage-hero-portrait {
     inset: 0 0 28%;
   }
@@ -129,12 +136,15 @@
     margin-top: 1.25rem;
     font-size: 1.05rem;
   }
+
   .homepage-intro {
     padding: 4rem 0;
   }
+
   .homepage-intro-inner {
     display: block;
   }
+
   .homepage-intro h2 {
     margin-bottom: 1.5rem;
   }

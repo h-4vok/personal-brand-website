@@ -1,0 +1,85 @@
+{{ define "main" }}
+{{ $methodImage := resources.Get "images/resources/clarity/clarity-method.svg" }}
+{{ if not $methodImage }}{{ errorf "Missing Clarity hero image: assets/images/resources/clarity/clarity-method.svg" }}{{ end }}
+<a class="clarity-skip" href="#clarity-content">Skip to content</a>
+<div class="clarity-page">
+  <header class="clarity-nav">
+    <a href="{{ "/resources/" | relURL }}" class="clarity-nav__brand">CLARITY <span>/</span> FIELD GUIDE</a>
+    <nav aria-label="Clarity resource navigation">
+      <a href="#principles">Principles</a>
+      <a href="#modes">Modes</a>
+      <a href="#setup">Setup</a>
+      <a class="clarity-nav__home" href="{{ site.Home.RelPermalink }}">Back to Home <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="clarity-content">
+    <article>
+      <section class="clarity-hero" aria-labelledby="clarity-title">
+        <div class="clarity-hero__copy">
+          <p class="clarity-kicker"><span>RESOURCE 001</span> / AI WRITING SKILL</p>
+          <h1 id="clarity-title">Clarity puts<br>the reader first.</h1>
+          <p class="clarity-hero__lede">An open-source writing skill by Addy Osmani. It helps an AI agent draft, rewrite or review prose without replacing the author’s judgment or voice.</p>
+          <div class="clarity-hero__byline"><span>CURATED BY</span> Christian Guzman <span class="clarity-hero__byline-sep">/</span> <a href="{{ .Params.resource.url }}">Official project ↗</a></div>
+          <a class="clarity-button" href="#setup">See how to use it <span aria-hidden="true">↓</span></a>
+        </div>
+        <figure class="clarity-hero__figure">
+          <img src="{{ $methodImage.RelPermalink }}" alt="Clarity’s three modes: interview, rewrite, and review, arranged as an editorial workflow." width="1200" height="630" fetchpriority="high">
+          <figcaption>THREE MODES · ONE READER-LED METHOD</figcaption>
+        </figure>
+        <div class="clarity-hero__folio" aria-hidden="true">01<br>18 RULES<br>MIT LICENSE</div>
+      </section>
+
+      <section class="clarity-intro clarity-section" aria-labelledby="clarity-intro-title">
+        <p class="clarity-section__index">02 / THE IDEA</p>
+        <div class="clarity-intro__body">
+          <h2 id="clarity-intro-title">Good editing starts before the edit.</h2>
+          <p>Clarity’s central question is simple: what does this reader need from this piece? The skill uses that answer to guide the argument, the language and the final read-through.</p>
+          <p>That makes it useful when a draft sounds polished but still says little, when an edit has flattened the author’s voice, or when the agent needs to ask for missing evidence instead of inventing it.</p>
+          <a class="clarity-textlink" href="{{ .Params.resource.url }}approach/">Read Addy’s full approach ↗</a>
+        </div>
+      </section>
+
+      <section id="principles" class="clarity-principles clarity-section" aria-labelledby="principles-title">
+        <div class="clarity-section__head">
+          <p class="clarity-section__index">03 / THE FRAMEWORK</p>
+          <div><h2 id="principles-title">18 rules, grouped around the work.</h2><p class="clarity-section__dek">A compact map of the method—not a substitute for the original rules and examples.</p></div>
+        </div>
+        <div class="clarity-principles__list">
+          <article class="clarity-principle"><span class="clarity-principle__count">01—05 <i>5 RULES</i></span><h3>Useful</h3><p>Choose a reader, understand what they bring, decide what they should take away, add what only the author can contribute, and cut repetition.</p></article>
+          <article class="clarity-principle"><span class="clarity-principle__count">06—10 <i>5 RULES</i></span><h3>Clear</h3><p>Make claims concrete, give sentences an actor, prefer plain words, trim excess, and state the relationship between ideas.</p></article>
+          <article class="clarity-principle"><span class="clarity-principle__count">11—13 <i>3 RULES</i></span><h3>Yours</h3><p>Take a position, write in a voice you would use with a colleague, and avoid performing expertise or humility.</p></article>
+          <article class="clarity-principle"><span class="clarity-principle__count">14—18 <i>5 RULES</i></span><h3>Making it</h3><p>Earn the next sentence, connect paragraphs, stop when the thought ends, rewrite by cutting and reordering, then read aloud.</p></article>
+        </div>
+        <p class="clarity-attribution">Summarised from <a href="{{ .Params.resource.url }}">Clarity by Addy Osmani</a>. <a href="{{ .Params.resource.url }}approach/">Explore the original rules ↗</a></p>
+      </section>
+
+      <section id="modes" class="clarity-modes clarity-section" aria-labelledby="modes-title">
+        <div class="clarity-section__head">
+          <p class="clarity-section__index">04 / THREE MODES</p>
+          <div><h2 id="modes-title">Pick the kind of help the draft needs.</h2><p class="clarity-section__dek">The skill has three distinct entry points. Each keeps the author in control of what is written and changed.</p></div>
+        </div>
+        <div class="clarity-modes__rows">
+          <article class="clarity-mode"><span class="clarity-mode__number">01</span><div><h3>Interview</h3><p>Start with a topic. Clarity asks for the author’s experience and language, then co-writes from those answers.</p></div><code>/clarity interview</code></article>
+          <article class="clarity-mode"><span class="clarity-mode__number">02</span><div><h3>Rewrite</h3><p>Give it an existing draft. It edits the prose while keeping the facts and intent that belong to the source.</p></div><code>/clarity rewrite</code></article>
+          <article class="clarity-mode"><span class="clarity-mode__number">03</span><div><h3>Review</h3><p>Ask for a critique. Clarity identifies what needs attention and leaves the file unchanged.</p></div><code>/clarity review</code></article>
+        </div>
+        <p class="clarity-modes__footnote">Clarity works with Claude Code, Codex and other agents that can load Agent Skills. In Codex, the project also documents natural-language mode requests.</p>
+      </section>
+
+      <section class="clarity-proof clarity-section" aria-labelledby="proof-title">
+        <p class="clarity-section__index">05 / SEE THE SOURCE</p>
+        <div class="clarity-proof__body"><h2 id="proof-title">Look at the work, not a score.</h2><p>The project publishes one essay as an unedited draft, a skill-assisted rewrite and an interview-led draft. Its repository includes the samples, transcript and evaluation protocol.</p><a class="clarity-textlink" href="{{ .Params.resource.url }}approach/">Read the worked example and evaluation ↗</a></div>
+        <div class="clarity-proof__stamp"><span>OPEN SOURCE</span><strong>MIT</strong><span>ADDY OSMANI</span></div>
+      </section>
+
+      <section id="setup" class="clarity-setup clarity-section" aria-labelledby="setup-title">
+        <p class="clarity-section__index">06 / TRY IT</p>
+        <div class="clarity-setup__body"><h2 id="setup-title">Install the skill. Choose a mode.</h2><p>The same skill can interview you, rewrite a draft or review it without touching the file.</p><pre><code>npx skills add addyosmani/clarity</code></pre><div class="clarity-setup__links"><a class="clarity-button" href="{{ .Params.resource.repository }}">Open the GitHub repository ↗</a><a class="clarity-textlink" href="https://clarity.addy.ie/app/">Try the browser editor ↗</a></div></div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="clarity-footer"><a href="{{ "/resources/" | relURL }}">← All AI resources</a><span>CLARITY BY ADDY OSMANI · INDEPENDENT GUIDE BY CHRISTIAN GUZMAN</span><a href="{{ site.Home.RelPermalink }}">Back to Home ↗</a></footer>
+</div>
+{{ end }}

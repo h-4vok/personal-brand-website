@@ -1,0 +1,4 @@
+interface:
+  display_name: "Resource Skill Construct"
+  short_description: "Build unique Hugo landings for resources"
+  default_prompt: "Use $resource-skill-construct to build a resource site for this AI skill or developer tool."

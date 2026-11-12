@@ -1,0 +1,42 @@
+{{ define "main" }}
+<main class="desktop-lab">
+  <header class="desktop-lab-intro">
+    <p class="desktop-lab-eyebrow">LOOPARD · INTERFACE WORKBENCH</p>
+    <h1>From a first prompt<br>to coordinated work.</h1>
+    <p>Three illustrative moments in one Claude desktop workspace: start with an open goal, shape a workflow with LoopARD, then watch the work move.</p>
+    <span class="desktop-lab-notice">DESIGN PLAYGROUND · NOT A LIVE CLAUDE SESSION</span>
+  </header>
+
+  <div class="desktop-lab-sequence">
+    <section class="desktop-lab-example" aria-labelledby="demo-empty-title">
+      <div class="desktop-lab-caption">
+        <span>01 / THE OPENING</span>
+        <h2 id="demo-empty-title">Start with the goal.</h2>
+        <p>A clear place to begin, even when the work is still taking shape.</p>
+      </div>
+      {{ partial "components/claude-desktop-window.html" (dict "state" "empty" "id" "window-empty") }}
+    </section>
+
+    <section class="desktop-lab-example" aria-labelledby="demo-chat-title">
+      <div class="desktop-lab-caption">
+        <span>02 / DESIGN TOGETHER</span>
+        <h2 id="demo-chat-title">Turn the goal into a workflow.</h2>
+        <p>LoopARD helps clarify the outcome and proposes a way to organise the work.</p>
+      </div>
+      {{ partial "components/claude-desktop-window.html" (dict "state" "conversation" "id" "window-conversation") }}
+    </section>
+
+    <section class="desktop-lab-example" aria-labelledby="demo-agents-title">
+      <div class="desktop-lab-caption">
+        <span>03 / COORDINATE THE RUN</span>
+        <h2 id="demo-agents-title">Keep the conversation and work in view.</h2>
+        <p>The agent panel is a visual concept for now; we can replace it when LoopARD's dashboard is defined.</p>
+      </div>
+      {{ partial "components/claude-desktop-window.html" (dict "state" "orchestration" "id" "window-orchestration") }}
+      <p class="desktop-lab-disclaimer">ILLUSTRATIVE AGENT WORKFLOW · DETAILS AND DASHBOARD ARE PLACEHOLDERS</p>
+    </section>
+  </div>
+
+  <footer class="desktop-lab-footer">LOOPARD UI LAB <span>·</span> DRAFT FOR LOCAL REVIEW</footer>
+</main>
+{{ end }}

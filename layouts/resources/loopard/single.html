@@ -1,0 +1,240 @@
+{{ define "main" }}
+{{ $leopard := resources.Get "images/resources/loopard/leopard-leap.png" }}
+{{ $controlRoom := resources.Get "images/resources/loopard/control-room-leopard.png" }}
+{{ if not $leopard }}{{ errorf "Missing LoopARD artwork" }}{{ end }}
+{{ if not $controlRoom }}{{ errorf "Missing LoopARD control-room artwork" }}{{ end }}
+<div class="loopard-page">
+<a class="skip" href="#main">Skip to content</a>
+  <header class="nav wrap">
+    <a class="brand" href="#top" aria-label="LoopARD, back to top"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 48 48"><circle class="brand-orbit" cx="24" cy="24" r="22"/><path class="brand-loop" d="M15 25a9 9 0 1 1 9 9h-3m0 0 4-4m-4 4 4 4"/><path class="brand-rosette" d="M31 14c4-2 8 2 6 6-1 3-5 5-8 3-3-2-2-7 2-9Z"/><circle class="brand-rosette-core" cx="32" cy="19" r="2"/></svg></span><span>Loop<span>ARD</span></span></a>
+    <nav aria-label="Page navigation"><a href="#method">The method</a><a href="#visibility">Visibility</a><a href="#control">Your control</a><a class="nav-install" href="#install">Get the skill <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <p class="kicker"><span class="kicker-mark">✳</span> FIELD GUIDE / 001 <span class="kicker-rule"></span> AN AGENT SKILL</p>
+          <h1>Design the work.<br><em>Direct the run.</em></h1>
+          <p class="hero-lede">A shared way to tackle complex goals with specialist AI agents. Shape the loop together, see the work move, and make the calls that matter.</p>
+          <div class="hero-actions"><a class="button" href="#install">Install LoopARD <span aria-hidden="true">↗</span></a><span>For Codex & Claude Code<br><b>MIT · free for commercial use</b></span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><span class="art-orbit art-orbit-one"></span><span class="art-orbit art-orbit-two"></span><span class="art-cross">+</span><img src="{{ $leopard.RelPermalink }}" alt=""><span class="art-label">PANTHERA PARDUS / IN MOTION</span></div>
+        <div class="hero-bottom"><span>ONE GOAL. MANY SPECIALISTS. YOUR CALL.</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
+      </div>
+    </section>
+
+    <section class="flow-section section-pad" aria-labelledby="flow-title">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">FIG. 01 / DESIGN + ORCHESTRATE</p><h2 id="flow-title">Design the workflow.<br><em>Then run it.</em></h2><p>LoopARD helps you design and coordinate an agreed workflow. How agents share work and feedback depends on that design and the harness they run in.</p></div>
+        <figure class="flow-board" aria-labelledby="flow-diagram-title" aria-describedby="flow-diagram-copy">
+          <div class="flow-top"><span>DESIGN THE LOOP · SEE IT WORK</span><span>ONE POSSIBLE WORKFLOW</span></div>
+          <div class="flow-map">
+            <svg class="flow-lines" viewBox="0 0 1320 670" role="img" aria-labelledby="flow-diagram-title flow-diagram-desc">
+              <title id="flow-diagram-title">An example of a coordinated agent workflow</title>
+              <desc id="flow-diagram-desc">One possible workflow: LoopARD helps shape a goal into a specification and checkpoints. This example uses a work planner, five build agents, a shared workspace, and optional independent and adversarial reviews. Findings can go back to agents, or a workflow can ask the user for a decision. A control plane reports run metrics to LoopARD. The workflow and agent exchanges depend on the design and harness.</desc>
+              <g class="diagram-node goal-node">
+                <rect x="30" y="260" width="170" height="132"/>
+                <text class="node-no" x="48" y="285">01 / YOUR INPUT</text>
+                <text class="node-title" x="48" y="327">Your goal</text>
+                <text class="node-copy" x="48" y="351">Say what should change</text>
+              </g>
+
+              <g class="diagram-node loopard-node">
+                <rect x="250" y="245" width="210" height="160"/>
+                <text class="node-no" x="270" y="272">02 / SPEC + CONTROL</text>
+                <text class="loopard-title" x="270" y="305">LoopARD</text>
+                <text class="loopard-copy" x="270" y="327">Goal · roles · checks</text>
+                <image href="{{ $controlRoom.RelPermalink }}" x="278" y="330" width="174" height="70" preserveAspectRatio="xMidYMid meet"/>
+              </g>
+
+              <g class="diagram-node planner-node">
+                <rect x="500" y="80" width="200" height="115"/>
+                <text class="node-no" x="518" y="105">03 / EXAMPLE PLANNER</text>
+                <text class="node-title-small" x="518" y="132">Plan the work</text>
+                <text class="node-copy" x="518" y="154">Tasks + dependencies</text>
+                <text class="node-copy" x="518" y="174">Acceptance checks</text>
+              </g>
+
+              <text class="agent-group-label" x="760" y="31">04 / FIVE BUILD AGENTS</text>
+              <g class="diagram-agent agent-one"><rect x="760" y="54" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="82" r="13"/><path class="agent-rosette" d="M778 82c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="82" r="2"/><text class="agent-name" x="805" y="78">Build 01</text><text class="agent-task" x="805" y="95">UI changes</text></g>
+              <g class="diagram-agent agent-two"><rect x="760" y="126" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="154" r="13"/><path class="agent-rosette" d="M778 154c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="154" r="2"/><text class="agent-name" x="805" y="150">Build 02</text><text class="agent-task" x="805" y="167">API changes</text></g>
+              <g class="diagram-agent agent-three"><rect x="760" y="198" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="226" r="13"/><path class="agent-rosette" d="M778 226c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="226" r="2"/><text class="agent-name" x="805" y="222">Build 03</text><text class="agent-task" x="805" y="239">Test coverage</text></g>
+              <g class="diagram-agent agent-four"><rect x="760" y="270" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="298" r="13"/><path class="agent-rosette" d="M778 298c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="298" r="2"/><text class="agent-name" x="805" y="294">Build 04</text><text class="agent-task" x="805" y="311">Docs + examples</text></g>
+              <g class="diagram-agent agent-five"><rect x="760" y="342" width="220" height="56"/><circle class="agent-avatar" cx="783" cy="370" r="13"/><path class="agent-rosette" d="M778 370c0-5 8-8 11-3 4 6-3 11-8 8-2-1-3-3-3-5Z"/><circle class="agent-core" cx="784" cy="370" r="2"/><text class="agent-name" x="805" y="366">Build 05</text><text class="agent-task" x="805" y="383">Integration</text></g>
+
+              <g class="diagram-node workspace-node">
+                <rect x="1020" y="195" width="260" height="135"/>
+                <text class="node-no" x="1040" y="222">05 / EXAMPLE WORKSPACE</text>
+                <text class="node-title-small" x="1040" y="250">Changes meet here</text>
+                <text class="node-copy" x="1040" y="274">One branch · one build</text>
+                <path class="workspace-mark" d="M1040 294h218m-218 12h160"/>
+              </g>
+
+              <g class="diagram-node review-node">
+                <rect x="760" y="445" width="220" height="96"/>
+                <text class="node-no" x="778" y="470">06A / OPTIONAL · INDEPENDENT</text>
+                <text class="node-title-small" x="778" y="498">Review</text>
+                <text class="node-copy" x="778" y="519">Check requirements + quality</text>
+              </g>
+              <g class="diagram-node adversarial-node">
+                <rect x="1020" y="445" width="260" height="96"/>
+                <text class="node-no" x="1038" y="470">06B / OPTIONAL · ADVERSARIAL</text>
+                <text class="node-title-small" x="1038" y="498">Try to break the work</text>
+                <text class="node-copy" x="1038" y="519">Send findings back to builders</text>
+              </g>
+
+              <g class="diagram-node control-node">
+                <rect x="30" y="490" width="250" height="110"/>
+                <text class="node-no" x="48" y="516">07 / CONTROL PLANE</text>
+                <text class="node-title-small" x="48" y="544">Watch the run</text>
+                <text class="node-copy" x="48" y="565">Progress · blockers · usage</text>
+                <text class="node-copy" x="48" y="584">Metrics back to LoopARD</text>
+              </g>
+
+              <g class="wires" aria-hidden="true">
+                <path class="wire goal-wire" d="M200 326 H250"/>
+                <path class="wire spec-wire" d="M460 325 H480 V137 H500"/>
+                <path class="wire planner-trunk" d="M700 137 H730 V370"/>
+                <path class="wire planner-branch" d="M730 82 H760"/>
+                <path class="wire planner-branch" d="M730 154 H760"/>
+                <path class="wire planner-branch" d="M730 226 H760"/>
+                <path class="wire planner-branch" d="M730 298 H760"/>
+                <path class="wire planner-branch" d="M730 370 H760"/>
+                <path class="wire build-branch" d="M980 82 H1000"/>
+                <path class="wire build-branch" d="M980 154 H1000"/>
+                <path class="wire build-branch" d="M980 226 H1000"/>
+                <path class="wire build-branch" d="M980 298 H1000"/>
+                <path class="wire build-branch" d="M980 370 H1000"/>
+                <path class="wire build-trunk" d="M1000 82 V370 M1000 260 H1020"/>
+                <path class="wire review-branch" d="M1150 330 V415 H870 V445"/>
+                <path class="wire review-branch" d="M1150 330 V445"/>
+                <path class="wire return-wire" d="M870 541 V590 H490 V405 H420"/>
+                <path class="wire return-wire" d="M1150 541 V620 H520 V405 H390"/>
+
+
+
+
+
+                <path class="wire metrics-wire" d="M1280 260 H1300 V650 H155 V600"/>
+                <path class="wire metrics-return" d="M155 490 V430 H355 V405"/>
+              </g>
+
+              <circle class="packet packet-goal" r="6"><animateMotion dur="3s" repeatCount="indefinite" path="M200 326 H250"/></circle>
+            </svg>
+          </div>
+          <div class="flow-bottom"><span id="flow-diagram-copy">This example uses a planner and shared workspace; add independent or adversarial review where useful. Route findings between agents or ask you for a decision—the exchanges supported depend on the workflow and harness.</span><span>DESIGN THE FEEDBACK PATH</span></div>
+        </figure>
+      </div>
+    </section>
+    <section class="method section-pad" id="method" aria-labelledby="method-title">
+      <div class="wrap method-grid">
+        <div class="method-intro">
+          <p class="kicker">FIG. 02 / THE METHOD</p>
+          <h2 id="method-title">A loop you<br>can <em>shape.</em></h2>
+          <p>Agree the plan before agents start. Review what changes as the work develops. Adjust the next step together.</p>
+          <span class="side-note">THE PLAN IS A WORKING DOCUMENT, NOT A PROMISE.</span>
+        </div>
+        <figure class="loop-plate" aria-labelledby="method-diagram-title" aria-describedby="method-diagram-copy">
+          <div class="plate-top"><span>GOAL → AGENTS → FEEDBACK</span><span>ORCHESTRATION EVOLVES</span></div>
+          <div class="loop-diagram-scroll">
+            <span class="diagram-scroll-hint" aria-hidden="true">SWIPE TO FOLLOW →</span>
+            <svg class="loop-diagram" viewBox="0 0 1000 500" role="img" aria-labelledby="method-diagram-title method-diagram-desc">
+              <title id="method-diagram-title">A loop that grows with the work</title>
+              <desc id="method-diagram-desc">The diagram evolves from one person working with two agents, to parallel loops, then coordinated agent groups with metrics and independent review.</desc>
+
+              <g class="loop-scene loop-scene-one">
+                <text class="scene-kicker" x="42" y="46">LOOP 01 / TWO AGENTS</text>
+                <path class="diagram-wire" d="M190 250 H342"/>
+                <path class="diagram-wire" d="M515 230 H590 V165 H665"/>
+                <path class="diagram-wire" d="M515 270 H590 V335 H665"/>
+                <g class="diagram-person"><rect x="42" y="214" width="148" height="72"/><text class="diagram-label" x="91" y="255">YOU</text></g>
+                <g class="diagram-orchestrator"><rect x="342" y="205" width="173" height="90" rx="2"/><image href="{{ $controlRoom.RelPermalink }}" x="395" y="211" width="70" height="42" preserveAspectRatio="xMidYMid slice"/><text x="365" y="276">LoopARD</text></g>
+                <g class="diagram-agent"><rect x="665" y="130" width="230" height="70"/><circle cx="690" cy="165" r="10"/><text class="diagram-label" x="714" y="170">AGENT</text></g>
+                <g class="diagram-agent"><rect x="665" y="300" width="230" height="70"/><circle cx="690" cy="335" r="10"/><text class="diagram-label" x="714" y="340">AGENT</text></g>
+              </g>
+
+              <g class="loop-scene loop-scene-two">
+                <text class="scene-kicker" x="42" y="46">LOOP 02 / PARALLEL WORK</text>
+                <path class="diagram-wire" d="M158 250 H263"/>
+                <path class="diagram-wire" d="M420 235 H480 V145 H538"/>
+                <path class="diagram-wire" d="M420 250 H538"/>
+                <path class="diagram-wire" d="M420 265 H480 V355 H538"/>
+                <path class="diagram-wire side-loop-link" d="M342 295 V430 H850 V325"/>
+                <g class="diagram-person"><rect x="32" y="214" width="126" height="72"/><text class="diagram-label" x="74" y="255">YOU</text></g>
+                <g class="diagram-orchestrator"><rect x="263" y="205" width="157" height="90"/><image href="{{ $controlRoom.RelPermalink }}" x="309" y="211" width="58" height="42" preserveAspectRatio="xMidYMid slice"/><text x="282" y="276">LoopARD</text></g>
+                <g class="diagram-agent"><rect x="538" y="110" width="174" height="70"/><circle cx="562" cy="145" r="10"/><text class="diagram-label" x="585" y="150">AGENT</text></g>
+                <g class="diagram-agent"><rect x="538" y="215" width="174" height="70"/><circle cx="562" cy="250" r="10"/><text class="diagram-label" x="585" y="255">AGENT</text></g>
+                <g class="diagram-agent"><rect x="538" y="320" width="174" height="70"/><circle cx="562" cy="355" r="10"/><text class="diagram-label" x="585" y="360">AGENT</text></g>
+                <text class="diagram-small" x="770" y="231">PARALLEL LOOP</text>
+                <g class="diagram-side-system"><rect x="740" y="240" width="225" height="85"/><circle cx="780" cy="282" r="10"/><circle cx="925" cy="282" r="10"/></g>
+                <path class="diagram-wire side-loop" d="M790 276 H915"/>
+                <path class="diagram-wire side-loop" d="M915 288 H790"/>
+              </g>
+
+              <g class="loop-scene loop-scene-three">
+                <text class="scene-kicker" x="30" y="40">LOOP 03 / SPECIALISTS + OVERSIGHT</text>
+                <path class="diagram-wire" d="M123 247 H205"/>
+                <path class="diagram-wire" d="M335 230 H365 V112 H390"/>
+                <path class="diagram-wire" d="M335 247 H390"/>
+                <path class="diagram-wire" d="M335 264 H365 V382 H390"/>
+                <path class="diagram-wire metric-wire" d="M545 112 H644"/>
+                <path class="diagram-wire metric-wire" d="M545 247 H644"/>
+                <path class="diagram-wire metric-wire" d="M545 382 H644"/>
+                <path class="diagram-wire metric-wire" d="M670 112 H730"/>
+                <path class="diagram-wire metric-wire" d="M670 247 H730"/>
+                <path class="diagram-wire metric-wire" d="M670 382 H730"/>
+                <path class="diagram-wire metric-wire" d="M730 112 V382 M730 157 H800"/>
+                <path class="diagram-wire" d="M690 247 H748 V272 H800"/>
+                <path class="diagram-wire" d="M920 272 V350"/>
+                <path class="diagram-wire feedback-wire" d="M923 413 V450 H270 V292"/>
+                <g class="diagram-person"><rect x="18" y="207" width="105" height="72"/><text class="diagram-label" x="53" y="248">YOU</text></g>
+                <g class="diagram-orchestrator"><rect x="205" y="202" width="130" height="90"/><image href="{{ $controlRoom.RelPermalink }}" x="243" y="208" width="48" height="42" preserveAspectRatio="xMidYMid slice"/><text x="219" y="276">LoopARD</text></g>
+
+                <g class="diagram-agent-group"><rect x="390" y="78" width="155" height="68"/><circle cx="416" cy="112" r="8"/><circle cx="444" cy="112" r="8"/><circle cx="472" cy="112" r="8"/><circle cx="500" cy="112" r="8"/><text class="diagram-small" x="405" y="165">AGENT GROUP</text></g>
+                <g class="diagram-agent-group"><rect x="390" y="213" width="155" height="68"/><circle cx="416" cy="247" r="8"/><circle cx="444" cy="247" r="8"/><circle cx="472" cy="247" r="8"/><circle cx="500" cy="247" r="8"/><text class="diagram-small" x="405" y="300">AGENT GROUP</text></g>
+                <g class="diagram-agent-group"><rect x="390" y="348" width="155" height="68"/><circle cx="416" cy="382" r="8"/><circle cx="444" cy="382" r="8"/><circle cx="472" cy="382" r="8"/><circle cx="500" cy="382" r="8"/><text class="diagram-small" x="405" y="435">AGENT GROUP</text></g>
+
+                <g class="diagram-metric"><circle cx="657" cy="112" r="13"/><circle cx="657" cy="247" r="13"/><circle cx="657" cy="382" r="13"/><text class="diagram-small" x="625" y="426">METRICS</text></g>
+                <g class="diagram-database"><path d="M800 130v48c0 15 120 15 120 0v-48"/><ellipse cx="860" cy="130" rx="60" ry="14"/><path d="M800 154c0 15 120 15 120 0"/><text class="diagram-small" x="822" y="211">DATABASE</text></g>
+                <g class="diagram-referee"><rect x="800" y="240" width="170" height="64"/><path d="M825 258h24m-12-12v24"/><text class="diagram-label" x="860" y="279">ARBITER</text></g>
+                <g class="diagram-file"><path d="M800 350h105l18 18v45H800Z"/><path d="M905 350v18h18"/><path d="M815 378h88m-88 12h75"/><text class="diagram-small" x="815" y="430">FINDINGS FILE</text></g>
+                <text class="diagram-small feedback-label" x="551" y="471">REVIEW FEEDBACK</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption id="method-diagram-copy" class="plate-caption">The loop stays visible. See how work is coordinated, then adjust it as the run unfolds.</figcaption>
+        </figure>
+      </div>
+    </section>
+    {{ $methodScript := resources.Get "js/loopard-diagram.js" | js.Build (dict "minify" true) | fingerprint }}
+    <script type="module" src="{{ $methodScript.RelPermalink }}" integrity="{{ $methodScript.Data.Integrity }}" crossorigin="anonymous"></script>
+
+    <section class="visibility section-pad" id="visibility" aria-labelledby="visibility-title">
+      <div class="wrap visibility-grid">
+        <div class="visibility-intro">
+          <p class="kicker">FIG. 03 / EVENTS LOG</p>
+          <h2 id="visibility-title">See what moved.<br><em>See what needs you.</em></h2>
+          <p>A local, read-only dashboard tracks progress, milestones, blockers and decisions during a run.</p>
+          <p class="privacy-note">Prompts and full agent responses stay out of the dashboard.</p>
+        </div>
+        <figure class="log">
+          <div class="log-header"><span>LOOPARD / EVENTS LOG</span><span>ILLUSTRATIVE VIEW</span></div>
+          <div class="log-title"><strong>A run history that keeps decisions in context.</strong></div>
+          <ol class="events">
+<li><span class="event-time">09:41</span><span class="event-dot"></span><span><strong>Goal and checks agreed</strong><small>Outcome and acceptance criteria recorded</small></span></li>
+<li class="decision"><span class="event-time">09:42</span><span class="event-dot"></span><span><strong>Decision needed</strong><small>Include archived records, or focus on active work?</small></span></li>
+<li><span class="event-time">09:45</span><span class="event-dot"></span><span><strong>Work split</strong><small>Implementation, tests and documentation assigned</small></span></li>
+<li><span class="event-time">09:49</span><span class="event-dot"></span><span><strong>Review finding</strong><small>Some existing records have no assigned owner</small></span></li>
+</ol>
+
+        </figure>
+      </div>
+    </section>
+
+    <section class="control section-pad" id="control" aria-labelledby="control-title"><div class="wrap control-grid"><div><p class="kicker">FIG. 04 / HUMAN CONTROL</p><h2 id="control-title">Make room for<br><em>human decisions.</em></h2></div><div class="control-right"><p>A workflow can include human checkpoints when a decision is needed. A checkpoint can wait for your answer; whether active agents pause depends on the workflow and harness.</p><div class="decision-line" role="img" aria-label="An optional human checkpoint in a workflow"><span>WORK</span><span class="decision-track"></span><span class="decision-gate">OPTIONAL<br>CHECKPOINT</span><span class="decision-track after"></span><span>NEXT STEP</span></div><span class="control-caption">DECISIONS CAN BE PART OF THE WORKFLOW.</span></div></div></section>
+
+    <section class="install section-pad" id="install" aria-labelledby="install-title"><div class="wrap install-grid"><div><p class="kicker">FIELD KIT / INSTALLATION</p><h2 id="install-title">Ready to make<br><em>a working loop?</em></h2><p>LoopARD is Christian Guzman’s Agent Skill for Codex and Claude Code. MIT licensed and free for commercial use.</p></div><div class="install-panel"><div class="install-panel-top"><span>01 / INSTALL WITH SKILLS CLI</span><span>↘</span></div><div class="install-command"><span>CODEX</span><pre><code>npx skills add h-4vok/loopard --skill loopard -a codex</code></pre></div><div class="install-command"><span>CLAUDE CODE</span><pre><code>npx skills add h-4vok/loopard --skill loopard -a claude-code</code></pre></div><p>LoopARD handles runtime setup the first time you use it.</p>{{ with .Params.resource.repository }}<a href="{{ . }}">View source & license <span aria-hidden="true">↗</span></a>{{ end }}</div></div></section>
+  </main>
+  <footer><div class="wrap footer-inner"><span class="footer-brand"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="brand-orbit" cx="24" cy="24" r="22"/><path class="brand-loop" d="M15 25a9 9 0 1 1 9 9h-3m0 0 4-4m-4 4 4 4"/><path class="brand-rosette" d="M31 14c4-2 8 2 6 6-1 3-5 5-8 3-3-2-2-7 2-9Z"/><circle class="brand-rosette-core" cx="32" cy="19" r="2"/></svg>Loop<span>ARD</span></span><span>AN AGENT SKILL BY CHRISTIAN GUZMAN</span><a href="{{ site.Home.RelPermalink }}">christianguzman.uk ↗</a></div></footer>
+</div>
+{{ end }}

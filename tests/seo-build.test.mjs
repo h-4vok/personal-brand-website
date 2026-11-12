@@ -130,6 +130,8 @@ describe('SEO build assertions', () => {
       );
       const $ = load(html);
       const pageType = classifyPage(page.relativePath);
+      const isResourcePage =
+        page.relativePath.startsWith('resources/') && page.relativePath !== 'resources/index.html';
       const h1Count = $('h1').length;
 
       if (page.relativePath === 'redirect/index.html') {
@@ -208,10 +210,15 @@ describe('SEO build assertions', () => {
 
       const criticalCss = $('style[data-critical-css="true"]');
       assert(
-        criticalCss.length === 1,
-        `[${page.relativePath}] must emit exactly one inline critical CSS block.`,
+        criticalCss.length === (isResourcePage ? 0 : 1),
+        isResourcePage
+          ? `[${page.relativePath}] must not inherit the site's critical CSS.`
+          : `[${page.relativePath}] must emit exactly one inline critical CSS block.`,
       );
 
+      const stylesheetPattern = isResourcePage
+        ? /\/css\/resources\/[^/]+\.bundle\.[^/?"]+\.css$/
+        : /\/css\/site\.[^/?"]+\.css$/;
       const preloadStyles = $('link[rel="preload"][as="style"]');
       assert(
         preloadStyles.length === 1,
@@ -219,18 +226,20 @@ describe('SEO build assertions', () => {
       );
       const preloadHref = preloadStyles.first().attr('href')?.trim() ?? '';
       assert(
-        /\/css\/site\.[^/?"]+\.css$/.test(preloadHref),
+        stylesheetPattern.test(preloadHref),
         `[${page.relativePath}] deferred stylesheet preload must use the fingerprinted site stylesheet path without query-string cache busting. Actual href: "${preloadHref}".`,
       );
 
-      const deferredStylesheet = $('link[rel="stylesheet"][href*="/css/site."]');
+      const deferredStylesheet = $(
+        'link[rel="stylesheet"][href*="/css/site."], link[rel="stylesheet"][href*="/css/resources/"]',
+      );
       assert(
         deferredStylesheet.length === 1,
         `[${page.relativePath}] must load the combined site stylesheet bundle.`,
       );
       const deferredHref = deferredStylesheet.attr('href')?.trim() ?? '';
       assert(
-        /\/css\/site\.[^/?"]+\.css$/.test(deferredHref),
+        stylesheetPattern.test(deferredHref),
         `[${page.relativePath}] combined site stylesheet must use the fingerprinted site stylesheet path without query-string cache busting. Actual href: "${deferredHref}".`,
       );
       assert(
@@ -239,7 +248,7 @@ describe('SEO build assertions', () => {
       );
 
       const noScriptDeferredMatch = html.match(
-        /<noscript>\s*<link rel=stylesheet href=(?:"([^"]*\/css\/site\.[^"]*)"|([^\s>]*\/css\/site\.[^\s>]*))/i,
+        /<noscript>\s*<link rel=stylesheet href=(?:"([^"]*\/css\/(?:site|resources\/(?:index|clarity)\.bundle)\.[^"]*)"|([^\s>]*\/css\/(?:site|resources\/(?:index|clarity)\.bundle)\.[^\s>]*))/i,
       );
       assert(
         noScriptDeferredMatch,
@@ -247,6 +256,10 @@ describe('SEO build assertions', () => {
       );
       const noScriptDeferredHref =
         noScriptDeferredMatch[1]?.trim() ?? noScriptDeferredMatch[2]?.trim() ?? '';
+      assert(
+        stylesheetPattern.test(noScriptDeferredHref),
+        `[${page.relativePath}] noscript fallback must use the correct fingerprinted stylesheet bundle.`,
+      );
       assert(
         noScriptDeferredHref === deferredHref,
         `[${page.relativePath}] noscript stylesheet href must match the deferred stylesheet href exactly.`,
@@ -427,6 +440,38 @@ describe('SEO build assertions', () => {
       const hasArticleSchema = schemaTypes.some((type) => ARTICLE_SCHEMA_TYPES.has(type));
       const hasServiceSchema = schemaTypes.some((type) => SERVICE_SCHEMA_TYPES.has(type));
       const isOfficeHoursPage = page.relativePath === 'leadership-office-hours/index.html';
+      const isClarityPage = page.relativePath === 'resources/clarity/index.html';
+
+      if (isClarityPage) {
+        assert(
+          title.startsWith('Clarity AI Writing Skill by Addy Osmani |'),
+          `[${page.relativePath}] title must identify the resource and its creator.`,
+        );
+        assert(
+          readRequiredMeta($, 'description', page.relativePath).includes('Addy Osmani'),
+          `[${page.relativePath}] description must identify the skill creator.`,
+        );
+        assert(
+          new URL(canonicalHref).pathname === '/resources/clarity/',
+          `[${page.relativePath}] canonical must use /resources/clarity/.`,
+        );
+        assert(
+          new URL(readRequiredMeta($, 'og:image', page.relativePath)).pathname ===
+            '/images/resources/clarity/clarity-social.png',
+          `[${page.relativePath}] must use its Clarity-specific social image.`,
+        );
+        readRequiredMeta($, 'og:image:alt', page.relativePath);
+        assert(
+          $('meta[name="author"]').attr('content')?.trim() === 'Christian Guzman',
+          `[${page.relativePath}] page author must be Christian Guzman, distinct from the resource creator.`,
+        );
+        const resourceSchema = schemas.find((schema) => schema['@type'] === 'WebPage');
+        assert(
+          resourceSchema?.about?.name === 'Clarity' &&
+            resourceSchema.about.creator?.name === 'Addy Osmani',
+          `[${page.relativePath}] WebPage schema must identify Clarity and Addy Osmani.`,
+        );
+      }
 
       if (isOfficeHoursPage) {
         assert(

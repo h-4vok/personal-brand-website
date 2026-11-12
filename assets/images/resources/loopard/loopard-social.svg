@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f7fa"/>
+  <path d="M0 535H1200" stroke="#d6e0e9"/>
+  <circle cx="1050" cy="50" r="240" fill="#e6eef8"/>
+  <rect x="76" y="77" width="44" height="44" rx="12" fill="#2159d1"/><text x="98" y="108" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="26" font-weight="700">L</text>
+  <text x="137" y="107" fill="#172b43" font-family="Arial,sans-serif" font-size="27" font-weight="700">LoopARD</text>
+  <text x="76" y="206" fill="#2159d1" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2">MULTI-AGENT ORCHESTRATION</text>
+  <text x="76" y="284" fill="#172b43" font-family="Arial,sans-serif" font-size="62" font-weight="700" letter-spacing="-2">Complex work.</text>
+  <text x="76" y="354" fill="#2159d1" font-family="Arial,sans-serif" font-size="62" font-weight="700" letter-spacing="-2">One clear loop.</text>
+  <text x="78" y="410" fill="#52677d" font-family="Arial,sans-serif" font-size="21">Coordinate AI agents while you stay in control.</text>
+  <rect x="78" y="460" width="98" height="38" rx="19" fill="#e1f3ef"/><text x="127" y="484" text-anchor="middle" fill="#13766f" font-family="Arial,sans-serif" font-size="14" font-weight="700">OPEN SOURCE</text>
+  <rect x="186" y="460" width="65" height="38" rx="19" fill="#eaf0ff"/><text x="218" y="484" text-anchor="middle" fill="#2159d1" font-family="Arial,sans-serif" font-size="14" font-weight="700">MIT</text>
+  <rect x="670" y="160" width="450" height="320" rx="20" fill="#fff" stroke="#d6e0e9" stroke-width="2"/>
+  <text x="704" y="199" fill="#708397" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">HUMAN-LED WORKFLOW</text>
+  <rect x="703" y="282" width="100" height="74" rx="10" fill="#fff" stroke="#d6e0e9" stroke-width="2"/><text x="753" y="313" text-anchor="middle" fill="#172b43" font-family="Arial,sans-serif" font-size="15" font-weight="700">Your goal</text><text x="753" y="338" text-anchor="middle" fill="#52677d" font-family="Arial,sans-serif" font-size="11">Scope &amp; success</text>
+  <path d="M803 319H855" stroke="#aec3dc" stroke-width="3"/><circle cx="830" cy="319" r="5" fill="#2159d1"/>
+  <rect x="855" y="273" width="111" height="92" rx="12" fill="#fff" stroke="#c9d8fb" stroke-width="2"/><rect x="872" y="287" width="24" height="24" rx="7" fill="#2159d1"/><text x="884" y="304" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700">L</text><text x="872" y="333" fill="#172b43" font-family="Arial,sans-serif" font-size="16" font-weight="700">LoopARD</text><text x="872" y="351" fill="#52677d" font-family="Arial,sans-serif" font-size="10">Plan · coordinate</text>
+  <path d="M966 319H993M993 319V250H1011M993 319H1011M993 319V388H1011" fill="none" stroke="#aec3dc" stroke-width="2"/>
+  <rect x="1011" y="228" width="89" height="44" rx="8" fill="#fff" stroke="#d6e0e9" stroke-width="2"/><text x="1055" y="255" text-anchor="middle" fill="#172b43" font-family="Arial,sans-serif" font-size="13" font-weight="700">Research</text>
+  <rect x="1011" y="297" width="89" height="44" rx="8" fill="#fff" stroke="#d6e0e9" stroke-width="2"/><text x="1055" y="324" text-anchor="middle" fill="#172b43" font-family="Arial,sans-serif" font-size="13" font-weight="700">Build</text>
+  <rect x="1011" y="366" width="89" height="44" rx="8" fill="#fff" stroke="#d6e0e9" stroke-width="2"/><text x="1055" y="393" text-anchor="middle" fill="#172b43" font-family="Arial,sans-serif" font-size="13" font-weight="700">Review</text>
+  <text x="704" y="445" fill="#52677d" font-family="Arial,sans-serif" font-size="12">One conversation · Coordinated agents · Human control</text>
+  <text x="78" y="582" fill="#52677d" font-family="Arial,sans-serif" font-size="13">CREATED BY CHRISTIAN GUZMAN</text>
+</svg>

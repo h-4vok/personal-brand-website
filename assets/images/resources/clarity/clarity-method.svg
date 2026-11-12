@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Clarity: an AI writing skill by Addy Osmani</title>
+  <desc id="desc">A dark editorial diagram of Clarity's three writing modes: interview, rewrite, and review.</desc>
+  <rect width="1200" height="630" fill="#10120f"/>
+  <path d="M56 76H1144M56 554H1144" stroke="#e5bc5e" stroke-opacity=".5"/>
+  <text x="58" y="58" fill="#e5bc5e" font-family="Anaheim,Arial,sans-serif" font-size="16" letter-spacing="3">AN INDEPENDENT FIELD GUIDE / AI WRITING</text>
+  <text x="56" y="206" fill="#f0ede4" font-family="Anaheim,Arial,sans-serif" font-size="116" letter-spacing="-7">CLARITY</text>
+  <text x="62" y="258" fill="#c5c3b9" font-family="'Quattrocento Sans',Arial,sans-serif" font-size="25">An open-source writing skill by Addy Osmani</text>
+  <text x="62" y="341" fill="#e5bc5e" font-family="'Courier New',monospace" font-size="15" letter-spacing="2">A READER-LED METHOD</text>
+  <text x="62" y="387" fill="#f0ede4" font-family="'Quattrocento Sans',Arial,sans-serif" font-size="24">18 rules for useful, clear writing that keeps</text>
+  <text x="62" y="422" fill="#f0ede4" font-family="'Quattrocento Sans',Arial,sans-serif" font-size="24">the author's facts, judgment, and voice.</text>
+  <g transform="translate(692 128)">
+    <path d="M0 55H72M0 200H72M0 345H72" stroke="#e5bc5e" stroke-width="2"/>
+    <circle cx="4" cy="55" r="6" fill="#e5bc5e"/>
+    <circle cx="4" cy="200" r="6" fill="#e5bc5e"/>
+    <circle cx="4" cy="345" r="6" fill="#e5bc5e"/>
+    <g transform="translate(72 0)">
+      <rect width="414" height="112" fill="#191c18" stroke="#f0ede4" stroke-opacity=".24"/>
+      <text x="24" y="32" fill="#e5bc5e" font-family="'Courier New',monospace" font-size="13" letter-spacing="2">01 / FIND THE MATERIAL</text>
+      <text x="24" y="79" fill="#f0ede4" font-family="Anaheim,Arial,sans-serif" font-size="40">Interview</text>
+      <text x="370" y="77" fill="#e5bc5e" font-family="Arial,sans-serif" font-size="24">↗</text>
+    </g>
+    <g transform="translate(72 145)">
+      <rect width="414" height="112" fill="#191c18" stroke="#f0ede4" stroke-opacity=".24"/>
+      <text x="24" y="32" fill="#e5bc5e" font-family="'Courier New',monospace" font-size="13" letter-spacing="2">02 / CHANGE THE DRAFT</text>
+      <text x="24" y="79" fill="#f0ede4" font-family="Anaheim,Arial,sans-serif" font-size="40">Rewrite</text>
+      <path d="M24 91H156" stroke="#e5bc5e" stroke-width="3"/>
+    </g>
+    <g transform="translate(72 290)">
+      <rect width="414" height="112" fill="#191c18" stroke="#f0ede4" stroke-opacity=".24"/>
+      <text x="24" y="32" fill="#e5bc5e" font-family="'Courier New',monospace" font-size="13" letter-spacing="2">03 / LEAVE THE FILE ALONE</text>
+      <text x="24" y="79" fill="#f0ede4" font-family="Anaheim,Arial,sans-serif" font-size="40">Review</text>
+      <path d="M300 75l11 11 22-26" fill="none" stroke="#e5bc5e" stroke-width="3"/>
+    </g>
+  </g>
+  <text x="60" y="592" fill="#c5c3b9" font-family="'Courier New',monospace" font-size="13" letter-spacing="2">CODEX · CLAUDE CODE · AGENT SKILLS</text>
+  <text x="1140" y="592" text-anchor="end" fill="#e5bc5e" font-family="'Courier New',monospace" font-size="13" letter-spacing="2">CHRISTIAN GUZMAN / RESOURCES</text>
+</svg>
